@@ -25,28 +25,28 @@ import {
 /** Split response */
 export interface GetSplitResponse {
   /** Type */
-  type: string | null;
+  type?: string | null;
   /** Amount */
-  amount: number | null;
+  amount?: number | null;
   /** Recipient */
   recipient?: GetRecipientResponse | null;
   /** The split rule gateway id */
-  gatewayId: string | null;
+  gatewayId?: string | null;
   options?: GetSplitOptionsResponse | null;
-  id: string | null;
+  id?: string | null;
 }
 
 export const getSplitResponseSchema: Schema<GetSplitResponse> = object({
-  type: ['type', nullable(string())],
-  amount: ['amount', nullable(number())],
+  type: ['type', optional(nullable(string()))],
+  amount: ['amount', optional(nullable(number()))],
   recipient: [
     'recipient',
     optional(nullable(lazy(() => getRecipientResponseSchema))),
   ],
-  gatewayId: ['gateway_id', nullable(string())],
+  gatewayId: ['gateway_id', optional(nullable(string()))],
   options: [
     'options',
     optional(nullable(lazy(() => getSplitOptionsResponseSchema))),
   ],
-  id: ['id', nullable(string())],
+  id: ['id', optional(nullable(string()))],
 });

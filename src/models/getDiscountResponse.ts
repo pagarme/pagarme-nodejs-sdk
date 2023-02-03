@@ -24,11 +24,11 @@ import {
 
 /** Response object for getting a discount */
 export interface GetDiscountResponse {
-  id: string | null;
-  value: number | null;
-  discountType: string | null;
-  status: string | null;
-  createdAt: string | null;
+  id?: string | null;
+  value?: number | null;
+  discountType?: string | null;
+  status?: string | null;
+  createdAt?: string | null;
   cycles?: number | null;
   deletedAt?: string | null;
   description?: string | null;
@@ -38,11 +38,11 @@ export interface GetDiscountResponse {
 }
 
 export const getDiscountResponseSchema: Schema<GetDiscountResponse> = object({
-  id: ['id', nullable(string())],
-  value: ['value', nullable(number())],
-  discountType: ['discount_type', nullable(string())],
-  status: ['status', nullable(string())],
-  createdAt: ['created_at', nullable(string())],
+  id: ['id', optional(nullable(string()))],
+  value: ['value', optional(nullable(number()))],
+  discountType: ['discount_type', optional(nullable(string()))],
+  status: ['status', optional(nullable(string()))],
+  createdAt: ['created_at', optional(nullable(string()))],
   cycles: ['cycles', optional(nullable(number()))],
   deletedAt: ['deleted_at', optional(nullable(string()))],
   description: ['description', optional(nullable(string()))],

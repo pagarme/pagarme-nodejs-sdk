@@ -11,20 +11,20 @@ Response object for getting a access token
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `id` | `string \| null` | Required | - |
-| `code` | `string \| null` | Required | - |
-| `status` | `string \| null` | Required | - |
-| `createdAt` | `string \| null` | Required | - |
+| `id` | `string \| undefined` | Optional | - |
+| `code` | `string \| undefined` | Optional | - |
+| `status` | `string \| undefined` | Optional | - |
+| `createdAt` | `string \| undefined` | Optional | - |
 | `customer` | [`GetCustomerResponse \| undefined`](../../doc/models/get-customer-response.md) | Optional | - |
 
 ## Example (as JSON)
 
 ```json
 {
-  "id": "id0",
-  "code": "code8",
-  "status": "status8",
-  "created_at": "2016-03-13T12:52:32.123Z",
+  "id": null,
+  "code": null,
+  "status": null,
+  "created_at": null,
   "customer": null
 }
 ```

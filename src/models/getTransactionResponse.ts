@@ -34,33 +34,33 @@ import { GetSplitResponse, getSplitResponseSchema } from './getSplitResponse';
 /** Generic response object for getting a transaction. */
 export interface GetTransactionResponse {
   /** Gateway transaction id */
-  gatewayId: string | null;
+  gatewayId?: string | null;
   /** Amount in cents */
-  amount: number | null;
+  amount?: number | null;
   /** Transaction status */
-  status: string | null;
+  status?: string | null;
   /** Indicates if the transaction ocurred successfuly */
-  success: boolean | null;
+  success?: boolean | null;
   /** Creation date */
-  createdAt: string | null;
+  createdAt?: string | null;
   /** Last update date */
-  updatedAt: string | null;
+  updatedAt?: string | null;
   /** Number of attempts tried */
-  attemptCount: number | null;
+  attemptCount?: number | null;
   /** Max attempts */
-  maxAttempts: number | null;
+  maxAttempts?: number | null;
   /** Splits */
-  splits: GetSplitResponse[] | null;
+  splits?: GetSplitResponse[] | null;
   /** Date and time of the next attempt */
   nextAttempt?: string | null;
   transactionType?: string;
   /** Código da transação */
-  id: string | null;
+  id?: string | null;
   /** The Gateway Response */
-  gatewayResponse: GetGatewayResponseResponse | null;
-  antifraudResponse: GetAntifraudResponse | null;
+  gatewayResponse?: GetGatewayResponseResponse | null;
+  antifraudResponse?: GetAntifraudResponse | null;
   metadata?: Record<string, string> | null;
-  split: GetSplitResponse[] | null;
+  split?: GetSplitResponse[] | null;
   interest?: GetInterestResponse | null;
   fine?: GetFineResponse | null;
   maxDaysToPayPastDue?: number | null;
@@ -68,28 +68,34 @@ export interface GetTransactionResponse {
 
 export const getTransactionResponseSchema: Schema<GetTransactionResponse> = object(
   {
-    gatewayId: ['gateway_id', nullable(string())],
-    amount: ['amount', nullable(number())],
-    status: ['status', nullable(string())],
-    success: ['success', nullable(boolean())],
-    createdAt: ['created_at', nullable(string())],
-    updatedAt: ['updated_at', nullable(string())],
-    attemptCount: ['attempt_count', nullable(number())],
-    maxAttempts: ['max_attempts', nullable(number())],
-    splits: ['splits', nullable(array(lazy(() => getSplitResponseSchema)))],
+    gatewayId: ['gateway_id', optional(nullable(string()))],
+    amount: ['amount', optional(nullable(number()))],
+    status: ['status', optional(nullable(string()))],
+    success: ['success', optional(nullable(boolean()))],
+    createdAt: ['created_at', optional(nullable(string()))],
+    updatedAt: ['updated_at', optional(nullable(string()))],
+    attemptCount: ['attempt_count', optional(nullable(number()))],
+    maxAttempts: ['max_attempts', optional(nullable(number()))],
+    splits: [
+      'splits',
+      optional(nullable(array(lazy(() => getSplitResponseSchema)))),
+    ],
     nextAttempt: ['next_attempt', optional(nullable(string()))],
     transactionType: ['transaction_type', optional(string())],
-    id: ['id', nullable(string())],
+    id: ['id', optional(nullable(string()))],
     gatewayResponse: [
       'gateway_response',
-      nullable(lazy(() => getGatewayResponseResponseSchema)),
+      optional(nullable(lazy(() => getGatewayResponseResponseSchema))),
     ],
     antifraudResponse: [
       'antifraud_response',
-      nullable(lazy(() => getAntifraudResponseSchema)),
+      optional(nullable(lazy(() => getAntifraudResponseSchema))),
     ],
     metadata: ['metadata', optional(nullable(dict(string())))],
-    split: ['split', nullable(array(lazy(() => getSplitResponseSchema)))],
+    split: [
+      'split',
+      optional(nullable(array(lazy(() => getSplitResponseSchema)))),
+    ],
     interest: [
       'interest',
       optional(nullable(lazy(() => getInterestResponseSchema))),

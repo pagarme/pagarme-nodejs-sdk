@@ -22,13 +22,13 @@ import {
 /** Checkout Payment Settings Response */
 export interface GetCheckoutPaymentSettingsResponse {
   /** Success Url */
-  successUrl: string | null;
+  successUrl?: string | null;
   /** Payment Url */
-  paymentUrl: string | null;
+  paymentUrl?: string | null;
   /** Accepted Payment Methods */
-  acceptedPaymentMethods: string[] | null;
+  acceptedPaymentMethods?: string[] | null;
   /** Status */
-  status: string | null;
+  status?: string | null;
   /** Customer */
   customer?: GetCustomerResponse | null;
   /** Payment amount */
@@ -41,13 +41,13 @@ export interface GetCheckoutPaymentSettingsResponse {
 
 export const getCheckoutPaymentSettingsResponseSchema: Schema<GetCheckoutPaymentSettingsResponse> = object(
   {
-    successUrl: ['success_url', nullable(string())],
-    paymentUrl: ['payment_url', nullable(string())],
+    successUrl: ['success_url', optional(nullable(string()))],
+    paymentUrl: ['payment_url', optional(nullable(string()))],
     acceptedPaymentMethods: [
       'accepted_payment_methods',
-      nullable(array(string())),
+      optional(nullable(array(string()))),
     ],
-    status: ['status', nullable(string())],
+    status: ['status', optional(nullable(string()))],
     customer: [
       'customer',
       optional(nullable(lazy(() => getCustomerResponseSchema))),

@@ -30,12 +30,12 @@
       "funding_estimated_date": null,
       "type": "type5",
       "source": {
-        "source_id": "source_id5",
-        "type": "type1"
+        "source_id": null,
+        "type": null
       },
       "target": {
-        "target_id": "target_id3",
-        "type": "type7"
+        "target_id": null,
+        "type": null
       }
     },
     {
@@ -51,19 +51,19 @@
       "funding_estimated_date": null,
       "type": "type6",
       "source": {
-        "source_id": "source_id6",
-        "type": "type2"
+        "source_id": null,
+        "type": null
       },
       "target": {
-        "target_id": "target_id4",
-        "type": "type6"
+        "target_id": null,
+        "type": null
       }
     }
   ],
   "paging": {
-    "total": 6,
-    "previous": "previous2",
-    "next": "next8"
+    "total": null,
+    "previous": null,
+    "next": null
   }
 }
 ```

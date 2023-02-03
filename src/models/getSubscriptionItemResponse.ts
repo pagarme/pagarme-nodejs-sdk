@@ -32,17 +32,17 @@ import {
 } from './getSubscriptionResponse';
 
 export interface GetSubscriptionItemResponse {
-  id: string | null;
-  description: string | null;
-  status: string | null;
-  createdAt: string | null;
-  updatedAt: string | null;
-  pricingScheme: GetPricingSchemeResponse | null;
-  discounts: GetDiscountResponse[] | null;
-  increments: GetIncrementResponse[] | null;
-  subscription: GetSubscriptionResponse | null;
+  id?: string | null;
+  description?: string | null;
+  status?: string | null;
+  createdAt?: string | null;
+  updatedAt?: string | null;
+  pricingScheme?: GetPricingSchemeResponse | null;
+  discounts?: GetDiscountResponse[] | null;
+  increments?: GetIncrementResponse[] | null;
+  subscription?: GetSubscriptionResponse | null;
   /** Item name */
-  name: string | null;
+  name?: string | null;
   quantity?: number | null;
   cycles?: number | null;
   deletedAt?: string | null;
@@ -50,28 +50,28 @@ export interface GetSubscriptionItemResponse {
 
 export const getSubscriptionItemResponseSchema: Schema<GetSubscriptionItemResponse> = object(
   {
-    id: ['id', nullable(string())],
-    description: ['description', nullable(string())],
-    status: ['status', nullable(string())],
-    createdAt: ['created_at', nullable(string())],
-    updatedAt: ['updated_at', nullable(string())],
+    id: ['id', optional(nullable(string()))],
+    description: ['description', optional(nullable(string()))],
+    status: ['status', optional(nullable(string()))],
+    createdAt: ['created_at', optional(nullable(string()))],
+    updatedAt: ['updated_at', optional(nullable(string()))],
     pricingScheme: [
       'pricing_scheme',
-      nullable(lazy(() => getPricingSchemeResponseSchema)),
+      optional(nullable(lazy(() => getPricingSchemeResponseSchema))),
     ],
     discounts: [
       'discounts',
-      nullable(array(lazy(() => getDiscountResponseSchema))),
+      optional(nullable(array(lazy(() => getDiscountResponseSchema)))),
     ],
     increments: [
       'increments',
-      nullable(array(lazy(() => getIncrementResponseSchema))),
+      optional(nullable(array(lazy(() => getIncrementResponseSchema)))),
     ],
     subscription: [
       'subscription',
-      nullable(lazy(() => getSubscriptionResponseSchema)),
+      optional(nullable(lazy(() => getSubscriptionResponseSchema))),
     ],
-    name: ['name', nullable(string())],
+    name: ['name', optional(nullable(string()))],
     quantity: ['quantity', optional(nullable(number()))],
     cycles: ['cycles', optional(nullable(number()))],
     deletedAt: ['deleted_at', optional(nullable(string()))],

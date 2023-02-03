@@ -11,23 +11,23 @@ Recipient response
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `id` | `string \| null` | Required | Id |
-| `name` | `string \| null` | Required | Name |
-| `email` | `string \| null` | Required | Email |
-| `document` | `string \| null` | Required | Document |
-| `description` | `string \| null` | Required | Description |
-| `type` | `string \| null` | Required | Type |
-| `status` | `string \| null` | Required | Status |
-| `createdAt` | `string \| null` | Required | Creation date |
-| `updatedAt` | `string \| null` | Required | Last update date |
-| `deletedAt` | `string \| null` | Required | Deletion date |
-| `defaultBankAccount` | [`GetBankAccountResponse \| null`](../../doc/models/get-bank-account-response.md) | Required | Default bank account |
-| `gatewayRecipients` | [`GetGatewayRecipientResponse[] \| null`](../../doc/models/get-gateway-recipient-response.md) | Required | Info about the recipient on the gateway |
-| `metadata` | `Record<string, string> \| null` | Required | Metadata |
+| `id` | `string \| undefined` | Optional | Id |
+| `name` | `string \| undefined` | Optional | Name |
+| `email` | `string \| undefined` | Optional | Email |
+| `document` | `string \| undefined` | Optional | Document |
+| `description` | `string \| undefined` | Optional | Description |
+| `type` | `string \| undefined` | Optional | Type |
+| `status` | `string \| undefined` | Optional | Status |
+| `createdAt` | `string \| undefined` | Optional | Creation date |
+| `updatedAt` | `string \| undefined` | Optional | Last update date |
+| `deletedAt` | `string \| undefined` | Optional | Deletion date |
+| `defaultBankAccount` | [`GetBankAccountResponse \| undefined`](../../doc/models/get-bank-account-response.md) | Optional | Default bank account |
+| `gatewayRecipients` | [`GetGatewayRecipientResponse[] \| undefined`](../../doc/models/get-gateway-recipient-response.md) | Optional | Info about the recipient on the gateway |
+| `metadata` | `Record<string, string> \| undefined` | Optional | Metadata |
 | `automaticAnticipationSettings` | [`GetAutomaticAnticipationResponse \| undefined`](../../doc/models/get-automatic-anticipation-response.md) | Optional | - |
 | `transferSettings` | [`GetTransferSettingsResponse \| undefined`](../../doc/models/get-transfer-settings-response.md) | Optional | - |
-| `code` | `string \| null` | Required | Recipient code |
-| `paymentMode` | `string \| null` | Required | Payment mode<br>**Default**: `'bank_transfer'` |
+| `code` | `string \| undefined` | Optional | Recipient code |
+| `paymentMode` | `string \| undefined` | Optional | Payment mode<br>**Default**: `'bank_transfer'` |
 
 ## Example (as JSON)
 
@@ -46,8 +46,10 @@ Recipient response
   "default_bank_account": null,
   "gateway_recipients": null,
   "metadata": null,
+  "automatic_anticipation_settings": null,
+  "transfer_settings": null,
   "code": null,
-  "payment_mode": "bank_transfer"
+  "payment_mode": null
 }
 ```
 

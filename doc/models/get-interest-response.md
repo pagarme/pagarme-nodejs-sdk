@@ -11,16 +11,16 @@ Interest Response
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `days` | `number \| null` | Required | Days |
-| `type` | `string \| null` | Required | Type |
-| `amount` | `number \| null` | Required | Amount |
+| `days` | `number \| undefined` | Optional | Days |
+| `type` | `string \| undefined` | Optional | Type |
+| `amount` | `number \| undefined` | Optional | Amount |
 
 ## Example (as JSON)
 
 ```json
 {
   "days": null,
-  "type": "\"percentage\" or \"flat\"",
+  "type": null,
   "amount": null
 }
 ```

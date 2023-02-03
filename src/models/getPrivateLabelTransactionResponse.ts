@@ -28,62 +28,71 @@ import { GetTransactionResponse } from './getTransactionResponse';
 /** Response object for getting a private label transaction */
 export interface GetPrivateLabelTransactionResponse extends GetTransactionResponse {
   /** Text that will appear on the credit card's statement */
-  statementDescriptor: string | null;
+  statementDescriptor?: string | null;
   /** Acquirer name */
-  acquirerName: string | null;
+  acquirerName?: string | null;
   /** Aquirer affiliation code */
-  acquirerAffiliationCode: string | null;
+  acquirerAffiliationCode?: string | null;
   /** Acquirer TID */
-  acquirerTid: string | null;
+  acquirerTid?: string | null;
   /** Acquirer NSU */
-  acquirerNsu: string | null;
+  acquirerNsu?: string | null;
   /** Acquirer authorization code */
-  acquirerAuthCode: string | null;
+  acquirerAuthCode?: string | null;
   /** Operation type */
-  operationType: string | null;
+  operationType?: string | null;
   /** Card data */
-  card: GetCardResponse | null;
+  card?: GetCardResponse | null;
   /** Acquirer message */
-  acquirerMessage: string | null;
+  acquirerMessage?: string | null;
   /** Acquirer Return Code */
-  acquirerReturnCode: string | null;
+  acquirerReturnCode?: string | null;
   /** Number of installments */
   installments?: number | null;
 }
 
 export const getPrivateLabelTransactionResponseSchema: Schema<any> = object({
-  statementDescriptor: ['statement_descriptor', nullable(string())],
-  acquirerName: ['acquirer_name', nullable(string())],
-  acquirerAffiliationCode: ['acquirer_affiliation_code', nullable(string())],
-  acquirerTid: ['acquirer_tid', nullable(string())],
-  acquirerNsu: ['acquirer_nsu', nullable(string())],
-  acquirerAuthCode: ['acquirer_auth_code', nullable(string())],
-  operationType: ['operation_type', nullable(string())],
-  card: ['card', nullable(lazy(() => getCardResponseSchema))],
-  acquirerMessage: ['acquirer_message', nullable(string())],
-  acquirerReturnCode: ['acquirer_return_code', nullable(string())],
+  statementDescriptor: ['statement_descriptor', optional(nullable(string()))],
+  acquirerName: ['acquirer_name', optional(nullable(string()))],
+  acquirerAffiliationCode: [
+    'acquirer_affiliation_code',
+    optional(nullable(string())),
+  ],
+  acquirerTid: ['acquirer_tid', optional(nullable(string()))],
+  acquirerNsu: ['acquirer_nsu', optional(nullable(string()))],
+  acquirerAuthCode: ['acquirer_auth_code', optional(nullable(string()))],
+  operationType: ['operation_type', optional(nullable(string()))],
+  card: ['card', optional(nullable(lazy(() => getCardResponseSchema)))],
+  acquirerMessage: ['acquirer_message', optional(nullable(string()))],
+  acquirerReturnCode: ['acquirer_return_code', optional(nullable(string()))],
   installments: ['installments', optional(nullable(number()))],
-  gatewayId: ['gateway_id', nullable(string())],
-  amount: ['amount', nullable(number())],
-  status: ['status', nullable(string())],
-  success: ['success', nullable(boolean())],
-  createdAt: ['created_at', nullable(string())],
-  updatedAt: ['updated_at', nullable(string())],
-  attemptCount: ['attempt_count', nullable(number())],
-  maxAttempts: ['max_attempts', nullable(number())],
-  splits: ['splits', nullable(array(lazy(() => getSplitResponseSchema)))],
+  gatewayId: ['gateway_id', optional(nullable(string()))],
+  amount: ['amount', optional(nullable(number()))],
+  status: ['status', optional(nullable(string()))],
+  success: ['success', optional(nullable(boolean()))],
+  createdAt: ['created_at', optional(nullable(string()))],
+  updatedAt: ['updated_at', optional(nullable(string()))],
+  attemptCount: ['attempt_count', optional(nullable(number()))],
+  maxAttempts: ['max_attempts', optional(nullable(number()))],
+  splits: [
+    'splits',
+    optional(nullable(array(lazy(() => getSplitResponseSchema)))),
+  ],
   nextAttempt: ['next_attempt', optional(nullable(string()))],
-  id: ['id', nullable(string())],
+  id: ['id', optional(nullable(string()))],
   gatewayResponse: [
     'gateway_response',
-    nullable(lazy(() => getGatewayResponseResponseSchema)),
+    optional(nullable(lazy(() => getGatewayResponseResponseSchema))),
   ],
   antifraudResponse: [
     'antifraud_response',
-    nullable(lazy(() => getAntifraudResponseSchema)),
+    optional(nullable(lazy(() => getAntifraudResponseSchema))),
   ],
   metadata: ['metadata', optional(nullable(dict(string())))],
-  split: ['split', nullable(array(lazy(() => getSplitResponseSchema)))],
+  split: [
+    'split',
+    optional(nullable(array(lazy(() => getSplitResponseSchema)))),
+  ],
   interest: [
     'interest',
     optional(nullable(lazy(() => getInterestResponseSchema))),

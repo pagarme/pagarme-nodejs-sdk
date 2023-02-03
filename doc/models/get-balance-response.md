@@ -11,21 +11,21 @@ Balance
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `currency` | `string \| null` | Required | Currency |
-| `availableAmount` | `bigint \| null` | Required | Amount available for transferring |
+| `currency` | `string \| undefined` | Optional | Currency |
+| `availableAmount` | `bigint \| undefined` | Optional | Amount available for transferring |
 | `recipient` | [`GetRecipientResponse \| undefined`](../../doc/models/get-recipient-response.md) | Optional | Recipient |
-| `transferredAmount` | `bigint \| null` | Required | - |
-| `waitingFundsAmount` | `bigint \| null` | Required | - |
+| `transferredAmount` | `bigint \| undefined` | Optional | - |
+| `waitingFundsAmount` | `bigint \| undefined` | Optional | - |
 
 ## Example (as JSON)
 
 ```json
 {
-  "currency": "currency0",
-  "available_amount": 182,
+  "currency": null,
+  "available_amount": null,
   "recipient": null,
-  "transferred_amount": 228,
-  "waiting_funds_amount": 252
+  "transferred_amount": null,
+  "waiting_funds_amount": null
 }
 ```
 

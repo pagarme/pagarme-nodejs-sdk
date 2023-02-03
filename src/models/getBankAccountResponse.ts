@@ -20,59 +20,59 @@ import {
 
 export interface GetBankAccountResponse {
   /** Id */
-  id: string | null;
+  id?: string | null;
   /** Holder name */
-  holderName: string | null;
+  holderName?: string | null;
   /** Holder type */
-  holderType: string | null;
+  holderType?: string | null;
   /** Bank */
-  bank: string | null;
+  bank?: string | null;
   /** Branch number */
-  branchNumber: string | null;
+  branchNumber?: string | null;
   /** Branch check digit */
-  branchCheckDigit: string | null;
+  branchCheckDigit?: string | null;
   /** Account number */
-  accountNumber: string | null;
+  accountNumber?: string | null;
   /** Account check digit */
-  accountCheckDigit: string | null;
+  accountCheckDigit?: string | null;
   /** Bank account type */
-  type: string | null;
+  type?: string | null;
   /** Bank account status */
-  status: string | null;
+  status?: string | null;
   /** Creation date */
-  createdAt: string | null;
+  createdAt?: string | null;
   /** Last update date */
-  updatedAt: string | null;
+  updatedAt?: string | null;
   /** Deletion date */
-  deletedAt: string | null;
+  deletedAt?: string | null;
   /** Recipient */
   recipient?: GetRecipientResponse | null;
   /** Metadata */
-  metadata: Record<string, string> | null;
+  metadata?: Record<string, string> | null;
   /** Pix Key */
-  pixKey: string | null;
+  pixKey?: string | null;
 }
 
 export const getBankAccountResponseSchema: Schema<GetBankAccountResponse> = object(
   {
-    id: ['id', nullable(string())],
-    holderName: ['holder_name', nullable(string())],
-    holderType: ['holder_type', nullable(string())],
-    bank: ['bank', nullable(string())],
-    branchNumber: ['branch_number', nullable(string())],
-    branchCheckDigit: ['branch_check_digit', nullable(string())],
-    accountNumber: ['account_number', nullable(string())],
-    accountCheckDigit: ['account_check_digit', nullable(string())],
-    type: ['type', nullable(string())],
-    status: ['status', nullable(string())],
-    createdAt: ['created_at', nullable(string())],
-    updatedAt: ['updated_at', nullable(string())],
-    deletedAt: ['deleted_at', nullable(string())],
+    id: ['id', optional(nullable(string()))],
+    holderName: ['holder_name', optional(nullable(string()))],
+    holderType: ['holder_type', optional(nullable(string()))],
+    bank: ['bank', optional(nullable(string()))],
+    branchNumber: ['branch_number', optional(nullable(string()))],
+    branchCheckDigit: ['branch_check_digit', optional(nullable(string()))],
+    accountNumber: ['account_number', optional(nullable(string()))],
+    accountCheckDigit: ['account_check_digit', optional(nullable(string()))],
+    type: ['type', optional(nullable(string()))],
+    status: ['status', optional(nullable(string()))],
+    createdAt: ['created_at', optional(nullable(string()))],
+    updatedAt: ['updated_at', optional(nullable(string()))],
+    deletedAt: ['deleted_at', optional(nullable(string()))],
     recipient: [
       'recipient',
       optional(nullable(lazy(() => getRecipientResponseSchema))),
     ],
-    metadata: ['metadata', nullable(dict(string()))],
-    pixKey: ['pix_key', nullable(string())],
+    metadata: ['metadata', optional(nullable(dict(string())))],
+    pixKey: ['pix_key', optional(nullable(string()))],
   }
 );

@@ -7,24 +7,26 @@
 import {
   discriminatedGetTransactionResponseSchema,
 } from '../models/discriminatedSchemas';
-import { array, lazy, nullable, object, Schema } from '../schema';
+import { array, lazy, nullable, object, optional, Schema } from '../schema';
 import { GetTransactionResponse } from './getTransactionResponse';
 import { PagingResponse, pagingResponseSchema } from './pagingResponse';
 
 /** Response object for listing charge transactions */
 export interface ListChargeTransactionsResponse {
   /** The charge transactions objects */
-  data: GetTransactionResponse[] | null;
+  data?: GetTransactionResponse[] | null;
   /** Paging object */
-  paging: PagingResponse | null;
+  paging?: PagingResponse | null;
 }
 
 export const listChargeTransactionsResponseSchema: Schema<ListChargeTransactionsResponse> = object(
   {
     data: [
       'data',
-      nullable(array(lazy(() => discriminatedGetTransactionResponseSchema))),
+      optional(
+        nullable(array(lazy(() => discriminatedGetTransactionResponseSchema)))
+      ),
     ],
-    paging: ['paging', nullable(lazy(() => pagingResponseSchema))],
+    paging: ['paging', optional(nullable(lazy(() => pagingResponseSchema)))],
   }
 );

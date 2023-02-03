@@ -48,27 +48,27 @@ import {
 } from './getSubscriptionSplitResponse';
 
 export interface GetSubscriptionResponse {
-  id: string | null;
-  code: string | null;
-  startAt: string | null;
-  interval: string | null;
-  intervalCount: number | null;
-  billingType: string | null;
+  id?: string | null;
+  code?: string | null;
+  startAt?: string | null;
+  interval?: string | null;
+  intervalCount?: number | null;
+  billingType?: string | null;
   currentCycle?: GetPeriodResponse | null;
-  paymentMethod: string | null;
-  currency: string | null;
-  installments: number | null;
-  status: string | null;
-  createdAt: string | null;
-  updatedAt: string | null;
+  paymentMethod?: string | null;
+  currency?: string | null;
+  installments?: number | null;
+  status?: string | null;
+  createdAt?: string | null;
+  updatedAt?: string | null;
   customer?: GetCustomerResponse | null;
-  card: GetCardResponse | null;
-  items: GetSubscriptionItemResponse[] | null;
-  statementDescriptor: string | null;
-  metadata: Record<string, string> | null;
-  setup: GetSetupResponse | null;
+  card?: GetCardResponse | null;
+  items?: GetSubscriptionItemResponse[] | null;
+  statementDescriptor?: string | null;
+  metadata?: Record<string, string> | null;
+  setup?: GetSetupResponse | null;
   /** Affiliation Code */
-  gatewayAffiliationId: string | null;
+  gatewayAffiliationId?: string | null;
   nextBillingAt?: string | null;
   billingDay?: number | null;
   minimumPrice?: number | null;
@@ -76,46 +76,49 @@ export interface GetSubscriptionResponse {
   /** Subscription discounts */
   discounts?: GetDiscountResponse[] | null;
   /** Subscription increments */
-  increments: GetIncrementResponse[] | null;
+  increments?: GetIncrementResponse[] | null;
   /** Days until boleto expires */
   boletoDueDays?: number | null;
   /** Subscription's split response */
-  split: GetSubscriptionSplitResponse | null;
+  split?: GetSubscriptionSplitResponse | null;
   boleto?: GetSubscriptionBoletoResponse | null;
-  manualBilling: boolean | null;
+  manualBilling?: boolean | null;
 }
 
 export const getSubscriptionResponseSchema: Schema<GetSubscriptionResponse> = object(
   {
-    id: ['id', nullable(string())],
-    code: ['code', nullable(string())],
-    startAt: ['start_at', nullable(string())],
-    interval: ['interval', nullable(string())],
-    intervalCount: ['interval_count', nullable(number())],
-    billingType: ['billing_type', nullable(string())],
+    id: ['id', optional(nullable(string()))],
+    code: ['code', optional(nullable(string()))],
+    startAt: ['start_at', optional(nullable(string()))],
+    interval: ['interval', optional(nullable(string()))],
+    intervalCount: ['interval_count', optional(nullable(number()))],
+    billingType: ['billing_type', optional(nullable(string()))],
     currentCycle: [
       'current_cycle',
       optional(nullable(lazy(() => getPeriodResponseSchema))),
     ],
-    paymentMethod: ['payment_method', nullable(string())],
-    currency: ['currency', nullable(string())],
-    installments: ['installments', nullable(number())],
-    status: ['status', nullable(string())],
-    createdAt: ['created_at', nullable(string())],
-    updatedAt: ['updated_at', nullable(string())],
+    paymentMethod: ['payment_method', optional(nullable(string()))],
+    currency: ['currency', optional(nullable(string()))],
+    installments: ['installments', optional(nullable(number()))],
+    status: ['status', optional(nullable(string()))],
+    createdAt: ['created_at', optional(nullable(string()))],
+    updatedAt: ['updated_at', optional(nullable(string()))],
     customer: [
       'customer',
       optional(nullable(lazy(() => getCustomerResponseSchema))),
     ],
-    card: ['card', nullable(lazy(() => getCardResponseSchema))],
+    card: ['card', optional(nullable(lazy(() => getCardResponseSchema)))],
     items: [
       'items',
-      nullable(array(lazy(() => getSubscriptionItemResponseSchema))),
+      optional(nullable(array(lazy(() => getSubscriptionItemResponseSchema)))),
     ],
-    statementDescriptor: ['statement_descriptor', nullable(string())],
-    metadata: ['metadata', nullable(dict(string()))],
-    setup: ['setup', nullable(lazy(() => getSetupResponseSchema))],
-    gatewayAffiliationId: ['gateway_affiliation_id', nullable(string())],
+    statementDescriptor: ['statement_descriptor', optional(nullable(string()))],
+    metadata: ['metadata', optional(nullable(dict(string())))],
+    setup: ['setup', optional(nullable(lazy(() => getSetupResponseSchema)))],
+    gatewayAffiliationId: [
+      'gateway_affiliation_id',
+      optional(nullable(string())),
+    ],
     nextBillingAt: ['next_billing_at', optional(nullable(string()))],
     billingDay: ['billing_day', optional(nullable(number()))],
     minimumPrice: ['minimum_price', optional(nullable(number()))],
@@ -126,14 +129,17 @@ export const getSubscriptionResponseSchema: Schema<GetSubscriptionResponse> = ob
     ],
     increments: [
       'increments',
-      nullable(array(lazy(() => getIncrementResponseSchema))),
+      optional(nullable(array(lazy(() => getIncrementResponseSchema)))),
     ],
     boletoDueDays: ['boleto_due_days', optional(nullable(number()))],
-    split: ['split', nullable(lazy(() => getSubscriptionSplitResponseSchema))],
+    split: [
+      'split',
+      optional(nullable(lazy(() => getSubscriptionSplitResponseSchema))),
+    ],
     boleto: [
       'boleto',
       optional(nullable(lazy(() => getSubscriptionBoletoResponseSchema))),
     ],
-    manualBilling: ['manual_billing', nullable(boolean())],
+    manualBilling: ['manual_billing', optional(nullable(boolean()))],
   }
 );

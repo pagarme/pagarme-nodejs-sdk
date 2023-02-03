@@ -30,68 +30,74 @@ import { GetTransactionResponse } from './getTransactionResponse';
 
 /** Response object for getting a boleto transaction */
 export interface GetBoletoTransactionResponse extends GetTransactionResponse {
-  url: string | null;
-  barcode: string | null;
-  nossoNumero: string | null;
-  bank: string | null;
-  documentNumber: string | null;
-  instructions: string | null;
-  billingAddress: GetBillingAddressResponse | null;
+  url?: string | null;
+  barcode?: string | null;
+  nossoNumero?: string | null;
+  bank?: string | null;
+  documentNumber?: string | null;
+  instructions?: string | null;
+  billingAddress?: GetBillingAddressResponse | null;
   dueAt?: string | null;
-  qrCode: string | null;
-  line: string | null;
-  pdfPassword: string | null;
-  pdf: string | null;
+  qrCode?: string | null;
+  line?: string | null;
+  pdfPassword?: string | null;
+  pdf?: string | null;
   paidAt?: string | null;
-  paidAmount: string | null;
-  type: string | null;
+  paidAmount?: string | null;
+  type?: string | null;
   creditAt?: string | null;
   /** Soft Descriptor */
-  statementDescriptor: string | null;
+  statementDescriptor?: string | null;
 }
 
 export const getBoletoTransactionResponseSchema: Schema<any> = object({
-  url: ['url', nullable(string())],
-  barcode: ['barcode', nullable(string())],
-  nossoNumero: ['nosso_numero', nullable(string())],
-  bank: ['bank', nullable(string())],
-  documentNumber: ['document_number', nullable(string())],
-  instructions: ['instructions', nullable(string())],
+  url: ['url', optional(nullable(string()))],
+  barcode: ['barcode', optional(nullable(string()))],
+  nossoNumero: ['nosso_numero', optional(nullable(string()))],
+  bank: ['bank', optional(nullable(string()))],
+  documentNumber: ['document_number', optional(nullable(string()))],
+  instructions: ['instructions', optional(nullable(string()))],
   billingAddress: [
     'billing_address',
-    nullable(lazy(() => getBillingAddressResponseSchema)),
+    optional(nullable(lazy(() => getBillingAddressResponseSchema))),
   ],
   dueAt: ['due_at', optional(nullable(string()))],
-  qrCode: ['qr_code', nullable(string())],
-  line: ['line', nullable(string())],
-  pdfPassword: ['pdf_password', nullable(string())],
-  pdf: ['pdf', nullable(string())],
+  qrCode: ['qr_code', optional(nullable(string()))],
+  line: ['line', optional(nullable(string()))],
+  pdfPassword: ['pdf_password', optional(nullable(string()))],
+  pdf: ['pdf', optional(nullable(string()))],
   paidAt: ['paid_at', optional(nullable(string()))],
-  paidAmount: ['paid_amount', nullable(string())],
-  type: ['type', nullable(string())],
+  paidAmount: ['paid_amount', optional(nullable(string()))],
+  type: ['type', optional(nullable(string()))],
   creditAt: ['credit_at', optional(nullable(string()))],
-  statementDescriptor: ['statement_descriptor', nullable(string())],
-  gatewayId: ['gateway_id', nullable(string())],
-  amount: ['amount', nullable(number())],
-  status: ['status', nullable(string())],
-  success: ['success', nullable(boolean())],
-  createdAt: ['created_at', nullable(string())],
-  updatedAt: ['updated_at', nullable(string())],
-  attemptCount: ['attempt_count', nullable(number())],
-  maxAttempts: ['max_attempts', nullable(number())],
-  splits: ['splits', nullable(array(lazy(() => getSplitResponseSchema)))],
+  statementDescriptor: ['statement_descriptor', optional(nullable(string()))],
+  gatewayId: ['gateway_id', optional(nullable(string()))],
+  amount: ['amount', optional(nullable(number()))],
+  status: ['status', optional(nullable(string()))],
+  success: ['success', optional(nullable(boolean()))],
+  createdAt: ['created_at', optional(nullable(string()))],
+  updatedAt: ['updated_at', optional(nullable(string()))],
+  attemptCount: ['attempt_count', optional(nullable(number()))],
+  maxAttempts: ['max_attempts', optional(nullable(number()))],
+  splits: [
+    'splits',
+    optional(nullable(array(lazy(() => getSplitResponseSchema)))),
+  ],
   nextAttempt: ['next_attempt', optional(nullable(string()))],
-  id: ['id', nullable(string())],
+  id: ['id', optional(nullable(string()))],
   gatewayResponse: [
     'gateway_response',
-    nullable(lazy(() => getGatewayResponseResponseSchema)),
+    optional(nullable(lazy(() => getGatewayResponseResponseSchema))),
   ],
   antifraudResponse: [
     'antifraud_response',
-    nullable(lazy(() => getAntifraudResponseSchema)),
+    optional(nullable(lazy(() => getAntifraudResponseSchema))),
   ],
   metadata: ['metadata', optional(nullable(dict(string())))],
-  split: ['split', nullable(array(lazy(() => getSplitResponseSchema)))],
+  split: [
+    'split',
+    optional(nullable(array(lazy(() => getSplitResponseSchema)))),
+  ],
   interest: [
     'interest',
     optional(nullable(lazy(() => getInterestResponseSchema))),
