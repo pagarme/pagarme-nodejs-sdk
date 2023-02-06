@@ -27,11 +27,11 @@ import { GetTransactionResponse } from './getTransactionResponse';
 /** Response object for getting a bank transfer transaction */
 export interface GetBankTransferTransactionResponse extends GetTransactionResponse {
   /** Payment url */
-  url: string;
+  url?: string;
   /** Transaction identifier for the bank */
-  bankTid: string;
+  bankTid?: string;
   /** Bank */
-  bank: string;
+  bank?: string;
   /** Payment date */
   paidAt?: string;
   /** Paid amount */
@@ -39,32 +39,38 @@ export interface GetBankTransferTransactionResponse extends GetTransactionRespon
 }
 
 export const getBankTransferTransactionResponseSchema: Schema<any> = object({
-  url: ['url', string()],
-  bankTid: ['bank_tid', string()],
-  bank: ['bank', string()],
+  url: ['url', optional(string())],
+  bankTid: ['bank_tid', optional(string())],
+  bank: ['bank', optional(string())],
   paidAt: ['paid_at', optional(string())],
   paidAmount: ['paid_amount', optional(number())],
-  gatewayId: ['gateway_id', nullable(string())],
-  amount: ['amount', nullable(number())],
-  status: ['status', nullable(string())],
-  success: ['success', nullable(boolean())],
-  createdAt: ['created_at', nullable(string())],
-  updatedAt: ['updated_at', nullable(string())],
-  attemptCount: ['attempt_count', nullable(number())],
-  maxAttempts: ['max_attempts', nullable(number())],
-  splits: ['splits', nullable(array(lazy(() => getSplitResponseSchema)))],
+  gatewayId: ['gateway_id', optional(nullable(string()))],
+  amount: ['amount', optional(nullable(number()))],
+  status: ['status', optional(nullable(string()))],
+  success: ['success', optional(nullable(boolean()))],
+  createdAt: ['created_at', optional(nullable(string()))],
+  updatedAt: ['updated_at', optional(nullable(string()))],
+  attemptCount: ['attempt_count', optional(nullable(number()))],
+  maxAttempts: ['max_attempts', optional(nullable(number()))],
+  splits: [
+    'splits',
+    optional(nullable(array(lazy(() => getSplitResponseSchema)))),
+  ],
   nextAttempt: ['next_attempt', optional(nullable(string()))],
-  id: ['id', nullable(string())],
+  id: ['id', optional(nullable(string()))],
   gatewayResponse: [
     'gateway_response',
-    nullable(lazy(() => getGatewayResponseResponseSchema)),
+    optional(nullable(lazy(() => getGatewayResponseResponseSchema))),
   ],
   antifraudResponse: [
     'antifraud_response',
-    nullable(lazy(() => getAntifraudResponseSchema)),
+    optional(nullable(lazy(() => getAntifraudResponseSchema))),
   ],
   metadata: ['metadata', optional(nullable(dict(string())))],
-  split: ['split', nullable(array(lazy(() => getSplitResponseSchema)))],
+  split: [
+    'split',
+    optional(nullable(array(lazy(() => getSplitResponseSchema)))),
+  ],
   interest: [
     'interest',
     optional(nullable(lazy(() => getInterestResponseSchema))),

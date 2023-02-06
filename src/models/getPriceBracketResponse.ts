@@ -8,16 +8,16 @@ import { nullable, number, object, optional, Schema } from '../schema';
 
 /** Response object for getting a price bracket */
 export interface GetPriceBracketResponse {
-  startQuantity: number | null;
-  price: number | null;
+  startQuantity?: number | null;
+  price?: number | null;
   endQuantity?: number | null;
   overagePrice?: number | null;
 }
 
 export const getPriceBracketResponseSchema: Schema<GetPriceBracketResponse> = object(
   {
-    startQuantity: ['start_quantity', nullable(number())],
-    price: ['price', nullable(number())],
+    startQuantity: ['start_quantity', optional(nullable(number()))],
+    price: ['price', optional(nullable(number()))],
     endQuantity: ['end_quantity', optional(nullable(number()))],
     overagePrice: ['overage_price', optional(nullable(number()))],
   }

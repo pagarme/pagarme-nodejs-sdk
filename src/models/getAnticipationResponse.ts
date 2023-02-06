@@ -21,41 +21,41 @@ import {
 /** Anticipation */
 export interface GetAnticipationResponse {
   /** Id */
-  id: string | null;
+  id?: string | null;
   /** Requested amount */
-  requestedAmount: number | null;
+  requestedAmount?: number | null;
   /** Approved amount */
-  approvedAmount: number | null;
+  approvedAmount?: number | null;
   /** Recipient */
   recipient?: GetRecipientResponse | null;
   /** Anticipation id on the gateway */
-  pgid: string | null;
+  pgid?: string | null;
   /** Creation date */
-  createdAt: string | null;
+  createdAt?: string | null;
   /** Last update date */
-  updatedAt: string | null;
+  updatedAt?: string | null;
   /** Payment date */
-  paymentDate: string | null;
+  paymentDate?: string | null;
   /** Status */
-  status: string | null;
+  status?: string | null;
   /** Timeframe */
-  timeframe: string | null;
+  timeframe?: string | null;
 }
 
 export const getAnticipationResponseSchema: Schema<GetAnticipationResponse> = object(
   {
-    id: ['id', nullable(string())],
-    requestedAmount: ['requested_amount', nullable(number())],
-    approvedAmount: ['approved_amount', nullable(number())],
+    id: ['id', optional(nullable(string()))],
+    requestedAmount: ['requested_amount', optional(nullable(number()))],
+    approvedAmount: ['approved_amount', optional(nullable(number()))],
     recipient: [
       'recipient',
       optional(nullable(lazy(() => getRecipientResponseSchema))),
     ],
-    pgid: ['pgid', nullable(string())],
-    createdAt: ['created_at', nullable(string())],
-    updatedAt: ['updated_at', nullable(string())],
-    paymentDate: ['payment_date', nullable(string())],
-    status: ['status', nullable(string())],
-    timeframe: ['timeframe', nullable(string())],
+    pgid: ['pgid', optional(nullable(string()))],
+    createdAt: ['created_at', optional(nullable(string()))],
+    updatedAt: ['updated_at', optional(nullable(string()))],
+    paymentDate: ['payment_date', optional(nullable(string()))],
+    status: ['status', optional(nullable(string()))],
+    timeframe: ['timeframe', optional(nullable(string()))],
   }
 );

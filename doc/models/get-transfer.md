@@ -39,12 +39,12 @@
   "funding_estimated_date": null,
   "type": "type0",
   "source": {
-    "source_id": "source_id8",
-    "type": "type6"
+    "source_id": null,
+    "type": null
   },
   "target": {
-    "target_id": "target_id2",
-    "type": "type8"
+    "target_id": null,
+    "type": null
   }
 }
 ```

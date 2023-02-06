@@ -26,38 +26,41 @@ import {
 
 /** Response object for getting a customer */
 export interface GetCustomerResponse {
-  id: string | null;
-  name: string | null;
-  email: string | null;
-  delinquent: boolean | null;
-  createdAt: string | null;
-  updatedAt: string | null;
-  document: string | null;
-  type: string | null;
-  fbAccessToken: string | null;
-  address: GetAddressResponse | null;
-  metadata: Record<string, string> | null;
-  phones: GetPhonesResponse | null;
+  id?: string | null;
+  name?: string | null;
+  email?: string | null;
+  delinquent?: boolean | null;
+  createdAt?: string | null;
+  updatedAt?: string | null;
+  document?: string | null;
+  type?: string | null;
+  fbAccessToken?: string | null;
+  address?: GetAddressResponse | null;
+  metadata?: Record<string, string> | null;
+  phones?: GetPhonesResponse | null;
   fbId?: bigint | null;
   /** Código de referência do cliente no sistema da loja. Max: 52 caracteres */
-  code: string | null;
-  documentType: string | null;
+  code?: string | null;
+  documentType?: string | null;
 }
 
 export const getCustomerResponseSchema: Schema<GetCustomerResponse> = object({
-  id: ['id', nullable(string())],
-  name: ['name', nullable(string())],
-  email: ['email', nullable(string())],
-  delinquent: ['delinquent', nullable(boolean())],
-  createdAt: ['created_at', nullable(string())],
-  updatedAt: ['updated_at', nullable(string())],
-  document: ['document', nullable(string())],
-  type: ['type', nullable(string())],
-  fbAccessToken: ['fb_access_token', nullable(string())],
-  address: ['address', nullable(lazy(() => getAddressResponseSchema))],
-  metadata: ['metadata', nullable(dict(string()))],
-  phones: ['phones', nullable(lazy(() => getPhonesResponseSchema))],
+  id: ['id', optional(nullable(string()))],
+  name: ['name', optional(nullable(string()))],
+  email: ['email', optional(nullable(string()))],
+  delinquent: ['delinquent', optional(nullable(boolean()))],
+  createdAt: ['created_at', optional(nullable(string()))],
+  updatedAt: ['updated_at', optional(nullable(string()))],
+  document: ['document', optional(nullable(string()))],
+  type: ['type', optional(nullable(string()))],
+  fbAccessToken: ['fb_access_token', optional(nullable(string()))],
+  address: [
+    'address',
+    optional(nullable(lazy(() => getAddressResponseSchema))),
+  ],
+  metadata: ['metadata', optional(nullable(dict(string())))],
+  phones: ['phones', optional(nullable(lazy(() => getPhonesResponseSchema)))],
   fbId: ['fb_id', optional(nullable(bigint()))],
-  code: ['code', nullable(string())],
-  documentType: ['document_type', nullable(string())],
+  code: ['code', optional(nullable(string()))],
+  documentType: ['document_type', optional(nullable(string()))],
 });

@@ -21,20 +21,20 @@ import {
 /** Response object for getting a usage */
 export interface GetUsageResponse {
   /** Id */
-  id: string | null;
+  id?: string | null;
   /** Quantity */
-  quantity: number | null;
+  quantity?: number | null;
   /** Description */
-  description: string | null;
+  description?: string | null;
   /** Used at */
-  usedAt: string | null;
+  usedAt?: string | null;
   /** Creation date */
-  createdAt: string | null;
+  createdAt?: string | null;
   /** Status */
-  status: string | null;
+  status?: string | null;
   deletedAt?: string | null;
   /** Subscription item */
-  subscriptionItem: GetSubscriptionItemResponse | null;
+  subscriptionItem?: GetSubscriptionItemResponse | null;
   /** Identification code in the client system */
   code?: string | null;
   /** Identification group in the client system */
@@ -44,16 +44,16 @@ export interface GetUsageResponse {
 }
 
 export const getUsageResponseSchema: Schema<GetUsageResponse> = object({
-  id: ['id', nullable(string())],
-  quantity: ['quantity', nullable(number())],
-  description: ['description', nullable(string())],
-  usedAt: ['used_at', nullable(string())],
-  createdAt: ['created_at', nullable(string())],
-  status: ['status', nullable(string())],
+  id: ['id', optional(nullable(string()))],
+  quantity: ['quantity', optional(nullable(number()))],
+  description: ['description', optional(nullable(string()))],
+  usedAt: ['used_at', optional(nullable(string()))],
+  createdAt: ['created_at', optional(nullable(string()))],
+  status: ['status', optional(nullable(string()))],
   deletedAt: ['deleted_at', optional(nullable(string()))],
   subscriptionItem: [
     'subscription_item',
-    nullable(lazy(() => getSubscriptionItemResponseSchema)),
+    optional(nullable(lazy(() => getSubscriptionItemResponseSchema))),
   ],
   code: ['code', optional(nullable(string()))],
   group: ['group', optional(nullable(string()))],

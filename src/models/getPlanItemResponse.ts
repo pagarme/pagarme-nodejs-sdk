@@ -21,31 +21,31 @@ import {
 
 /** Response object for getting a plan item */
 export interface GetPlanItemResponse {
-  id: string | null;
-  name: string | null;
-  status: string | null;
-  createdAt: string | null;
-  updatedAt: string | null;
-  pricingScheme: GetPricingSchemeResponse | null;
-  description: string | null;
-  plan: GetPlanResponse | null;
+  id?: string | null;
+  name?: string | null;
+  status?: string | null;
+  createdAt?: string | null;
+  updatedAt?: string | null;
+  pricingScheme?: GetPricingSchemeResponse | null;
+  description?: string | null;
+  plan?: GetPlanResponse | null;
   quantity?: number | null;
   cycles?: number | null;
   deletedAt?: string | null;
 }
 
 export const getPlanItemResponseSchema: Schema<GetPlanItemResponse> = object({
-  id: ['id', nullable(string())],
-  name: ['name', nullable(string())],
-  status: ['status', nullable(string())],
-  createdAt: ['created_at', nullable(string())],
-  updatedAt: ['updated_at', nullable(string())],
+  id: ['id', optional(nullable(string()))],
+  name: ['name', optional(nullable(string()))],
+  status: ['status', optional(nullable(string()))],
+  createdAt: ['created_at', optional(nullable(string()))],
+  updatedAt: ['updated_at', optional(nullable(string()))],
   pricingScheme: [
     'pricing_scheme',
-    nullable(lazy(() => getPricingSchemeResponseSchema)),
+    optional(nullable(lazy(() => getPricingSchemeResponseSchema))),
   ],
-  description: ['description', nullable(string())],
-  plan: ['plan', nullable(lazy(() => getPlanResponseSchema))],
+  description: ['description', optional(nullable(string()))],
+  plan: ['plan', optional(nullable(lazy(() => getPlanResponseSchema)))],
   quantity: ['quantity', optional(nullable(number()))],
   cycles: ['cycles', optional(nullable(number()))],
   deletedAt: ['deleted_at', optional(nullable(string()))],

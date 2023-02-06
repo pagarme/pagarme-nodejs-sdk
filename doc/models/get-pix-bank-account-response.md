@@ -11,19 +11,19 @@ Payer's bank details.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `bankName` | `string \| null` | Required | - |
-| `ispb` | `string \| null` | Required | - |
-| `branchCode` | `string \| null` | Required | - |
-| `accountNumber` | `string \| null` | Required | - |
+| `bankName` | `string \| undefined` | Optional | - |
+| `ispb` | `string \| undefined` | Optional | - |
+| `branchCode` | `string \| undefined` | Optional | - |
+| `accountNumber` | `string \| undefined` | Optional | - |
 
 ## Example (as JSON)
 
 ```json
 {
-  "bank_name": "bank_name4",
-  "ispb": "ispb4",
-  "branch_code": "branch_code8",
-  "account_number": "account_number0"
+  "bank_name": null,
+  "ispb": null,
+  "branch_code": null,
+  "account_number": null
 }
 ```
 

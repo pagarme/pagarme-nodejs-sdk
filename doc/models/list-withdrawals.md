@@ -18,52 +18,40 @@
 {
   "data": [
     {
-      "id": "id5",
-      "gateway_id": "gateway_id5",
-      "amount": 121,
-      "status": "status7",
-      "created_at": "2016-03-13T12:52:32.123Z",
-      "updated_at": "2016-03-13T12:52:32.123Z",
+      "id": null,
+      "gateway_id": null,
+      "amount": null,
+      "status": null,
+      "created_at": null,
+      "updated_at": null,
       "metadata": null,
       "fee": null,
       "funding_date": null,
       "funding_estimated_date": null,
-      "type": "type5",
-      "source": {
-        "source_id": "source_id5",
-        "type": "type1"
-      },
-      "target": {
-        "target_id": "target_id3",
-        "type": "type7"
-      }
+      "type": null,
+      "source": null,
+      "target": null
     },
     {
-      "id": "id6",
-      "gateway_id": "gateway_id6",
-      "amount": 122,
-      "status": "status8",
-      "created_at": "2016-03-13T12:52:32.123Z",
-      "updated_at": "2016-03-13T12:52:32.123Z",
+      "id": null,
+      "gateway_id": null,
+      "amount": null,
+      "status": null,
+      "created_at": null,
+      "updated_at": null,
       "metadata": null,
       "fee": null,
       "funding_date": null,
       "funding_estimated_date": null,
-      "type": "type6",
-      "source": {
-        "source_id": "source_id6",
-        "type": "type2"
-      },
-      "target": {
-        "target_id": "target_id4",
-        "type": "type6"
-      }
+      "type": null,
+      "source": null,
+      "target": null
     }
   ],
   "paging": {
-    "total": 6,
-    "previous": "previous2",
-    "next": "next8"
+    "total": null,
+    "previous": null,
+    "next": null
   }
 }
 ```

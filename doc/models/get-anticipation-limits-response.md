@@ -11,21 +11,15 @@ Anticipation limits
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `max` | [`GetAnticipationLimitResponse \| null`](../../doc/models/get-anticipation-limit-response.md) | Required | Max limit |
-| `min` | [`GetAnticipationLimitResponse \| null`](../../doc/models/get-anticipation-limit-response.md) | Required | Min limit |
+| `max` | [`GetAnticipationLimitResponse \| undefined`](../../doc/models/get-anticipation-limit-response.md) | Optional | Max limit |
+| `min` | [`GetAnticipationLimitResponse \| undefined`](../../doc/models/get-anticipation-limit-response.md) | Optional | Min limit |
 
 ## Example (as JSON)
 
 ```json
 {
-  "max": {
-    "amount": 140,
-    "anticipation_fee": 234
-  },
-  "min": {
-    "amount": 34,
-    "anticipation_fee": 60
-  }
+  "max": null,
+  "min": null
 }
 ```
 

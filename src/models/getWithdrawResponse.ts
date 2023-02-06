@@ -24,28 +24,28 @@ import {
 } from './getWithdrawTargetResponse';
 
 export interface GetWithdrawResponse {
-  id: string | null;
-  gatewayId: string | null;
-  amount: number | null;
-  status: string | null;
-  createdAt: string | null;
-  updatedAt: string | null;
+  id?: string | null;
+  gatewayId?: string | null;
+  amount?: number | null;
+  status?: string | null;
+  createdAt?: string | null;
+  updatedAt?: string | null;
   metadata?: string[] | null;
   fee?: number | null;
   fundingDate?: string | null;
   fundingEstimatedDate?: string | null;
-  type: string | null;
-  source: GetWithdrawSourceResponse | null;
-  target: GetWithdrawTargetResponse | null;
+  type?: string | null;
+  source?: GetWithdrawSourceResponse | null;
+  target?: GetWithdrawTargetResponse | null;
 }
 
 export const getWithdrawResponseSchema: Schema<GetWithdrawResponse> = object({
-  id: ['id', nullable(string())],
-  gatewayId: ['gateway_id', nullable(string())],
-  amount: ['amount', nullable(number())],
-  status: ['status', nullable(string())],
-  createdAt: ['created_at', nullable(string())],
-  updatedAt: ['updated_at', nullable(string())],
+  id: ['id', optional(nullable(string()))],
+  gatewayId: ['gateway_id', optional(nullable(string()))],
+  amount: ['amount', optional(nullable(number()))],
+  status: ['status', optional(nullable(string()))],
+  createdAt: ['created_at', optional(nullable(string()))],
+  updatedAt: ['updated_at', optional(nullable(string()))],
   metadata: ['metadata', optional(nullable(array(string())))],
   fee: ['fee', optional(nullable(number()))],
   fundingDate: ['funding_date', optional(nullable(string()))],
@@ -53,7 +53,13 @@ export const getWithdrawResponseSchema: Schema<GetWithdrawResponse> = object({
     'funding_estimated_date',
     optional(nullable(string())),
   ],
-  type: ['type', nullable(string())],
-  source: ['source', nullable(lazy(() => getWithdrawSourceResponseSchema))],
-  target: ['target', nullable(lazy(() => getWithdrawTargetResponseSchema))],
+  type: ['type', optional(nullable(string()))],
+  source: [
+    'source',
+    optional(nullable(lazy(() => getWithdrawSourceResponseSchema))),
+  ],
+  target: [
+    'target',
+    optional(nullable(lazy(() => getWithdrawTargetResponseSchema))),
+  ],
 });

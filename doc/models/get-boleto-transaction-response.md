@@ -15,128 +15,64 @@ Response object for getting a boleto transaction
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `url` | `string \| null` | Required | - |
-| `barcode` | `string \| null` | Required | - |
-| `nossoNumero` | `string \| null` | Required | - |
-| `bank` | `string \| null` | Required | - |
-| `documentNumber` | `string \| null` | Required | - |
-| `instructions` | `string \| null` | Required | - |
-| `billingAddress` | [`GetBillingAddressResponse \| null`](../../doc/models/get-billing-address-response.md) | Required | - |
+| `url` | `string \| undefined` | Optional | - |
+| `barcode` | `string \| undefined` | Optional | - |
+| `nossoNumero` | `string \| undefined` | Optional | - |
+| `bank` | `string \| undefined` | Optional | - |
+| `documentNumber` | `string \| undefined` | Optional | - |
+| `instructions` | `string \| undefined` | Optional | - |
+| `billingAddress` | [`GetBillingAddressResponse \| undefined`](../../doc/models/get-billing-address-response.md) | Optional | - |
 | `dueAt` | `string \| undefined` | Optional | - |
-| `qrCode` | `string \| null` | Required | - |
-| `line` | `string \| null` | Required | - |
-| `pdfPassword` | `string \| null` | Required | - |
-| `pdf` | `string \| null` | Required | - |
+| `qrCode` | `string \| undefined` | Optional | - |
+| `line` | `string \| undefined` | Optional | - |
+| `pdfPassword` | `string \| undefined` | Optional | - |
+| `pdf` | `string \| undefined` | Optional | - |
 | `paidAt` | `string \| undefined` | Optional | - |
-| `paidAmount` | `string \| null` | Required | - |
-| `type` | `string \| null` | Required | - |
+| `paidAmount` | `string \| undefined` | Optional | - |
+| `type` | `string \| undefined` | Optional | - |
 | `creditAt` | `string \| undefined` | Optional | - |
-| `statementDescriptor` | `string \| null` | Required | Soft Descriptor |
+| `statementDescriptor` | `string \| undefined` | Optional | Soft Descriptor |
 
 ## Example (as JSON)
 
 ```json
 {
-  "gateway_id": "gateway_id4",
-  "amount": 250,
-  "status": "status2",
-  "success": false,
-  "created_at": "2016-03-13T12:52:32.123Z",
-  "updated_at": "2016-03-13T12:52:32.123Z",
-  "attempt_count": 30,
-  "max_attempts": 214,
-  "splits": [
-    {
-      "type": "type0",
-      "amount": 114,
-      "recipient": null,
-      "gateway_id": "gateway_id0",
-      "options": null,
-      "id": "id0"
-    },
-    {
-      "type": "type1",
-      "amount": 115,
-      "recipient": null,
-      "gateway_id": "gateway_id1",
-      "options": null,
-      "id": "id9"
-    }
-  ],
+  "gateway_id": null,
+  "amount": null,
+  "status": null,
+  "success": null,
+  "created_at": null,
+  "updated_at": null,
+  "attempt_count": null,
+  "max_attempts": null,
+  "splits": null,
   "next_attempt": null,
   "transaction_type": "boleto",
-  "id": "id6",
-  "gateway_response": {
-    "code": "code0",
-    "errors": [
-      {
-        "message": "message7"
-      },
-      {
-        "message": "message8"
-      },
-      {
-        "message": "message9"
-      }
-    ]
-  },
-  "antifraud_response": {
-    "status": "status6",
-    "return_code": "return_code4",
-    "return_message": "return_message8",
-    "provider_name": "provider_name8",
-    "score": "score4"
-  },
+  "id": null,
+  "gateway_response": null,
+  "antifraud_response": null,
   "metadata": null,
-  "split": [
-    {
-      "type": "type6",
-      "amount": 196,
-      "recipient": null,
-      "gateway_id": "gateway_id6",
-      "options": null,
-      "id": "id4"
-    },
-    {
-      "type": "type5",
-      "amount": 197,
-      "recipient": null,
-      "gateway_id": "gateway_id5",
-      "options": null,
-      "id": "id5"
-    }
-  ],
+  "split": null,
   "interest": null,
   "fine": null,
   "max_days_to_pay_past_due": null,
-  "url": "url4",
-  "barcode": "barcode0",
-  "nosso_numero": "nosso_numero0",
-  "bank": "bank8",
-  "document_number": "document_number6",
-  "instructions": "instructions2",
-  "billing_address": {
-    "street": "street8",
-    "number": "number4",
-    "zip_code": "zip_code2",
-    "neighborhood": "neighborhood4",
-    "city": "city2",
-    "state": "state6",
-    "country": "country2",
-    "complement": "complement6",
-    "line_1": "line_18",
-    "line_2": "line_26"
-  },
+  "url": null,
+  "barcode": null,
+  "nosso_numero": null,
+  "bank": null,
+  "document_number": null,
+  "instructions": null,
+  "billing_address": null,
   "due_at": null,
-  "qr_code": "qr_code6",
-  "line": "line2",
-  "pdf_password": "pdf_password8",
-  "pdf": "pdf0",
+  "qr_code": null,
+  "line": null,
+  "pdf_password": null,
+  "pdf": null,
   "paid_at": null,
-  "paid_amount": "paid_amount8",
-  "type": "type0",
+  "paid_amount": null,
+  "type": null,
   "credit_at": null,
-  "statement_descriptor": "statement_descriptor0"
+  "statement_descriptor": null
 }
 ```
 

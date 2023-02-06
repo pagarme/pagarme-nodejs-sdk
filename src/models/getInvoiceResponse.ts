@@ -46,22 +46,22 @@ import {
 
 /** Response object for getting an invoice */
 export interface GetInvoiceResponse {
-  id: string | null;
-  code: string | null;
-  url: string | null;
-  amount: number | null;
-  status: string | null;
-  paymentMethod: string | null;
-  createdAt: string | null;
-  items: GetInvoiceItemResponse[] | null;
+  id?: string | null;
+  code?: string | null;
+  url?: string | null;
+  amount?: number | null;
+  status?: string | null;
+  paymentMethod?: string | null;
+  createdAt?: string | null;
+  items?: GetInvoiceItemResponse[] | null;
   customer?: GetCustomerResponse | null;
-  charge: GetChargeResponse | null;
-  installments: number | null;
-  billingAddress: GetBillingAddressResponse | null;
-  subscription: GetSubscriptionResponse | null;
+  charge?: GetChargeResponse | null;
+  installments?: number | null;
+  billingAddress?: GetBillingAddressResponse | null;
+  subscription?: GetSubscriptionResponse | null;
   cycle?: GetPeriodResponse | null;
-  shipping: GetShippingResponse | null;
-  metadata: Record<string, string> | null;
+  shipping?: GetShippingResponse | null;
+  metadata?: Record<string, string> | null;
   dueAt?: string | null;
   canceledAt?: string | null;
   billingAt?: string | null;
@@ -71,40 +71,46 @@ export interface GetInvoiceResponse {
   /** Total discounted value */
   totalIncrement?: number | null;
   /** Subscription Id */
-  subscriptionId: string | null;
+  subscriptionId?: string | null;
 }
 
 export const getInvoiceResponseSchema: Schema<GetInvoiceResponse> = object({
-  id: ['id', nullable(string())],
-  code: ['code', nullable(string())],
-  url: ['url', nullable(string())],
-  amount: ['amount', nullable(number())],
-  status: ['status', nullable(string())],
-  paymentMethod: ['payment_method', nullable(string())],
-  createdAt: ['created_at', nullable(string())],
-  items: ['items', nullable(array(lazy(() => getInvoiceItemResponseSchema)))],
+  id: ['id', optional(nullable(string()))],
+  code: ['code', optional(nullable(string()))],
+  url: ['url', optional(nullable(string()))],
+  amount: ['amount', optional(nullable(number()))],
+  status: ['status', optional(nullable(string()))],
+  paymentMethod: ['payment_method', optional(nullable(string()))],
+  createdAt: ['created_at', optional(nullable(string()))],
+  items: [
+    'items',
+    optional(nullable(array(lazy(() => getInvoiceItemResponseSchema)))),
+  ],
   customer: [
     'customer',
     optional(nullable(lazy(() => getCustomerResponseSchema))),
   ],
-  charge: ['charge', nullable(lazy(() => getChargeResponseSchema))],
-  installments: ['installments', nullable(number())],
+  charge: ['charge', optional(nullable(lazy(() => getChargeResponseSchema)))],
+  installments: ['installments', optional(nullable(number()))],
   billingAddress: [
     'billing_address',
-    nullable(lazy(() => getBillingAddressResponseSchema)),
+    optional(nullable(lazy(() => getBillingAddressResponseSchema))),
   ],
   subscription: [
     'subscription',
-    nullable(lazy(() => getSubscriptionResponseSchema)),
+    optional(nullable(lazy(() => getSubscriptionResponseSchema))),
   ],
   cycle: ['cycle', optional(nullable(lazy(() => getPeriodResponseSchema)))],
-  shipping: ['shipping', nullable(lazy(() => getShippingResponseSchema))],
-  metadata: ['metadata', nullable(dict(string()))],
+  shipping: [
+    'shipping',
+    optional(nullable(lazy(() => getShippingResponseSchema))),
+  ],
+  metadata: ['metadata', optional(nullable(dict(string())))],
   dueAt: ['due_at', optional(nullable(string()))],
   canceledAt: ['canceled_at', optional(nullable(string()))],
   billingAt: ['billing_at', optional(nullable(string()))],
   seenAt: ['seen_at', optional(nullable(string()))],
   totalDiscount: ['total_discount', optional(nullable(number()))],
   totalIncrement: ['total_increment', optional(nullable(number()))],
-  subscriptionId: ['subscription_id', nullable(string())],
+  subscriptionId: ['subscription_id', optional(nullable(string()))],
 });

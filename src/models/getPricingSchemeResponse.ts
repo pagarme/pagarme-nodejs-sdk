@@ -21,9 +21,9 @@ import {
 
 /** Response object for getting a pricing scheme */
 export interface GetPricingSchemeResponse {
-  price: number | null;
-  schemeType: string | null;
-  priceBrackets: GetPriceBracketResponse[] | null;
+  price?: number | null;
+  schemeType?: string | null;
+  priceBrackets?: GetPriceBracketResponse[] | null;
   minimumPrice?: number | null;
   /** percentual value used in pricing_scheme Percent */
   percentage?: number | null;
@@ -31,11 +31,11 @@ export interface GetPricingSchemeResponse {
 
 export const getPricingSchemeResponseSchema: Schema<GetPricingSchemeResponse> = object(
   {
-    price: ['price', nullable(number())],
-    schemeType: ['scheme_type', nullable(string())],
+    price: ['price', optional(nullable(number()))],
+    schemeType: ['scheme_type', optional(nullable(string()))],
     priceBrackets: [
       'price_brackets',
-      nullable(array(lazy(() => getPriceBracketResponseSchema))),
+      optional(nullable(array(lazy(() => getPriceBracketResponseSchema)))),
     ],
     minimumPrice: ['minimum_price', optional(nullable(number()))],
     percentage: ['percentage', optional(nullable(number()))],

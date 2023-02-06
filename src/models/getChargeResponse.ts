@@ -30,27 +30,27 @@ import { GetTransactionResponse } from './getTransactionResponse';
 
 /** Response object for getting a charge */
 export interface GetChargeResponse {
-  id: string | null;
-  code: string | null;
-  gatewayId: string | null;
-  amount: number | null;
-  status: string | null;
-  currency: string | null;
-  paymentMethod: string | null;
-  dueAt: string | null;
-  createdAt: string | null;
-  updatedAt: string | null;
-  lastTransaction: GetTransactionResponse;
+  id?: string | null;
+  code?: string | null;
+  gatewayId?: string | null;
+  amount?: number | null;
+  status?: string | null;
+  currency?: string | null;
+  paymentMethod?: string | null;
+  dueAt?: string | null;
+  createdAt?: string | null;
+  updatedAt?: string | null;
+  lastTransaction?: GetTransactionResponse | null;
   invoice?: GetInvoiceResponse | null;
   order?: GetOrderResponse | null;
   customer?: GetCustomerResponse | null;
-  metadata: Record<string, string> | null;
+  metadata?: Record<string, string> | null;
   paidAt?: string | null;
   canceledAt?: string | null;
   /** Canceled Amount */
-  canceledAmount: number | null;
+  canceledAmount?: number | null;
   /** Paid amount */
-  paidAmount: number | null;
+  paidAmount?: number | null;
   /** interest and fine paid */
   interestAndFinePaid?: number | null;
   /** Defines whether the card has been used one or more times. */
@@ -58,19 +58,19 @@ export interface GetChargeResponse {
 }
 
 export const getChargeResponseSchema: Schema<GetChargeResponse> = object({
-  id: ['id', nullable(string())],
-  code: ['code', nullable(string())],
-  gatewayId: ['gateway_id', nullable(string())],
-  amount: ['amount', nullable(number())],
-  status: ['status', nullable(string())],
-  currency: ['currency', nullable(string())],
-  paymentMethod: ['payment_method', nullable(string())],
-  dueAt: ['due_at', nullable(string())],
-  createdAt: ['created_at', nullable(string())],
-  updatedAt: ['updated_at', nullable(string())],
+  id: ['id', optional(nullable(string()))],
+  code: ['code', optional(nullable(string()))],
+  gatewayId: ['gateway_id', optional(nullable(string()))],
+  amount: ['amount', optional(nullable(number()))],
+  status: ['status', optional(nullable(string()))],
+  currency: ['currency', optional(nullable(string()))],
+  paymentMethod: ['payment_method', optional(nullable(string()))],
+  dueAt: ['due_at', optional(nullable(string()))],
+  createdAt: ['created_at', optional(nullable(string()))],
+  updatedAt: ['updated_at', optional(nullable(string()))],
   lastTransaction: [
     'last_transaction',
-    lazy(() => discriminatedGetTransactionResponseSchema),
+    optional(nullable(lazy(() => discriminatedGetTransactionResponseSchema))),
   ],
   invoice: [
     'invoice',
@@ -81,11 +81,11 @@ export const getChargeResponseSchema: Schema<GetChargeResponse> = object({
     'customer',
     optional(nullable(lazy(() => getCustomerResponseSchema))),
   ],
-  metadata: ['metadata', nullable(dict(string()))],
+  metadata: ['metadata', optional(nullable(dict(string())))],
   paidAt: ['paid_at', optional(nullable(string()))],
   canceledAt: ['canceled_at', optional(nullable(string()))],
-  canceledAmount: ['canceled_amount', nullable(number())],
-  paidAmount: ['paid_amount', nullable(number())],
+  canceledAmount: ['canceled_amount', optional(nullable(number()))],
+  paidAmount: ['paid_amount', optional(nullable(number()))],
   interestAndFinePaid: ['interest_and_fine_paid', optional(nullable(number()))],
   recurrencyCycle: ['recurrency_cycle', optional(nullable(string()))],
 });

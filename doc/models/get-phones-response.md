@@ -9,23 +9,15 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `homePhone` | [`GetPhoneResponse \| null`](../../doc/models/get-phone-response.md) | Required | - |
-| `mobilePhone` | [`GetPhoneResponse \| null`](../../doc/models/get-phone-response.md) | Required | - |
+| `homePhone` | [`GetPhoneResponse \| undefined`](../../doc/models/get-phone-response.md) | Optional | - |
+| `mobilePhone` | [`GetPhoneResponse \| undefined`](../../doc/models/get-phone-response.md) | Optional | - |
 
 ## Example (as JSON)
 
 ```json
 {
-  "home_phone": {
-    "country_code": null,
-    "number": null,
-    "area_code": null
-  },
-  "mobile_phone": {
-    "country_code": null,
-    "number": null,
-    "area_code": null
-  }
+  "home_phone": null,
+  "mobile_phone": null
 }
 ```
 

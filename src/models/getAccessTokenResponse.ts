@@ -12,19 +12,19 @@ import {
 
 /** Response object for getting a access token */
 export interface GetAccessTokenResponse {
-  id: string | null;
-  code: string | null;
-  status: string | null;
-  createdAt: string | null;
+  id?: string | null;
+  code?: string | null;
+  status?: string | null;
+  createdAt?: string | null;
   customer?: GetCustomerResponse | null;
 }
 
 export const getAccessTokenResponseSchema: Schema<GetAccessTokenResponse> = object(
   {
-    id: ['id', nullable(string())],
-    code: ['code', nullable(string())],
-    status: ['status', nullable(string())],
-    createdAt: ['created_at', nullable(string())],
+    id: ['id', optional(nullable(string()))],
+    code: ['code', optional(nullable(string()))],
+    status: ['status', optional(nullable(string()))],
+    createdAt: ['created_at', optional(nullable(string()))],
     customer: [
       'customer',
       optional(nullable(lazy(() => getCustomerResponseSchema))),

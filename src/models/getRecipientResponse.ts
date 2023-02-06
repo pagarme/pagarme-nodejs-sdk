@@ -34,59 +34,59 @@ import {
 /** Recipient response */
 export interface GetRecipientResponse {
   /** Id */
-  id: string | null;
+  id?: string | null;
   /** Name */
-  name: string | null;
+  name?: string | null;
   /** Email */
-  email: string | null;
+  email?: string | null;
   /** Document */
-  document: string | null;
+  document?: string | null;
   /** Description */
-  description: string | null;
+  description?: string | null;
   /** Type */
-  type: string | null;
+  type?: string | null;
   /** Status */
-  status: string | null;
+  status?: string | null;
   /** Creation date */
-  createdAt: string | null;
+  createdAt?: string | null;
   /** Last update date */
-  updatedAt: string | null;
+  updatedAt?: string | null;
   /** Deletion date */
-  deletedAt: string | null;
+  deletedAt?: string | null;
   /** Default bank account */
-  defaultBankAccount: GetBankAccountResponse | null;
+  defaultBankAccount?: GetBankAccountResponse | null;
   /** Info about the recipient on the gateway */
-  gatewayRecipients: GetGatewayRecipientResponse[] | null;
+  gatewayRecipients?: GetGatewayRecipientResponse[] | null;
   /** Metadata */
-  metadata: Record<string, string> | null;
+  metadata?: Record<string, string> | null;
   automaticAnticipationSettings?: GetAutomaticAnticipationResponse | null;
   transferSettings?: GetTransferSettingsResponse | null;
   /** Recipient code */
-  code: string | null;
+  code?: string | null;
   /** Payment mode */
-  paymentMode: string | null;
+  paymentMode?: string | null;
 }
 
 export const getRecipientResponseSchema: Schema<GetRecipientResponse> = object({
-  id: ['id', nullable(string())],
-  name: ['name', nullable(string())],
-  email: ['email', nullable(string())],
-  document: ['document', nullable(string())],
-  description: ['description', nullable(string())],
-  type: ['type', nullable(string())],
-  status: ['status', nullable(string())],
-  createdAt: ['created_at', nullable(string())],
-  updatedAt: ['updated_at', nullable(string())],
-  deletedAt: ['deleted_at', nullable(string())],
+  id: ['id', optional(nullable(string()))],
+  name: ['name', optional(nullable(string()))],
+  email: ['email', optional(nullable(string()))],
+  document: ['document', optional(nullable(string()))],
+  description: ['description', optional(nullable(string()))],
+  type: ['type', optional(nullable(string()))],
+  status: ['status', optional(nullable(string()))],
+  createdAt: ['created_at', optional(nullable(string()))],
+  updatedAt: ['updated_at', optional(nullable(string()))],
+  deletedAt: ['deleted_at', optional(nullable(string()))],
   defaultBankAccount: [
     'default_bank_account',
-    nullable(lazy(() => getBankAccountResponseSchema)),
+    optional(nullable(lazy(() => getBankAccountResponseSchema))),
   ],
   gatewayRecipients: [
     'gateway_recipients',
-    nullable(array(lazy(() => getGatewayRecipientResponseSchema))),
+    optional(nullable(array(lazy(() => getGatewayRecipientResponseSchema)))),
   ],
-  metadata: ['metadata', nullable(dict(string()))],
+  metadata: ['metadata', optional(nullable(dict(string())))],
   automaticAnticipationSettings: [
     'automatic_anticipation_settings',
     optional(nullable(lazy(() => getAutomaticAnticipationResponseSchema))),
@@ -95,6 +95,6 @@ export const getRecipientResponseSchema: Schema<GetRecipientResponse> = object({
     'transfer_settings',
     optional(nullable(lazy(() => getTransferSettingsResponseSchema))),
   ],
-  code: ['code', nullable(string())],
-  paymentMode: ['payment_mode', nullable(string())],
+  code: ['code', optional(nullable(string()))],
+  paymentMode: ['payment_mode', optional(nullable(string()))],
 });

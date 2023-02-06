@@ -21,22 +21,22 @@ import {
 /** Balance */
 export interface GetBalanceResponse {
   /** Currency */
-  currency: string | null;
+  currency?: string | null;
   /** Amount available for transferring */
-  availableAmount: bigint | null;
+  availableAmount?: bigint | null;
   /** Recipient */
   recipient?: GetRecipientResponse | null;
-  transferredAmount: bigint | null;
-  waitingFundsAmount: bigint | null;
+  transferredAmount?: bigint | null;
+  waitingFundsAmount?: bigint | null;
 }
 
 export const getBalanceResponseSchema: Schema<GetBalanceResponse> = object({
-  currency: ['currency', nullable(string())],
-  availableAmount: ['available_amount', nullable(bigint())],
+  currency: ['currency', optional(nullable(string()))],
+  availableAmount: ['available_amount', optional(nullable(bigint()))],
   recipient: [
     'recipient',
     optional(nullable(lazy(() => getRecipientResponseSchema))),
   ],
-  transferredAmount: ['transferred_amount', nullable(bigint())],
-  waitingFundsAmount: ['waiting_funds_amount', nullable(bigint())],
+  transferredAmount: ['transferred_amount', optional(nullable(bigint()))],
+  waitingFundsAmount: ['waiting_funds_amount', optional(nullable(bigint()))],
 });

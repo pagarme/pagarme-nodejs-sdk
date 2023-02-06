@@ -47,17 +47,17 @@ import {
 /** Response object for getting an Order */
 export interface GetOrderResponse {
   id: string | null;
-  code: string | null;
-  currency: string | null;
-  items: GetOrderItemResponse[] | null;
+  code?: string | null;
+  currency?: string | null;
+  items?: GetOrderItemResponse[] | null;
   customer?: GetCustomerResponse | null;
-  status: string | null;
-  createdAt: string | null;
-  updatedAt: string | null;
-  charges: GetChargeResponse[] | null;
-  invoiceUrl: string | null;
-  shipping: GetShippingResponse | null;
-  metadata: Record<string, string> | null;
+  status?: string | null;
+  createdAt?: string | null;
+  updatedAt?: string | null;
+  charges?: GetChargeResponse[] | null;
+  invoiceUrl?: string | null;
+  shipping?: GetShippingResponse | null;
+  metadata?: Record<string, string> | null;
   /** Checkout Payment Settings Response */
   checkouts?: GetCheckoutPaymentResponse[] | null;
   /** Ip address */
@@ -69,25 +69,34 @@ export interface GetOrderResponse {
   /** Device's informations */
   device?: GetDeviceResponse | null;
   /** Indicates whether the order is closed */
-  closed: boolean | null;
+  closed?: boolean | null;
 }
 
 export const getOrderResponseSchema: Schema<GetOrderResponse> = object({
   id: ['id', nullable(string())],
-  code: ['code', nullable(string())],
-  currency: ['currency', nullable(string())],
-  items: ['items', nullable(array(lazy(() => getOrderItemResponseSchema)))],
+  code: ['code', optional(nullable(string()))],
+  currency: ['currency', optional(nullable(string()))],
+  items: [
+    'items',
+    optional(nullable(array(lazy(() => getOrderItemResponseSchema)))),
+  ],
   customer: [
     'customer',
     optional(nullable(lazy(() => getCustomerResponseSchema))),
   ],
-  status: ['status', nullable(string())],
-  createdAt: ['created_at', nullable(string())],
-  updatedAt: ['updated_at', nullable(string())],
-  charges: ['charges', nullable(array(lazy(() => getChargeResponseSchema)))],
-  invoiceUrl: ['invoice_url', nullable(string())],
-  shipping: ['shipping', nullable(lazy(() => getShippingResponseSchema))],
-  metadata: ['metadata', nullable(dict(string()))],
+  status: ['status', optional(nullable(string()))],
+  createdAt: ['created_at', optional(nullable(string()))],
+  updatedAt: ['updated_at', optional(nullable(string()))],
+  charges: [
+    'charges',
+    optional(nullable(array(lazy(() => getChargeResponseSchema)))),
+  ],
+  invoiceUrl: ['invoice_url', optional(nullable(string()))],
+  shipping: [
+    'shipping',
+    optional(nullable(lazy(() => getShippingResponseSchema))),
+  ],
+  metadata: ['metadata', optional(nullable(dict(string())))],
   checkouts: [
     'checkouts',
     optional(nullable(array(lazy(() => getCheckoutPaymentResponseSchema)))),
@@ -99,5 +108,5 @@ export const getOrderResponseSchema: Schema<GetOrderResponse> = object({
     optional(nullable(lazy(() => getLocationResponseSchema))),
   ],
   device: ['device', optional(nullable(lazy(() => getDeviceResponseSchema)))],
-  closed: ['closed', nullable(boolean())],
+  closed: ['closed', optional(nullable(boolean()))],
 });

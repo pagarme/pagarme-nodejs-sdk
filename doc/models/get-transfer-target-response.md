@@ -9,15 +9,15 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `targetId` | `string \| null` | Required | - |
-| `type` | `string \| null` | Required | - |
+| `targetId` | `string \| undefined` | Optional | - |
+| `type` | `string \| undefined` | Optional | - |
 
 ## Example (as JSON)
 
 ```json
 {
-  "target_id": "target_id0",
-  "type": "type0"
+  "target_id": null,
+  "type": null
 }
 ```
 

@@ -10,24 +10,25 @@ import {
   nullable,
   number,
   object,
+  optional,
   Schema,
   string,
 } from '../schema';
 
 export interface GetAutomaticAnticipationResponse {
-  enabled: boolean | null;
-  type: string | null;
-  volumePercentage: number | null;
-  delay: number | null;
-  days: number[] | null;
+  enabled?: boolean | null;
+  type?: string | null;
+  volumePercentage?: number | null;
+  delay?: number | null;
+  days?: number[] | null;
 }
 
 export const getAutomaticAnticipationResponseSchema: Schema<GetAutomaticAnticipationResponse> = object(
   {
-    enabled: ['enabled', nullable(boolean())],
-    type: ['type', nullable(string())],
-    volumePercentage: ['volume_percentage', nullable(number())],
-    delay: ['delay', nullable(number())],
-    days: ['days', nullable(array(number()))],
+    enabled: ['enabled', optional(nullable(boolean()))],
+    type: ['type', optional(nullable(string()))],
+    volumePercentage: ['volume_percentage', optional(nullable(number()))],
+    delay: ['delay', optional(nullable(number()))],
+    days: ['days', optional(nullable(array(number())))],
   }
 );

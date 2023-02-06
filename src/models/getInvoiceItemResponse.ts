@@ -24,30 +24,30 @@ import {
 
 /** Response object for getting an invoice item */
 export interface GetInvoiceItemResponse {
-  amount: number | null;
-  description: string | null;
-  pricingScheme: GetPricingSchemeResponse | null;
-  priceBracket: GetPriceBracketResponse | null;
+  amount?: number | null;
+  description?: string | null;
+  pricingScheme?: GetPricingSchemeResponse | null;
+  priceBracket?: GetPriceBracketResponse | null;
   quantity?: number | null;
   name?: string | null;
   /** Subscription Item Id */
-  subscriptionItemId: string | null;
+  subscriptionItemId?: string | null;
 }
 
 export const getInvoiceItemResponseSchema: Schema<GetInvoiceItemResponse> = object(
   {
-    amount: ['amount', nullable(number())],
-    description: ['description', nullable(string())],
+    amount: ['amount', optional(nullable(number()))],
+    description: ['description', optional(nullable(string()))],
     pricingScheme: [
       'pricing_scheme',
-      nullable(lazy(() => getPricingSchemeResponseSchema)),
+      optional(nullable(lazy(() => getPricingSchemeResponseSchema))),
     ],
     priceBracket: [
       'price_bracket',
-      nullable(lazy(() => getPriceBracketResponseSchema)),
+      optional(nullable(lazy(() => getPriceBracketResponseSchema))),
     ],
     quantity: ['quantity', optional(nullable(number()))],
     name: ['name', optional(nullable(string()))],
-    subscriptionItemId: ['subscription_item_id', nullable(string())],
+    subscriptionItemId: ['subscription_item_id', optional(nullable(string()))],
   }
 );
