@@ -15,7 +15,7 @@ Request for creating an order
 | `customer` | [`CreateCustomerRequest`](../../doc/models/create-customer-request.md) | Required | Customer |
 | `payments` | [`CreatePaymentRequest[]`](../../doc/models/create-payment-request.md) | Required | Payment data |
 | `code` | `string` | Required | The order code |
-| `customerId` | `string` | Required | The customer id |
+| `customerId` | `string \| undefined` | Optional | The customer id |
 | `shipping` | [`CreateShippingRequest \| undefined`](../../doc/models/create-shipping-request.md) | Optional | Shipping data |
 | `metadata` | `Record<string, string>` | Required | Metadata |
 | `antifraudEnabled` | `boolean \| undefined` | Optional | Defines whether the order will go through anti-fraud |
@@ -45,7 +45,6 @@ Request for creating an order
   },
   "payments": null,
   "code": null,
-  "customer_id": null,
   "metadata": null,
   "closed": true
 }

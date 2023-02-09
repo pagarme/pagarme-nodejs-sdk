@@ -298,7 +298,6 @@ const bodyMetadata: Record<string, string> = {'key0' : 'metadata7', 'key1' : 'me
   customer: bodyCustomer,
   payments: bodyPayments,
   code: 'code4',
-  customerId: 'customer_id4',
   metadata: bodyMetadata,
   closed: true,
 };
