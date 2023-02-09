@@ -9,6 +9,7 @@ import {
   boolean,
   dict,
   lazy,
+  nullable,
   object,
   optional,
   Schema,
@@ -58,7 +59,7 @@ export interface CreateOrderRequest {
   /** The order code */
   code: string;
   /** The customer id */
-  customerId: string;
+  customerId?: string | null;
   /** Shipping data */
   shipping?: CreateShippingRequest;
   /** Metadata */
@@ -86,7 +87,7 @@ export const createOrderRequestSchema: Schema<CreateOrderRequest> = object({
   customer: ['customer', lazy(() => createCustomerRequestSchema)],
   payments: ['payments', array(lazy(() => createPaymentRequestSchema))],
   code: ['code', string()],
-  customerId: ['customer_id', string()],
+  customerId: ['customer_id', optional(nullable(string()))],
   shipping: ['shipping', optional(lazy(() => createShippingRequestSchema))],
   metadata: ['metadata', dict(string())],
   antifraudEnabled: ['antifraud_enabled', optional(boolean())],
