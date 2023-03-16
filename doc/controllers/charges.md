@@ -125,7 +125,6 @@ const requestBoleto: CreateBoletoPaymentRequest = {
   bank: 'bank4',
   instructions: 'instructions4',
   billingAddress: requestBoletoBillingAddress,
-  billingAddressId: 'billing_address_id2',
   documentNumber: 'document_number0',
   statementDescriptor: 'statement_descriptor6',
 };

@@ -19,14 +19,12 @@ export interface ListTransactionsResponse {
   paging?: PagingResponse | null;
 }
 
-export const listTransactionsResponseSchema: Schema<ListTransactionsResponse> = object(
-  {
-    data: [
-      'data',
-      optional(
-        nullable(array(lazy(() => discriminatedGetTransactionResponseSchema)))
-      ),
-    ],
-    paging: ['paging', optional(nullable(lazy(() => pagingResponseSchema)))],
-  }
-);
+export const listTransactionsResponseSchema: Schema<any> = object({
+  data: [
+    'data',
+    optional(
+      nullable(array(lazy(() => discriminatedGetTransactionResponseSchema)))
+    ),
+  ],
+  paging: ['paging', optional(nullable(lazy(() => pagingResponseSchema)))],
+});

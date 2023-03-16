@@ -25,11 +25,11 @@ import {
   AbortError,
   AuthenticatorInterface,
   createRequestBuilderFactory,
-  HttpClient,
   HttpClientInterface,
   RetryConfiguration,
 } from './core';
- 
+ import { HttpClient } from './clientAdapter';
+
 export class Client implements ClientInterface {
   private _config: Readonly<Configuration>;
   private _timeout: number;
@@ -51,7 +51,7 @@ export class Client implements ClientInterface {
         ? this._config.httpClientOptions.timeout
         : this._config.timeout;
     this._userAgent = updateUserAgent(
-      'PagarmeApiSDK - TypeScript 6.7.4',
+      'PagarmeApiSDK - TypeScript 6.7.5',
     );
     this._requestBuilderFactory = createRequestHandlerFactory(
       server => getBaseUri(server, this._config),
@@ -128,7 +128,6 @@ function tap(
 }
 
 function withErrorHandlers(rb: SdkRequestBuilder) {
-  rb.defaultToError(ApiError);
   rb.throwOn(400, CustomError, 'Invalid request');
   rb.throwOn(401, CustomError, 'Invalid API key');
   rb.throwOn(404, CustomError, 'An informed resource was not found');

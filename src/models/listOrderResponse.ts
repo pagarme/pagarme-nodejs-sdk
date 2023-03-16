@@ -16,7 +16,7 @@ export interface ListOrderResponse {
   paging?: PagingResponse | null;
 }
 
-export const listOrderResponseSchema: Schema<ListOrderResponse> = object({
+export const listOrderResponseSchema: Schema<any> = object({
   data: ['data', optional(nullable(array(lazy(() => getOrderResponseSchema))))],
   paging: ['paging', optional(nullable(lazy(() => pagingResponseSchema)))],
 });

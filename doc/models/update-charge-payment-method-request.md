@@ -73,7 +73,7 @@ Request for updating the payment method of a charge
       "line_1": "line_18",
       "line_2": "line_26"
     },
-    "billing_address_id": "billing_address_id6",
+    "billing_address_id": null,
     "nosso_numero": null,
     "document_number": "document_number6",
     "statement_descriptor": "statement_descriptor0",
