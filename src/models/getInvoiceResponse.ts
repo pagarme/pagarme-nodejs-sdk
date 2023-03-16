@@ -74,7 +74,7 @@ export interface GetInvoiceResponse {
   subscriptionId?: string | null;
 }
 
-export const getInvoiceResponseSchema: Schema<GetInvoiceResponse> = object({
+export const getInvoiceResponseSchema: Schema<any> = object({
   id: ['id', optional(nullable(string()))],
   code: ['code', optional(nullable(string()))],
   url: ['url', optional(nullable(string()))],

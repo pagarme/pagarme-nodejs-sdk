@@ -72,7 +72,7 @@ export interface GetOrderResponse {
   closed?: boolean | null;
 }
 
-export const getOrderResponseSchema: Schema<GetOrderResponse> = object({
+export const getOrderResponseSchema: Schema<any> = object({
   id: ['id', nullable(string())],
   code: ['code', optional(nullable(string()))],
   currency: ['currency', optional(nullable(string()))],

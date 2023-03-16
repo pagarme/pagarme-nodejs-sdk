@@ -19,7 +19,7 @@ export interface ListInvoicesResponse {
   paging?: PagingResponse | null;
 }
 
-export const listInvoicesResponseSchema: Schema<ListInvoicesResponse> = object({
+export const listInvoicesResponseSchema: Schema<any> = object({
   data: [
     'data',
     optional(nullable(array(lazy(() => getInvoiceResponseSchema)))),

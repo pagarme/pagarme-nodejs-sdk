@@ -57,7 +57,7 @@ export interface GetChargeResponse {
   recurrencyCycle?: string | null;
 }
 
-export const getChargeResponseSchema: Schema<GetChargeResponse> = object({
+export const getChargeResponseSchema: Schema<any> = object({
   id: ['id', optional(nullable(string()))],
   code: ['code', optional(nullable(string()))],
   gatewayId: ['gateway_id', optional(nullable(string()))],
