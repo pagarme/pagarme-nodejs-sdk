@@ -46,7 +46,7 @@ import {
 
 /** Response object for getting an Order */
 export interface GetOrderResponse {
-  id: string | null;
+  id?: string | null;
   code?: string | null;
   currency?: string | null;
   items?: GetOrderItemResponse[] | null;
@@ -73,7 +73,7 @@ export interface GetOrderResponse {
 }
 
 export const getOrderResponseSchema: Schema<any> = object({
-  id: ['id', nullable(string())],
+  id: ['id', optional(nullable(string()))],
   code: ['code', optional(nullable(string()))],
   currency: ['currency', optional(nullable(string()))],
   items: [

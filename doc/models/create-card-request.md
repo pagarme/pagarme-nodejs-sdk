@@ -11,20 +11,20 @@ Card data
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `number` | `string` | Required | Credit card number |
-| `holderName` | `string` | Required | Holder name, as written on the card |
-| `expMonth` | `number` | Required | The expiration month |
-| `expYear` | `number` | Required | The expiration year, that can be informed with 2 or 4 digits |
-| `cvv` | `string` | Required | The card's security code |
-| `billingAddress` | [`CreateAddressRequest`](../../doc/models/create-address-request.md) | Required | Card's billing address |
-| `brand` | `string` | Required | Card brand |
-| `billingAddressId` | `string` | Required | The address id for the billing address |
-| `metadata` | `Record<string, string>` | Required | Metadata |
-| `type` | `string` | Required | Card type<br>**Default**: `'credit'` |
-| `options` | [`CreateCardOptionsRequest`](../../doc/models/create-card-options-request.md) | Required | Options for creating the card |
+| `number` | `string \| undefined` | Optional | Credit card number |
+| `holderName` | `string \| undefined` | Optional | Holder name, as written on the card |
+| `expMonth` | `number \| undefined` | Optional | The expiration month |
+| `expYear` | `number \| undefined` | Optional | The expiration year, that can be informed with 2 or 4 digits |
+| `cvv` | `string \| undefined` | Optional | The card's security code |
+| `billingAddress` | [`CreateAddressRequest \| undefined`](../../doc/models/create-address-request.md) | Optional | Card's billing address |
+| `brand` | `string \| undefined` | Optional | Card brand |
+| `billingAddressId` | `string \| undefined` | Optional | The address id for the billing address |
+| `metadata` | `Record<string, string> \| undefined` | Optional | Metadata |
+| `type` | `string \| undefined` | Optional | Card type<br>**Default**: `'credit'` |
+| `options` | [`CreateCardOptionsRequest \| undefined`](../../doc/models/create-card-options-request.md) | Optional | Options for creating the card |
 | `holderDocument` | `string \| undefined` | Optional | Document number for the card's holder |
-| `privateLabel` | `boolean` | Required | Indicates whether it is a private label card |
-| `label` | `string` | Required | - |
+| `privateLabel` | `boolean \| undefined` | Optional | Indicates whether it is a private label card |
+| `label` | `string \| undefined` | Optional | - |
 | `id` | `string \| undefined` | Optional | Identifier |
 | `token` | `string \| undefined` | Optional | token identifier |
 
@@ -41,10 +41,13 @@ Card data
   "brand": null,
   "billing_address_id": null,
   "metadata": null,
-  "type": "credit",
+  "type": null,
   "options": null,
+  "holder_document": null,
   "private_label": null,
-  "label": null
+  "label": null,
+  "id": null,
+  "token": null
 }
 ```
 
