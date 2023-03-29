@@ -29,6 +29,7 @@ Response object for getting a debit card transaction
 | `eci` | `string \| undefined` | Optional | Electronic Commerce Indicator (ECI) |
 | `authenticationType` | `string \| undefined` | Optional | Authentication type |
 | `threedAuthenticationUrl` | `string \| undefined` | Optional | 3D-S Authentication Url |
+| `fundingSource` | `string \| undefined` | Optional | Identify when a card is prepaid, credit or debit. |
 
 ## Example (as JSON)
 
@@ -66,7 +67,8 @@ Response object for getting a debit card transaction
   "mpi": null,
   "eci": null,
   "authentication_type": null,
-  "threed_authentication_url": null
+  "threed_authentication_url": null,
+  "funding_source": null
 }
 ```
 

@@ -51,6 +51,8 @@ export interface GetCreditCardTransactionResponse extends GetTransactionResponse
   installments?: number | null;
   /** 3D-S authentication Url */
   threedAuthenticationUrl?: string | null;
+  /** Identify when a card is prepaid, credit or debit. */
+  fundingSource?: string | null;
 }
 
 export const getCreditCardTransactionResponseSchema: Schema<any> = object({
@@ -72,6 +74,7 @@ export const getCreditCardTransactionResponseSchema: Schema<any> = object({
     'threed_authentication_url',
     optional(nullable(string())),
   ],
+  fundingSource: ['funding_source', optional(nullable(string()))],
   gatewayId: ['gateway_id', optional(nullable(string()))],
   amount: ['amount', optional(nullable(number()))],
   status: ['status', optional(nullable(string()))],
