@@ -27,6 +27,7 @@ Response object for getting a credit card transaction
 | `acquirerReturnCode` | `string \| undefined` | Optional | Acquirer Return Code |
 | `installments` | `number \| undefined` | Optional | Number of installments |
 | `threedAuthenticationUrl` | `string \| undefined` | Optional | 3D-S authentication Url |
+| `fundingSource` | `string \| undefined` | Optional | Identify when a card is prepaid, credit or debit. |
 
 ## Example (as JSON)
 
@@ -62,7 +63,8 @@ Response object for getting a credit card transaction
   "acquirer_message": null,
   "acquirer_return_code": null,
   "installments": null,
-  "threed_authentication_url": null
+  "threed_authentication_url": null,
+  "funding_source": null
 }
 ```
 

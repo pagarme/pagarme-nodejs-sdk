@@ -21,8 +21,8 @@ Request for updating a subscription's payment method
 
 ```json
 {
-  "payment_method": null,
-  "card_id": null,
+  "payment_method": "payment_method0",
+  "card_id": "card_id4",
   "card": {
     "number": null,
     "holder_name": null,
@@ -33,11 +33,16 @@ Request for updating a subscription's payment method
     "brand": null,
     "billing_address_id": null,
     "metadata": null,
-    "type": "credit",
+    "type": null,
     "options": null,
+    "holder_document": null,
     "private_label": null,
-    "label": null
-  }
+    "label": null,
+    "id": null,
+    "token": null
+  },
+  "card_token": null,
+  "boleto": null
 }
 ```
 

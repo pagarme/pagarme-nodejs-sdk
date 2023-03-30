@@ -186,6 +186,51 @@ export class RecipientsController extends BaseController {
   }
 
   /**
+   * @param recipientId
+   * @param withdrawalId
+   * @return Response from the API call
+   */
+  async getWithdrawById(
+    recipientId: string,
+    withdrawalId: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<GetWithdrawResponse>> {
+    const req = this.createRequest('GET');
+    const mapped = req.prepareArgs({
+      recipientId: [recipientId, string()],
+      withdrawalId: [withdrawalId, string()],
+    });
+    req.appendTemplatePath`/recipients/${mapped.recipientId}/withdrawals/${mapped.withdrawalId}`;
+    return req.callAsJson(getWithdrawResponseSchema, requestOptions);
+  }
+
+  /**
+   * Updates the default bank account from a recipient
+   *
+   * @param recipientId     Recipient id
+   * @param request         Bank account data
+   * @param idempotencyKey
+   * @return Response from the API call
+   */
+  async updateRecipientDefaultBankAccount(
+    recipientId: string,
+    request: UpdateRecipientBankAccountRequest,
+    idempotencyKey?: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<GetRecipientResponse>> {
+    const req = this.createRequest('PATCH');
+    const mapped = req.prepareArgs({
+      recipientId: [recipientId, string()],
+      request: [request, updateRecipientBankAccountRequestSchema],
+      idempotencyKey: [idempotencyKey, optional(string())],
+    });
+    req.header('idempotency-key', mapped.idempotencyKey);
+    req.json(mapped.request);
+    req.appendTemplatePath`/recipients/${mapped.recipientId}/default-bank-account`;
+    return req.callAsJson(getRecipientResponseSchema, requestOptions);
+  }
+
+  /**
    * Updates recipient metadata
    *
    * @param recipientId     Recipient id
@@ -212,6 +257,44 @@ export class RecipientsController extends BaseController {
   }
 
   /**
+   * Gets a paginated list of transfers for the recipient
+   *
+   * @param recipientId   Recipient id
+   * @param page          Page number
+   * @param size          Page size
+   * @param status        Filter for transfer status
+   * @param createdSince  Filter for start range of transfer creation date
+   * @param createdUntil  Filter for end range of transfer creation date
+   * @return Response from the API call
+   */
+  async getTransfers(
+    recipientId: string,
+    page?: number,
+    size?: number,
+    status?: string,
+    createdSince?: string,
+    createdUntil?: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<ListTransferResponse>> {
+    const req = this.createRequest('GET');
+    const mapped = req.prepareArgs({
+      recipientId: [recipientId, string()],
+      page: [page, optional(number())],
+      size: [size, optional(number())],
+      status: [status, optional(string())],
+      createdSince: [createdSince, optional(string())],
+      createdUntil: [createdUntil, optional(string())],
+    });
+    req.query('page', mapped.page);
+    req.query('size', mapped.size);
+    req.query('status', mapped.status);
+    req.query('created_since', mapped.createdSince);
+    req.query('created_until', mapped.createdUntil);
+    req.appendTemplatePath`/recipients/${mapped.recipientId}/transfers`;
+    return req.callAsJson(listTransferResponseSchema, requestOptions);
+  }
+
+  /**
    * Gets a transfer
    *
    * @param recipientId  Recipient id
@@ -230,6 +313,52 @@ export class RecipientsController extends BaseController {
     });
     req.appendTemplatePath`/recipients/${mapped.recipientId}/transfers/${mapped.transferId}`;
     return req.callAsJson(getTransferResponseSchema, requestOptions);
+  }
+
+  /**
+   * @param recipientId
+   * @param request
+   * @return Response from the API call
+   */
+  async createWithdraw(
+    recipientId: string,
+    request: CreateWithdrawRequest,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<GetWithdrawResponse>> {
+    const req = this.createRequest('POST');
+    const mapped = req.prepareArgs({
+      recipientId: [recipientId, string()],
+      request: [request, createWithdrawRequestSchema],
+    });
+    req.json(mapped.request);
+    req.appendTemplatePath`/recipients/${mapped.recipientId}/withdrawals`;
+    return req.callAsJson(getWithdrawResponseSchema, requestOptions);
+  }
+
+  /**
+   * Updates recipient metadata
+   *
+   * @param recipientId     Recipient id
+   * @param request         Metadata
+   * @param idempotencyKey
+   * @return Response from the API call
+   */
+  async updateAutomaticAnticipationSettings(
+    recipientId: string,
+    request: UpdateAutomaticAnticipationSettingsRequest,
+    idempotencyKey?: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<GetRecipientResponse>> {
+    const req = this.createRequest('PATCH');
+    const mapped = req.prepareArgs({
+      recipientId: [recipientId, string()],
+      request: [request, updateAutomaticAnticipationSettingsRequestSchema],
+      idempotencyKey: [idempotencyKey, optional(string())],
+    });
+    req.header('idempotency-key', mapped.idempotencyKey);
+    req.json(mapped.request);
+    req.appendTemplatePath`/recipients/${mapped.recipientId}/automatic-anticipation-settings`;
+    return req.callAsJson(getRecipientResponseSchema, requestOptions);
   }
 
   /**
@@ -328,49 +457,19 @@ export class RecipientsController extends BaseController {
   }
 
   /**
-   * Updates the default bank account from a recipient
+   * Retrieves recipient information
    *
-   * @param recipientId     Recipient id
-   * @param request         Bank account data
-   * @param idempotencyKey
+   * @param recipientId  Recipiend id
    * @return Response from the API call
    */
-  async updateRecipientDefaultBankAccount(
+  async getRecipient(
     recipientId: string,
-    request: UpdateRecipientBankAccountRequest,
-    idempotencyKey?: string,
     requestOptions?: RequestOptions
   ): Promise<ApiResponse<GetRecipientResponse>> {
-    const req = this.createRequest('PATCH');
-    const mapped = req.prepareArgs({
-      recipientId: [recipientId, string()],
-      request: [request, updateRecipientBankAccountRequestSchema],
-      idempotencyKey: [idempotencyKey, optional(string())],
-    });
-    req.header('idempotency-key', mapped.idempotencyKey);
-    req.json(mapped.request);
-    req.appendTemplatePath`/recipients/${mapped.recipientId}/default-bank-account`;
+    const req = this.createRequest('GET');
+    const mapped = req.prepareArgs({ recipientId: [recipientId, string()] });
+    req.appendTemplatePath`/recipients/${mapped.recipientId}`;
     return req.callAsJson(getRecipientResponseSchema, requestOptions);
-  }
-
-  /**
-   * @param recipientId
-   * @param request
-   * @return Response from the API call
-   */
-  async createWithdraw(
-    recipientId: string,
-    request: CreateWithdrawRequest,
-    requestOptions?: RequestOptions
-  ): Promise<ApiResponse<GetWithdrawResponse>> {
-    const req = this.createRequest('POST');
-    const mapped = req.prepareArgs({
-      recipientId: [recipientId, string()],
-      request: [request, createWithdrawRequestSchema],
-    });
-    req.json(mapped.request);
-    req.appendTemplatePath`/recipients/${mapped.recipientId}/withdrawals`;
-    return req.callAsJson(getWithdrawResponseSchema, requestOptions);
   }
 
   /**
@@ -387,6 +486,44 @@ export class RecipientsController extends BaseController {
     const mapped = req.prepareArgs({ recipientId: [recipientId, string()] });
     req.appendTemplatePath`/recipients/${mapped.recipientId}/balance`;
     return req.callAsJson(getBalanceResponseSchema, requestOptions);
+  }
+
+  /**
+   * Gets a paginated list of transfers for the recipient
+   *
+   * @param recipientId
+   * @param page
+   * @param size
+   * @param status
+   * @param createdSince
+   * @param createdUntil
+   * @return Response from the API call
+   */
+  async getWithdrawals(
+    recipientId: string,
+    page?: number,
+    size?: number,
+    status?: string,
+    createdSince?: string,
+    createdUntil?: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<ListWithdrawals>> {
+    const req = this.createRequest('GET');
+    const mapped = req.prepareArgs({
+      recipientId: [recipientId, string()],
+      page: [page, optional(number())],
+      size: [size, optional(number())],
+      status: [status, optional(string())],
+      createdSince: [createdSince, optional(string())],
+      createdUntil: [createdUntil, optional(string())],
+    });
+    req.query('page', mapped.page);
+    req.query('size', mapped.size);
+    req.query('status', mapped.status);
+    req.query('created_since', mapped.createdSince);
+    req.query('created_until', mapped.createdUntil);
+    req.appendTemplatePath`/recipients/${mapped.recipientId}/withdrawals`;
+    return req.callAsJson(listWithdrawalsSchema, requestOptions);
   }
 
   /**
@@ -435,143 +572,6 @@ export class RecipientsController extends BaseController {
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.request);
     return req.callAsJson(getRecipientResponseSchema, requestOptions);
-  }
-
-  /**
-   * Updates recipient metadata
-   *
-   * @param recipientId     Recipient id
-   * @param request         Metadata
-   * @param idempotencyKey
-   * @return Response from the API call
-   */
-  async updateAutomaticAnticipationSettings(
-    recipientId: string,
-    request: UpdateAutomaticAnticipationSettingsRequest,
-    idempotencyKey?: string,
-    requestOptions?: RequestOptions
-  ): Promise<ApiResponse<GetRecipientResponse>> {
-    const req = this.createRequest('PATCH');
-    const mapped = req.prepareArgs({
-      recipientId: [recipientId, string()],
-      request: [request, updateAutomaticAnticipationSettingsRequestSchema],
-      idempotencyKey: [idempotencyKey, optional(string())],
-    });
-    req.header('idempotency-key', mapped.idempotencyKey);
-    req.json(mapped.request);
-    req.appendTemplatePath`/recipients/${mapped.recipientId}/automatic-anticipation-settings`;
-    return req.callAsJson(getRecipientResponseSchema, requestOptions);
-  }
-
-  /**
-   * Retrieves recipient information
-   *
-   * @param recipientId  Recipiend id
-   * @return Response from the API call
-   */
-  async getRecipient(
-    recipientId: string,
-    requestOptions?: RequestOptions
-  ): Promise<ApiResponse<GetRecipientResponse>> {
-    const req = this.createRequest('GET');
-    const mapped = req.prepareArgs({ recipientId: [recipientId, string()] });
-    req.appendTemplatePath`/recipients/${mapped.recipientId}`;
-    return req.callAsJson(getRecipientResponseSchema, requestOptions);
-  }
-
-  /**
-   * Gets a paginated list of transfers for the recipient
-   *
-   * @param recipientId
-   * @param page
-   * @param size
-   * @param status
-   * @param createdSince
-   * @param createdUntil
-   * @return Response from the API call
-   */
-  async getWithdrawals(
-    recipientId: string,
-    page?: number,
-    size?: number,
-    status?: string,
-    createdSince?: string,
-    createdUntil?: string,
-    requestOptions?: RequestOptions
-  ): Promise<ApiResponse<ListWithdrawals>> {
-    const req = this.createRequest('GET');
-    const mapped = req.prepareArgs({
-      recipientId: [recipientId, string()],
-      page: [page, optional(number())],
-      size: [size, optional(number())],
-      status: [status, optional(string())],
-      createdSince: [createdSince, optional(string())],
-      createdUntil: [createdUntil, optional(string())],
-    });
-    req.query('page', mapped.page);
-    req.query('size', mapped.size);
-    req.query('status', mapped.status);
-    req.query('created_since', mapped.createdSince);
-    req.query('created_until', mapped.createdUntil);
-    req.appendTemplatePath`/recipients/${mapped.recipientId}/withdrawals`;
-    return req.callAsJson(listWithdrawalsSchema, requestOptions);
-  }
-
-  /**
-   * @param recipientId
-   * @param withdrawalId
-   * @return Response from the API call
-   */
-  async getWithdrawById(
-    recipientId: string,
-    withdrawalId: string,
-    requestOptions?: RequestOptions
-  ): Promise<ApiResponse<GetWithdrawResponse>> {
-    const req = this.createRequest('GET');
-    const mapped = req.prepareArgs({
-      recipientId: [recipientId, string()],
-      withdrawalId: [withdrawalId, string()],
-    });
-    req.appendTemplatePath`/recipients/${mapped.recipientId}/withdrawals/${mapped.withdrawalId}`;
-    return req.callAsJson(getWithdrawResponseSchema, requestOptions);
-  }
-
-  /**
-   * Gets a paginated list of transfers for the recipient
-   *
-   * @param recipientId   Recipient id
-   * @param page          Page number
-   * @param size          Page size
-   * @param status        Filter for transfer status
-   * @param createdSince  Filter for start range of transfer creation date
-   * @param createdUntil  Filter for end range of transfer creation date
-   * @return Response from the API call
-   */
-  async getTransfers(
-    recipientId: string,
-    page?: number,
-    size?: number,
-    status?: string,
-    createdSince?: string,
-    createdUntil?: string,
-    requestOptions?: RequestOptions
-  ): Promise<ApiResponse<ListTransferResponse>> {
-    const req = this.createRequest('GET');
-    const mapped = req.prepareArgs({
-      recipientId: [recipientId, string()],
-      page: [page, optional(number())],
-      size: [size, optional(number())],
-      status: [status, optional(string())],
-      createdSince: [createdSince, optional(string())],
-      createdUntil: [createdUntil, optional(string())],
-    });
-    req.query('page', mapped.page);
-    req.query('size', mapped.size);
-    req.query('status', mapped.status);
-    req.query('created_since', mapped.createdSince);
-    req.query('created_until', mapped.createdUntil);
-    req.appendTemplatePath`/recipients/${mapped.recipientId}/transfers`;
-    return req.callAsJson(listTransferResponseSchema, requestOptions);
   }
 
   /**

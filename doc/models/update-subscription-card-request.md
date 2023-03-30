@@ -28,12 +28,15 @@ Request for updating the card from a subscription
     "brand": null,
     "billing_address_id": null,
     "metadata": null,
-    "type": "credit",
+    "type": null,
     "options": null,
+    "holder_document": null,
     "private_label": null,
-    "label": null
+    "label": null,
+    "id": null,
+    "token": null
   },
-  "card_id": null
+  "card_id": "card_id4"
 }
 ```
 

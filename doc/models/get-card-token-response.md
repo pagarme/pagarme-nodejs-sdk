@@ -14,8 +14,8 @@ Card token data
 | `lastFourDigits` | `string \| undefined` | Optional | - |
 | `holderName` | `string \| undefined` | Optional | - |
 | `holderDocument` | `string \| undefined` | Optional | - |
-| `expMonth` | `string \| undefined` | Optional | - |
-| `expYear` | `string \| undefined` | Optional | - |
+| `expMonth` | `number \| undefined` | Optional | - |
+| `expYear` | `number \| undefined` | Optional | - |
 | `brand` | `string \| undefined` | Optional | - |
 | `type` | `string \| undefined` | Optional | - |
 | `label` | `string \| undefined` | Optional | - |

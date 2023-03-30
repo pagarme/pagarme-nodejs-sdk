@@ -59,21 +59,7 @@ Request for creating a subcription
     "phones": null,
     "code": null
   },
-  "card": {
-    "number": null,
-    "holder_name": null,
-    "exp_month": null,
-    "exp_year": null,
-    "cvv": null,
-    "billing_address": null,
-    "brand": null,
-    "billing_address_id": null,
-    "metadata": null,
-    "type": "credit",
-    "options": null,
-    "private_label": null,
-    "label": null
-  },
+  "card": null,
   "code": null,
   "payment_method": null,
   "billing_type": null,
