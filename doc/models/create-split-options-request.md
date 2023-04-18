@@ -19,9 +19,9 @@ The Split Options Request
 
 ```json
 {
-  "liable": null,
-  "charge_processing_fee": null,
-  "charge_remainder_fee": null
+  "liable": false,
+  "charge_processing_fee": false,
+  "charge_remainder_fee": false
 }
 ```
 

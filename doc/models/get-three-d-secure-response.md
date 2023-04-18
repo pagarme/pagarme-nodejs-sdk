@@ -21,11 +21,11 @@
 
 ```json
 {
-  "mpi": null,
-  "eci": null,
-  "cavv": null,
-  "transaction_Id": null,
-  "success_url": null
+  "mpi": "mpi2",
+  "eci": "eci0",
+  "cavv": "cavv4",
+  "transaction_Id": "transaction_Id4",
+  "success_url": "success_url2"
 }
 ```
 

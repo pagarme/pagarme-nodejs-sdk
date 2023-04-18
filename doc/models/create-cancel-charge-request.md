@@ -20,9 +20,59 @@ Request for canceling a charge.
 
 ```json
 {
-  "amount": null,
-  "split_rules": null,
-  "split": null,
+  "amount": 46,
+  "split_rules": [
+    {
+      "id": "id6",
+      "Amount": 172,
+      "type": "type4"
+    },
+    {
+      "id": "id7",
+      "Amount": 173,
+      "type": "type3"
+    },
+    {
+      "id": "id8",
+      "Amount": 174,
+      "type": "type2"
+    }
+  ],
+  "split": [
+    {
+      "type": "type6",
+      "amount": 28,
+      "recipient_id": "recipient_id6",
+      "options": {
+        "liable": false,
+        "charge_processing_fee": false,
+        "charge_remainder_fee": false
+      },
+      "split_rule_id": "split_rule_id6"
+    },
+    {
+      "type": "type5",
+      "amount": 27,
+      "recipient_id": "recipient_id5",
+      "options": {
+        "liable": true,
+        "charge_processing_fee": true,
+        "charge_remainder_fee": true
+      },
+      "split_rule_id": "split_rule_id7"
+    },
+    {
+      "type": "type4",
+      "amount": 26,
+      "recipient_id": "recipient_id4",
+      "options": {
+        "liable": false,
+        "charge_processing_fee": false,
+        "charge_remainder_fee": false
+      },
+      "split_rule_id": "split_rule_id8"
+    }
+  ],
   "operation_reference": "operation_reference0"
 }
 ```

@@ -16,8 +16,8 @@
 
 ```json
 {
-  "name": null,
-  "date": null
+  "name": "name0",
+  "date": "2016-03-13T12:52:32.123Z"
 }
 ```
 

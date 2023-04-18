@@ -24,8 +24,8 @@ Request for creating a new discount
   "value": 251.52,
   "discount_type": "discount_type8",
   "item_id": "item_id0",
-  "cycles": null,
-  "description": null
+  "cycles": 168,
+  "description": "description0"
 }
 ```
 

@@ -25,7 +25,7 @@ Request for creating an order item
   "description": "description0",
   "quantity": 68,
   "category": "category2",
-  "code": null
+  "code": "code8"
 }
 ```
 

@@ -24,9 +24,9 @@ The ApplePay Token Payment Request
   "version": "version4",
   "data": "data0",
   "header": {
-    "public_key_hash": null,
+    "public_key_hash": "public_key_hash4",
     "ephemeral_public_key": "ephemeral_public_key6",
-    "transaction_id": null
+    "transaction_id": "transaction_id4"
   },
   "signature": "signature8",
   "merchant_identifier": "merchant_identifier4"

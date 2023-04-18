@@ -25,9 +25,9 @@ Request for creating a usage
   "quantity": 68,
   "description": "description0",
   "used_at": "2016-03-13T12:52:32.123Z",
-  "code": null,
-  "group": null,
-  "amount": null
+  "code": "code8",
+  "group": "group8",
+  "amount": 46
 }
 ```
 

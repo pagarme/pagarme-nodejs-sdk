@@ -31,7 +31,7 @@ Contains the settings for creating a boleto payment
   "retries": 230,
   "bank": "bank8",
   "instructions": "instructions2",
-  "due_at": null,
+  "due_at": "2016-03-13T12:52:32.123Z",
   "billing_address": {
     "street": "street8",
     "number": "number4",
@@ -48,13 +48,21 @@ Contains the settings for creating a boleto payment
     "line_1": "line_18",
     "line_2": "line_26"
   },
-  "billing_address_id": null,
-  "nosso_numero": null,
+  "billing_address_id": "billing_address_id6",
+  "nosso_numero": "nosso_numero0",
   "document_number": "document_number6",
   "statement_descriptor": "statement_descriptor0",
-  "interest": null,
-  "fine": null,
-  "max_days_to_pay_past_due": null
+  "interest": {
+    "days": 156,
+    "type": "type0",
+    "amount": 230
+  },
+  "fine": {
+    "days": 138,
+    "type": "type2",
+    "amount": 212
+  },
+  "max_days_to_pay_past_due": 122
 }
 ```
 

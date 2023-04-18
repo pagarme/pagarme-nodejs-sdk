@@ -21,12 +21,12 @@ The payment authentication request
   "type": "type0",
   "threed_secure": {
     "mpi": "mpi0",
-    "cavv": null,
-    "eci": null,
-    "transaction_id": null,
-    "success_url": null,
-    "ds_transaction_id": null,
-    "version": null
+    "cavv": "cavv8",
+    "eci": "eci2",
+    "transaction_id": "transaction_id0",
+    "success_url": "success_url4",
+    "ds_transaction_id": "ds_transaction_id0",
+    "version": "version8"
   }
 }
 ```

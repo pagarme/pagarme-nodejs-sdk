@@ -17,7 +17,7 @@ Request for creating a device
 
 ```json
 {
-  "platform": null
+  "platform": "platform6"
 }
 ```
 

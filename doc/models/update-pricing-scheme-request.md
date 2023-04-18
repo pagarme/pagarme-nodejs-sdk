@@ -26,25 +26,25 @@ Request for updating a pricing scheme
     {
       "start_quantity": 193,
       "price": 125,
-      "end_quantity": null,
-      "overage_price": null
+      "end_quantity": 201,
+      "overage_price": 215
     },
     {
       "start_quantity": 194,
       "price": 124,
-      "end_quantity": null,
-      "overage_price": null
+      "end_quantity": 202,
+      "overage_price": 216
     },
     {
       "start_quantity": 195,
       "price": 123,
-      "end_quantity": null,
-      "overage_price": null
+      "end_quantity": 203,
+      "overage_price": 217
     }
   ],
-  "price": null,
-  "minimum_price": null,
-  "percentage": null
+  "price": 16,
+  "minimum_price": 176,
+  "percentage": 4.18
 }
 ```
 

@@ -20,10 +20,10 @@ Response object for getting a price bracket
 
 ```json
 {
-  "start_quantity": null,
-  "price": null,
-  "end_quantity": null,
-  "overage_price": null
+  "start_quantity": 46,
+  "price": 16,
+  "end_quantity": 54,
+  "overage_price": 68
 }
 ```
 

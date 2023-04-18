@@ -31,30 +31,30 @@ Request for updating a subscription item
       {
         "start_quantity": 119,
         "price": 57,
-        "end_quantity": null,
-        "overage_price": null
+        "end_quantity": 127,
+        "overage_price": 141
       },
       {
         "start_quantity": 120,
         "price": 58,
-        "end_quantity": null,
-        "overage_price": null
+        "end_quantity": 128,
+        "overage_price": 142
       },
       {
         "start_quantity": 121,
         "price": 59,
-        "end_quantity": null,
-        "overage_price": null
+        "end_quantity": 129,
+        "overage_price": 143
       }
     ],
-    "price": null,
-    "minimum_price": null,
-    "percentage": null
+    "price": 166,
+    "minimum_price": 6,
+    "percentage": 251.76
   },
   "name": "name0",
-  "cycles": null,
-  "quantity": null,
-  "minimum_price": null
+  "cycles": 168,
+  "quantity": 68,
+  "minimum_price": 176
 }
 ```
 

@@ -21,7 +21,11 @@
   "amount": 46,
   "source_id": "source_id6",
   "target_id": "target_id0",
-  "metadata": null
+  "metadata": [
+    "metadata3",
+    "metadata4",
+    "metadata5"
+  ]
 }
 ```
 

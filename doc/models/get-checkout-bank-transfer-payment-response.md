@@ -17,7 +17,9 @@ Bank transfer checkout response
 
 ```json
 {
-  "bank": null
+  "bank": [
+    "bank7"
+  ]
 }
 ```
 

@@ -24,8 +24,8 @@ Request for creating a new increment
   "value": 251.52,
   "increment_type": "increment_type8",
   "item_id": "item_id0",
-  "cycles": null,
-  "description": null
+  "cycles": 168,
+  "description": "description0"
 }
 ```
 

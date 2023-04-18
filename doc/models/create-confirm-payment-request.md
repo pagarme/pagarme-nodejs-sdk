@@ -18,7 +18,7 @@
 ```json
 {
   "description": "description0",
-  "Amount": null,
+  "Amount": 156,
   "Code": "Code0"
 }
 ```

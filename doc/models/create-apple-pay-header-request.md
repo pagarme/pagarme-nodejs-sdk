@@ -19,9 +19,9 @@ The ApplePay header request
 
 ```json
 {
-  "public_key_hash": null,
+  "public_key_hash": "public_key_hash8",
   "ephemeral_public_key": "ephemeral_public_key0",
-  "transaction_id": null
+  "transaction_id": "transaction_id8"
 }
 ```
 

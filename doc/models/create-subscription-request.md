@@ -59,7 +59,9 @@ Request for creating a subcription
     "phones": null,
     "code": null
   },
-  "card": null,
+  "card": {
+    "type": "credit"
+  },
   "code": null,
   "payment_method": null,
   "billing_type": null,

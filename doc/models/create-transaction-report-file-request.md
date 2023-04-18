@@ -18,8 +18,8 @@
 ```json
 {
   "name": "name0",
-  "start_at": null,
-  "end_at": null
+  "start_at": "2016-03-13T12:52:32.123Z",
+  "end_at": "end_at0"
 }
 ```
 

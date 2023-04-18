@@ -17,9 +17,9 @@
 
 ```json
 {
-  "country_code": null,
-  "number": null,
-  "area_code": null
+  "country_code": "country_code0",
+  "number": "number2",
+  "area_code": "area_code0"
 }
 ```
 

@@ -22,10 +22,29 @@ Request for creating a pricing scheme
 ```json
 {
   "scheme_type": "scheme_type0",
-  "price_brackets": null,
-  "price": null,
-  "minimum_price": null,
-  "percentage": null
+  "price_brackets": [
+    {
+      "start_quantity": 193,
+      "price": 125,
+      "end_quantity": 201,
+      "overage_price": 215
+    },
+    {
+      "start_quantity": 194,
+      "price": 124,
+      "end_quantity": 202,
+      "overage_price": 216
+    },
+    {
+      "start_quantity": 195,
+      "price": 123,
+      "end_quantity": 203,
+      "overage_price": 217
+    }
+  ],
+  "price": 16,
+  "minimum_price": 176,
+  "percentage": 4.18
 }
 ```
 

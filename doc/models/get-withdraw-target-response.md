@@ -16,8 +16,8 @@
 
 ```json
 {
-  "target_id": null,
-  "type": null
+  "target_id": "target_id0",
+  "type": "type0"
 }
 ```
 

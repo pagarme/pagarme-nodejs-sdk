@@ -26,16 +26,9 @@ The settings for creating a private label payment
 
 ```json
 {
-  "installments": null,
-  "statement_descriptor": null,
-  "card": null,
-  "card_id": null,
-  "card_token": null,
-  "recurrence": null,
-  "capture": null,
-  "extended_limit_enabled": null,
-  "extended_limit_code": null,
-  "recurrency_cycle": null
+  "installments": 1,
+  "capture": true,
+  "recurrency_cycle": "\"first\" or \"subsequent\""
 }
 ```
 

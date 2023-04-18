@@ -37,27 +37,7 @@ Response object for getting a charge
 
 ```json
 {
-  "id": null,
-  "code": null,
-  "gateway_id": null,
-  "amount": null,
-  "status": null,
-  "currency": null,
-  "payment_method": null,
-  "due_at": null,
-  "created_at": null,
-  "updated_at": null,
-  "last_transaction": null,
-  "invoice": null,
-  "order": null,
-  "customer": null,
-  "metadata": null,
-  "paid_at": null,
-  "canceled_at": null,
-  "canceled_amount": null,
-  "paid_amount": null,
-  "interest_and_fine_paid": null,
-  "recurrency_cycle": null
+  "recurrency_cycle": "\"first\" or \"subsequent\""
 }
 ```
 

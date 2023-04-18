@@ -1,5 +1,5 @@
 {
-  "version": "6.7.7",
+  "version": "6.7.9",
   "license": "MIT",
   "sideEffects": false,
   "main": "dist/cjs/index.js",
@@ -10,7 +10,7 @@
     "src"
   ],
   "engines": {
-    "node": ">=10.4.0"
+    "node": ">=14.17.0"
   },
   "scripts": {
     "build": "rm -rf dist & tsc -p tsconfig.esm.json & tsc -p tsconfig.cjs.json",
@@ -43,10 +43,10 @@
     "typescript": "^4.9.5"
   },
   "dependencies": {
-    "@apimatic/authentication-adapters": "^0.2.0",
-    "@apimatic/axios-client-adapter": "^0.1.0",
-    "@apimatic/core": "^0.9.0",
-    "@apimatic/schema": "^0.6.0"
+    "@apimatic/authentication-adapters": "^0.3.0",
+    "@apimatic/axios-client-adapter": "^0.2.0",
+    "@apimatic/core": "^0.10.0",
+    "@apimatic/schema": "^0.7.0"
   },
   "bugs": {
     "url": "https://github.com/pagarme/",

@@ -44,36 +44,19 @@
 
 ```json
 {
-  "id": null,
-  "code": null,
-  "start_at": null,
-  "interval": null,
-  "interval_count": null,
-  "billing_type": null,
-  "current_cycle": null,
-  "payment_method": null,
-  "currency": null,
-  "installments": null,
-  "status": null,
-  "created_at": null,
-  "updated_at": null,
-  "customer": null,
-  "card": null,
-  "items": null,
-  "statement_descriptor": null,
-  "metadata": null,
-  "setup": null,
-  "gateway_affiliation_id": null,
-  "next_billing_at": null,
-  "billing_day": null,
-  "minimum_price": null,
-  "canceled_at": null,
-  "discounts": null,
-  "increments": null,
-  "boleto_due_days": null,
-  "split": null,
-  "boleto": null,
-  "manual_billing": null
+  "boleto": {
+    "interest": {
+      "days": 2,
+      "type": "percentage",
+      "amount": 20
+    },
+    "fine": {
+      "days": 2,
+      "type": "flat",
+      "amount": 10
+    },
+    "max_days_to_pay_past_due": 2
+  }
 }
 ```
 

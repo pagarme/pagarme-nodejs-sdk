@@ -18,8 +18,14 @@ Anticipation limits
 
 ```json
 {
-  "max": null,
-  "min": null
+  "max": {
+    "amount": 140,
+    "anticipation_fee": 234
+  },
+  "min": {
+    "amount": 34,
+    "anticipation_fee": 60
+  }
 }
 ```
 

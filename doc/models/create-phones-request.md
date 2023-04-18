@@ -16,8 +16,16 @@
 
 ```json
 {
-  "home_phone": null,
-  "mobile_phone": null
+  "home_phone": {
+    "country_code": "country_code0",
+    "number": "number2",
+    "area_code": "area_code0"
+  },
+  "mobile_phone": {
+    "country_code": "country_code0",
+    "number": "number8",
+    "area_code": "area_code0"
+  }
 }
 ```
 

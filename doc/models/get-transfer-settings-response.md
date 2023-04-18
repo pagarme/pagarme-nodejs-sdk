@@ -17,9 +17,9 @@
 
 ```json
 {
-  "transfer_enabled": null,
-  "transfer_interval": null,
-  "transfer_day": null
+  "transfer_enabled": false,
+  "transfer_interval": "transfer_interval0",
+  "transfer_day": 18
 }
 ```
 

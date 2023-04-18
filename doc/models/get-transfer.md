@@ -33,18 +33,22 @@
   "status": "status8",
   "created_at": "2016-03-13T12:52:32.123Z",
   "updated_at": "2016-03-13T12:52:32.123Z",
-  "metadata": null,
-  "fee": null,
-  "funding_date": null,
-  "funding_estimated_date": null,
+  "metadata": {
+    "key0": "metadata3",
+    "key1": "metadata4",
+    "key2": "metadata5"
+  },
+  "fee": 168,
+  "funding_date": "2016-03-13T12:52:32.123Z",
+  "funding_estimated_date": "2016-03-13T12:52:32.123Z",
   "type": "type0",
   "source": {
-    "source_id": null,
-    "type": null
+    "source_id": "source_id8",
+    "type": "type6"
   },
   "target": {
-    "target_id": null,
-    "type": null
+    "target_id": "target_id2",
+    "type": "type8"
   }
 }
 ```
