@@ -47,8 +47,8 @@ Shipping data
     "line_1": "line_10",
     "line_2": "line_24"
   },
-  "max_delivery_date": null,
-  "estimated_delivery_date": null,
+  "max_delivery_date": "2016-03-13T12:52:32.123Z",
+  "estimated_delivery_date": "2016-03-13T12:52:32.123Z",
   "type": "type0"
 }
 ```

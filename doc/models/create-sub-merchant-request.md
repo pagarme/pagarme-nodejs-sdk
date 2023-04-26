@@ -31,9 +31,9 @@ SubMerchant
   "document": "document6",
   "type": "type0",
   "phone": {
-    "country_code": null,
-    "number": null,
-    "area_code": null
+    "country_code": "country_code0",
+    "number": "number8",
+    "area_code": "area_code0"
   },
   "address": {
     "street": "street6",

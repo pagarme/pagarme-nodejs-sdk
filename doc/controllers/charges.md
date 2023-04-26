@@ -103,6 +103,9 @@ async updateChargePaymentMethod(
 ```ts
 const chargeId = 'charge_id8';
 const requestCreditCard: CreateCreditCardPaymentRequest = {};
+requestCreditCard.installments = 1;
+requestCreditCard.capture = true;
+requestCreditCard.recurrencyCycle = '"first" or "subsequent"';
 
 const requestDebitCard: CreateDebitCardPaymentRequest = {};
 
@@ -130,6 +133,7 @@ const requestBoleto: CreateBoletoPaymentRequest = {
 };
 
 const requestVoucher: CreateVoucherPaymentRequest = {};
+requestVoucher.recurrencyCycle = '"first" or "subsequent"';
 
 const requestCash: CreateCashPaymentRequest = {
   description: 'description6',
@@ -142,6 +146,9 @@ const requestBankTransfer: CreateBankTransferPaymentRequest = {
 };
 
 const requestPrivateLabel: CreatePrivateLabelPaymentRequest = {};
+requestPrivateLabel.installments = 1;
+requestPrivateLabel.capture = true;
+requestPrivateLabel.recurrencyCycle = '"first" or "subsequent"';
 
 const request: UpdateChargePaymentMethodRequest = {
   updateSubscription: false,
@@ -382,6 +389,7 @@ async updateChargeCard(
 ```ts
 const chargeId = 'charge_id8';
 const requestCard: CreateCardRequest = {};
+requestCard.type = 'credit';
 
 const request: UpdateChargeCardRequest = {
   updateSubscription: false,

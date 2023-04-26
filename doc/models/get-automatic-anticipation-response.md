@@ -19,11 +19,15 @@
 
 ```json
 {
-  "enabled": null,
-  "type": null,
-  "volume_percentage": null,
-  "delay": null,
-  "days": null
+  "enabled": false,
+  "type": "type0",
+  "volume_percentage": 62,
+  "delay": 228,
+  "days": [
+    188,
+    189,
+    190
+  ]
 }
 ```
 

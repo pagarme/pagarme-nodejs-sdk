@@ -19,9 +19,7 @@ Interest Response
 
 ```json
 {
-  "days": null,
-  "type": null,
-  "amount": null
+  "type": "\"percentage\" or \"flat\""
 }
 ```
 

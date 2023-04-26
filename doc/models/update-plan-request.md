@@ -59,8 +59,8 @@ Request for updating a plan
     "key1": "metadata4",
     "key2": "metadata5"
   },
-  "minimum_price": null,
-  "trial_period_days": null
+  "minimum_price": 176,
+  "trial_period_days": 54
 }
 ```
 

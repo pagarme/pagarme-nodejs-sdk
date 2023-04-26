@@ -17,7 +17,7 @@ Request to update the end date of the current subscription cycle
 
 ```json
 {
-  "end_at": null
+  "end_at": "2016-03-13T12:52:32.123Z"
 }
 ```
 

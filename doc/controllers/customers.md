@@ -84,7 +84,6 @@ const requestMetadata: Record<string, string> = {'key0' : 'metadata3' } const re
   holderName: 'holder_name2',
   expMonth: 10,
   expYear: 30,
-  billingAddressId: 'billing_address_id2',
   billingAddress: requestBillingAddress,
   metadata: requestMetadata,
   label: 'label6',
@@ -480,6 +479,7 @@ async createCard(
 ```ts
 const customerId = 'customer_id8';
 const request: CreateCardRequest = {};
+request.type = 'credit';
 
 try {
   const { result, ...httpResponse } = await customersController.createCard(customerId, request);

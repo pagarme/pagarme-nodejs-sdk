@@ -22,12 +22,12 @@ Response object for getting an order item
 
 ```json
 {
-  "id": null,
-  "amount": null,
-  "description": null,
-  "quantity": null,
-  "category": null,
-  "code": null
+  "id": "id0",
+  "amount": 46,
+  "description": "description0",
+  "quantity": 68,
+  "category": "category2",
+  "code": "code8"
 }
 ```
 

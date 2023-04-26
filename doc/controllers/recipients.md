@@ -295,12 +295,10 @@ const requestBankAccountMetadata: Record<string, string> = {'key0' : 'metadata9'
   holderDocument: 'holder_document4',
   bank: 'bank8',
   branchNumber: 'branch_number6',
-  branchCheckDigit: 'branch_check_digit6',
   accountNumber: 'account_number0',
   accountCheckDigit: 'account_check_digit6',
   type: 'type0',
   metadata: requestBankAccountMetadata,
-  pixKey: 'pix_key4',
 };
 
 const request: UpdateRecipientBankAccountRequest = {
@@ -899,12 +897,10 @@ const requestDefaultBankAccountMetadata: Record<string, string> = {'key0' : 'met
   holderDocument: 'holder_document8',
   bank: 'bank2',
   branchNumber: 'branch_number0',
-  branchCheckDigit: 'branch_check_digit0',
   accountNumber: 'account_number4',
   accountCheckDigit: 'account_check_digit0',
   type: 'type4',
   metadata: requestDefaultBankAccountMetadata,
-  pixKey: 'pix_key8',
 };
 
 const requestMetadata: Record<string, string> = {'key0' : 'metadata3' } const request: CreateRecipientRequest = {

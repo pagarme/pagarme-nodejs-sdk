@@ -18,8 +18,14 @@ Payment Authentication response
 
 ```json
 {
-  "type": null,
-  "threed_secure": null
+  "type": "type0",
+  "threed_secure": {
+    "mpi": "mpi0",
+    "eci": "eci2",
+    "cavv": "cavv8",
+    "transaction_Id": "transaction_Id2",
+    "success_url": "success_url4"
+  }
 }
 ```
 

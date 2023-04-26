@@ -20,27 +20,12 @@ Request for updating card data
 
 ```json
 {
-  "update_subscription": false,
-  "card_id": "card_id4",
+  "update_subscription": null,
+  "card_id": null,
   "card": {
-    "number": null,
-    "holder_name": null,
-    "exp_month": null,
-    "exp_year": null,
-    "cvv": null,
-    "billing_address": null,
-    "brand": null,
-    "billing_address_id": null,
-    "metadata": null,
-    "type": null,
-    "options": null,
-    "holder_document": null,
-    "private_label": null,
-    "label": null,
-    "id": null,
-    "token": null
+    "type": "credit"
   },
-  "recurrence": false
+  "recurrence": null
 }
 ```
 

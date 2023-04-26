@@ -18,17 +18,17 @@ Checkout credit card payment request
 
 ```json
 {
-  "statement_descriptor": null,
+  "statement_descriptor": "statement_descriptor0",
   "authentication": {
     "type": "type2",
     "threed_secure": {
       "mpi": "mpi6",
-      "cavv": null,
-      "eci": null,
-      "transaction_id": null,
-      "success_url": null,
-      "ds_transaction_id": null,
-      "version": null
+      "cavv": "cavv2",
+      "eci": "eci6",
+      "transaction_id": "transaction_id4",
+      "success_url": "success_url8",
+      "ds_transaction_id": "ds_transaction_id4",
+      "version": "version2"
     }
   }
 }

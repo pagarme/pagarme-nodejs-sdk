@@ -33,23 +33,7 @@ Recipient response
 
 ```json
 {
-  "id": null,
-  "name": null,
-  "email": null,
-  "document": null,
-  "description": null,
-  "type": null,
-  "status": null,
-  "created_at": null,
-  "updated_at": null,
-  "deleted_at": null,
-  "default_bank_account": null,
-  "gateway_recipients": null,
-  "metadata": null,
-  "automatic_anticipation_settings": null,
-  "transfer_settings": null,
-  "code": null,
-  "payment_mode": null
+  "payment_mode": "bank_transfer"
 }
 ```
 

@@ -21,11 +21,7 @@ The settings for creating a voucher payment
 
 ```json
 {
-  "statement_descriptor": null,
-  "card_id": null,
-  "card_token": null,
-  "Card": null,
-  "recurrency_cycle": null
+  "recurrency_cycle": "\"first\" or \"subsequent\""
 }
 ```
 

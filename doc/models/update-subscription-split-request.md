@@ -22,8 +22,12 @@
       "type": "type6",
       "amount": 210,
       "recipient_id": "recipient_id6",
-      "options": null,
-      "split_rule_id": null
+      "options": {
+        "liable": false,
+        "charge_processing_fee": false,
+        "charge_remainder_fee": false
+      },
+      "split_rule_id": "split_rule_id6"
     }
   ]
 }

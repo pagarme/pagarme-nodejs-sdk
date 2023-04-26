@@ -118,6 +118,7 @@ async updateSubscriptionCard(
 ```ts
 const subscriptionId = 'subscription_id0';
 const requestCard: CreateCardRequest = {};
+requestCard.type = 'credit';
 
 const request: UpdateSubscriptionCardRequest = {
   card: requestCard,
@@ -452,6 +453,7 @@ async updateSubscriptionPaymentMethod(
 ```ts
 const subscriptionId = 'subscription_id0';
 const requestCard: CreateCardRequest = {};
+requestCard.type = 'credit';
 
 const request: UpdateSubscriptionPaymentMethodRequest = {
   paymentMethod: 'payment_method4',
@@ -817,6 +819,7 @@ const bodyCustomer: CreateCustomerRequest = {
 };
 
 const bodyCard: CreateCardRequest = {};
+bodyCard.type = 'credit';
 
 const bodyPricingScheme: CreatePricingSchemeRequest = {
   schemeType: 'scheme_type2',

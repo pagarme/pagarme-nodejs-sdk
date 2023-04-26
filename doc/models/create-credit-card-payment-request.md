@@ -31,21 +31,9 @@ The settings for creating a credit card payment
 
 ```json
 {
-  "installments": null,
-  "statement_descriptor": null,
-  "card": null,
-  "card_id": null,
-  "card_token": null,
-  "recurrence": null,
-  "capture": null,
-  "extended_limit_enabled": null,
-  "extended_limit_code": null,
-  "merchant_category_code": null,
-  "authentication": null,
-  "contactless": null,
-  "auto_recovery": null,
-  "operation_type": null,
-  "recurrency_cycle": null
+  "installments": 1,
+  "capture": true,
+  "recurrency_cycle": "\"first\" or \"subsequent\""
 }
 ```
 

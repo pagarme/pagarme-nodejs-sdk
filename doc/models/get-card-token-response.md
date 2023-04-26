@@ -24,14 +24,14 @@ Card token data
 
 ```json
 {
-  "last_four_digits": null,
-  "holder_name": null,
-  "holder_document": null,
-  "exp_month": null,
-  "exp_year": null,
-  "brand": null,
-  "type": null,
-  "label": null
+  "last_four_digits": "last_four_digits6",
+  "holder_name": "holder_name4",
+  "holder_document": "holder_document6",
+  "exp_month": 42,
+  "exp_year": 254,
+  "brand": "brand4",
+  "type": "type0",
+  "label": "label0"
 }
 ```
 

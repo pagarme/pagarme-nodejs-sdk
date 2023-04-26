@@ -15,7 +15,7 @@
 
 ```json
 {
-  "total": null
+  "total": 10
 }
 ```
 

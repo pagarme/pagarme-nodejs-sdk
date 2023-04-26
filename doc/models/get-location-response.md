@@ -18,8 +18,8 @@ Response object for geetting an order location request
 
 ```json
 {
-  "latitude": null,
-  "longitude": null
+  "latitude": "latitude6",
+  "longitude": "longitude4"
 }
 ```
 

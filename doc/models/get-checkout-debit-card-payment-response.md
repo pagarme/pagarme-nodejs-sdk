@@ -16,8 +16,17 @@
 
 ```json
 {
-  "statement_descriptor": null,
-  "authentication": null
+  "statement_descriptor": "statement_descriptor0",
+  "authentication": {
+    "type": "type2",
+    "threed_secure": {
+      "mpi": "mpi6",
+      "eci": "eci6",
+      "cavv": "cavv2",
+      "transaction_Id": "transaction_Id8",
+      "success_url": "success_url8"
+    }
+  }
 }
 ```
 

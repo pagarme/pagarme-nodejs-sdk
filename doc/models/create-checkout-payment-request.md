@@ -48,13 +48,52 @@ Checkout payment request
     }
   ],
   "success_url": "success_url2",
-  "default_payment_method": null,
-  "gateway_affiliation_id": null,
-  "credit_card": null,
-  "debit_card": null,
-  "boleto": null,
-  "customer_editable": null,
-  "expires_in": null,
+  "default_payment_method": "default_payment_method0",
+  "gateway_affiliation_id": "gateway_affiliation_id4",
+  "credit_card": {
+    "statement_descriptor": "statement_descriptor8",
+    "installments": [
+      {
+        "number": 19,
+        "total": 167
+      }
+    ],
+    "authentication": {
+      "type": "type0",
+      "threed_secure": {
+        "mpi": "mpi0",
+        "cavv": "cavv8",
+        "eci": "eci2",
+        "transaction_id": "transaction_id0",
+        "success_url": "success_url4",
+        "ds_transaction_id": "ds_transaction_id0",
+        "version": "version8"
+      }
+    },
+    "capture": false
+  },
+  "debit_card": {
+    "statement_descriptor": "statement_descriptor4",
+    "authentication": {
+      "type": "type6",
+      "threed_secure": {
+        "mpi": "mpi0",
+        "cavv": "cavv2",
+        "eci": "eci2",
+        "transaction_id": "transaction_id0",
+        "success_url": "success_url4",
+        "ds_transaction_id": "ds_transaction_id0",
+        "version": "version2"
+      }
+    }
+  },
+  "boleto": {
+    "bank": "bank8",
+    "instructions": "instructions2",
+    "due_at": "2016-03-13T12:52:32.123Z"
+  },
+  "customer_editable": false,
+  "expires_in": 226,
   "skip_checkout_success_page": false,
   "billing_address_editable": false,
   "billing_address": {
@@ -73,12 +112,35 @@ Checkout payment request
     "line_1": "line_18",
     "line_2": "line_26"
   },
-  "bank_transfer": null,
+  "bank_transfer": {
+    "bank": [
+      "bank9",
+      "bank0"
+    ],
+    "retries": 236
+  },
   "accepted_brands": [
     "accepted_brands8",
     "accepted_brands9"
   ],
-  "pix": null
+  "pix": {
+    "expires_at": "2016-03-13T12:52:32.123Z",
+    "expires_in": 250,
+    "additional_information": [
+      {
+        "Name": "Name7",
+        "Value": "Value5"
+      },
+      {
+        "Name": "Name8",
+        "Value": "Value6"
+      },
+      {
+        "Name": "Name9",
+        "Value": "Value7"
+      }
+    ]
+  }
 }
 ```
 

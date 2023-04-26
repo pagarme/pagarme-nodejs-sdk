@@ -22,7 +22,9 @@
   "card_sequence_number": "card_sequence_number0",
   "data": {
     "cipher": "cipher4",
-    "dukpt": null,
+    "dukpt": {
+      "ksn": "ksn0"
+    },
     "tags": [
       {
         "tag": "tag9",
@@ -41,7 +43,13 @@
       }
     ]
   },
-  "poi": null
+  "poi": {
+    "system_name": "system_name4",
+    "model": "model2",
+    "provider": "provider4",
+    "serial_number": "serial_number2",
+    "version_number": "version_number6"
+  }
 }
 ```
 

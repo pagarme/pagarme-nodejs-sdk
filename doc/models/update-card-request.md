@@ -14,7 +14,7 @@ Request for updating a card
 | `holderName` | `string` | Required | Holder name |
 | `expMonth` | `number` | Required | Expiration month |
 | `expYear` | `number` | Required | Expiration year |
-| `billingAddressId` | `string` | Required | Id of the address to be used as billing address |
+| `billingAddressId` | `string \| undefined` | Optional | Id of the address to be used as billing address |
 | `billingAddress` | [`CreateAddressRequest`](../../doc/models/create-address-request.md) | Required | Billing address |
 | `metadata` | `Record<string, string>` | Required | Metadata |
 | `label` | `string` | Required | - |

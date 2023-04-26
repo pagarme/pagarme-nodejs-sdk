@@ -18,7 +18,9 @@
 ```json
 {
   "cipher": "cipher4",
-  "dukpt": null,
+  "dukpt": {
+    "ksn": "ksn0"
+  },
   "tags": [
     {
       "tag": "tag9",

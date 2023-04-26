@@ -16,8 +16,8 @@
 
 ```json
 {
-  "due_at": null,
-  "instructions": null
+  "due_at": "2016-03-13T12:52:32.123Z",
+  "instructions": "instructions2"
 }
 ```
 

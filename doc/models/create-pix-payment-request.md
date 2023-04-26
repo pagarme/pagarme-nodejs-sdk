@@ -19,9 +19,18 @@ Contains information to create a pix payment
 
 ```json
 {
-  "expires_at": null,
-  "expires_in": null,
-  "additional_information": null
+  "expires_at": "2016-03-13T12:52:32.123Z",
+  "expires_in": 226,
+  "additional_information": [
+    {
+      "Name": "Name5",
+      "Value": "Value7"
+    },
+    {
+      "Name": "Name6",
+      "Value": "Value6"
+    }
+  ]
 }
 ```
 

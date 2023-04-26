@@ -25,88 +25,24 @@ Request for updating the payment method of a charge
 
 ```json
 {
-  "update_subscription": false,
-  "payment_method": "payment_method0",
+  "update_subscription": null,
+  "payment_method": null,
   "credit_card": {
-    "installments": null,
-    "statement_descriptor": null,
-    "card": null,
-    "card_id": null,
-    "card_token": null,
-    "recurrence": null,
-    "capture": null,
-    "extended_limit_enabled": null,
-    "extended_limit_code": null,
-    "merchant_category_code": null,
-    "authentication": null,
-    "contactless": null,
-    "auto_recovery": null,
-    "operation_type": null,
-    "recurrency_cycle": null
+    "installments": 1,
+    "capture": true,
+    "recurrency_cycle": "\"first\" or \"subsequent\""
   },
-  "debit_card": {
-    "statement_descriptor": null,
-    "card": null,
-    "card_id": null,
-    "card_token": null,
-    "recurrence": null,
-    "authentication": null,
-    "token": null
-  },
-  "boleto": {
-    "retries": 226,
-    "bank": "bank8",
-    "instructions": "instructions2",
-    "due_at": null,
-    "billing_address": {
-      "street": "street8",
-      "number": "number4",
-      "zip_code": "zip_code2",
-      "neighborhood": "neighborhood4",
-      "city": "city2",
-      "state": "state6",
-      "country": "country2",
-      "complement": "complement6",
-      "metadata": {
-        "key0": "metadata5"
-      },
-      "line_1": "line_18",
-      "line_2": "line_26"
-    },
-    "billing_address_id": null,
-    "nosso_numero": null,
-    "document_number": "document_number6",
-    "statement_descriptor": "statement_descriptor0",
-    "interest": null,
-    "fine": null,
-    "max_days_to_pay_past_due": null
-  },
+  "debit_card": null,
+  "boleto": null,
   "voucher": {
-    "statement_descriptor": null,
-    "card_id": null,
-    "card_token": null,
-    "Card": null,
-    "recurrency_cycle": null
+    "recurrency_cycle": "\"first\" or \"subsequent\""
   },
-  "cash": {
-    "description": "description0",
-    "confirm": false
-  },
-  "bank_transfer": {
-    "bank": "bank0",
-    "retries": 236
-  },
+  "cash": null,
+  "bank_transfer": null,
   "private_label": {
-    "installments": null,
-    "statement_descriptor": null,
-    "card": null,
-    "card_id": null,
-    "card_token": null,
-    "recurrence": null,
-    "capture": null,
-    "extended_limit_enabled": null,
-    "extended_limit_code": null,
-    "recurrency_cycle": null
+    "installments": 1,
+    "capture": true,
+    "recurrency_cycle": "\"first\" or \"subsequent\""
   }
 }
 ```

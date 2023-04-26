@@ -18,8 +18,21 @@ Response object for listing of transactions files
 
 ```json
 {
-  "data": null,
-  "paging": null
+  "data": [
+    {
+      "name": "name5",
+      "date": "2016-03-13T12:52:32.123Z"
+    },
+    {
+      "name": "name6",
+      "date": "2016-03-13T12:52:32.123Z"
+    }
+  ],
+  "paging": {
+    "total": 6,
+    "previous": "previous2",
+    "next": "next8"
+  }
 }
 ```
 

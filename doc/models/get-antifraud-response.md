@@ -19,11 +19,11 @@
 
 ```json
 {
-  "status": null,
-  "return_code": null,
-  "return_message": null,
-  "provider_name": null,
-  "score": null
+  "status": "status8",
+  "return_code": "return_code0",
+  "return_message": "return_message2",
+  "provider_name": "provider_name2",
+  "score": "score0"
 }
 ```
 
