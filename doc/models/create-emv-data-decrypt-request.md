@@ -18,21 +18,16 @@
 ```json
 {
   "cipher": "cipher4",
-  "dukpt": {
-    "ksn": "ksn0"
-  },
   "tags": [
     {
       "tag": "tag9",
       "lenght": "lenght7",
       "value": "value7"
-    },
-    {
-      "tag": "tag0",
-      "lenght": "lenght8",
-      "value": "value8"
     }
-  ]
+  ],
+  "dukpt": {
+    "ksn": "ksn0"
+  }
 }
 ```
 

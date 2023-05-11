@@ -28,18 +28,6 @@ Request for updating a pricing scheme
       "price": 125,
       "end_quantity": 201,
       "overage_price": 215
-    },
-    {
-      "start_quantity": 194,
-      "price": 124,
-      "end_quantity": 202,
-      "overage_price": 216
-    },
-    {
-      "start_quantity": 195,
-      "price": 123,
-      "end_quantity": 203,
-      "overage_price": 217
     }
   ],
   "price": 16,

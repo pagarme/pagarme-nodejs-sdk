@@ -46,27 +46,7 @@ Request for updating a customer
     },
     "line_1": "line_10",
     "line_2": "line_24"
-  },
-  "metadata": {
-    "key0": "metadata3",
-    "key1": "metadata4",
-    "key2": "metadata5"
-  },
-  "phones": {
-    "home_phone": {
-      "country_code": "country_code8",
-      "number": "number0",
-      "area_code": "area_code2"
-    },
-    "mobile_phone": {
-      "country_code": "country_code8",
-      "number": "number4",
-      "area_code": "area_code8"
-    }
-  },
-  "code": "code8",
-  "gender": "gender6",
-  "document_type": "document_type8"
+  }
 }
 ```
 

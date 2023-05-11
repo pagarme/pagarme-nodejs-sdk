@@ -57,9 +57,7 @@ Response object for getting an invoice item
     "end_quantity": 172,
     "overage_price": 186
   },
-  "quantity": 68,
-  "name": "name0",
-  "subscription_item_id": "subscription_item_id4"
+  "quantity": 68
 }
 ```
 

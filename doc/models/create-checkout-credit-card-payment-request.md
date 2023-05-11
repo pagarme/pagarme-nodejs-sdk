@@ -43,8 +43,7 @@ Checkout card payment request
       "eci": "eci6",
       "transaction_id": "transaction_id4",
       "success_url": "success_url8",
-      "ds_transaction_id": "ds_transaction_id4",
-      "version": "version2"
+      "ds_transaction_id": "ds_transaction_id4"
     }
   },
   "capture": false

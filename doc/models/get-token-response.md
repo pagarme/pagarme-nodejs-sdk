@@ -30,10 +30,7 @@ Token data
     "holder_name": "holder_name2",
     "holder_document": "holder_document0",
     "exp_month": 228,
-    "exp_year": 68,
-    "brand": "brand0",
-    "type": "type4",
-    "label": "label6"
+    "exp_year": 68
   }
 }
 ```

@@ -37,7 +37,12 @@ Response object for getting a charge
 
 ```json
 {
-  "recurrency_cycle": "\"first\" or \"subsequent\""
+  "recurrency_cycle": "\"first\" or \"subsequent\"",
+  "id": "id0",
+  "code": "code8",
+  "gateway_id": "gateway_id0",
+  "amount": 46,
+  "status": "status8"
 }
 ```
 

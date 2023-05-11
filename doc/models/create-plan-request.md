@@ -70,33 +70,6 @@ Request for creating a plan
       "description": "description7",
       "cycles": 109,
       "quantity": 127
-    },
-    {
-      "name": "name8",
-      "pricing_scheme": {
-        "scheme_type": "scheme_type0",
-        "price_brackets": [
-          {
-            "start_quantity": 59,
-            "price": 3,
-            "end_quantity": 67,
-            "overage_price": 81
-          },
-          {
-            "start_quantity": 60,
-            "price": 2,
-            "end_quantity": 68,
-            "overage_price": 82
-          }
-        ],
-        "price": 150,
-        "minimum_price": 54,
-        "percentage": 25.88
-      },
-      "id": "id8",
-      "description": "description8",
-      "cycles": 108,
-      "quantity": 128
     }
   ],
   "shippable": false,

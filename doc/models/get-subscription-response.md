@@ -56,7 +56,12 @@
       "amount": 10
     },
     "max_days_to_pay_past_due": 2
-  }
+  },
+  "id": "id0",
+  "code": "code8",
+  "start_at": "2016-03-13T12:52:32.123Z",
+  "interval": "interval2",
+  "interval_count": 82
 }
 ```
 

@@ -61,20 +61,6 @@ Request for creating a new subscription item
       "item_id": "item_id1",
       "cycles": 233,
       "description": "description1"
-    },
-    {
-      "value": 10.24,
-      "discount_type": "discount_type0",
-      "item_id": "item_id2",
-      "cycles": 232,
-      "description": "description2"
-    },
-    {
-      "value": 10.25,
-      "discount_type": "discount_type1",
-      "item_id": "item_id3",
-      "cycles": 231,
-      "description": "description3"
     }
   ],
   "name": "name0",
