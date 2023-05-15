@@ -61,8 +61,7 @@ Contains the settings for creating a boleto payment
     "days": 138,
     "type": "type2",
     "amount": 212
-  },
-  "max_days_to_pay_past_due": 122
+  }
 }
 ```
 

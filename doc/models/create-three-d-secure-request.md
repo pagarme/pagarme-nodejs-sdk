@@ -28,8 +28,7 @@ Creates a 3D-S authentication payment
   "eci": "eci0",
   "transaction_id": "transaction_id8",
   "success_url": "success_url2",
-  "ds_transaction_id": "ds_transaction_id8",
-  "version": "version4"
+  "ds_transaction_id": "ds_transaction_id8"
 }
 ```
 

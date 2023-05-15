@@ -19,9 +19,9 @@ Fine Request
 
 ```json
 {
-  "days": null,
+  "days": 120,
   "type": "\"percentage\" or \"flat\"",
-  "amount": null
+  "amount": 46
 }
 ```
 

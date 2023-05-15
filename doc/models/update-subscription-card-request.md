@@ -19,9 +19,14 @@ Request for updating the card from a subscription
 ```json
 {
   "card": {
-    "type": "credit"
+    "type": "credit",
+    "number": "number6",
+    "holder_name": "holder_name2",
+    "exp_month": 228,
+    "exp_year": 68,
+    "cvv": "cvv4"
   },
-  "card_id": null
+  "card_id": "card_id4"
 }
 ```
 

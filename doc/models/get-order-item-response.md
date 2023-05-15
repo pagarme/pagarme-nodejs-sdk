@@ -26,8 +26,7 @@ Response object for getting an order item
   "amount": 46,
   "description": "description0",
   "quantity": 68,
-  "category": "category2",
-  "code": "code8"
+  "category": "category2"
 }
 ```
 

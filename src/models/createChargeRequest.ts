@@ -7,6 +7,7 @@
 import {
   dict,
   lazy,
+  nullable,
   number,
   object,
   optional,
@@ -29,32 +30,38 @@ import {
 /** Request for creating a new charge */
 export interface CreateChargeRequest {
   /** Code */
-  code: string;
+  code?: string | null;
   /** The amount of the charge, in cents */
   amount: number;
   /** The customer's id */
-  customerId: string;
+  customerId?: string | null;
   /** Customer data */
-  customer: CreateCustomerRequest;
+  customer?: CreateCustomerRequest | null;
   /** Payment data */
   payment: CreatePaymentRequest;
   /** Metadata */
-  metadata: Record<string, string>;
+  metadata?: Record<string, string> | null;
   /** The charge due date */
-  dueAt?: string;
-  antifraud: CreateAntifraudRequest;
+  dueAt?: string | null;
+  antifraud?: CreateAntifraudRequest | null;
   /** Order Id */
   orderId: string;
 }
 
 export const createChargeRequestSchema: Schema<CreateChargeRequest> = object({
-  code: ['code', string()],
+  code: ['code', optional(nullable(string()))],
   amount: ['amount', number()],
-  customerId: ['customer_id', string()],
-  customer: ['customer', lazy(() => createCustomerRequestSchema)],
+  customerId: ['customer_id', optional(nullable(string()))],
+  customer: [
+    'customer',
+    optional(nullable(lazy(() => createCustomerRequestSchema))),
+  ],
   payment: ['payment', lazy(() => createPaymentRequestSchema)],
-  metadata: ['metadata', dict(string())],
-  dueAt: ['due_at', optional(string())],
-  antifraud: ['antifraud', lazy(() => createAntifraudRequestSchema)],
+  metadata: ['metadata', optional(nullable(dict(string())))],
+  dueAt: ['due_at', optional(nullable(string()))],
+  antifraud: [
+    'antifraud',
+    optional(nullable(lazy(() => createAntifraudRequestSchema))),
+  ],
   orderId: ['order_id', string()],
 });

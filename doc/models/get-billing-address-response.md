@@ -30,12 +30,7 @@ Response object for getting a billing address
   "number": "number2",
   "zip_code": "zip_code4",
   "neighborhood": "neighborhood6",
-  "city": "city0",
-  "state": "state4",
-  "country": "country4",
-  "complement": "complement4",
-  "line_1": "line_16",
-  "line_2": "line_28"
+  "city": "city0"
 }
 ```
 

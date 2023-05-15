@@ -287,24 +287,6 @@ const bodyitems0: CreateOrderItemRequest = {
 
 bodyItems[0] = bodyitems0;
 
-const bodyitems1: CreateOrderItemRequest = {
-  amount: 102,
-  description: 'description4',
-  quantity: 216,
-  category: 'category2',
-};
-
-bodyItems[1] = bodyitems1;
-
-const bodyitems2: CreateOrderItemRequest = {
-  amount: 103,
-  description: 'description5',
-  quantity: 217,
-  category: 'category3',
-};
-
-bodyItems[2] = bodyitems2;
-
 const bodyCustomerAddressMetadata: Record<string, string> = {'key0' : 'metadata7', 'key1' : 'metadata6' } const bodyCustomerAddress: CreateAddressRequest = {
   street: 'street0',
   number: 'number8',
@@ -339,12 +321,6 @@ const bodypayments0: CreatePaymentRequest = {
 };
 
 bodyPayments[0] = bodypayments0;
-
-const bodypayments1: CreatePaymentRequest = {
-  paymentMethod: 'payment_method9',
-};
-
-bodyPayments[1] = bodypayments1;
 
 const bodyMetadata: Record<string, string> = {'key0' : 'metadata7', 'key1' : 'metadata8' } const body: CreateOrderRequest = {
   items: bodyItems,

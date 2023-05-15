@@ -33,18 +33,6 @@ Request for updating a subscription item
         "price": 57,
         "end_quantity": 127,
         "overage_price": 141
-      },
-      {
-        "start_quantity": 120,
-        "price": 58,
-        "end_quantity": 128,
-        "overage_price": 142
-      },
-      {
-        "start_quantity": 121,
-        "price": 59,
-        "end_quantity": 129,
-        "overage_price": 143
       }
     ],
     "price": 166,

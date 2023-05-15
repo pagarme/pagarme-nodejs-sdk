@@ -852,80 +852,6 @@ const bodyitems0: CreateSubscriptionItemRequest = {
 
 bodyItems[0] = bodyitems0;
 
-const bodyitems1PricingScheme: CreatePricingSchemeRequest = {
-  schemeType: 'scheme_type4',
-};
-
-const bodyitems1Discounts: CreateDiscountRequest[] = [];
-
-const bodyitems1discounts0: CreateDiscountRequest = {
-  value: 65.47,
-  discountType: 'discount_type3',
-  itemId: 'item_id5',
-};
-
-bodyitems1Discounts[0] = bodyitems1discounts0;
-
-const bodyitems1discounts1: CreateDiscountRequest = {
-  value: 65.48,
-  discountType: 'discount_type4',
-  itemId: 'item_id6',
-};
-
-bodyitems1Discounts[1] = bodyitems1discounts1;
-
-const bodyitems1: CreateSubscriptionItemRequest = {
-  description: 'description4',
-  pricingScheme: bodyitems1PricingScheme,
-  id: 'id4',
-  planItemId: 'plan_item_id4',
-  discounts: bodyitems1Discounts,
-  name: 'name4',
-};
-
-bodyItems[1] = bodyitems1;
-
-const bodyitems2PricingScheme: CreatePricingSchemeRequest = {
-  schemeType: 'scheme_type3',
-};
-
-const bodyitems2Discounts: CreateDiscountRequest[] = [];
-
-const bodyitems2discounts0: CreateDiscountRequest = {
-  value: 65.48,
-  discountType: 'discount_type4',
-  itemId: 'item_id6',
-};
-
-bodyitems2Discounts[0] = bodyitems2discounts0;
-
-const bodyitems2discounts1: CreateDiscountRequest = {
-  value: 65.49,
-  discountType: 'discount_type5',
-  itemId: 'item_id7',
-};
-
-bodyitems2Discounts[1] = bodyitems2discounts1;
-
-const bodyitems2discounts2: CreateDiscountRequest = {
-  value: 65.5,
-  discountType: 'discount_type6',
-  itemId: 'item_id8',
-};
-
-bodyitems2Discounts[2] = bodyitems2discounts2;
-
-const bodyitems2: CreateSubscriptionItemRequest = {
-  description: 'description5',
-  pricingScheme: bodyitems2PricingScheme,
-  id: 'id5',
-  planItemId: 'plan_item_id5',
-  discounts: bodyitems2Discounts,
-  name: 'name5',
-};
-
-bodyItems[2] = bodyitems2;
-
 const bodyShippingAddressMetadata: Record<string, string> = {'key0' : 'metadata3', 'key1' : 'metadata2' } const bodyShippingAddress: CreateAddressRequest = {
   street: 'street6',
   number: 'number4',
@@ -969,22 +895,6 @@ const bodyincrements0: CreateIncrementRequest = {
 };
 
 bodyIncrements[0] = bodyincrements0;
-
-const bodyincrements1: CreateIncrementRequest = {
-  value: 38.84,
-  incrementType: 'increment_type4',
-  itemId: 'item_id8',
-};
-
-bodyIncrements[1] = bodyincrements1;
-
-const bodyincrements2: CreateIncrementRequest = {
-  value: 38.85,
-  incrementType: 'increment_type5',
-  itemId: 'item_id7',
-};
-
-bodyIncrements[2] = bodyincrements2;
 
 const body: CreateSubscriptionRequest = {
   customer: bodyCustomer,
@@ -1548,13 +1458,6 @@ const bodyPricingSchemepriceBrackets0: UpdatePriceBracketRequest = {
 
 bodyPricingSchemePriceBrackets[0] = bodyPricingSchemepriceBrackets0;
 
-const bodyPricingSchemepriceBrackets1: UpdatePriceBracketRequest = {
-  startQuantity: 32,
-  price: 226,
-};
-
-bodyPricingSchemePriceBrackets[1] = bodyPricingSchemepriceBrackets1;
-
 const bodyPricingScheme: UpdatePricingSchemeRequest = {
   schemeType: 'scheme_type2',
   priceBrackets: bodyPricingSchemePriceBrackets,
@@ -1623,14 +1526,6 @@ const requestdiscounts0: CreateDiscountRequest = {
 };
 
 requestDiscounts[0] = requestdiscounts0;
-
-const requestdiscounts1: CreateDiscountRequest = {
-  value: 200,
-  discountType: 'discount_type6',
-  itemId: 'item_id8',
-};
-
-requestDiscounts[1] = requestdiscounts1;
 
 const request: CreateSubscriptionItemRequest = {
   description: 'description6',
@@ -1950,22 +1845,6 @@ const requestrules0: CreateSplitRequest = {
 };
 
 requestRules[0] = requestrules0;
-
-const requestrules1: CreateSplitRequest = {
-  type: 'type5',
-  amount: 223,
-  recipientId: 'recipient_id5',
-};
-
-requestRules[1] = requestrules1;
-
-const requestrules2: CreateSplitRequest = {
-  type: 'type4',
-  amount: 224,
-  recipientId: 'recipient_id4',
-};
-
-requestRules[2] = requestrules2;
 
 const request: UpdateSubscriptionSplitRequest = {
   enabled: false,

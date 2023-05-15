@@ -32,7 +32,12 @@ Card data
 
 ```json
 {
-  "type": "credit"
+  "type": "credit",
+  "number": "number2",
+  "holder_name": "holder_name4",
+  "exp_month": 42,
+  "exp_year": 254,
+  "cvv": "cvv2"
 }
 ```
 

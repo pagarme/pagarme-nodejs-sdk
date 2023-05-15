@@ -28,10 +28,7 @@ Card token data
   "holder_name": "holder_name4",
   "holder_document": "holder_document6",
   "exp_month": 42,
-  "exp_year": 254,
-  "brand": "brand4",
-  "type": "type0",
-  "label": "label0"
+  "exp_year": 254
 }
 ```
 

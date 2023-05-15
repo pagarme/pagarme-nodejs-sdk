@@ -33,7 +33,12 @@ Recipient response
 
 ```json
 {
-  "payment_mode": "bank_transfer"
+  "payment_mode": "bank_transfer",
+  "id": "id0",
+  "name": "name0",
+  "email": "email6",
+  "document": "document6",
+  "description": "description0"
 }
 ```
 

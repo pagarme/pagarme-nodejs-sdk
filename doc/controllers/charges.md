@@ -602,54 +602,13 @@ async createCharge(
 ## Example Usage
 
 ```ts
-const requestCustomerAddressMetadata: Record<string, string> = {'key0' : 'metadata7', 'key1' : 'metadata6' } const requestCustomerAddress: CreateAddressRequest = {
-  street: 'street2',
-  number: 'number0',
-  zipCode: 'zip_code6',
-  neighborhood: 'neighborhood8',
-  city: 'city2',
-  state: 'state8',
-  country: 'country6',
-  complement: 'complement8',
-  metadata: requestCustomerAddressMetadata,
-  line1: 'line_16',
-  line2: 'line_20',
-};
-
-const requestCustomerMetadata: Record<string, string> = {'key0' : 'metadata3', 'key1' : 'metadata2', 'key2' : 'metadata1' } const requestCustomerPhones: CreatePhonesRequest = {};
-
-const requestCustomer: CreateCustomerRequest = {
-  name: '{\n    "name": "Tony Stark"\n}',
-  email: 'email0',
-  document: 'document0',
-  type: 'type4',
-  address: requestCustomerAddress,
-  metadata: requestCustomerMetadata,
-  phones: requestCustomerPhones,
-  code: 'code4',
-};
-
 const requestPayment: CreatePaymentRequest = {
   paymentMethod: 'payment_method2',
 };
 
-const requestMetadata: Record<string, string> = {'key0' : 'metadata3' } const requestAntifraudClearsale: CreateClearSaleRequest = {
-  customSla: 52,
-};
-
-const requestAntifraud: CreateAntifraudRequest = {
-  type: 'type0',
-  clearsale: requestAntifraudClearsale,
-};
-
 const request: CreateChargeRequest = {
-  code: 'code4',
   amount: 242,
-  customerId: 'customer_id4',
-  customer: requestCustomer,
   payment: requestPayment,
-  metadata: requestMetadata,
-  antifraud: requestAntifraud,
   orderId: 'order_id0',
 };
 

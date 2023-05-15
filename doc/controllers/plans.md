@@ -191,13 +191,6 @@ const bodyPricingSchemepriceBrackets0: UpdatePriceBracketRequest = {
 
 bodyPricingSchemePriceBrackets[0] = bodyPricingSchemepriceBrackets0;
 
-const bodyPricingSchemepriceBrackets1: UpdatePriceBracketRequest = {
-  startQuantity: 32,
-  price: 226,
-};
-
-bodyPricingSchemePriceBrackets[1] = bodyPricingSchemepriceBrackets1;
-
 const bodyPricingScheme: UpdatePricingSchemeRequest = {
   schemeType: 'scheme_type2',
   priceBrackets: bodyPricingSchemePriceBrackets,
@@ -360,32 +353,6 @@ const bodyitems0: CreatePlanItemRequest = {
 };
 
 bodyItems[0] = bodyitems0;
-
-const bodyitems1PricingScheme: CreatePricingSchemeRequest = {
-  schemeType: 'scheme_type4',
-};
-
-const bodyitems1: CreatePlanItemRequest = {
-  name: 'name4',
-  pricingScheme: bodyitems1PricingScheme,
-  id: 'id4',
-  description: 'description4',
-};
-
-bodyItems[1] = bodyitems1;
-
-const bodyitems2PricingScheme: CreatePricingSchemeRequest = {
-  schemeType: 'scheme_type3',
-};
-
-const bodyitems2: CreatePlanItemRequest = {
-  name: 'name5',
-  pricingScheme: bodyitems2PricingScheme,
-  id: 'id5',
-  description: 'description5',
-};
-
-bodyItems[2] = bodyitems2;
 
 const bodyPaymentMethods: string[] = ['payment_methods9'];
 const bodyInstallments: number[] = [207];
