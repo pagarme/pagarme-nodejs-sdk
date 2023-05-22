@@ -21,6 +21,7 @@ Response object when getting a pix transaction
 | `additionalInformation` | [`PixAdditionalInformation[] \| undefined`](../../doc/models/pix-additional-information.md) | Optional | - |
 | `endToEndId` | `string \| undefined` | Optional | - |
 | `payer` | [`GetPixPayerResponse \| undefined`](../../doc/models/get-pix-payer-response.md) | Optional | - |
+| `providerTransactionId` | `string \| undefined` | Optional | Provider transaction id |
 
 ## Example (as JSON)
 

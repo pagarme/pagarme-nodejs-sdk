@@ -51,11 +51,11 @@ export class Client implements ClientInterface {
         ? this._config.httpClientOptions.timeout
         : this._config.timeout;
     this._userAgent = updateUserAgent(
-      'PagarmeApiSDK - TypeScript 6.7.11',
+      'PagarmeApiSDK - TypeScript 6.7.12',
     );
     this._requestBuilderFactory = createRequestHandlerFactory(
       server => getBaseUri(server, this._config),
-      basicAuthenticationProvider(this._config),
+      basicAuthenticationProvider(this._config.basicAuthUserName, this._config.basicAuthPassword),
       new HttpClient(AbortError, {
         timeout: this._timeout,
         clientConfigOverrides: this._config.unstable_httpClientOptions,
