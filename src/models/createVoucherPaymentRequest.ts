@@ -13,10 +13,7 @@ import {
   Schema,
   string,
 } from '../schema';
-import {
-  CreateCardRequest,
-  createCardRequestSchema,
-} from './createCardRequest';
+import { CreateCardRequest, createCardRequestSchema } from './createCardRequest';
 
 /** The settings for creating a voucher payment */
 export interface CreateVoucherPaymentRequest {

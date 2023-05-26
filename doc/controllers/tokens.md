@@ -44,26 +44,28 @@ async createToken(
 
 ```ts
 const publicKey = 'public_key6';
-const requestCard: CreateCardTokenRequest = {
-  number: 'number2',
-  holderName: 'holder_name6',
-  expMonth: 80,
-  expYear: 216,
-  cvv: 'cvv8',
-  brand: 'brand4',
-  label: 'label0',
-};
 
 const request: CreateTokenRequest = {
   type: 'card',
-  card: requestCard,
+  card: {
+    number: 'number2',
+    holderName: 'holder_name6',
+    expMonth: 80,
+    expYear: 216,
+    cvv: 'cvv8',
+    brand: 'brand4',
+    label: 'label0',
+  },
 };
 
 try {
-  const { result, ...httpResponse } = await tokensController.createToken(publicKey, request);
+  const { result, ...httpResponse } = await tokensController.createToken(
+    publicKey,
+    request
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -102,12 +104,17 @@ async getToken(
 
 ```ts
 const id = 'id0';
+
 const publicKey = 'public_key6';
+
 try {
-  const { result, ...httpResponse } = await tokensController.getToken(id, publicKey);
+  const { result, ...httpResponse } = await tokensController.getToken(
+    id,
+    publicKey
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;

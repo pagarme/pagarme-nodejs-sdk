@@ -5,10 +5,7 @@
  */
 
 import { boolean, lazy, object, Schema, string } from '../schema';
-import {
-  CreateCardRequest,
-  createCardRequestSchema,
-} from './createCardRequest';
+import { CreateCardRequest, createCardRequestSchema } from './createCardRequest';
 
 /** Request for updating card data */
 export interface UpdateChargeCardRequest {
