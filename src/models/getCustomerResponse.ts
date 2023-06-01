@@ -19,10 +19,7 @@ import {
   GetAddressResponse,
   getAddressResponseSchema,
 } from './getAddressResponse';
-import {
-  GetPhonesResponse,
-  getPhonesResponseSchema,
-} from './getPhonesResponse';
+import { GetPhonesResponse, getPhonesResponseSchema } from './getPhonesResponse';
 
 /** Response object for getting a customer */
 export interface GetCustomerResponse {

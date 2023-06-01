@@ -13,10 +13,7 @@ import {
   Schema,
   string,
 } from '../schema';
-import {
-  CreateCardRequest,
-  createCardRequestSchema,
-} from './createCardRequest';
+import { CreateCardRequest, createCardRequestSchema } from './createCardRequest';
 
 /** The settings for creating a private label payment */
 export interface CreatePrivateLabelPaymentRequest {

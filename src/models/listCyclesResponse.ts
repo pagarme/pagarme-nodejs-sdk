@@ -5,10 +5,7 @@
  */
 
 import { array, lazy, nullable, object, optional, Schema } from '../schema';
-import {
-  GetPeriodResponse,
-  getPeriodResponseSchema,
-} from './getPeriodResponse';
+import { GetPeriodResponse, getPeriodResponseSchema } from './getPeriodResponse';
 import { PagingResponse, pagingResponseSchema } from './pagingResponse';
 
 /** Response object for listing subscription cycles */

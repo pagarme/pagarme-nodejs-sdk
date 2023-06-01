@@ -5,10 +5,7 @@
  */
 
 import { array, lazy, nullable, object, optional, Schema } from '../schema';
-import {
-  GetChargeResponse,
-  getChargeResponseSchema,
-} from './getChargeResponse';
+import { GetChargeResponse, getChargeResponseSchema } from './getChargeResponse';
 import { PagingResponse, pagingResponseSchema } from './pagingResponse';
 
 /** Response object for listing charges */

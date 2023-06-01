@@ -40,6 +40,8 @@ export interface GetPixTransactionResponse extends GetTransactionResponse {
   additionalInformation?: PixAdditionalInformation[] | null;
   endToEndId?: string | null;
   payer?: GetPixPayerResponse | null;
+  /** Pix provider TID */
+  pixProviderTid?: string | null;
 }
 
 export const getPixTransactionResponseSchema: Schema<any> = object({
@@ -52,6 +54,7 @@ export const getPixTransactionResponseSchema: Schema<any> = object({
   ],
   endToEndId: ['end_to_end_id', optional(nullable(string()))],
   payer: ['payer', optional(nullable(lazy(() => getPixPayerResponseSchema)))],
+  pixProviderTid: ['pix_provider_tid', optional(nullable(string()))],
   gatewayId: ['gateway_id', optional(nullable(string()))],
   amount: ['amount', optional(nullable(number()))],
   status: ['status', optional(nullable(string()))],

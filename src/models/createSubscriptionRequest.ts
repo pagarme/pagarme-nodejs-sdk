@@ -14,10 +14,7 @@ import {
   Schema,
   string,
 } from '../schema';
-import {
-  CreateCardRequest,
-  createCardRequestSchema,
-} from './createCardRequest';
+import { CreateCardRequest, createCardRequestSchema } from './createCardRequest';
 import {
   CreateCustomerRequest,
   createCustomerRequestSchema,
