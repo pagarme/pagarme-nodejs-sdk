@@ -10,6 +10,7 @@ import { RetryConfiguration } from './core';
 /** Default values for the configuration parameters of the client. */
 export const DEFAULT_CONFIGURATION: Configuration = {
   timeout: 0,
+  serviceRefererName: '',
   environment: Environment.Production,
   basicAuthUserName: 'TODO access token',
   basicAuthPassword: 'TODO access token',

@@ -9,6 +9,7 @@ import { HttpClientOptions } from './clientAdapter';
 /** An interface for all configuration parameters required by the SDK. */
 export interface Configuration {
   timeout: number;
+  serviceRefererName: string;
   environment: Environment;
   basicAuthUserName: string;
   basicAuthPassword: string;
