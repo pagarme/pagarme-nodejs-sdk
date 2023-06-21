@@ -5,6 +5,7 @@ The following parameters are configurable for the API Client:
 
 | Parameter | Type | Description |
 |  --- | --- | --- |
+| `serviceRefererName` | `string` |  |
 | `timeout` | `number` | Timeout for API calls.<br>*Default*: `0` |
 | `httpClientOptions` | `Partial<HttpClientOptions>` | Stable configurable http client options. |
 | `unstableHttpClientOptions` | `any` | Unstable configurable http client options. |
@@ -36,6 +37,7 @@ The API client can be initialized as follows:
 
 ```ts
 const client = new Client({
+  serviceRefererName: 'ServiceRefererName',
   timeout: 0,
   basicAuthUserName: 'BasicAuthUserName',
   basicAuthPassword: 'BasicAuthPassword',
@@ -50,14 +52,14 @@ The gateway for the SDK. This class acts as a factory for the Controllers and al
 
 | Name | Description |
 |  --- | --- |
-| orders | Gets OrdersController |
 | plans | Gets PlansController |
 | subscriptions | Gets SubscriptionsController |
 | invoices | Gets InvoicesController |
+| orders | Gets OrdersController |
 | customers | Gets CustomersController |
 | recipients | Gets RecipientsController |
 | charges | Gets ChargesController |
-| tokens | Gets TokensController |
 | transfers | Gets TransfersController |
+| tokens | Gets TokensController |
 | transactions | Gets TransactionsController |
 

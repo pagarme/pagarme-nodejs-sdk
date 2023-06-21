@@ -51,7 +51,7 @@ export class Client implements ClientInterface {
         ? this._config.httpClientOptions.timeout
         : this._config.timeout;
     this._userAgent = updateUserAgent(
-      'PagarmeApiSDK - TypeScript 6.7.12',
+      'PagarmeApiSDK - TypeScript 6.7.13',
     );
     this._requestBuilderFactory = createRequestHandlerFactory(
       server => getBaseUri(server, this._config),
@@ -66,6 +66,7 @@ export class Client implements ClientInterface {
         withErrorHandlers,
         withUserAgent(this._userAgent),
         withAuthenticationByDefault,
+        withServiceRefererName(this._config),
       ],
       this._retryConfig
     );
@@ -141,6 +142,16 @@ function withUserAgent(userAgent: string) {
     rb.interceptRequest(request => {
       const headers = request.headers ?? {};
       setHeader(headers, 'user-agent', userAgent);
+      return { ...request, headers };
+    });
+  };
+}
+
+function withServiceRefererName({ serviceRefererName }: { serviceRefererName: string }) {
+  return (rb: SdkRequestBuilder) => {
+    rb.interceptRequest(request => {
+      const headers = request.headers ?? {};
+      setHeader(headers, 'ServiceRefererName', serviceRefererName);
       return { ...request, headers };
     });
   };
