@@ -11,39 +11,39 @@ const subscriptionsController = new SubscriptionsController(client);
 ## Methods
 
 * [Renew Subscription](../../doc/controllers/subscriptions.md#renew-subscription)
-* [Update Subscription Card](../../doc/controllers/subscriptions.md#update-subscription-card)
-* [Delete Usage](../../doc/controllers/subscriptions.md#delete-usage)
-* [Create Discount](../../doc/controllers/subscriptions.md#create-discount)
-* [Create an Usage](../../doc/controllers/subscriptions.md#create-an-usage)
-* [Update Current Cycle Status](../../doc/controllers/subscriptions.md#update-current-cycle-status)
 * [Delete Discount](../../doc/controllers/subscriptions.md#delete-discount)
-* [Get Subscription Items](../../doc/controllers/subscriptions.md#get-subscription-items)
-* [Update Subscription Payment Method](../../doc/controllers/subscriptions.md#update-subscription-payment-method)
-* [Get Subscription Item](../../doc/controllers/subscriptions.md#get-subscription-item)
 * [Get Subscriptions](../../doc/controllers/subscriptions.md#get-subscriptions)
-* [Cancel Subscription](../../doc/controllers/subscriptions.md#cancel-subscription)
-* [Create Increment](../../doc/controllers/subscriptions.md#create-increment)
-* [Create Usage](../../doc/controllers/subscriptions.md#create-usage)
 * [Get Discount by Id](../../doc/controllers/subscriptions.md#get-discount-by-id)
 * [Create Subscription](../../doc/controllers/subscriptions.md#create-subscription)
 * [Get Increment by Id](../../doc/controllers/subscriptions.md#get-increment-by-id)
-* [Update Subscription Affiliation Id](../../doc/controllers/subscriptions.md#update-subscription-affiliation-id)
 * [Update Subscription Metadata](../../doc/controllers/subscriptions.md#update-subscription-metadata)
 * [Delete Increment](../../doc/controllers/subscriptions.md#delete-increment)
-* [Get Subscription Cycles](../../doc/controllers/subscriptions.md#get-subscription-cycles)
+* [Get Subscription](../../doc/controllers/subscriptions.md#get-subscription)
+* [Update Latest Period End At](../../doc/controllers/subscriptions.md#update-latest-period-end-at)
+* [Update Current Cycle Status](../../doc/controllers/subscriptions.md#update-current-cycle-status)
+* [Get Subscription Items](../../doc/controllers/subscriptions.md#get-subscription-items)
+* [Get Subscription Item](../../doc/controllers/subscriptions.md#get-subscription-item)
+* [Update Subscription Affiliation Id](../../doc/controllers/subscriptions.md#update-subscription-affiliation-id)
 * [Get Discounts](../../doc/controllers/subscriptions.md#get-discounts)
-* [Update Subscription Billing Date](../../doc/controllers/subscriptions.md#update-subscription-billing-date)
+* [Update Subscription Item](../../doc/controllers/subscriptions.md#update-subscription-item)
+* [Create Subscription Item](../../doc/controllers/subscriptions.md#create-subscription-item)
+* [Get Usages](../../doc/controllers/subscriptions.md#get-usages)
+* [Update Subscription Minium Price](../../doc/controllers/subscriptions.md#update-subscription-minium-price)
+* [Get Subscription Cycle by Id](../../doc/controllers/subscriptions.md#get-subscription-cycle-by-id)
+* [Create an Usage](../../doc/controllers/subscriptions.md#create-an-usage)
+* [Cancel Subscription](../../doc/controllers/subscriptions.md#cancel-subscription)
 * [Delete Subscription Item](../../doc/controllers/subscriptions.md#delete-subscription-item)
 * [Get Increments](../../doc/controllers/subscriptions.md#get-increments)
 * [Update Subscription Due Days](../../doc/controllers/subscriptions.md#update-subscription-due-days)
+* [Update Subscription Card](../../doc/controllers/subscriptions.md#update-subscription-card)
+* [Delete Usage](../../doc/controllers/subscriptions.md#delete-usage)
+* [Create Discount](../../doc/controllers/subscriptions.md#create-discount)
+* [Update Subscription Payment Method](../../doc/controllers/subscriptions.md#update-subscription-payment-method)
+* [Create Increment](../../doc/controllers/subscriptions.md#create-increment)
+* [Create Usage](../../doc/controllers/subscriptions.md#create-usage)
+* [Get Subscription Cycles](../../doc/controllers/subscriptions.md#get-subscription-cycles)
+* [Update Subscription Billing Date](../../doc/controllers/subscriptions.md#update-subscription-billing-date)
 * [Update Subscription Start At](../../doc/controllers/subscriptions.md#update-subscription-start-at)
-* [Update Subscription Item](../../doc/controllers/subscriptions.md#update-subscription-item)
-* [Create Subscription Item](../../doc/controllers/subscriptions.md#create-subscription-item)
-* [Get Subscription](../../doc/controllers/subscriptions.md#get-subscription)
-* [Get Usages](../../doc/controllers/subscriptions.md#get-usages)
-* [Update Latest Period End At](../../doc/controllers/subscriptions.md#update-latest-period-end-at)
-* [Update Subscription Minium Price](../../doc/controllers/subscriptions.md#update-subscription-minium-price)
-* [Get Subscription Cycle by Id](../../doc/controllers/subscriptions.md#get-subscription-cycle-by-id)
 * [Get Usage Report](../../doc/controllers/subscriptions.md#get-usage-report)
 * [Update Split Subscription](../../doc/controllers/subscriptions.md#update-split-subscription)
 
@@ -77,6 +77,1308 @@ const subscriptionId = 'subscription_id0';
 
 try {
   const { result, ...httpResponse } = await subscriptionsController.renewSubscription(subscriptionId);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Delete Discount
+
+Deletes a discount
+
+```ts
+async deleteDiscount(
+  subscriptionId: string,
+  discountId: string,
+  idempotencyKey?: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetDiscountResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | Subscription id |
+| `discountId` | `string` | Template, Required | Discount Id |
+| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`GetDiscountResponse`](../../doc/models/get-discount-response.md)
+
+## Example Usage
+
+```ts
+const subscriptionId = 'subscription_id0';
+
+const discountId = 'discount_id8';
+
+try {
+  const { result, ...httpResponse } = await subscriptionsController.deleteDiscount(
+    subscriptionId,
+    discountId
+  );
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Get Subscriptions
+
+Gets all subscriptions
+
+```ts
+async getSubscriptions(
+  page?: number,
+  size?: number,
+  code?: string,
+  billingType?: string,
+  customerId?: string,
+  planId?: string,
+  cardId?: string,
+  status?: string,
+  nextBillingSince?: string,
+  nextBillingUntil?: string,
+  createdSince?: string,
+  createdUntil?: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<ListSubscriptionsResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `page` | `number \| undefined` | Query, Optional | Page number |
+| `size` | `number \| undefined` | Query, Optional | Page size |
+| `code` | `string \| undefined` | Query, Optional | Filter for subscription's code |
+| `billingType` | `string \| undefined` | Query, Optional | Filter for subscription's billing type |
+| `customerId` | `string \| undefined` | Query, Optional | Filter for subscription's customer id |
+| `planId` | `string \| undefined` | Query, Optional | Filter for subscription's plan id |
+| `cardId` | `string \| undefined` | Query, Optional | Filter for subscription's card id |
+| `status` | `string \| undefined` | Query, Optional | Filter for subscription's status |
+| `nextBillingSince` | `string \| undefined` | Query, Optional | Filter for subscription's next billing date start range |
+| `nextBillingUntil` | `string \| undefined` | Query, Optional | Filter for subscription's next billing date end range |
+| `createdSince` | `string \| undefined` | Query, Optional | Filter for subscription's creation date start range |
+| `createdUntil` | `string \| undefined` | Query, Optional | Filter for subscriptions creation date end range |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`ListSubscriptionsResponse`](../../doc/models/list-subscriptions-response.md)
+
+## Example Usage
+
+```ts
+try {
+  const { result, ...httpResponse } = await subscriptionsController.getSubscriptions();
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Get Discount by Id
+
+```ts
+async getDiscountById(
+  subscriptionId: string,
+  discountId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetDiscountResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | The subscription id |
+| `discountId` | `string` | Template, Required | - |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`GetDiscountResponse`](../../doc/models/get-discount-response.md)
+
+## Example Usage
+
+```ts
+const subscriptionId = 'subscription_id0';
+
+const discountId = 'discountId0';
+
+try {
+  const { result, ...httpResponse } = await subscriptionsController.getDiscountById(
+    subscriptionId,
+    discountId
+  );
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Create Subscription
+
+Creates a new subscription
+
+```ts
+async createSubscription(
+  body: CreateSubscriptionRequest,
+  idempotencyKey?: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetSubscriptionResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `body` | [`CreateSubscriptionRequest`](../../doc/models/create-subscription-request.md) | Body, Required | Request for creating a subscription |
+| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
+
+## Example Usage
+
+```ts
+const body: CreateSubscriptionRequest = {
+  customer: {
+    name: '{\n    "name": "Tony Stark"\n}',
+    email: 'email2',
+    document: 'document2',
+    type: 'type6',
+    address: {
+      street: 'street0',
+      number: 'number8',
+      zipCode: 'zip_code4',
+      neighborhood: 'neighborhood6',
+      city: 'city0',
+      state: 'state6',
+      country: 'country4',
+      complement: 'complement6',
+      line1: 'line_16',
+      line2: 'line_28',
+    },
+    metadata: {
+      'key0': 'metadata9',
+      'key1': 'metadata0'
+    },
+    phones: {},
+    code: 'code2',
+  },
+  card: {
+    type: 'credit',
+  },
+  code: 'code4',
+  paymentMethod: 'payment_method4',
+  billingType: 'billing_type0',
+  statementDescriptor: 'statement_descriptor6',
+  description: 'description4',
+  currency: 'currency6',
+  interval: 'interval6',
+  intervalCount: 170,
+  pricingScheme: {
+    schemeType: 'scheme_type2',
+  },
+  items: [
+    {
+      description: 'description3',
+      pricingScheme: {
+        schemeType: 'scheme_type5',
+      },
+      id: 'id3',
+      planItemId: 'plan_item_id3',
+      discounts: [
+        {
+          value: 65.46,
+          discountType: 'discount_type2',
+          itemId: 'item_id4',
+        }
+      ],
+      name: 'name3',
+    }
+  ],
+  shipping: {
+    amount: 140,
+    description: 'description0',
+    recipientName: 'recipient_name8',
+    recipientPhone: 'recipient_phone2',
+    addressId: 'address_id0',
+    address: {
+      street: 'street6',
+      number: 'number4',
+      zipCode: 'zip_code0',
+      neighborhood: 'neighborhood2',
+      city: 'city6',
+      state: 'state2',
+      country: 'country0',
+      complement: 'complement2',
+      line1: 'line_10',
+      line2: 'line_24',
+    },
+    type: 'type0',
+  },
+  discounts: [
+    {
+      value: 95.59,
+      discountType: 'discount_type5',
+      itemId: 'item_id7',
+    }
+  ],
+  metadata: {
+    'key0': 'metadata7',
+    'key1': 'metadata8'
+  },
+  increments: [
+    {
+      value: 38.83,
+      incrementType: 'increment_type3',
+      itemId: 'item_id9',
+    }
+  ],
+};
+
+try {
+  const { result, ...httpResponse } = await subscriptionsController.createSubscription(body);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Get Increment by Id
+
+```ts
+async getIncrementById(
+  subscriptionId: string,
+  incrementId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetIncrementResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | The subscription Id |
+| `incrementId` | `string` | Template, Required | The increment Id |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`GetIncrementResponse`](../../doc/models/get-increment-response.md)
+
+## Example Usage
+
+```ts
+const subscriptionId = 'subscription_id0';
+
+const incrementId = 'increment_id8';
+
+try {
+  const { result, ...httpResponse } = await subscriptionsController.getIncrementById(
+    subscriptionId,
+    incrementId
+  );
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Update Subscription Metadata
+
+Updates the metadata from a subscription
+
+```ts
+async updateSubscriptionMetadata(
+  subscriptionId: string,
+  request: UpdateMetadataRequest,
+  idempotencyKey?: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetSubscriptionResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | The subscription id |
+| `request` | [`UpdateMetadataRequest`](../../doc/models/update-metadata-request.md) | Body, Required | Request for updating the subscrption metadata |
+| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
+
+## Example Usage
+
+```ts
+const subscriptionId = 'subscription_id0';
+
+const request: UpdateMetadataRequest = {
+  metadata: {
+    'key0': 'metadata3'
+  },
+};
+
+try {
+  const { result, ...httpResponse } = await subscriptionsController.updateSubscriptionMetadata(
+    subscriptionId,
+    request
+  );
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Delete Increment
+
+Deletes a increment
+
+```ts
+async deleteIncrement(
+  subscriptionId: string,
+  incrementId: string,
+  idempotencyKey?: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetIncrementResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | Subscription id |
+| `incrementId` | `string` | Template, Required | Increment id |
+| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`GetIncrementResponse`](../../doc/models/get-increment-response.md)
+
+## Example Usage
+
+```ts
+const subscriptionId = 'subscription_id0';
+
+const incrementId = 'increment_id8';
+
+try {
+  const { result, ...httpResponse } = await subscriptionsController.deleteIncrement(
+    subscriptionId,
+    incrementId
+  );
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Get Subscription
+
+Gets a subscription
+
+```ts
+async getSubscription(
+  subscriptionId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetSubscriptionResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | Subscription id |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
+
+## Example Usage
+
+```ts
+const subscriptionId = 'subscription_id0';
+
+try {
+  const { result, ...httpResponse } = await subscriptionsController.getSubscription(subscriptionId);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Update Latest Period End At
+
+```ts
+async updateLatestPeriodEndAt(
+  subscriptionId: string,
+  request: UpdateCurrentCycleEndDateRequest,
+  idempotencyKey?: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetSubscriptionResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | - |
+| `request` | [`UpdateCurrentCycleEndDateRequest`](../../doc/models/update-current-cycle-end-date-request.md) | Body, Required | Request for updating the end date of the current signature cycle |
+| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
+
+## Example Usage
+
+```ts
+const subscriptionId = 'subscription_id0';
+
+const request: UpdateCurrentCycleEndDateRequest = {};
+
+try {
+  const { result, ...httpResponse } = await subscriptionsController.updateLatestPeriodEndAt(
+    subscriptionId,
+    request
+  );
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Update Current Cycle Status
+
+```ts
+async updateCurrentCycleStatus(
+  subscriptionId: string,
+  request: UpdateCurrentCycleStatusRequest,
+  idempotencyKey?: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<void>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | Subscription Id |
+| `request` | [`UpdateCurrentCycleStatusRequest`](../../doc/models/update-current-cycle-status-request.md) | Body, Required | Request for updating the end date of the subscription current status |
+| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+`void`
+
+## Example Usage
+
+```ts
+const subscriptionId = 'subscription_id0';
+
+const request: UpdateCurrentCycleStatusRequest = {
+  status: 'status8',
+};
+
+try {
+  const { result, ...httpResponse } = await subscriptionsController.updateCurrentCycleStatus(
+    subscriptionId,
+    request
+  );
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Get Subscription Items
+
+Get Subscription Items
+
+```ts
+async getSubscriptionItems(
+  subscriptionId: string,
+  page?: number,
+  size?: number,
+  name?: string,
+  code?: string,
+  status?: string,
+  description?: string,
+  createdSince?: string,
+  createdUntil?: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<ListSubscriptionItemsResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | The subscription id |
+| `page` | `number \| undefined` | Query, Optional | Page number |
+| `size` | `number \| undefined` | Query, Optional | Page size |
+| `name` | `string \| undefined` | Query, Optional | The item name |
+| `code` | `string \| undefined` | Query, Optional | Identification code in the client system |
+| `status` | `string \| undefined` | Query, Optional | The item statis |
+| `description` | `string \| undefined` | Query, Optional | The item description |
+| `createdSince` | `string \| undefined` | Query, Optional | Filter for item's creation date start range |
+| `createdUntil` | `string \| undefined` | Query, Optional | Filter for item's creation date end range |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`ListSubscriptionItemsResponse`](../../doc/models/list-subscription-items-response.md)
+
+## Example Usage
+
+```ts
+const subscriptionId = 'subscription_id0';
+
+try {
+  const { result, ...httpResponse } = await subscriptionsController.getSubscriptionItems(subscriptionId);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Get Subscription Item
+
+Get Subscription Item
+
+```ts
+async getSubscriptionItem(
+  subscriptionId: string,
+  itemId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetSubscriptionItemResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | Subscription Id |
+| `itemId` | `string` | Template, Required | Item id |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`GetSubscriptionItemResponse`](../../doc/models/get-subscription-item-response.md)
+
+## Example Usage
+
+```ts
+const subscriptionId = 'subscription_id0';
+
+const itemId = 'item_id0';
+
+try {
+  const { result, ...httpResponse } = await subscriptionsController.getSubscriptionItem(
+    subscriptionId,
+    itemId
+  );
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Update Subscription Affiliation Id
+
+```ts
+async updateSubscriptionAffiliationId(
+  subscriptionId: string,
+  request: UpdateSubscriptionAffiliationIdRequest,
+  idempotencyKey?: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetSubscriptionResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | - |
+| `request` | [`UpdateSubscriptionAffiliationIdRequest`](../../doc/models/update-subscription-affiliation-id-request.md) | Body, Required | Request for updating a subscription affiliation id |
+| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
+
+## Example Usage
+
+```ts
+const subscriptionId = 'subscription_id0';
+
+const request: UpdateSubscriptionAffiliationIdRequest = {
+  gatewayAffiliationId: 'gateway_affiliation_id2',
+};
+
+try {
+  const { result, ...httpResponse } = await subscriptionsController.updateSubscriptionAffiliationId(
+    subscriptionId,
+    request
+  );
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Get Discounts
+
+```ts
+async getDiscounts(
+  subscriptionId: string,
+  page: number,
+  size: number,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<ListDiscountsResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | The subscription id |
+| `page` | `number` | Query, Required | Page number |
+| `size` | `number` | Query, Required | Page size |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`ListDiscountsResponse`](../../doc/models/list-discounts-response.md)
+
+## Example Usage
+
+```ts
+const subscriptionId = 'subscription_id0';
+
+const page = 30;
+
+const size = 18;
+
+try {
+  const { result, ...httpResponse } = await subscriptionsController.getDiscounts(
+    subscriptionId,
+    page,
+    size
+  );
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Update Subscription Item
+
+Updates a subscription item
+
+```ts
+async updateSubscriptionItem(
+  subscriptionId: string,
+  itemId: string,
+  body: UpdateSubscriptionItemRequest,
+  idempotencyKey?: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetSubscriptionItemResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | Subscription Id |
+| `itemId` | `string` | Template, Required | Item id |
+| `body` | [`UpdateSubscriptionItemRequest`](../../doc/models/update-subscription-item-request.md) | Body, Required | Request for updating a subscription item |
+| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`GetSubscriptionItemResponse`](../../doc/models/get-subscription-item-response.md)
+
+## Example Usage
+
+```ts
+const subscriptionId = 'subscription_id0';
+
+const itemId = 'item_id0';
+
+const body: UpdateSubscriptionItemRequest = {
+  description: 'description4',
+  status: 'status2',
+  pricingScheme: {
+    schemeType: 'scheme_type2',
+    priceBrackets: [
+      {
+        startQuantity: 31,
+        price: 225,
+      }
+    ],
+  },
+  name: 'name6',
+};
+
+try {
+  const { result, ...httpResponse } = await subscriptionsController.updateSubscriptionItem(
+    subscriptionId,
+    itemId,
+    body
+  );
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Create Subscription Item
+
+Creates a new Subscription item
+
+```ts
+async createSubscriptionItem(
+  subscriptionId: string,
+  request: CreateSubscriptionItemRequest,
+  idempotencyKey?: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetSubscriptionItemResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | Subscription id |
+| `request` | [`CreateSubscriptionItemRequest`](../../doc/models/create-subscription-item-request.md) | Body, Required | Request for creating a subscription item |
+| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`GetSubscriptionItemResponse`](../../doc/models/get-subscription-item-response.md)
+
+## Example Usage
+
+```ts
+const subscriptionId = 'subscription_id0';
+
+const request: CreateSubscriptionItemRequest = {
+  description: 'description6',
+  pricingScheme: {
+    schemeType: 'scheme_type2',
+  },
+  id: 'id6',
+  planItemId: 'plan_item_id6',
+  discounts: [
+    {
+      value: 199.99,
+      discountType: 'discount_type5',
+      itemId: 'item_id7',
+    }
+  ],
+  name: 'name6',
+};
+
+try {
+  const { result, ...httpResponse } = await subscriptionsController.createSubscriptionItem(
+    subscriptionId,
+    request
+  );
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Get Usages
+
+Lists all usages from a subscription item
+
+```ts
+async getUsages(
+  subscriptionId: string,
+  itemId: string,
+  page?: number,
+  size?: number,
+  code?: string,
+  group?: string,
+  usedSince?: string,
+  usedUntil?: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<ListUsagesResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | The subscription id |
+| `itemId` | `string` | Template, Required | The subscription item id |
+| `page` | `number \| undefined` | Query, Optional | Page number |
+| `size` | `number \| undefined` | Query, Optional | Page size |
+| `code` | `string \| undefined` | Query, Optional | Identification code in the client system |
+| `group` | `string \| undefined` | Query, Optional | Identification group in the client system |
+| `usedSince` | `string \| undefined` | Query, Optional | - |
+| `usedUntil` | `string \| undefined` | Query, Optional | - |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`ListUsagesResponse`](../../doc/models/list-usages-response.md)
+
+## Example Usage
+
+```ts
+const subscriptionId = 'subscription_id0';
+
+const itemId = 'item_id0';
+
+try {
+  const { result, ...httpResponse } = await subscriptionsController.getUsages(
+    subscriptionId,
+    itemId
+  );
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Update Subscription Minium Price
+
+Atualização do valor mínimo da assinatura
+
+```ts
+async updateSubscriptionMiniumPrice(
+  subscriptionId: string,
+  request: UpdateSubscriptionMinimumPriceRequest,
+  idempotencyKey?: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetSubscriptionResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | Subscription Id |
+| `request` | [`UpdateSubscriptionMinimumPriceRequest`](../../doc/models/update-subscription-minimum-price-request.md) | Body, Required | Request da requisição com o valor mínimo que será configurado |
+| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
+
+## Example Usage
+
+```ts
+const subscriptionId = 'subscription_id0';
+
+const request: UpdateSubscriptionMinimumPriceRequest = {};
+
+try {
+  const { result, ...httpResponse } = await subscriptionsController.updateSubscriptionMiniumPrice(
+    subscriptionId,
+    request
+  );
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Get Subscription Cycle by Id
+
+```ts
+async getSubscriptionCycleById(
+  subscriptionId: string,
+  cycleId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetPeriodResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | The subscription id |
+| `cycleId` | `string` | Template, Required | - |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`GetPeriodResponse`](../../doc/models/get-period-response.md)
+
+## Example Usage
+
+```ts
+const subscriptionId = 'subscription_id0';
+
+const cycleId = 'cycleId0';
+
+try {
+  const { result, ...httpResponse } = await subscriptionsController.getSubscriptionCycleById(
+    subscriptionId,
+    cycleId
+  );
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Create an Usage
+
+Create Usage
+
+```ts
+async createAnUsage(
+  subscriptionId: string,
+  itemId: string,
+  idempotencyKey?: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetUsageResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | Subscription id |
+| `itemId` | `string` | Template, Required | Item id |
+| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`GetUsageResponse`](../../doc/models/get-usage-response.md)
+
+## Example Usage
+
+```ts
+const subscriptionId = 'subscription_id0';
+
+const itemId = 'item_id0';
+
+try {
+  const { result, ...httpResponse } = await subscriptionsController.createAnUsage(
+    subscriptionId,
+    itemId
+  );
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Cancel Subscription
+
+Cancels a subscription
+
+```ts
+async cancelSubscription(
+  subscriptionId: string,
+  request?: CreateCancelSubscriptionRequest,
+  idempotencyKey?: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetSubscriptionResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | Subscription id |
+| `request` | [`CreateCancelSubscriptionRequest \| undefined`](../../doc/models/create-cancel-subscription-request.md) | Body, Optional | Request for cancelling a subscription |
+| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
+
+## Example Usage
+
+```ts
+const subscriptionId = 'subscription_id0';
+
+const request: CreateCancelSubscriptionRequest = {
+  cancelPendingInvoices: true,
+};
+
+try {
+  const { result, ...httpResponse } = await subscriptionsController.cancelSubscription(
+    subscriptionId,
+    request
+  );
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Delete Subscription Item
+
+Deletes a subscription item
+
+```ts
+async deleteSubscriptionItem(
+  subscriptionId: string,
+  subscriptionItemId: string,
+  idempotencyKey?: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetSubscriptionItemResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | Subscription id |
+| `subscriptionItemId` | `string` | Template, Required | Subscription item id |
+| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`GetSubscriptionItemResponse`](../../doc/models/get-subscription-item-response.md)
+
+## Example Usage
+
+```ts
+const subscriptionId = 'subscription_id0';
+
+const subscriptionItemId = 'subscription_item_id4';
+
+try {
+  const { result, ...httpResponse } = await subscriptionsController.deleteSubscriptionItem(
+    subscriptionId,
+    subscriptionItemId
+  );
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Get Increments
+
+```ts
+async getIncrements(
+  subscriptionId: string,
+  page?: number,
+  size?: number,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<ListIncrementsResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | The subscription id |
+| `page` | `number \| undefined` | Query, Optional | Page number |
+| `size` | `number \| undefined` | Query, Optional | Page size |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`ListIncrementsResponse`](../../doc/models/list-increments-response.md)
+
+## Example Usage
+
+```ts
+const subscriptionId = 'subscription_id0';
+
+try {
+  const { result, ...httpResponse } = await subscriptionsController.getIncrements(subscriptionId);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Update Subscription Due Days
+
+Updates the boleto due days from a subscription
+
+```ts
+async updateSubscriptionDueDays(
+  subscriptionId: string,
+  request: UpdateSubscriptionDueDaysRequest,
+  idempotencyKey?: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetSubscriptionResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | Subscription Id |
+| `request` | [`UpdateSubscriptionDueDaysRequest`](../../doc/models/update-subscription-due-days-request.md) | Body, Required | - |
+| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
+
+## Example Usage
+
+```ts
+const subscriptionId = 'subscription_id0';
+
+const request: UpdateSubscriptionDueDaysRequest = {
+  boletoDueDays: 226,
+};
+
+try {
+  const { result, ...httpResponse } = await subscriptionsController.updateSubscriptionDueDays(
+    subscriptionId,
+    request
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
@@ -249,209 +1551,6 @@ try {
 ```
 
 
-# Create an Usage
-
-Create Usage
-
-```ts
-async createAnUsage(
-  subscriptionId: string,
-  itemId: string,
-  idempotencyKey?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetUsageResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscriptionId` | `string` | Template, Required | Subscription id |
-| `itemId` | `string` | Template, Required | Item id |
-| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-[`GetUsageResponse`](../../doc/models/get-usage-response.md)
-
-## Example Usage
-
-```ts
-const subscriptionId = 'subscription_id0';
-
-const itemId = 'item_id0';
-
-try {
-  const { result, ...httpResponse } = await subscriptionsController.createAnUsage(
-    subscriptionId,
-    itemId
-  );
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Update Current Cycle Status
-
-```ts
-async updateCurrentCycleStatus(
-  subscriptionId: string,
-  request: UpdateCurrentCycleStatusRequest,
-  idempotencyKey?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<void>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscriptionId` | `string` | Template, Required | Subscription Id |
-| `request` | [`UpdateCurrentCycleStatusRequest`](../../doc/models/update-current-cycle-status-request.md) | Body, Required | Request for updating the end date of the subscription current status |
-| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-`void`
-
-## Example Usage
-
-```ts
-const subscriptionId = 'subscription_id0';
-
-const request: UpdateCurrentCycleStatusRequest = {
-  status: 'status8',
-};
-
-try {
-  const { result, ...httpResponse } = await subscriptionsController.updateCurrentCycleStatus(
-    subscriptionId,
-    request
-  );
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Delete Discount
-
-Deletes a discount
-
-```ts
-async deleteDiscount(
-  subscriptionId: string,
-  discountId: string,
-  idempotencyKey?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetDiscountResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscriptionId` | `string` | Template, Required | Subscription id |
-| `discountId` | `string` | Template, Required | Discount Id |
-| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-[`GetDiscountResponse`](../../doc/models/get-discount-response.md)
-
-## Example Usage
-
-```ts
-const subscriptionId = 'subscription_id0';
-
-const discountId = 'discount_id8';
-
-try {
-  const { result, ...httpResponse } = await subscriptionsController.deleteDiscount(
-    subscriptionId,
-    discountId
-  );
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Get Subscription Items
-
-Get Subscription Items
-
-```ts
-async getSubscriptionItems(
-  subscriptionId: string,
-  page?: number,
-  size?: number,
-  name?: string,
-  code?: string,
-  status?: string,
-  description?: string,
-  createdSince?: string,
-  createdUntil?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<ListSubscriptionItemsResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscriptionId` | `string` | Template, Required | The subscription id |
-| `page` | `number \| undefined` | Query, Optional | Page number |
-| `size` | `number \| undefined` | Query, Optional | Page size |
-| `name` | `string \| undefined` | Query, Optional | The item name |
-| `code` | `string \| undefined` | Query, Optional | Identification code in the client system |
-| `status` | `string \| undefined` | Query, Optional | The item statis |
-| `description` | `string \| undefined` | Query, Optional | The item description |
-| `createdSince` | `string \| undefined` | Query, Optional | Filter for item's creation date start range |
-| `createdUntil` | `string \| undefined` | Query, Optional | Filter for item's creation date end range |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-[`ListSubscriptionItemsResponse`](../../doc/models/list-subscription-items-response.md)
-
-## Example Usage
-
-```ts
-const subscriptionId = 'subscription_id0';
-
-try {
-  const { result, ...httpResponse } = await subscriptionsController.getSubscriptionItems(subscriptionId);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
 # Update Subscription Payment Method
 
 Updates the payment method from a subscription
@@ -493,164 +1592,6 @@ const request: UpdateSubscriptionPaymentMethodRequest = {
 
 try {
   const { result, ...httpResponse } = await subscriptionsController.updateSubscriptionPaymentMethod(
-    subscriptionId,
-    request
-  );
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Get Subscription Item
-
-Get Subscription Item
-
-```ts
-async getSubscriptionItem(
-  subscriptionId: string,
-  itemId: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetSubscriptionItemResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscriptionId` | `string` | Template, Required | Subscription Id |
-| `itemId` | `string` | Template, Required | Item id |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-[`GetSubscriptionItemResponse`](../../doc/models/get-subscription-item-response.md)
-
-## Example Usage
-
-```ts
-const subscriptionId = 'subscription_id0';
-
-const itemId = 'item_id0';
-
-try {
-  const { result, ...httpResponse } = await subscriptionsController.getSubscriptionItem(
-    subscriptionId,
-    itemId
-  );
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Get Subscriptions
-
-Gets all subscriptions
-
-```ts
-async getSubscriptions(
-  page?: number,
-  size?: number,
-  code?: string,
-  billingType?: string,
-  customerId?: string,
-  planId?: string,
-  cardId?: string,
-  status?: string,
-  nextBillingSince?: string,
-  nextBillingUntil?: string,
-  createdSince?: string,
-  createdUntil?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<ListSubscriptionsResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `page` | `number \| undefined` | Query, Optional | Page number |
-| `size` | `number \| undefined` | Query, Optional | Page size |
-| `code` | `string \| undefined` | Query, Optional | Filter for subscription's code |
-| `billingType` | `string \| undefined` | Query, Optional | Filter for subscription's billing type |
-| `customerId` | `string \| undefined` | Query, Optional | Filter for subscription's customer id |
-| `planId` | `string \| undefined` | Query, Optional | Filter for subscription's plan id |
-| `cardId` | `string \| undefined` | Query, Optional | Filter for subscription's card id |
-| `status` | `string \| undefined` | Query, Optional | Filter for subscription's status |
-| `nextBillingSince` | `string \| undefined` | Query, Optional | Filter for subscription's next billing date start range |
-| `nextBillingUntil` | `string \| undefined` | Query, Optional | Filter for subscription's next billing date end range |
-| `createdSince` | `string \| undefined` | Query, Optional | Filter for subscription's creation date start range |
-| `createdUntil` | `string \| undefined` | Query, Optional | Filter for subscriptions creation date end range |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-[`ListSubscriptionsResponse`](../../doc/models/list-subscriptions-response.md)
-
-## Example Usage
-
-```ts
-try {
-  const { result, ...httpResponse } = await subscriptionsController.getSubscriptions();
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Cancel Subscription
-
-Cancels a subscription
-
-```ts
-async cancelSubscription(
-  subscriptionId: string,
-  request?: CreateCancelSubscriptionRequest,
-  idempotencyKey?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetSubscriptionResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscriptionId` | `string` | Template, Required | Subscription id |
-| `request` | [`CreateCancelSubscriptionRequest \| undefined`](../../doc/models/create-cancel-subscription-request.md) | Body, Optional | Request for cancelling a subscription |
-| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
-
-## Example Usage
-
-```ts
-const subscriptionId = 'subscription_id0';
-
-const request: CreateCancelSubscriptionRequest = {
-  cancelPendingInvoices: true,
-};
-
-try {
-  const { result, ...httpResponse } = await subscriptionsController.cancelSubscription(
     subscriptionId,
     request
   );
@@ -776,392 +1717,6 @@ try {
 ```
 
 
-# Get Discount by Id
-
-```ts
-async getDiscountById(
-  subscriptionId: string,
-  discountId: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetDiscountResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscriptionId` | `string` | Template, Required | The subscription id |
-| `discountId` | `string` | Template, Required | - |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-[`GetDiscountResponse`](../../doc/models/get-discount-response.md)
-
-## Example Usage
-
-```ts
-const subscriptionId = 'subscription_id0';
-
-const discountId = 'discountId0';
-
-try {
-  const { result, ...httpResponse } = await subscriptionsController.getDiscountById(
-    subscriptionId,
-    discountId
-  );
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Create Subscription
-
-Creates a new subscription
-
-```ts
-async createSubscription(
-  body: CreateSubscriptionRequest,
-  idempotencyKey?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetSubscriptionResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `body` | [`CreateSubscriptionRequest`](../../doc/models/create-subscription-request.md) | Body, Required | Request for creating a subscription |
-| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
-
-## Example Usage
-
-```ts
-const body: CreateSubscriptionRequest = {
-  customer: {
-    name: '{\n    "name": "Tony Stark"\n}',
-    email: 'email2',
-    document: 'document2',
-    type: 'type6',
-    address: {
-      street: 'street0',
-      number: 'number8',
-      zipCode: 'zip_code4',
-      neighborhood: 'neighborhood6',
-      city: 'city0',
-      state: 'state6',
-      country: 'country4',
-      complement: 'complement6',
-      metadata: {
-        'key0': 'metadata7',
-        'key1': 'metadata6'
-      },
-      line1: 'line_16',
-      line2: 'line_28',
-    },
-    metadata: {
-      'key0': 'metadata9',
-      'key1': 'metadata0'
-    },
-    phones: {},
-    code: 'code2',
-  },
-  card: {
-    type: 'credit',
-  },
-  code: 'code4',
-  paymentMethod: 'payment_method4',
-  billingType: 'billing_type0',
-  statementDescriptor: 'statement_descriptor6',
-  description: 'description4',
-  currency: 'currency6',
-  interval: 'interval6',
-  intervalCount: 170,
-  pricingScheme: {
-    schemeType: 'scheme_type2',
-  },
-  items: [
-    {
-      description: 'description3',
-      pricingScheme: {
-        schemeType: 'scheme_type5',
-      },
-      id: 'id3',
-      planItemId: 'plan_item_id3',
-      discounts: [
-        {
-          value: 65.46,
-          discountType: 'discount_type2',
-          itemId: 'item_id4',
-        }
-      ],
-      name: 'name3',
-    }
-  ],
-  shipping: {
-    amount: 140,
-    description: 'description0',
-    recipientName: 'recipient_name8',
-    recipientPhone: 'recipient_phone2',
-    addressId: 'address_id0',
-    address: {
-      street: 'street6',
-      number: 'number4',
-      zipCode: 'zip_code0',
-      neighborhood: 'neighborhood2',
-      city: 'city6',
-      state: 'state2',
-      country: 'country0',
-      complement: 'complement2',
-      metadata: {
-        'key0': 'metadata3',
-        'key1': 'metadata2'
-      },
-      line1: 'line_10',
-      line2: 'line_24',
-    },
-    type: 'type0',
-  },
-  discounts: [
-    {
-      value: 95.59,
-      discountType: 'discount_type5',
-      itemId: 'item_id7',
-    }
-  ],
-  metadata: {
-    'key0': 'metadata7',
-    'key1': 'metadata8'
-  },
-  increments: [
-    {
-      value: 38.83,
-      incrementType: 'increment_type3',
-      itemId: 'item_id9',
-    }
-  ],
-};
-
-try {
-  const { result, ...httpResponse } = await subscriptionsController.createSubscription(body);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Get Increment by Id
-
-```ts
-async getIncrementById(
-  subscriptionId: string,
-  incrementId: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetIncrementResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscriptionId` | `string` | Template, Required | The subscription Id |
-| `incrementId` | `string` | Template, Required | The increment Id |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-[`GetIncrementResponse`](../../doc/models/get-increment-response.md)
-
-## Example Usage
-
-```ts
-const subscriptionId = 'subscription_id0';
-
-const incrementId = 'increment_id8';
-
-try {
-  const { result, ...httpResponse } = await subscriptionsController.getIncrementById(
-    subscriptionId,
-    incrementId
-  );
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Update Subscription Affiliation Id
-
-```ts
-async updateSubscriptionAffiliationId(
-  subscriptionId: string,
-  request: UpdateSubscriptionAffiliationIdRequest,
-  idempotencyKey?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetSubscriptionResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscriptionId` | `string` | Template, Required | - |
-| `request` | [`UpdateSubscriptionAffiliationIdRequest`](../../doc/models/update-subscription-affiliation-id-request.md) | Body, Required | Request for updating a subscription affiliation id |
-| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
-
-## Example Usage
-
-```ts
-const subscriptionId = 'subscription_id0';
-
-const request: UpdateSubscriptionAffiliationIdRequest = {
-  gatewayAffiliationId: 'gateway_affiliation_id2',
-};
-
-try {
-  const { result, ...httpResponse } = await subscriptionsController.updateSubscriptionAffiliationId(
-    subscriptionId,
-    request
-  );
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Update Subscription Metadata
-
-Updates the metadata from a subscription
-
-```ts
-async updateSubscriptionMetadata(
-  subscriptionId: string,
-  request: UpdateMetadataRequest,
-  idempotencyKey?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetSubscriptionResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscriptionId` | `string` | Template, Required | The subscription id |
-| `request` | [`UpdateMetadataRequest`](../../doc/models/update-metadata-request.md) | Body, Required | Request for updating the subscrption metadata |
-| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
-
-## Example Usage
-
-```ts
-const subscriptionId = 'subscription_id0';
-
-const request: UpdateMetadataRequest = {
-  metadata: {
-    'key0': 'metadata3'
-  },
-};
-
-try {
-  const { result, ...httpResponse } = await subscriptionsController.updateSubscriptionMetadata(
-    subscriptionId,
-    request
-  );
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Delete Increment
-
-Deletes a increment
-
-```ts
-async deleteIncrement(
-  subscriptionId: string,
-  incrementId: string,
-  idempotencyKey?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetIncrementResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscriptionId` | `string` | Template, Required | Subscription id |
-| `incrementId` | `string` | Template, Required | Increment id |
-| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-[`GetIncrementResponse`](../../doc/models/get-increment-response.md)
-
-## Example Usage
-
-```ts
-const subscriptionId = 'subscription_id0';
-
-const incrementId = 'increment_id8';
-
-try {
-  const { result, ...httpResponse } = await subscriptionsController.deleteIncrement(
-    subscriptionId,
-    incrementId
-  );
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
 # Get Subscription Cycles
 
 ```ts
@@ -1197,56 +1752,6 @@ const size = 'size0';
 
 try {
   const { result, ...httpResponse } = await subscriptionsController.getSubscriptionCycles(
-    subscriptionId,
-    page,
-    size
-  );
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Get Discounts
-
-```ts
-async getDiscounts(
-  subscriptionId: string,
-  page: number,
-  size: number,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<ListDiscountsResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscriptionId` | `string` | Template, Required | The subscription id |
-| `page` | `number` | Query, Required | Page number |
-| `size` | `number` | Query, Required | Page size |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-[`ListDiscountsResponse`](../../doc/models/list-discounts-response.md)
-
-## Example Usage
-
-```ts
-const subscriptionId = 'subscription_id0';
-
-const page = 30;
-
-const size = 18;
-
-try {
-  const { result, ...httpResponse } = await subscriptionsController.getDiscounts(
     subscriptionId,
     page,
     size
@@ -1313,148 +1818,6 @@ try {
 ```
 
 
-# Delete Subscription Item
-
-Deletes a subscription item
-
-```ts
-async deleteSubscriptionItem(
-  subscriptionId: string,
-  subscriptionItemId: string,
-  idempotencyKey?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetSubscriptionItemResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscriptionId` | `string` | Template, Required | Subscription id |
-| `subscriptionItemId` | `string` | Template, Required | Subscription item id |
-| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-[`GetSubscriptionItemResponse`](../../doc/models/get-subscription-item-response.md)
-
-## Example Usage
-
-```ts
-const subscriptionId = 'subscription_id0';
-
-const subscriptionItemId = 'subscription_item_id4';
-
-try {
-  const { result, ...httpResponse } = await subscriptionsController.deleteSubscriptionItem(
-    subscriptionId,
-    subscriptionItemId
-  );
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Get Increments
-
-```ts
-async getIncrements(
-  subscriptionId: string,
-  page?: number,
-  size?: number,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<ListIncrementsResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscriptionId` | `string` | Template, Required | The subscription id |
-| `page` | `number \| undefined` | Query, Optional | Page number |
-| `size` | `number \| undefined` | Query, Optional | Page size |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-[`ListIncrementsResponse`](../../doc/models/list-increments-response.md)
-
-## Example Usage
-
-```ts
-const subscriptionId = 'subscription_id0';
-
-try {
-  const { result, ...httpResponse } = await subscriptionsController.getIncrements(subscriptionId);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Update Subscription Due Days
-
-Updates the boleto due days from a subscription
-
-```ts
-async updateSubscriptionDueDays(
-  subscriptionId: string,
-  request: UpdateSubscriptionDueDaysRequest,
-  idempotencyKey?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetSubscriptionResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscriptionId` | `string` | Template, Required | Subscription Id |
-| `request` | [`UpdateSubscriptionDueDaysRequest`](../../doc/models/update-subscription-due-days-request.md) | Body, Required | - |
-| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
-
-## Example Usage
-
-```ts
-const subscriptionId = 'subscription_id0';
-
-const request: UpdateSubscriptionDueDaysRequest = {
-  boletoDueDays: 226,
-};
-
-try {
-  const { result, ...httpResponse } = await subscriptionsController.updateSubscriptionDueDays(
-    subscriptionId,
-    request
-  );
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
 # Update Subscription Start At
 
 Updates the start at date from a subscription
@@ -1494,377 +1857,6 @@ try {
   const { result, ...httpResponse } = await subscriptionsController.updateSubscriptionStartAt(
     subscriptionId,
     request
-  );
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Update Subscription Item
-
-Updates a subscription item
-
-```ts
-async updateSubscriptionItem(
-  subscriptionId: string,
-  itemId: string,
-  body: UpdateSubscriptionItemRequest,
-  idempotencyKey?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetSubscriptionItemResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscriptionId` | `string` | Template, Required | Subscription Id |
-| `itemId` | `string` | Template, Required | Item id |
-| `body` | [`UpdateSubscriptionItemRequest`](../../doc/models/update-subscription-item-request.md) | Body, Required | Request for updating a subscription item |
-| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-[`GetSubscriptionItemResponse`](../../doc/models/get-subscription-item-response.md)
-
-## Example Usage
-
-```ts
-const subscriptionId = 'subscription_id0';
-
-const itemId = 'item_id0';
-
-const body: UpdateSubscriptionItemRequest = {
-  description: 'description4',
-  status: 'status2',
-  pricingScheme: {
-    schemeType: 'scheme_type2',
-    priceBrackets: [
-      {
-        startQuantity: 31,
-        price: 225,
-      }
-    ],
-  },
-  name: 'name6',
-};
-
-try {
-  const { result, ...httpResponse } = await subscriptionsController.updateSubscriptionItem(
-    subscriptionId,
-    itemId,
-    body
-  );
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Create Subscription Item
-
-Creates a new Subscription item
-
-```ts
-async createSubscriptionItem(
-  subscriptionId: string,
-  request: CreateSubscriptionItemRequest,
-  idempotencyKey?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetSubscriptionItemResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscriptionId` | `string` | Template, Required | Subscription id |
-| `request` | [`CreateSubscriptionItemRequest`](../../doc/models/create-subscription-item-request.md) | Body, Required | Request for creating a subscription item |
-| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-[`GetSubscriptionItemResponse`](../../doc/models/get-subscription-item-response.md)
-
-## Example Usage
-
-```ts
-const subscriptionId = 'subscription_id0';
-
-const request: CreateSubscriptionItemRequest = {
-  description: 'description6',
-  pricingScheme: {
-    schemeType: 'scheme_type2',
-  },
-  id: 'id6',
-  planItemId: 'plan_item_id6',
-  discounts: [
-    {
-      value: 199.99,
-      discountType: 'discount_type5',
-      itemId: 'item_id7',
-    }
-  ],
-  name: 'name6',
-};
-
-try {
-  const { result, ...httpResponse } = await subscriptionsController.createSubscriptionItem(
-    subscriptionId,
-    request
-  );
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Get Subscription
-
-Gets a subscription
-
-```ts
-async getSubscription(
-  subscriptionId: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetSubscriptionResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscriptionId` | `string` | Template, Required | Subscription id |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
-
-## Example Usage
-
-```ts
-const subscriptionId = 'subscription_id0';
-
-try {
-  const { result, ...httpResponse } = await subscriptionsController.getSubscription(subscriptionId);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Get Usages
-
-Lists all usages from a subscription item
-
-```ts
-async getUsages(
-  subscriptionId: string,
-  itemId: string,
-  page?: number,
-  size?: number,
-  code?: string,
-  group?: string,
-  usedSince?: string,
-  usedUntil?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<ListUsagesResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscriptionId` | `string` | Template, Required | The subscription id |
-| `itemId` | `string` | Template, Required | The subscription item id |
-| `page` | `number \| undefined` | Query, Optional | Page number |
-| `size` | `number \| undefined` | Query, Optional | Page size |
-| `code` | `string \| undefined` | Query, Optional | Identification code in the client system |
-| `group` | `string \| undefined` | Query, Optional | Identification group in the client system |
-| `usedSince` | `string \| undefined` | Query, Optional | - |
-| `usedUntil` | `string \| undefined` | Query, Optional | - |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-[`ListUsagesResponse`](../../doc/models/list-usages-response.md)
-
-## Example Usage
-
-```ts
-const subscriptionId = 'subscription_id0';
-
-const itemId = 'item_id0';
-
-try {
-  const { result, ...httpResponse } = await subscriptionsController.getUsages(
-    subscriptionId,
-    itemId
-  );
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Update Latest Period End At
-
-```ts
-async updateLatestPeriodEndAt(
-  subscriptionId: string,
-  request: UpdateCurrentCycleEndDateRequest,
-  idempotencyKey?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetSubscriptionResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscriptionId` | `string` | Template, Required | - |
-| `request` | [`UpdateCurrentCycleEndDateRequest`](../../doc/models/update-current-cycle-end-date-request.md) | Body, Required | Request for updating the end date of the current signature cycle |
-| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
-
-## Example Usage
-
-```ts
-const subscriptionId = 'subscription_id0';
-
-const request: UpdateCurrentCycleEndDateRequest = {};
-
-try {
-  const { result, ...httpResponse } = await subscriptionsController.updateLatestPeriodEndAt(
-    subscriptionId,
-    request
-  );
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Update Subscription Minium Price
-
-Atualização do valor mínimo da assinatura
-
-```ts
-async updateSubscriptionMiniumPrice(
-  subscriptionId: string,
-  request: UpdateSubscriptionMinimumPriceRequest,
-  idempotencyKey?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetSubscriptionResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscriptionId` | `string` | Template, Required | Subscription Id |
-| `request` | [`UpdateSubscriptionMinimumPriceRequest`](../../doc/models/update-subscription-minimum-price-request.md) | Body, Required | Request da requisição com o valor mínimo que será configurado |
-| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
-
-## Example Usage
-
-```ts
-const subscriptionId = 'subscription_id0';
-
-const request: UpdateSubscriptionMinimumPriceRequest = {};
-
-try {
-  const { result, ...httpResponse } = await subscriptionsController.updateSubscriptionMiniumPrice(
-    subscriptionId,
-    request
-  );
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Get Subscription Cycle by Id
-
-```ts
-async getSubscriptionCycleById(
-  subscriptionId: string,
-  cycleId: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetPeriodResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscriptionId` | `string` | Template, Required | The subscription id |
-| `cycleId` | `string` | Template, Required | - |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-[`GetPeriodResponse`](../../doc/models/get-period-response.md)
-
-## Example Usage
-
-```ts
-const subscriptionId = 'subscription_id0';
-
-const cycleId = 'cycleId0';
-
-try {
-  const { result, ...httpResponse } = await subscriptionsController.getSubscriptionCycleById(
-    subscriptionId,
-    cycleId
   );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;

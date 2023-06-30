@@ -84,73 +84,38 @@ export class OrdersController extends BaseController {
   }
 
   /**
-   * @param orderId         Order Id
-   * @param itemId          Item Id
-   * @param request         Item Model
-   * @param idempotencyKey
+   * @param orderId Order Id
+   * @param itemId  Item Id
    * @return Response from the API call
    */
-  async updateOrderItem(
+  async getOrderItem(
     orderId: string,
     itemId: string,
-    request: UpdateOrderItemRequest,
-    idempotencyKey?: string,
     requestOptions?: RequestOptions
   ): Promise<ApiResponse<GetOrderItemResponse>> {
-    const req = this.createRequest('PUT');
+    const req = this.createRequest('GET');
     const mapped = req.prepareArgs({
       orderId: [orderId, string()],
       itemId: [itemId, string()],
-      request: [request, updateOrderItemRequestSchema],
-      idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
-    req.json(mapped.request);
     req.appendTemplatePath`/orders/${mapped.orderId}/items/${mapped.itemId}`;
     return req.callAsJson(getOrderItemResponseSchema, requestOptions);
   }
 
   /**
-   * @param orderId         Order Id
-   * @param idempotencyKey
+   * Gets an order
+   *
+   * @param orderId  Order id
    * @return Response from the API call
    */
-  async deleteAllOrderItems(
+  async getOrder(
     orderId: string,
-    idempotencyKey?: string,
     requestOptions?: RequestOptions
   ): Promise<ApiResponse<GetOrderResponse>> {
-    const req = this.createRequest('DELETE');
-    const mapped = req.prepareArgs({
-      orderId: [orderId, string()],
-      idempotencyKey: [idempotencyKey, optional(string())],
-    });
-    req.header('idempotency-key', mapped.idempotencyKey);
-    req.appendTemplatePath`/orders/${mapped.orderId}/items`;
+    const req = this.createRequest('GET');
+    const mapped = req.prepareArgs({ orderId: [orderId, string()] });
+    req.appendTemplatePath`/orders/${mapped.orderId}`;
     return req.callAsJson(getOrderResponseSchema, requestOptions);
-  }
-
-  /**
-   * @param orderId         Order Id
-   * @param itemId          Item Id
-   * @param idempotencyKey
-   * @return Response from the API call
-   */
-  async deleteOrderItem(
-    orderId: string,
-    itemId: string,
-    idempotencyKey?: string,
-    requestOptions?: RequestOptions
-  ): Promise<ApiResponse<GetOrderItemResponse>> {
-    const req = this.createRequest('DELETE');
-    const mapped = req.prepareArgs({
-      orderId: [orderId, string()],
-      itemId: [itemId, string()],
-      idempotencyKey: [idempotencyKey, optional(string())],
-    });
-    req.header('idempotency-key', mapped.idempotencyKey);
-    req.appendTemplatePath`/orders/${mapped.orderId}/items/${mapped.itemId}`;
-    return req.callAsJson(getOrderItemResponseSchema, requestOptions);
   }
 
   /**
@@ -201,45 +166,49 @@ export class OrdersController extends BaseController {
 
   /**
    * @param orderId         Order Id
-   * @param request         Order Item Model
+   * @param itemId          Item Id
+   * @param request         Item Model
    * @param idempotencyKey
    * @return Response from the API call
    */
-  async createOrderItem(
+  async updateOrderItem(
     orderId: string,
-    request: CreateOrderItemRequest,
+    itemId: string,
+    request: UpdateOrderItemRequest,
     idempotencyKey?: string,
     requestOptions?: RequestOptions
   ): Promise<ApiResponse<GetOrderItemResponse>> {
-    const req = this.createRequest('POST');
+    const req = this.createRequest('PUT');
     const mapped = req.prepareArgs({
       orderId: [orderId, string()],
-      request: [request, createOrderItemRequestSchema],
+      itemId: [itemId, string()],
+      request: [request, updateOrderItemRequestSchema],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.request);
-    req.appendTemplatePath`/orders/${mapped.orderId}/items`;
+    req.appendTemplatePath`/orders/${mapped.orderId}/items/${mapped.itemId}`;
     return req.callAsJson(getOrderItemResponseSchema, requestOptions);
   }
 
   /**
-   * @param orderId Order Id
-   * @param itemId  Item Id
+   * @param orderId         Order Id
+   * @param idempotencyKey
    * @return Response from the API call
    */
-  async getOrderItem(
+  async deleteAllOrderItems(
     orderId: string,
-    itemId: string,
+    idempotencyKey?: string,
     requestOptions?: RequestOptions
-  ): Promise<ApiResponse<GetOrderItemResponse>> {
-    const req = this.createRequest('GET');
+  ): Promise<ApiResponse<GetOrderResponse>> {
+    const req = this.createRequest('DELETE');
     const mapped = req.prepareArgs({
       orderId: [orderId, string()],
-      itemId: [itemId, string()],
+      idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.appendTemplatePath`/orders/${mapped.orderId}/items/${mapped.itemId}`;
-    return req.callAsJson(getOrderItemResponseSchema, requestOptions);
+    req.header('idempotency-key', mapped.idempotencyKey);
+    req.appendTemplatePath`/orders/${mapped.orderId}/items`;
+    return req.callAsJson(getOrderResponseSchema, requestOptions);
   }
 
   /**
@@ -269,18 +238,49 @@ export class OrdersController extends BaseController {
   }
 
   /**
-   * Gets an order
-   *
-   * @param orderId  Order id
+   * @param orderId         Order Id
+   * @param itemId          Item Id
+   * @param idempotencyKey
    * @return Response from the API call
    */
-  async getOrder(
+  async deleteOrderItem(
     orderId: string,
+    itemId: string,
+    idempotencyKey?: string,
     requestOptions?: RequestOptions
-  ): Promise<ApiResponse<GetOrderResponse>> {
-    const req = this.createRequest('GET');
-    const mapped = req.prepareArgs({ orderId: [orderId, string()] });
-    req.appendTemplatePath`/orders/${mapped.orderId}`;
-    return req.callAsJson(getOrderResponseSchema, requestOptions);
+  ): Promise<ApiResponse<GetOrderItemResponse>> {
+    const req = this.createRequest('DELETE');
+    const mapped = req.prepareArgs({
+      orderId: [orderId, string()],
+      itemId: [itemId, string()],
+      idempotencyKey: [idempotencyKey, optional(string())],
+    });
+    req.header('idempotency-key', mapped.idempotencyKey);
+    req.appendTemplatePath`/orders/${mapped.orderId}/items/${mapped.itemId}`;
+    return req.callAsJson(getOrderItemResponseSchema, requestOptions);
+  }
+
+  /**
+   * @param orderId         Order Id
+   * @param request         Order Item Model
+   * @param idempotencyKey
+   * @return Response from the API call
+   */
+  async createOrderItem(
+    orderId: string,
+    request: CreateOrderItemRequest,
+    idempotencyKey?: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<GetOrderItemResponse>> {
+    const req = this.createRequest('POST');
+    const mapped = req.prepareArgs({
+      orderId: [orderId, string()],
+      request: [request, createOrderItemRequestSchema],
+      idempotencyKey: [idempotencyKey, optional(string())],
+    });
+    req.header('idempotency-key', mapped.idempotencyKey);
+    req.json(mapped.request);
+    req.appendTemplatePath`/orders/${mapped.orderId}/items`;
+    return req.callAsJson(getOrderItemResponseSchema, requestOptions);
   }
 }

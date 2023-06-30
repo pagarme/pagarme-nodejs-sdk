@@ -12,7 +12,7 @@ Contains the settings for creating a boleto payment
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `retries` | `number` | Required | Number of retries |
-| `bank` | `string` | Required | The bank code, containing three characters. The available codes are on the API specification |
+| `bank` | `string \| undefined` | Optional | The bank code, containing three characters. The available codes are on the API specification |
 | `instructions` | `string` | Required | The instructions field that will be printed on the boleto. |
 | `dueAt` | `string \| undefined` | Optional | Boleto due date |
 | `billingAddress` | [`CreateAddressRequest`](../../doc/models/create-address-request.md) | Required | Card's billing address |
@@ -56,11 +56,6 @@ Contains the settings for creating a boleto payment
     "days": 156,
     "type": "type0",
     "amount": 230
-  },
-  "fine": {
-    "days": 138,
-    "type": "type2",
-    "amount": 212
   }
 }
 ```

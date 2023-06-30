@@ -11,15 +11,15 @@ const ordersController = new OrdersController(client);
 ## Methods
 
 * [Get Orders](../../doc/controllers/orders.md#get-orders)
-* [Update Order Item](../../doc/controllers/orders.md#update-order-item)
-* [Delete All Order Items](../../doc/controllers/orders.md#delete-all-order-items)
-* [Delete Order Item](../../doc/controllers/orders.md#delete-order-item)
+* [Get Order Item](../../doc/controllers/orders.md#get-order-item)
+* [Get Order](../../doc/controllers/orders.md#get-order)
 * [Close Order](../../doc/controllers/orders.md#close-order)
 * [Create Order](../../doc/controllers/orders.md#create-order)
-* [Create Order Item](../../doc/controllers/orders.md#create-order-item)
-* [Get Order Item](../../doc/controllers/orders.md#get-order-item)
+* [Update Order Item](../../doc/controllers/orders.md#update-order-item)
+* [Delete All Order Items](../../doc/controllers/orders.md#delete-all-order-items)
 * [Update Order Metadata](../../doc/controllers/orders.md#update-order-metadata)
-* [Get Order](../../doc/controllers/orders.md#get-order)
+* [Delete Order Item](../../doc/controllers/orders.md#delete-order-item)
+* [Create Order Item](../../doc/controllers/orders.md#create-order-item)
 
 
 # Get Orders
@@ -72,14 +72,12 @@ try {
 ```
 
 
-# Update Order Item
+# Get Order Item
 
 ```ts
-async updateOrderItem(
+async getOrderItem(
   orderId: string,
   itemId: string,
-  request: UpdateOrderItemRequest,
-  idempotencyKey?: string,
   requestOptions?: RequestOptions
 ): Promise<ApiResponse<GetOrderItemResponse>>
 ```
@@ -90,8 +88,6 @@ async updateOrderItem(
 |  --- | --- | --- | --- |
 | `orderId` | `string` | Template, Required | Order Id |
 | `itemId` | `string` | Template, Required | Item Id |
-| `request` | [`UpdateOrderItemRequest`](../../doc/models/update-order-item-request.md) | Body, Required | Item Model |
-| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
@@ -105,18 +101,10 @@ const orderId = 'orderId2';
 
 const itemId = 'itemId8';
 
-const request: UpdateOrderItemRequest = {
-  amount: 242,
-  description: 'description6',
-  quantity: 100,
-  category: 'category4',
-};
-
 try {
-  const { result, ...httpResponse } = await ordersController.updateOrderItem(
+  const { result, ...httpResponse } = await ordersController.getOrderItem(
     orderId,
-    itemId,
-    request
+    itemId
   );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
@@ -129,12 +117,13 @@ try {
 ```
 
 
-# Delete All Order Items
+# Get Order
+
+Gets an order
 
 ```ts
-async deleteAllOrderItems(
+async getOrder(
   orderId: string,
-  idempotencyKey?: string,
   requestOptions?: RequestOptions
 ): Promise<ApiResponse<GetOrderResponse>>
 ```
@@ -143,8 +132,7 @@ async deleteAllOrderItems(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `orderId` | `string` | Template, Required | Order Id |
-| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
+| `orderId` | `string` | Template, Required | Order id |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
@@ -154,57 +142,10 @@ async deleteAllOrderItems(
 ## Example Usage
 
 ```ts
-const orderId = 'orderId2';
+const orderId = 'order_id6';
 
 try {
-  const { result, ...httpResponse } = await ordersController.deleteAllOrderItems(orderId);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Delete Order Item
-
-```ts
-async deleteOrderItem(
-  orderId: string,
-  itemId: string,
-  idempotencyKey?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetOrderItemResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `orderId` | `string` | Template, Required | Order Id |
-| `itemId` | `string` | Template, Required | Item Id |
-| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-[`GetOrderItemResponse`](../../doc/models/get-order-item-response.md)
-
-## Example Usage
-
-```ts
-const orderId = 'orderId2';
-
-const itemId = 'itemId8';
-
-try {
-  const { result, ...httpResponse } = await ordersController.deleteOrderItem(
-    orderId,
-    itemId
-  );
+  const { result, ...httpResponse } = await ordersController.getOrder(orderId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
@@ -315,10 +256,6 @@ const body: CreateOrderRequest = {
       state: 'state6',
       country: 'country4',
       complement: 'complement6',
-      metadata: {
-        'key0': 'metadata7',
-        'key1': 'metadata6'
-      },
       line1: 'line_16',
       line2: 'line_28',
     },
@@ -335,10 +272,6 @@ const body: CreateOrderRequest = {
     }
   ],
   code: 'code4',
-  metadata: {
-    'key0': 'metadata7',
-    'key1': 'metadata8'
-  },
   closed: true,
 };
 
@@ -355,12 +288,13 @@ try {
 ```
 
 
-# Create Order Item
+# Update Order Item
 
 ```ts
-async createOrderItem(
+async updateOrderItem(
   orderId: string,
-  request: CreateOrderItemRequest,
+  itemId: string,
+  request: UpdateOrderItemRequest,
   idempotencyKey?: string,
   requestOptions?: RequestOptions
 ): Promise<ApiResponse<GetOrderItemResponse>>
@@ -371,58 +305,9 @@ async createOrderItem(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `orderId` | `string` | Template, Required | Order Id |
-| `request` | [`CreateOrderItemRequest`](../../doc/models/create-order-item-request.md) | Body, Required | Order Item Model |
-| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-[`GetOrderItemResponse`](../../doc/models/get-order-item-response.md)
-
-## Example Usage
-
-```ts
-const orderId = 'orderId2';
-
-const request: CreateOrderItemRequest = {
-  amount: 242,
-  description: 'description6',
-  quantity: 100,
-  category: 'category4',
-};
-
-try {
-  const { result, ...httpResponse } = await ordersController.createOrderItem(
-    orderId,
-    request
-  );
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Get Order Item
-
-```ts
-async getOrderItem(
-  orderId: string,
-  itemId: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetOrderItemResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `orderId` | `string` | Template, Required | Order Id |
 | `itemId` | `string` | Template, Required | Item Id |
+| `request` | [`UpdateOrderItemRequest`](../../doc/models/update-order-item-request.md) | Body, Required | Item Model |
+| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
@@ -436,11 +321,59 @@ const orderId = 'orderId2';
 
 const itemId = 'itemId8';
 
+const request: UpdateOrderItemRequest = {
+  amount: 242,
+  description: 'description6',
+  quantity: 100,
+  category: 'category4',
+};
+
 try {
-  const { result, ...httpResponse } = await ordersController.getOrderItem(
+  const { result, ...httpResponse } = await ordersController.updateOrderItem(
     orderId,
-    itemId
+    itemId,
+    request
   );
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Delete All Order Items
+
+```ts
+async deleteAllOrderItems(
+  orderId: string,
+  idempotencyKey?: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetOrderResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `orderId` | `string` | Template, Required | Order Id |
+| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`GetOrderResponse`](../../doc/models/get-order-response.md)
+
+## Example Usage
+
+```ts
+const orderId = 'orderId2';
+
+try {
+  const { result, ...httpResponse } = await ordersController.deleteAllOrderItems(orderId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
@@ -505,35 +438,94 @@ try {
 ```
 
 
-# Get Order
-
-Gets an order
+# Delete Order Item
 
 ```ts
-async getOrder(
+async deleteOrderItem(
   orderId: string,
+  itemId: string,
+  idempotencyKey?: string,
   requestOptions?: RequestOptions
-): Promise<ApiResponse<GetOrderResponse>>
+): Promise<ApiResponse<GetOrderItemResponse>>
 ```
 
 ## Parameters
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `orderId` | `string` | Template, Required | Order id |
+| `orderId` | `string` | Template, Required | Order Id |
+| `itemId` | `string` | Template, Required | Item Id |
+| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
-[`GetOrderResponse`](../../doc/models/get-order-response.md)
+[`GetOrderItemResponse`](../../doc/models/get-order-item-response.md)
 
 ## Example Usage
 
 ```ts
-const orderId = 'order_id6';
+const orderId = 'orderId2';
+
+const itemId = 'itemId8';
 
 try {
-  const { result, ...httpResponse } = await ordersController.getOrder(orderId);
+  const { result, ...httpResponse } = await ordersController.deleteOrderItem(
+    orderId,
+    itemId
+  );
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Create Order Item
+
+```ts
+async createOrderItem(
+  orderId: string,
+  request: CreateOrderItemRequest,
+  idempotencyKey?: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetOrderItemResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `orderId` | `string` | Template, Required | Order Id |
+| `request` | [`CreateOrderItemRequest`](../../doc/models/create-order-item-request.md) | Body, Required | Order Item Model |
+| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`GetOrderItemResponse`](../../doc/models/get-order-item-response.md)
+
+## Example Usage
+
+```ts
+const orderId = 'orderId2';
+
+const request: CreateOrderItemRequest = {
+  amount: 242,
+  description: 'description6',
+  quantity: 100,
+  category: 'category4',
+};
+
+try {
+  const { result, ...httpResponse } = await ordersController.createOrderItem(
+    orderId,
+    request
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {

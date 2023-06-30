@@ -63,7 +63,7 @@ export interface CreateOrderRequest {
   /** Shipping data */
   shipping?: CreateShippingRequest;
   /** Metadata */
-  metadata: Record<string, string>;
+  metadata?: Record<string, string> | null;
   /** Defines whether the order will go through anti-fraud */
   antifraudEnabled?: boolean;
   /** Ip address */
@@ -89,7 +89,7 @@ export const createOrderRequestSchema: Schema<CreateOrderRequest> = object({
   code: ['code', string()],
   customerId: ['customer_id', optional(nullable(string()))],
   shipping: ['shipping', optional(lazy(() => createShippingRequestSchema))],
-  metadata: ['metadata', dict(string())],
+  metadata: ['metadata', optional(nullable(dict(string())))],
   antifraudEnabled: ['antifraud_enabled', optional(boolean())],
   ip: ['ip', optional(string())],
   sessionId: ['session_id', optional(string())],

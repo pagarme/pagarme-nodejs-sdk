@@ -88,11 +88,6 @@ Payment data
       "days": 160,
       "type": "type0",
       "amount": 234
-    },
-    "fine": {
-      "days": 130,
-      "type": "type8",
-      "amount": 52
     }
   },
   "currency": "currency0",

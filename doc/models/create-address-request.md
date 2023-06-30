@@ -19,7 +19,7 @@ Request for creating a new Address
 | `state` | `string` | Required | State |
 | `country` | `string` | Required | Country. Must be entered using ISO 3166-1 alpha-2 format. See https://pt.wikipedia.org/wiki/ISO_3166-1_alfa-2 |
 | `complement` | `string` | Required | Complement |
-| `metadata` | `Record<string, string>` | Required | Metadata |
+| `metadata` | `Record<string, string> \| undefined` | Optional | Metadata |
 | `line1` | `string` | Required | Line 1 for address |
 | `line2` | `string` | Required | Line 2 for address |
 

@@ -145,6 +145,8 @@ Here is the list of errors that the API might throw.
 * [Tokens](doc/controllers/tokens.md)
 * [Transactions](doc/controllers/transactions.md)
 * [Transfers](doc/controllers/transfers.md)
+* [Payables](doc/controllers/payables.md)
+* [Balance Operations](doc/controllers/balance-operations.md)
 
 ## Classes Documentation
 
