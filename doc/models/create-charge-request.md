@@ -124,11 +124,6 @@ Request for creating a new charge
         "days": 168,
         "type": "type6",
         "amount": 242
-      },
-      "fine": {
-        "days": 122,
-        "type": "type2",
-        "amount": 196
       }
     },
     "currency": "currency6",

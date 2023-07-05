@@ -28,7 +28,7 @@ export interface CreateBoletoPaymentRequest {
   /** Number of retries */
   retries: number;
   /** The bank code, containing three characters. The available codes are on the API specification */
-  bank: string;
+  bank?: string | null;
   /** The instructions field that will be printed on the boleto. */
   instructions: string;
   /** Boleto due date */
@@ -51,7 +51,7 @@ export interface CreateBoletoPaymentRequest {
 export const createBoletoPaymentRequestSchema: Schema<CreateBoletoPaymentRequest> = object(
   {
     retries: ['retries', number()],
-    bank: ['bank', string()],
+    bank: ['bank', optional(nullable(string()))],
     instructions: ['instructions', string()],
     dueAt: ['due_at', optional(nullable(string()))],
     billingAddress: ['billing_address', lazy(() => createAddressRequestSchema)],

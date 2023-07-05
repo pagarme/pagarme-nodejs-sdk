@@ -18,6 +18,21 @@ import {
 import {
   getDebitCardTransactionResponseSchema,
 } from './getDebitCardTransactionResponse';
+import {
+  getMovementObjectBaseResponseSchema,
+} from './getMovementObjectBaseResponse';
+import {
+  getMovementObjectFeeCollectionResponseSchema,
+} from './getMovementObjectFeeCollectionResponse';
+import {
+  getMovementObjectPayableResponseSchema,
+} from './getMovementObjectPayableResponse';
+import {
+  getMovementObjectRefundResponseSchema,
+} from './getMovementObjectRefundResponse';
+import {
+  getMovementObjectTransferResponseSchema,
+} from './getMovementObjectTransferResponse';
 import { getPixTransactionResponseSchema } from './getPixTransactionResponse';
 import {
   getPrivateLabelTransactionResponseSchema,
@@ -35,16 +50,29 @@ export const discriminatedGetTransactionResponseSchema: Schema<any> = discrimina
   'transaction_type',
   {
     'transaction': getTransactionResponseSchema,
+    'voucher': getVoucherTransactionResponseSchema,
     'bank_transfer': getBankTransferTransactionResponseSchema,
     'safetypay': getSafetyPayTransactionResponseSchema,
-    'voucher': getVoucherTransactionResponseSchema,
-    'boleto': getBoletoTransactionResponseSchema,
     'debit_card': getDebitCardTransactionResponseSchema,
-    'private_label': getPrivateLabelTransactionResponseSchema,
+    'boleto': getBoletoTransactionResponseSchema,
     'cash': getCashTransactionResponseSchema,
-    'credit_card': getCreditCardTransactionResponseSchema,
+    'private_label': getPrivateLabelTransactionResponseSchema,
     'pix': getPixTransactionResponseSchema,
+    'credit_card': getCreditCardTransactionResponseSchema,
  },
   'transaction'
+);
+
+export const discriminatedGetMovementObjectBaseResponseSchema: Schema<any> = discriminatedObject(
+  'object',
+  'object',
+  {
+    'MovementObject': getMovementObjectBaseResponseSchema,
+    'refund': getMovementObjectRefundResponseSchema,
+    'feeCollection': getMovementObjectFeeCollectionResponseSchema,
+    'payable': getMovementObjectPayableResponseSchema,
+    'transfer': getMovementObjectTransferResponseSchema,
+ },
+  'MovementObject'
 );
 

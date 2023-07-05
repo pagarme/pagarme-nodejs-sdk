@@ -285,11 +285,6 @@ Request for creating a subcription
           "days": 232,
           "type": "type2",
           "amount": 50
-        },
-        "fine": {
-          "days": 58,
-          "type": "type6",
-          "amount": 132
         }
       },
       "currency": "currency2",

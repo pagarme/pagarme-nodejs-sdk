@@ -14,6 +14,10 @@ import {
   string,
 } from '../schema';
 import {
+  CreateBankAccountRefundingDTO,
+  createBankAccountRefundingDTOSchema,
+} from './createBankAccountRefundingDTO';
+import {
   CreateCancelChargeSplitRulesRequest,
   createCancelChargeSplitRulesRequestSchema,
 } from './createCancelChargeSplitRulesRequest';
@@ -31,6 +35,7 @@ export interface CreateCancelChargeRequest {
   /** Splits */
   split?: CreateSplitRequest[];
   operationReference: string;
+  bankAccount?: CreateBankAccountRefundingDTO;
 }
 
 export const createCancelChargeRequestSchema: Schema<CreateCancelChargeRequest> = object(
@@ -42,5 +47,9 @@ export const createCancelChargeRequestSchema: Schema<CreateCancelChargeRequest> 
     ],
     split: ['split', optional(array(lazy(() => createSplitRequestSchema)))],
     operationReference: ['operation_reference', string()],
+    bankAccount: [
+      'bank_account',
+      optional(lazy(() => createBankAccountRefundingDTOSchema)),
+    ],
   }
 );

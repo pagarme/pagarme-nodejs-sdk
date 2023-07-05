@@ -58,23 +58,27 @@ export class PlansController extends BaseController {
   }
 
   /**
-   * Deletes a plan
+   * Updates a plan
    *
    * @param planId          Plan id
+   * @param request         Request for updating a plan
    * @param idempotencyKey
    * @return Response from the API call
    */
-  async deletePlan(
+  async updatePlan(
     planId: string,
+    request: UpdatePlanRequest,
     idempotencyKey?: string,
     requestOptions?: RequestOptions
   ): Promise<ApiResponse<GetPlanResponse>> {
-    const req = this.createRequest('DELETE');
+    const req = this.createRequest('PUT');
     const mapped = req.prepareArgs({
       planId: [planId, string()],
+      request: [request, updatePlanRequestSchema],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
     req.header('idempotency-key', mapped.idempotencyKey);
+    req.json(mapped.request);
     req.appendTemplatePath`/plans/${mapped.planId}`;
     return req.callAsJson(getPlanResponseSchema, requestOptions);
   }
@@ -102,104 +106,6 @@ export class PlansController extends BaseController {
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.request);
     req.appendTemplatePath`/Plans/${mapped.planId}/metadata`;
-    return req.callAsJson(getPlanResponseSchema, requestOptions);
-  }
-
-  /**
-   * Updates a plan item
-   *
-   * @param planId          Plan id
-   * @param planItemId      Plan item id
-   * @param body            Request for updating the plan item
-   * @param idempotencyKey
-   * @return Response from the API call
-   */
-  async updatePlanItem(
-    planId: string,
-    planItemId: string,
-    body: UpdatePlanItemRequest,
-    idempotencyKey?: string,
-    requestOptions?: RequestOptions
-  ): Promise<ApiResponse<GetPlanItemResponse>> {
-    const req = this.createRequest('PUT');
-    const mapped = req.prepareArgs({
-      planId: [planId, string()],
-      planItemId: [planItemId, string()],
-      body: [body, updatePlanItemRequestSchema],
-      idempotencyKey: [idempotencyKey, optional(string())],
-    });
-    req.header('idempotency-key', mapped.idempotencyKey);
-    req.json(mapped.body);
-    req.appendTemplatePath`/plans/${mapped.planId}/items/${mapped.planItemId}`;
-    return req.callAsJson(getPlanItemResponseSchema, requestOptions);
-  }
-
-  /**
-   * Adds a new item to a plan
-   *
-   * @param planId          Plan id
-   * @param request         Request for creating a plan item
-   * @param idempotencyKey
-   * @return Response from the API call
-   */
-  async createPlanItem(
-    planId: string,
-    request: CreatePlanItemRequest,
-    idempotencyKey?: string,
-    requestOptions?: RequestOptions
-  ): Promise<ApiResponse<GetPlanItemResponse>> {
-    const req = this.createRequest('POST');
-    const mapped = req.prepareArgs({
-      planId: [planId, string()],
-      request: [request, createPlanItemRequestSchema],
-      idempotencyKey: [idempotencyKey, optional(string())],
-    });
-    req.header('idempotency-key', mapped.idempotencyKey);
-    req.json(mapped.request);
-    req.appendTemplatePath`/plans/${mapped.planId}/items`;
-    return req.callAsJson(getPlanItemResponseSchema, requestOptions);
-  }
-
-  /**
-   * Gets a plan item
-   *
-   * @param planId       Plan id
-   * @param planItemId   Plan item id
-   * @return Response from the API call
-   */
-  async getPlanItem(
-    planId: string,
-    planItemId: string,
-    requestOptions?: RequestOptions
-  ): Promise<ApiResponse<GetPlanItemResponse>> {
-    const req = this.createRequest('GET');
-    const mapped = req.prepareArgs({
-      planId: [planId, string()],
-      planItemId: [planItemId, string()],
-    });
-    req.appendTemplatePath`/plans/${mapped.planId}/items/${mapped.planItemId}`;
-    return req.callAsJson(getPlanItemResponseSchema, requestOptions);
-  }
-
-  /**
-   * Creates a new plan
-   *
-   * @param body            Request for creating a plan
-   * @param idempotencyKey
-   * @return Response from the API call
-   */
-  async createPlan(
-    body: CreatePlanRequest,
-    idempotencyKey?: string,
-    requestOptions?: RequestOptions
-  ): Promise<ApiResponse<GetPlanResponse>> {
-    const req = this.createRequest('POST', '/plans');
-    const mapped = req.prepareArgs({
-      body: [body, createPlanRequestSchema],
-      idempotencyKey: [idempotencyKey, optional(string())],
-    });
-    req.header('idempotency-key', mapped.idempotencyKey);
-    req.json(mapped.body);
     return req.callAsJson(getPlanResponseSchema, requestOptions);
   }
 
@@ -271,28 +177,122 @@ export class PlansController extends BaseController {
   }
 
   /**
-   * Updates a plan
+   * Gets a plan item
+   *
+   * @param planId       Plan id
+   * @param planItemId   Plan item id
+   * @return Response from the API call
+   */
+  async getPlanItem(
+    planId: string,
+    planItemId: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<GetPlanItemResponse>> {
+    const req = this.createRequest('GET');
+    const mapped = req.prepareArgs({
+      planId: [planId, string()],
+      planItemId: [planItemId, string()],
+    });
+    req.appendTemplatePath`/plans/${mapped.planId}/items/${mapped.planItemId}`;
+    return req.callAsJson(getPlanItemResponseSchema, requestOptions);
+  }
+
+  /**
+   * Deletes a plan
    *
    * @param planId          Plan id
-   * @param request         Request for updating a plan
    * @param idempotencyKey
    * @return Response from the API call
    */
-  async updatePlan(
+  async deletePlan(
     planId: string,
-    request: UpdatePlanRequest,
     idempotencyKey?: string,
     requestOptions?: RequestOptions
   ): Promise<ApiResponse<GetPlanResponse>> {
+    const req = this.createRequest('DELETE');
+    const mapped = req.prepareArgs({
+      planId: [planId, string()],
+      idempotencyKey: [idempotencyKey, optional(string())],
+    });
+    req.header('idempotency-key', mapped.idempotencyKey);
+    req.appendTemplatePath`/plans/${mapped.planId}`;
+    return req.callAsJson(getPlanResponseSchema, requestOptions);
+  }
+
+  /**
+   * Updates a plan item
+   *
+   * @param planId          Plan id
+   * @param planItemId      Plan item id
+   * @param body            Request for updating the plan item
+   * @param idempotencyKey
+   * @return Response from the API call
+   */
+  async updatePlanItem(
+    planId: string,
+    planItemId: string,
+    body: UpdatePlanItemRequest,
+    idempotencyKey?: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<GetPlanItemResponse>> {
     const req = this.createRequest('PUT');
     const mapped = req.prepareArgs({
       planId: [planId, string()],
-      request: [request, updatePlanRequestSchema],
+      planItemId: [planItemId, string()],
+      body: [body, updatePlanItemRequestSchema],
+      idempotencyKey: [idempotencyKey, optional(string())],
+    });
+    req.header('idempotency-key', mapped.idempotencyKey);
+    req.json(mapped.body);
+    req.appendTemplatePath`/plans/${mapped.planId}/items/${mapped.planItemId}`;
+    return req.callAsJson(getPlanItemResponseSchema, requestOptions);
+  }
+
+  /**
+   * Adds a new item to a plan
+   *
+   * @param planId          Plan id
+   * @param request         Request for creating a plan item
+   * @param idempotencyKey
+   * @return Response from the API call
+   */
+  async createPlanItem(
+    planId: string,
+    request: CreatePlanItemRequest,
+    idempotencyKey?: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<GetPlanItemResponse>> {
+    const req = this.createRequest('POST');
+    const mapped = req.prepareArgs({
+      planId: [planId, string()],
+      request: [request, createPlanItemRequestSchema],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.request);
-    req.appendTemplatePath`/plans/${mapped.planId}`;
+    req.appendTemplatePath`/plans/${mapped.planId}/items`;
+    return req.callAsJson(getPlanItemResponseSchema, requestOptions);
+  }
+
+  /**
+   * Creates a new plan
+   *
+   * @param body            Request for creating a plan
+   * @param idempotencyKey
+   * @return Response from the API call
+   */
+  async createPlan(
+    body: CreatePlanRequest,
+    idempotencyKey?: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<GetPlanResponse>> {
+    const req = this.createRequest('POST', '/plans');
+    const mapped = req.prepareArgs({
+      body: [body, createPlanRequestSchema],
+      idempotencyKey: [idempotencyKey, optional(string())],
+    });
+    req.header('idempotency-key', mapped.idempotencyKey);
+    req.json(mapped.body);
     return req.callAsJson(getPlanResponseSchema, requestOptions);
   }
 }

@@ -12,17 +12,17 @@ const chargesController = new ChargesController(client);
 
 * [Update Charge Metadata](../../doc/controllers/charges.md#update-charge-metadata)
 * [Update Charge Payment Method](../../doc/controllers/charges.md#update-charge-payment-method)
-* [Get Charge Transactions](../../doc/controllers/charges.md#get-charge-transactions)
-* [Update Charge Due Date](../../doc/controllers/charges.md#update-charge-due-date)
-* [Get Charges](../../doc/controllers/charges.md#get-charges)
-* [Capture Charge](../../doc/controllers/charges.md#capture-charge)
 * [Update Charge Card](../../doc/controllers/charges.md#update-charge-card)
-* [Get Charge](../../doc/controllers/charges.md#get-charge)
 * [Get Charges Summary](../../doc/controllers/charges.md#get-charges-summary)
-* [Retry Charge](../../doc/controllers/charges.md#retry-charge)
-* [Cancel Charge](../../doc/controllers/charges.md#cancel-charge)
 * [Create Charge](../../doc/controllers/charges.md#create-charge)
+* [Get Charge Transactions](../../doc/controllers/charges.md#get-charge-transactions)
+* [Capture Charge](../../doc/controllers/charges.md#capture-charge)
+* [Get Charge](../../doc/controllers/charges.md#get-charge)
+* [Cancel Charge](../../doc/controllers/charges.md#cancel-charge)
+* [Get Charges](../../doc/controllers/charges.md#get-charges)
 * [Confirm Payment](../../doc/controllers/charges.md#confirm-payment)
+* [Update Charge Due Date](../../doc/controllers/charges.md#update-charge-due-date)
+* [Retry Charge](../../doc/controllers/charges.md#retry-charge)
 
 
 # Update Charge Metadata
@@ -120,7 +120,6 @@ const request: UpdateChargePaymentMethodRequest = {
   debitCard: {},
   boleto: {
     retries: 10,
-    bank: 'bank4',
     instructions: 'instructions4',
     billingAddress: {
       street: 'street8',
@@ -131,9 +130,6 @@ const request: UpdateChargePaymentMethodRequest = {
       state: 'state6',
       country: 'country2',
       complement: 'complement6',
-      metadata: {
-        'key0': 'metadata5'
-      },
       line1: 'line_18',
       line2: 'line_26',
     },
@@ -163,195 +159,6 @@ try {
     chargeId,
     request
   );
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Get Charge Transactions
-
-```ts
-async getChargeTransactions(
-  chargeId: string,
-  page?: number,
-  size?: number,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<ListChargeTransactionsResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `chargeId` | `string` | Template, Required | Charge Id |
-| `page` | `number \| undefined` | Query, Optional | Page number |
-| `size` | `number \| undefined` | Query, Optional | Page size |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-[`ListChargeTransactionsResponse`](../../doc/models/list-charge-transactions-response.md)
-
-## Example Usage
-
-```ts
-const chargeId = 'charge_id8';
-
-try {
-  const { result, ...httpResponse } = await chargesController.getChargeTransactions(chargeId);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Update Charge Due Date
-
-Updates the due date from a charge
-
-```ts
-async updateChargeDueDate(
-  chargeId: string,
-  request: UpdateChargeDueDateRequest,
-  idempotencyKey?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetChargeResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `chargeId` | `string` | Template, Required | Charge Id |
-| `request` | [`UpdateChargeDueDateRequest`](../../doc/models/update-charge-due-date-request.md) | Body, Required | Request for updating the due date |
-| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-[`GetChargeResponse`](../../doc/models/get-charge-response.md)
-
-## Example Usage
-
-```ts
-const chargeId = 'charge_id8';
-
-const request: UpdateChargeDueDateRequest = {};
-
-try {
-  const { result, ...httpResponse } = await chargesController.updateChargeDueDate(
-    chargeId,
-    request
-  );
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Get Charges
-
-Lists all charges
-
-```ts
-async getCharges(
-  page?: number,
-  size?: number,
-  code?: string,
-  status?: string,
-  paymentMethod?: string,
-  customerId?: string,
-  orderId?: string,
-  createdSince?: string,
-  createdUntil?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<ListChargesResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `page` | `number \| undefined` | Query, Optional | Page number |
-| `size` | `number \| undefined` | Query, Optional | Page size |
-| `code` | `string \| undefined` | Query, Optional | Filter for charge's code |
-| `status` | `string \| undefined` | Query, Optional | Filter for charge's status |
-| `paymentMethod` | `string \| undefined` | Query, Optional | Filter for charge's payment method |
-| `customerId` | `string \| undefined` | Query, Optional | Filter for charge's customer id |
-| `orderId` | `string \| undefined` | Query, Optional | Filter for charge's order id |
-| `createdSince` | `string \| undefined` | Query, Optional | Filter for the beginning of the range for charge's creation |
-| `createdUntil` | `string \| undefined` | Query, Optional | Filter for the end of the range for charge's creation |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-[`ListChargesResponse`](../../doc/models/list-charges-response.md)
-
-## Example Usage
-
-```ts
-try {
-  const { result, ...httpResponse } = await chargesController.getCharges();
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Capture Charge
-
-Captures a charge
-
-```ts
-async captureCharge(
-  chargeId: string,
-  request?: CreateCaptureChargeRequest,
-  idempotencyKey?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetChargeResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `chargeId` | `string` | Template, Required | Charge id |
-| `request` | [`CreateCaptureChargeRequest \| undefined`](../../doc/models/create-capture-charge-request.md) | Body, Optional | Request for capturing a charge |
-| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-[`GetChargeResponse`](../../doc/models/get-charge-response.md)
-
-## Example Usage
-
-```ts
-const chargeId = 'charge_id8';
-
-try {
-  const { result, ...httpResponse } = await chargesController.captureCharge(chargeId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
@@ -419,46 +226,6 @@ try {
 ```
 
 
-# Get Charge
-
-Get a charge from its id
-
-```ts
-async getCharge(
-  chargeId: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetChargeResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `chargeId` | `string` | Template, Required | Charge id |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-[`GetChargeResponse`](../../doc/models/get-charge-response.md)
-
-## Example Usage
-
-```ts
-const chargeId = 'charge_id8';
-
-try {
-  const { result, ...httpResponse } = await chargesController.getCharge(chargeId);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
 # Get Charges Summary
 
 ```ts
@@ -490,92 +257,6 @@ const status = 'status8';
 
 try {
   const { result, ...httpResponse } = await chargesController.getChargesSummary(status);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Retry Charge
-
-Retries a charge
-
-```ts
-async retryCharge(
-  chargeId: string,
-  idempotencyKey?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetChargeResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `chargeId` | `string` | Template, Required | Charge id |
-| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-[`GetChargeResponse`](../../doc/models/get-charge-response.md)
-
-## Example Usage
-
-```ts
-const chargeId = 'charge_id8';
-
-try {
-  const { result, ...httpResponse } = await chargesController.retryCharge(chargeId);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Cancel Charge
-
-Cancel a charge
-
-```ts
-async cancelCharge(
-  chargeId: string,
-  request?: CreateCancelChargeRequest,
-  idempotencyKey?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetChargeResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `chargeId` | `string` | Template, Required | Charge id |
-| `request` | [`CreateCancelChargeRequest \| undefined`](../../doc/models/create-cancel-charge-request.md) | Body, Optional | Request for cancelling a charge |
-| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-[`GetChargeResponse`](../../doc/models/get-charge-response.md)
-
-## Example Usage
-
-```ts
-const chargeId = 'charge_id8';
-
-try {
-  const { result, ...httpResponse } = await chargesController.cancelCharge(chargeId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
@@ -635,6 +316,230 @@ try {
 ```
 
 
+# Get Charge Transactions
+
+```ts
+async getChargeTransactions(
+  chargeId: string,
+  page?: number,
+  size?: number,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<ListChargeTransactionsResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `chargeId` | `string` | Template, Required | Charge Id |
+| `page` | `number \| undefined` | Query, Optional | Page number |
+| `size` | `number \| undefined` | Query, Optional | Page size |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`ListChargeTransactionsResponse`](../../doc/models/list-charge-transactions-response.md)
+
+## Example Usage
+
+```ts
+const chargeId = 'charge_id8';
+
+try {
+  const { result, ...httpResponse } = await chargesController.getChargeTransactions(chargeId);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Capture Charge
+
+Captures a charge
+
+```ts
+async captureCharge(
+  chargeId: string,
+  request?: CreateCaptureChargeRequest,
+  idempotencyKey?: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetChargeResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `chargeId` | `string` | Template, Required | Charge id |
+| `request` | [`CreateCaptureChargeRequest \| undefined`](../../doc/models/create-capture-charge-request.md) | Body, Optional | Request for capturing a charge |
+| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`GetChargeResponse`](../../doc/models/get-charge-response.md)
+
+## Example Usage
+
+```ts
+const chargeId = 'charge_id8';
+
+try {
+  const { result, ...httpResponse } = await chargesController.captureCharge(chargeId);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Get Charge
+
+Get a charge from its id
+
+```ts
+async getCharge(
+  chargeId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetChargeResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `chargeId` | `string` | Template, Required | Charge id |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`GetChargeResponse`](../../doc/models/get-charge-response.md)
+
+## Example Usage
+
+```ts
+const chargeId = 'charge_id8';
+
+try {
+  const { result, ...httpResponse } = await chargesController.getCharge(chargeId);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Cancel Charge
+
+Cancel a charge
+
+```ts
+async cancelCharge(
+  chargeId: string,
+  request?: CreateCancelChargeRequest,
+  idempotencyKey?: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetChargeResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `chargeId` | `string` | Template, Required | Charge id |
+| `request` | [`CreateCancelChargeRequest \| undefined`](../../doc/models/create-cancel-charge-request.md) | Body, Optional | Request for cancelling a charge |
+| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`GetChargeResponse`](../../doc/models/get-charge-response.md)
+
+## Example Usage
+
+```ts
+const chargeId = 'charge_id8';
+
+try {
+  const { result, ...httpResponse } = await chargesController.cancelCharge(chargeId);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Get Charges
+
+Lists all charges
+
+```ts
+async getCharges(
+  page?: number,
+  size?: number,
+  code?: string,
+  status?: string,
+  paymentMethod?: string,
+  customerId?: string,
+  orderId?: string,
+  createdSince?: string,
+  createdUntil?: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<ListChargesResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `page` | `number \| undefined` | Query, Optional | Page number |
+| `size` | `number \| undefined` | Query, Optional | Page size |
+| `code` | `string \| undefined` | Query, Optional | Filter for charge's code |
+| `status` | `string \| undefined` | Query, Optional | Filter for charge's status |
+| `paymentMethod` | `string \| undefined` | Query, Optional | Filter for charge's payment method |
+| `customerId` | `string \| undefined` | Query, Optional | Filter for charge's customer id |
+| `orderId` | `string \| undefined` | Query, Optional | Filter for charge's order id |
+| `createdSince` | `string \| undefined` | Query, Optional | Filter for the beginning of the range for charge's creation |
+| `createdUntil` | `string \| undefined` | Query, Optional | Filter for the end of the range for charge's creation |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`ListChargesResponse`](../../doc/models/list-charges-response.md)
+
+## Example Usage
+
+```ts
+try {
+  const { result, ...httpResponse } = await chargesController.getCharges();
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
 # Confirm Payment
 
 ```ts
@@ -666,6 +571,97 @@ const chargeId = 'charge_id8';
 
 try {
   const { result, ...httpResponse } = await chargesController.confirmPayment(chargeId);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Update Charge Due Date
+
+Updates the due date from a charge
+
+```ts
+async updateChargeDueDate(
+  chargeId: string,
+  request: UpdateChargeDueDateRequest,
+  idempotencyKey?: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetChargeResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `chargeId` | `string` | Template, Required | Charge Id |
+| `request` | [`UpdateChargeDueDateRequest`](../../doc/models/update-charge-due-date-request.md) | Body, Required | Request for updating the due date |
+| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`GetChargeResponse`](../../doc/models/get-charge-response.md)
+
+## Example Usage
+
+```ts
+const chargeId = 'charge_id8';
+
+const request: UpdateChargeDueDateRequest = {};
+
+try {
+  const { result, ...httpResponse } = await chargesController.updateChargeDueDate(
+    chargeId,
+    request
+  );
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Retry Charge
+
+Retries a charge
+
+```ts
+async retryCharge(
+  chargeId: string,
+  idempotencyKey?: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetChargeResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `chargeId` | `string` | Template, Required | Charge id |
+| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`GetChargeResponse`](../../doc/models/get-charge-response.md)
+
+## Example Usage
+
+```ts
+const chargeId = 'charge_id8';
+
+try {
+  const { result, ...httpResponse } = await chargesController.retryCharge(chargeId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {

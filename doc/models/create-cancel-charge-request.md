@@ -15,6 +15,7 @@ Request for canceling a charge.
 | `splitRules` | [`CreateCancelChargeSplitRulesRequest[] \| undefined`](../../doc/models/create-cancel-charge-split-rules-request.md) | Optional | The split rules request |
 | `split` | [`CreateSplitRequest[] \| undefined`](../../doc/models/create-split-request.md) | Optional | Splits |
 | `operationReference` | `string` | Required | - |
+| `bankAccount` | [`CreateBankAccountRefundingDTO \| undefined`](../../doc/models/create-bank-account-refunding-dto.md) | Optional | - |
 
 ## Example (as JSON)
 
@@ -73,7 +74,18 @@ Request for canceling a charge.
       "split_rule_id": "split_rule_id8"
     }
   ],
-  "operation_reference": "operation_reference0"
+  "operation_reference": "operation_reference0",
+  "bank_account": {
+    "holder_name": "holder_name0",
+    "holder_type": "holder_type6",
+    "holder_document": "holder_document8",
+    "bank": "bank2",
+    "branch_number": "branch_number0",
+    "branch_check_digit": "branch_check_digit0",
+    "account_number": "account_number4",
+    "account_check_digit": "account_check_digit0",
+    "type": "type6"
+  }
 }
 ```
 

@@ -16,7 +16,6 @@ The settings for creating a voucher payment
 | `cardToken` | `string \| undefined` | Optional | Card token |
 | `card` | [`CreateCardRequest \| undefined`](../../doc/models/create-card-request.md) | Optional | Card info |
 | `recurrencyCycle` | `string \| undefined` | Optional | Defines whether the card has been used one or more times. |
-| `merchantCategoryCode` | `bigint \| undefined` | Optional | Customer business segment code |
 
 ## Example (as JSON)
 

@@ -13,6 +13,18 @@ import { BaseController } from './baseController';
 
 export class TransfersController extends BaseController {
   /**
+   * Gets all transfers
+   *
+   * @return Response from the API call
+   */
+  async getTransfers(
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<ListTransfers>> {
+    const req = this.createRequest('GET', '/transfers');
+    return req.callAsJson(listTransfersSchema, requestOptions);
+  }
+
+  /**
    * @param transferId
    * @return Response from the API call
    */
@@ -40,17 +52,5 @@ export class TransfersController extends BaseController {
     });
     req.json(mapped.request);
     return req.callAsJson(getTransferSchema, requestOptions);
-  }
-
-  /**
-   * Gets all transfers
-   *
-   * @return Response from the API call
-   */
-  async getTransfers(
-    requestOptions?: RequestOptions
-  ): Promise<ApiResponse<ListTransfers>> {
-    const req = this.createRequest('GET', '/transfers');
-    return req.callAsJson(listTransfersSchema, requestOptions);
   }
 }
