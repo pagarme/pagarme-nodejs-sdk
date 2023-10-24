@@ -29,7 +29,7 @@ The settings for creating a private label payment
   "installments": 1,
   "capture": true,
   "recurrency_cycle": "\"first\" or \"subsequent\"",
-  "statement_descriptor": "statement_descriptor0",
+  "statement_descriptor": "statement_descriptor8",
   "card": {
     "number": "number6",
     "holder_name": "holder_name2",
@@ -38,7 +38,7 @@ The settings for creating a private label payment
     "cvv": "cvv4"
   },
   "card_id": "card_id4",
-  "card_token": "card_token0"
+  "card_token": "card_token2"
 }
 ```
 

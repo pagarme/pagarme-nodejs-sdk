@@ -11,14 +11,14 @@ Payment Authentication response
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `type` | `string \| undefined` | Optional | - |
-| `threedSecure` | [`GetThreeDSecureResponse \| undefined`](../../doc/models/get-three-d-secure-response.md) | Optional | 3D-S payment authentication response |
+| `type` | `string \| null \| undefined` | Optional | - |
+| `threedSecure` | [`GetThreeDSecureResponse \| null \| undefined`](../../doc/models/get-three-d-secure-response.md) | Optional | 3D-S payment authentication response |
 
 ## Example (as JSON)
 
 ```json
 {
-  "type": "type0",
+  "type": "type2",
   "threed_secure": {
     "mpi": "mpi0",
     "eci": "eci2",

@@ -42,7 +42,7 @@ The settings for creating a credit card payment
     "exp_year": 68,
     "cvv": "cvv4"
   },
-  "card_id": "card_id4",
+  "card_id": "card_id6",
   "card_token": "card_token0"
 }
 ```

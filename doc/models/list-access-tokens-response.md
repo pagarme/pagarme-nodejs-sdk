@@ -11,8 +11,8 @@ Response object for listing access tokens
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `data` | [`GetAccessTokenResponse[] \| undefined`](../../doc/models/get-access-token-response.md) | Optional | The access token objects |
-| `paging` | [`PagingResponse \| undefined`](../../doc/models/paging-response.md) | Optional | Paging object |
+| `data` | [`GetAccessTokenResponse[] \| null \| undefined`](../../doc/models/get-access-token-response.md) | Optional | The access token objects |
+| `paging` | [`PagingResponse \| null \| undefined`](../../doc/models/paging-response.md) | Optional | Paging object |
 
 ## Example (as JSON)
 
@@ -20,27 +20,14 @@ Response object for listing access tokens
 {
   "data": [
     {
-      "id": "id5",
-      "code": "code3",
-      "status": "status7",
+      "id": "id0",
+      "code": "code8",
+      "status": "status2",
       "created_at": "2016-03-13T12:52:32.123Z",
       "customer": {
-        "id": "id5",
-        "name": "name5",
-        "email": "email9",
-        "delinquent": true,
-        "created_at": "2016-03-13T12:52:32.123Z"
-      }
-    },
-    {
-      "id": "id6",
-      "code": "code4",
-      "status": "status8",
-      "created_at": "2016-03-13T12:52:32.123Z",
-      "customer": {
-        "id": "id6",
-        "name": "name6",
-        "email": "email0",
+        "id": "id0",
+        "name": "name0",
+        "email": "email6",
         "delinquent": false,
         "created_at": "2016-03-13T12:52:32.123Z"
       }

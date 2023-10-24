@@ -23,7 +23,7 @@ The settings for creating a voucher payment
 {
   "recurrency_cycle": "\"first\" or \"subsequent\"",
   "statement_descriptor": "statement_descriptor0",
-  "card_id": "card_id4",
+  "card_id": "card_id6",
   "card_token": "card_token0",
   "Card": {
     "number": "number8",

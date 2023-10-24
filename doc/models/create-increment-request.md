@@ -21,11 +21,11 @@ Request for creating a new increment
 
 ```json
 {
-  "value": 251.52,
-  "increment_type": "increment_type8",
-  "item_id": "item_id0",
-  "cycles": 168,
-  "description": "description0"
+  "value": 72.04,
+  "increment_type": "increment_type4",
+  "item_id": "item_id8",
+  "cycles": 196,
+  "description": "description8"
 }
 ```
 

@@ -26,10 +26,10 @@ Request for updating a customer
 
 ```json
 {
-  "name": "name0",
-  "email": "email6",
-  "document": "document6",
-  "type": "type0",
+  "name": "name8",
+  "email": "email8",
+  "document": "document2",
+  "type": "type2",
   "address": {
     "street": "street6",
     "number": "number4",

@@ -9,8 +9,8 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `homePhone` | [`GetPhoneResponse \| undefined`](../../doc/models/get-phone-response.md) | Optional | - |
-| `mobilePhone` | [`GetPhoneResponse \| undefined`](../../doc/models/get-phone-response.md) | Optional | - |
+| `homePhone` | [`GetPhoneResponse \| null \| undefined`](../../doc/models/get-phone-response.md) | Optional | - |
+| `mobilePhone` | [`GetPhoneResponse \| null \| undefined`](../../doc/models/get-phone-response.md) | Optional | - |
 
 ## Example (as JSON)
 

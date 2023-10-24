@@ -19,40 +19,40 @@ Request for creating a Setup for a subscription. The setup is an order that will
 
 ```json
 {
-  "amount": 46,
-  "description": "description0",
+  "amount": 160,
+  "description": "description8",
   "payment": {
     "payment_method": "payment_method4",
     "credit_card": {
-      "installments": 36,
+      "installments": 52,
+      "statement_descriptor": "statement_descriptor8",
+      "card": {
+        "number": "number6",
+        "holder_name": "holder_name2",
+        "exp_month": 228,
+        "exp_year": 68,
+        "cvv": "cvv4"
+      },
+      "card_id": "card_id4",
+      "card_token": "card_token2"
+    },
+    "debit_card": {
       "statement_descriptor": "statement_descriptor4",
       "card": {
         "number": "number6",
-        "holder_name": "holder_name4",
-        "exp_month": 70,
-        "exp_year": 226,
-        "cvv": "cvv6"
+        "holder_name": "holder_name2",
+        "exp_month": 228,
+        "exp_year": 68,
+        "cvv": "cvv4"
       },
       "card_id": "card_id0",
-      "card_token": "card_token4"
-    },
-    "debit_card": {
-      "statement_descriptor": "statement_descriptor0",
-      "card": {
-        "number": "number8",
-        "holder_name": "holder_name0",
-        "exp_month": 252,
-        "exp_year": 44,
-        "cvv": "cvv2"
-      },
-      "card_id": "card_id6",
-      "card_token": "card_token0",
+      "card_token": "card_token6",
       "recurrence": false
     },
     "boleto": {
-      "retries": 218,
-      "bank": "bank4",
-      "instructions": "instructions4",
+      "retries": 226,
+      "bank": "bank8",
+      "instructions": "instructions2",
       "due_at": "2016-03-13T12:52:32.123Z",
       "billing_address": {
         "street": "street8",
@@ -70,29 +70,29 @@ Request for creating a Setup for a subscription. The setup is an order that will
         "line_1": "line_18",
         "line_2": "line_26"
       },
-      "billing_address_id": "billing_address_id2",
-      "nosso_numero": "nosso_numero6",
-      "document_number": "document_number0",
-      "statement_descriptor": "statement_descriptor6",
+      "billing_address_id": "billing_address_id6",
+      "nosso_numero": "nosso_numero0",
+      "document_number": "document_number6",
+      "statement_descriptor": "statement_descriptor0",
       "interest": {
-        "days": 168,
-        "type": "type6",
-        "amount": 242
+        "days": 156,
+        "type": "type0",
+        "amount": 230
       }
     },
     "currency": "currency6",
     "voucher": {
-      "statement_descriptor": "statement_descriptor6",
+      "statement_descriptor": "statement_descriptor2",
       "card_id": "card_id8",
-      "card_token": "card_token4",
+      "card_token": "card_token8",
       "Card": {
-        "number": "number4",
-        "holder_name": "holder_name2",
-        "exp_month": 214,
-        "exp_year": 254,
-        "cvv": "cvv4"
+        "number": "number8",
+        "holder_name": "holder_name6",
+        "exp_month": 240,
+        "exp_year": 56,
+        "cvv": "cvv8"
       },
-      "recurrency_cycle": "recurrency_cycle0"
+      "recurrency_cycle": "recurrency_cycle6"
     }
   }
 }

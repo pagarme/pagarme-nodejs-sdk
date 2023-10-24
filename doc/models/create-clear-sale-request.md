@@ -15,7 +15,7 @@
 
 ```json
 {
-  "custom_sla": 224
+  "custom_sla": 150
 }
 ```
 

@@ -11,9 +11,9 @@ Response object for getting a boleto
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `interest` | [`GetInterestResponse \| undefined`](../../doc/models/get-interest-response.md) | Optional | Interest |
-| `fine` | [`GetFineResponse \| undefined`](../../doc/models/get-fine-response.md) | Optional | Fine |
-| `maxDaysToPayPastDue` | `number \| undefined` | Optional | - |
+| `interest` | [`GetInterestResponse \| null \| undefined`](../../doc/models/get-interest-response.md) | Optional | Interest |
+| `fine` | [`GetFineResponse \| null \| undefined`](../../doc/models/get-fine-response.md) | Optional | Fine |
+| `maxDaysToPayPastDue` | `number \| null \| undefined` | Optional | - |
 
 ## Example (as JSON)
 

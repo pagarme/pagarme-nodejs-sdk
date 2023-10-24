@@ -19,9 +19,9 @@ Creates a refund with split rules
 
 ```json
 {
-  "id": "id0",
-  "Amount": 156,
-  "type": "type0"
+  "id": "id6",
+  "Amount": 222,
+  "type": "type6"
 }
 ```
 

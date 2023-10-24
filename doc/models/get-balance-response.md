@@ -11,18 +11,18 @@ Balance
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `currency` | `string \| undefined` | Optional | Currency |
-| `availableAmount` | `bigint \| undefined` | Optional | Amount available for transferring |
-| `recipient` | [`GetRecipientResponse \| undefined`](../../doc/models/get-recipient-response.md) | Optional | Recipient |
-| `transferredAmount` | `bigint \| undefined` | Optional | - |
-| `waitingFundsAmount` | `bigint \| undefined` | Optional | - |
+| `currency` | `string \| null \| undefined` | Optional | Currency |
+| `availableAmount` | `bigint \| null \| undefined` | Optional | Amount available for transferring |
+| `recipient` | [`GetRecipientResponse \| null \| undefined`](../../doc/models/get-recipient-response.md) | Optional | Recipient |
+| `transferredAmount` | `bigint \| null \| undefined` | Optional | - |
+| `waitingFundsAmount` | `bigint \| null \| undefined` | Optional | - |
 
 ## Example (as JSON)
 
 ```json
 {
-  "currency": "currency0",
-  "available_amount": 182,
+  "currency": "currency2",
+  "available_amount": 96,
   "recipient": {
     "id": "id8",
     "name": "name8",
@@ -30,8 +30,8 @@ Balance
     "document": "document8",
     "description": "description2"
   },
-  "transferred_amount": 228,
-  "waiting_funds_amount": 252
+  "transferred_amount": 142,
+  "waiting_funds_amount": 174
 }
 ```
 

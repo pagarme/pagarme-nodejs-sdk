@@ -17,7 +17,7 @@ Request for creating a new Access Token
 
 ```json
 {
-  "expires_in": 226
+  "expires_in": 86
 }
 ```
 

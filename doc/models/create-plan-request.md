@@ -39,78 +39,75 @@ Request for creating a plan
   "statement_descriptor": "statement_descriptor0",
   "items": [
     {
-      "name": "name7",
+      "name": "name8",
       "pricing_scheme": {
-        "scheme_type": "scheme_type1",
+        "scheme_type": "scheme_type8",
         "price_brackets": [
           {
-            "start_quantity": 60,
-            "price": 2,
-            "end_quantity": 68,
-            "overage_price": 82
+            "start_quantity": 144,
+            "price": 174,
+            "end_quantity": 152,
+            "overage_price": 166
           },
           {
-            "start_quantity": 61,
-            "price": 1,
-            "end_quantity": 69,
-            "overage_price": 83
+            "start_quantity": 144,
+            "price": 174,
+            "end_quantity": 152,
+            "overage_price": 166
           },
           {
-            "start_quantity": 62,
-            "price": 0,
-            "end_quantity": 70,
-            "overage_price": 84
+            "start_quantity": 144,
+            "price": 174,
+            "end_quantity": 152,
+            "overage_price": 166
           }
         ],
-        "price": 149,
-        "minimum_price": 53,
-        "percentage": 25.89
+        "price": 166,
+        "minimum_price": 6,
+        "percentage": 251.76
       },
-      "id": "id7",
-      "description": "description7",
-      "cycles": 109,
-      "quantity": 127
+      "id": "id8",
+      "description": "description2",
+      "cycles": 214,
+      "quantity": 22
     }
   ],
   "shippable": false,
   "payment_methods": [
     "payment_methods5",
-    "payment_methods6"
+    "payment_methods4"
   ],
   "installments": [
-    119,
-    120,
-    121
+    195,
+    196
   ],
   "currency": "currency0",
-  "interval": "interval2",
-  "interval_count": 82,
+  "interval": "interval8",
+  "interval_count": 158,
   "billing_days": [
-    143,
-    144,
-    145
+    159
   ],
-  "billing_type": "billing_type6",
+  "billing_type": "billing_type4",
   "pricing_scheme": {
     "scheme_type": "scheme_type8",
     "price_brackets": [
       {
-        "start_quantity": 119,
-        "price": 57,
-        "end_quantity": 127,
-        "overage_price": 141
+        "start_quantity": 144,
+        "price": 174,
+        "end_quantity": 152,
+        "overage_price": 166
       },
       {
-        "start_quantity": 120,
-        "price": 58,
-        "end_quantity": 128,
-        "overage_price": 142
+        "start_quantity": 144,
+        "price": 174,
+        "end_quantity": 152,
+        "overage_price": 166
       },
       {
-        "start_quantity": 121,
-        "price": 59,
-        "end_quantity": 129,
-        "overage_price": 143
+        "start_quantity": 144,
+        "price": 174,
+        "end_quantity": 152,
+        "overage_price": 166
       }
     ],
     "price": 166,
@@ -118,14 +115,12 @@ Request for creating a plan
     "percentage": 251.76
   },
   "metadata": {
-    "key0": "metadata3",
-    "key1": "metadata4",
-    "key2": "metadata5"
+    "key0": "metadata7"
   },
-  "minimum_price": 176,
-  "cycles": 168,
-  "quantity": 68,
-  "trial_period_days": 54
+  "minimum_price": 156,
+  "cycles": 164,
+  "quantity": 144,
+  "trial_period_days": 130
 }
 ```
 

@@ -22,12 +22,12 @@ Request for creating a usage
 
 ```json
 {
-  "quantity": 68,
-  "description": "description0",
+  "quantity": 224,
+  "description": "description8",
   "used_at": "2016-03-13T12:52:32.123Z",
-  "code": "code8",
-  "group": "group8",
-  "amount": 46
+  "code": "code0",
+  "group": "group0",
+  "amount": 110
 }
 ```
 

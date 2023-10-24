@@ -23,11 +23,11 @@ Card token data
 
 ```json
 {
-  "number": "number2",
-  "holder_name": "holder_name4",
-  "exp_month": 42,
-  "exp_year": 254,
-  "cvv": "cvv2",
+  "number": "number8",
+  "holder_name": "holder_name6",
+  "exp_month": 168,
+  "exp_year": 208,
+  "cvv": "cvv8",
   "brand": "brand4",
   "label": "label0"
 }

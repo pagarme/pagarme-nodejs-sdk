@@ -20,15 +20,11 @@ Checkout pix payment request
 ```json
 {
   "expires_at": "2016-03-13T12:52:32.123Z",
-  "expires_in": 226,
+  "expires_in": 4,
   "additional_information": [
     {
-      "Name": "Name5",
-      "Value": "Value7"
-    },
-    {
-      "Name": "Name6",
-      "Value": "Value6"
+      "Name": "Name0",
+      "Value": "Value2"
     }
   ]
 }

@@ -16,32 +16,32 @@ Request for creating a bank account
 | `holderDocument` | `string` | Required | Bank account holder document |
 | `bank` | `string` | Required | Bank |
 | `branchNumber` | `string` | Required | Branch number |
-| `branchCheckDigit` | `string \| undefined` | Optional | Branch check digit |
+| `branchCheckDigit` | `string \| null \| undefined` | Optional | Branch check digit |
 | `accountNumber` | `string` | Required | Account number |
 | `accountCheckDigit` | `string` | Required | Account check digit |
 | `type` | `string` | Required | Bank account type |
 | `metadata` | `Record<string, string>` | Required | Metadata |
-| `pixKey` | `string \| undefined` | Optional | Pix key |
+| `pixKey` | `string \| null \| undefined` | Optional | Pix key |
 
 ## Example (as JSON)
 
 ```json
 {
   "holder_name": "holder_name4",
-  "holder_type": "holder_type2",
-  "holder_document": "holder_document6",
-  "bank": "bank8",
-  "branch_number": "branch_number6",
+  "holder_type": "holder_type0",
+  "holder_document": "holder_document8",
+  "bank": "bank6",
+  "branch_number": "branch_number4",
   "branch_check_digit": "branch_check_digit4",
-  "account_number": "account_number0",
-  "account_check_digit": "account_check_digit6",
-  "type": "type0",
+  "account_number": "account_number8",
+  "account_check_digit": "account_check_digit4",
+  "type": "type2",
   "metadata": {
-    "key0": "metadata3",
-    "key1": "metadata4",
-    "key2": "metadata5"
+    "key0": "metadata5",
+    "key1": "metadata6",
+    "key2": "metadata7"
   },
-  "pix_key": "pix_key6"
+  "pix_key": "pix_key8"
 }
 ```
 

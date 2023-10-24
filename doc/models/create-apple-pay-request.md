@@ -21,7 +21,7 @@ The ApplePay Token Payment Request
 
 ```json
 {
-  "version": "version4",
+  "version": "version6",
   "data": "data0",
   "header": {
     "public_key_hash": "public_key_hash4",

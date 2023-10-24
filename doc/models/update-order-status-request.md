@@ -15,7 +15,7 @@
 
 ```json
 {
-  "status": "status8"
+  "status": "status6"
 }
 ```
 

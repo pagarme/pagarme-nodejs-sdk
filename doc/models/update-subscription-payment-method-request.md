@@ -21,8 +21,8 @@ Request for updating a subscription's payment method
 
 ```json
 {
-  "payment_method": "payment_method0",
-  "card_id": "card_id4",
+  "payment_method": "payment_method4",
+  "card_id": "card_id2",
   "card": {
     "type": "credit",
     "number": "number6",
@@ -31,17 +31,17 @@ Request for updating a subscription's payment method
     "exp_year": 68,
     "cvv": "cvv4"
   },
-  "card_token": "card_token0",
+  "card_token": "card_token4",
   "boleto": {
     "interest": {
-      "days": 160,
+      "days": 156,
       "type": "type0",
-      "amount": 234
+      "amount": 230
     },
     "fine": {
-      "days": 130,
-      "type": "type8",
-      "amount": 52
+      "days": 138,
+      "type": "type2",
+      "amount": 212
     },
     "max_days_to_pay_past_due": 118
   }

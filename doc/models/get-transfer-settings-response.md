@@ -9,9 +9,9 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `transferEnabled` | `boolean \| undefined` | Optional | - |
-| `transferInterval` | `string \| undefined` | Optional | - |
-| `transferDay` | `number \| undefined` | Optional | - |
+| `transferEnabled` | `boolean \| null \| undefined` | Optional | - |
+| `transferInterval` | `string \| null \| undefined` | Optional | - |
+| `transferDay` | `number \| null \| undefined` | Optional | - |
 
 ## Example (as JSON)
 
@@ -19,7 +19,7 @@
 {
   "transfer_enabled": false,
   "transfer_interval": "transfer_interval0",
-  "transfer_day": 18
+  "transfer_day": 52
 }
 ```
 

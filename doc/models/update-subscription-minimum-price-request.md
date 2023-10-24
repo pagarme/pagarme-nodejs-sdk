@@ -17,7 +17,7 @@ Atualização do valor mínimo da assinatura
 
 ```json
 {
-  "minimum_price": 176
+  "minimum_price": 212
 }
 ```
 

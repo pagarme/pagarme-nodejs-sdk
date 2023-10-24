@@ -11,16 +11,16 @@ Response object for getting a period
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `startAt` | `string \| undefined` | Optional | - |
-| `endAt` | `string \| undefined` | Optional | - |
-| `id` | `string \| undefined` | Optional | - |
-| `billingAt` | `string \| undefined` | Optional | - |
-| `subscription` | [`GetSubscriptionResponse \| undefined`](../../doc/models/get-subscription-response.md) | Optional | - |
-| `status` | `string \| undefined` | Optional | - |
-| `duration` | `number \| undefined` | Optional | - |
-| `createdAt` | `string \| undefined` | Optional | - |
-| `updatedAt` | `string \| undefined` | Optional | - |
-| `cycle` | `number \| undefined` | Optional | - |
+| `startAt` | `string \| null \| undefined` | Optional | - |
+| `endAt` | `string \| null \| undefined` | Optional | - |
+| `id` | `string \| null \| undefined` | Optional | - |
+| `billingAt` | `string \| null \| undefined` | Optional | - |
+| `subscription` | [`GetSubscriptionResponse \| null \| undefined`](../../doc/models/get-subscription-response.md) | Optional | - |
+| `status` | `string \| null \| undefined` | Optional | - |
+| `duration` | `number \| null \| undefined` | Optional | - |
+| `createdAt` | `string \| null \| undefined` | Optional | - |
+| `updatedAt` | `string \| null \| undefined` | Optional | - |
+| `cycle` | `number \| null \| undefined` | Optional | - |
 
 ## Example (as JSON)
 

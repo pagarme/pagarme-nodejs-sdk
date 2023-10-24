@@ -24,16 +24,17 @@ SubMerchant
 
 ```json
 {
-  "payment_facilitator_code": "payment_facilitator_code6",
-  "code": "code8",
-  "name": "name0",
-  "merchant_category_code": "merchant_category_code0",
-  "document": "document6",
-  "type": "type0",
+  "payment_facilitator_code": "payment_facilitator_code2",
+  "code": "code2",
+  "name": "name4",
+  "merchant_category_code": "merchant_category_code6",
+  "document": "document2",
+  "type": "type6",
   "phone": {
     "country_code": "country_code0",
     "number": "number8",
-    "area_code": "area_code0"
+    "area_code": "area_code0",
+    "Type": "Type0"
   },
   "address": {
     "street": "street6",

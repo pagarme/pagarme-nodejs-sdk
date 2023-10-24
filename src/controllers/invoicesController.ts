@@ -30,6 +30,70 @@ import { BaseController } from './baseController';
 
 export class InvoicesController extends BaseController {
   /**
+   * Updates the metadata from an invoice
+   *
+   * @param invoiceId       The invoice id
+   * @param request         Request for updating the invoice metadata
+   * @param idempotencyKey
+   * @return Response from the API call
+   */
+  async updateInvoiceMetadata(
+    invoiceId: string,
+    request: UpdateMetadataRequest,
+    idempotencyKey?: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<GetInvoiceResponse>> {
+    const req = this.createRequest('PATCH');
+    const mapped = req.prepareArgs({
+      invoiceId: [invoiceId, string()],
+      request: [request, updateMetadataRequestSchema],
+      idempotencyKey: [idempotencyKey, optional(string())],
+    });
+    req.header('idempotency-key', mapped.idempotencyKey);
+    req.json(mapped.request);
+    req.appendTemplatePath`/invoices/${mapped.invoiceId}/metadata`;
+    return req.callAsJson(getInvoiceResponseSchema, requestOptions);
+  }
+
+  /**
+   * @param subscriptionId  Subscription Id
+   * @return Response from the API call
+   */
+  async getPartialInvoice(
+    subscriptionId: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<GetInvoiceResponse>> {
+    const req = this.createRequest('GET');
+    const mapped = req.prepareArgs({
+      subscriptionId: [subscriptionId, string()],
+    });
+    req.appendTemplatePath`/subscriptions/${mapped.subscriptionId}/partial-invoice`;
+    return req.callAsJson(getInvoiceResponseSchema, requestOptions);
+  }
+
+  /**
+   * Cancels an invoice
+   *
+   * @param invoiceId       Invoice id
+   * @param idempotencyKey
+   * @return Response from the API call
+   */
+  async cancelInvoice(
+    invoiceId: string,
+    idempotencyKey?: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<GetInvoiceResponse>> {
+    const req = this.createRequest('DELETE');
+    const mapped = req.prepareArgs({
+      invoiceId: [invoiceId, string()],
+      idempotencyKey: [idempotencyKey, optional(string())],
+    });
+    req.header('idempotency-key', mapped.idempotencyKey);
+    req.appendTemplatePath`/invoices/${mapped.invoiceId}`;
+    return req.callAsJson(getInvoiceResponseSchema, requestOptions);
+  }
+
+  /**
    * Create an Invoice
    *
    * @param subscriptionId  Subscription Id
@@ -117,66 +181,18 @@ export class InvoicesController extends BaseController {
   }
 
   /**
-   * Cancels an invoice
+   * Gets an invoice
    *
-   * @param invoiceId       Invoice id
-   * @param idempotencyKey
+   * @param invoiceId  Invoice Id
    * @return Response from the API call
    */
-  async cancelInvoice(
+  async getInvoice(
     invoiceId: string,
-    idempotencyKey?: string,
-    requestOptions?: RequestOptions
-  ): Promise<ApiResponse<GetInvoiceResponse>> {
-    const req = this.createRequest('DELETE');
-    const mapped = req.prepareArgs({
-      invoiceId: [invoiceId, string()],
-      idempotencyKey: [idempotencyKey, optional(string())],
-    });
-    req.header('idempotency-key', mapped.idempotencyKey);
-    req.appendTemplatePath`/invoices/${mapped.invoiceId}`;
-    return req.callAsJson(getInvoiceResponseSchema, requestOptions);
-  }
-
-  /**
-   * Updates the metadata from an invoice
-   *
-   * @param invoiceId       The invoice id
-   * @param request         Request for updating the invoice metadata
-   * @param idempotencyKey
-   * @return Response from the API call
-   */
-  async updateInvoiceMetadata(
-    invoiceId: string,
-    request: UpdateMetadataRequest,
-    idempotencyKey?: string,
-    requestOptions?: RequestOptions
-  ): Promise<ApiResponse<GetInvoiceResponse>> {
-    const req = this.createRequest('PATCH');
-    const mapped = req.prepareArgs({
-      invoiceId: [invoiceId, string()],
-      request: [request, updateMetadataRequestSchema],
-      idempotencyKey: [idempotencyKey, optional(string())],
-    });
-    req.header('idempotency-key', mapped.idempotencyKey);
-    req.json(mapped.request);
-    req.appendTemplatePath`/invoices/${mapped.invoiceId}/metadata`;
-    return req.callAsJson(getInvoiceResponseSchema, requestOptions);
-  }
-
-  /**
-   * @param subscriptionId  Subscription Id
-   * @return Response from the API call
-   */
-  async getPartialInvoice(
-    subscriptionId: string,
     requestOptions?: RequestOptions
   ): Promise<ApiResponse<GetInvoiceResponse>> {
     const req = this.createRequest('GET');
-    const mapped = req.prepareArgs({
-      subscriptionId: [subscriptionId, string()],
-    });
-    req.appendTemplatePath`/subscriptions/${mapped.subscriptionId}/partial-invoice`;
+    const mapped = req.prepareArgs({ invoiceId: [invoiceId, string()] });
+    req.appendTemplatePath`/invoices/${mapped.invoiceId}`;
     return req.callAsJson(getInvoiceResponseSchema, requestOptions);
   }
 
@@ -203,22 +219,6 @@ export class InvoicesController extends BaseController {
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.request);
     req.appendTemplatePath`/invoices/${mapped.invoiceId}/status`;
-    return req.callAsJson(getInvoiceResponseSchema, requestOptions);
-  }
-
-  /**
-   * Gets an invoice
-   *
-   * @param invoiceId  Invoice Id
-   * @return Response from the API call
-   */
-  async getInvoice(
-    invoiceId: string,
-    requestOptions?: RequestOptions
-  ): Promise<ApiResponse<GetInvoiceResponse>> {
-    const req = this.createRequest('GET');
-    const mapped = req.prepareArgs({ invoiceId: [invoiceId, string()] });
-    req.appendTemplatePath`/invoices/${mapped.invoiceId}`;
     return req.callAsJson(getInvoiceResponseSchema, requestOptions);
   }
 }

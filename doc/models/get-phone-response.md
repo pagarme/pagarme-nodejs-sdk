@@ -9,17 +9,17 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `countryCode` | `string \| undefined` | Optional | - |
-| `number` | `string \| undefined` | Optional | - |
-| `areaCode` | `string \| undefined` | Optional | - |
+| `countryCode` | `string \| null \| undefined` | Optional | - |
+| `number` | `string \| null \| undefined` | Optional | - |
+| `areaCode` | `string \| null \| undefined` | Optional | - |
 
 ## Example (as JSON)
 
 ```json
 {
-  "country_code": "country_code0",
-  "number": "number2",
-  "area_code": "area_code0"
+  "country_code": "country_code6",
+  "number": "number4",
+  "area_code": "area_code6"
 }
 ```
 

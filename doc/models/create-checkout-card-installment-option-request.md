@@ -18,8 +18,8 @@ Options for card installment
 
 ```json
 {
-  "number": 158,
-  "total": 10
+  "number": 154,
+  "total": 46
 }
 ```
 

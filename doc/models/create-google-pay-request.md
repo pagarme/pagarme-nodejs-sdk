@@ -21,7 +21,7 @@ The GooglePay Token Payment Request
 
 ```json
 {
-  "version": "version4",
+  "version": "version6",
   "data": "data0",
   "header": {
     "ephemeral_public_key": "ephemeral_public_key6"

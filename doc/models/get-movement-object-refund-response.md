@@ -15,26 +15,25 @@ Generic response object for getting a MovementObjectRefund.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `fraudCoverageFee` | `string \| undefined` | Optional | - |
-| `chargeFeeRecipientId` | `string \| undefined` | Optional | - |
-| `bankAccountId` | `string \| undefined` | Optional | - |
-| `localTransactionId` | `string \| undefined` | Optional | - |
-| `updatedAt` | `string \| undefined` | Optional | - |
+| `fraudCoverageFee` | `string \| null \| undefined` | Optional | - |
+| `chargeFeeRecipientId` | `string \| null \| undefined` | Optional | - |
+| `bankAccountId` | `string \| null \| undefined` | Optional | - |
+| `localTransactionId` | `string \| null \| undefined` | Optional | - |
+| `updatedAt` | `string \| null \| undefined` | Optional | - |
 
 ## Example (as JSON)
 
 ```json
 {
-  "object": "refund",
   "id": "id2",
   "status": "status4",
   "amount": "amount4",
   "created_at": "created_at0",
-  "fraud_coverage_fee": "fraud_coverage_fee2",
-  "charge_fee_recipient_id": "charge_fee_recipient_id4",
-  "bank_account_id": "bank_account_id0",
-  "local_transaction_id": "local_transaction_id6",
-  "updated_at": "updated_at4"
+  "fraud_coverage_fee": "fraud_coverage_fee0",
+  "charge_fee_recipient_id": "charge_fee_recipient_id2",
+  "bank_account_id": "bank_account_id2",
+  "local_transaction_id": "local_transaction_id8",
+  "updated_at": "updated_at8"
 }
 ```
 
