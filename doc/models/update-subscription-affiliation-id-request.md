@@ -17,7 +17,7 @@ Request for updating a Subscription Affiliation Id
 
 ```json
 {
-  "gateway_affiliation_id": "gateway_affiliation_id4"
+  "gateway_affiliation_id": "gateway_affiliation_id8"
 }
 ```
 

@@ -18,9 +18,8 @@ Request for updating an metadata
 ```json
 {
   "metadata": {
-    "key0": "metadata3",
-    "key1": "metadata4",
-    "key2": "metadata5"
+    "key0": "metadata7",
+    "key1": "metadata6"
   }
 }
 ```

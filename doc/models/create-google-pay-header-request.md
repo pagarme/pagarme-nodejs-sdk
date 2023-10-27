@@ -17,7 +17,7 @@ The GooglePay header request
 
 ```json
 {
-  "ephemeral_public_key": "ephemeral_public_key0"
+  "ephemeral_public_key": "ephemeral_public_key2"
 }
 ```
 

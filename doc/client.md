@@ -52,16 +52,16 @@ The gateway for the SDK. This class acts as a factory for the Controllers and al
 
 | Name | Description |
 |  --- | --- |
+| subscriptions | Gets SubscriptionsController |
 | orders | Gets OrdersController |
 | plans | Gets PlansController |
-| subscriptions | Gets SubscriptionsController |
 | invoices | Gets InvoicesController |
 | customers | Gets CustomersController |
-| recipients | Gets RecipientsController |
 | charges | Gets ChargesController |
+| recipients | Gets RecipientsController |
 | tokens | Gets TokensController |
-| transfers | Gets TransfersController |
 | transactions | Gets TransactionsController |
+| transfers | Gets TransfersController |
 | payables | Gets PayablesController |
 | balanceOperations | Gets BalanceOperationsController |
 

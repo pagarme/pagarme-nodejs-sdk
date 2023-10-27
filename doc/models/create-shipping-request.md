@@ -25,11 +25,11 @@ Shipping data
 
 ```json
 {
-  "amount": 46,
-  "description": "description0",
-  "recipient_name": "recipient_name8",
-  "recipient_phone": "recipient_phone2",
-  "address_id": "address_id0",
+  "amount": 136,
+  "description": "description4",
+  "recipient_name": "recipient_name4",
+  "recipient_phone": "recipient_phone8",
+  "address_id": "address_id4",
   "address": {
     "street": "street6",
     "number": "number4",
@@ -49,7 +49,7 @@ Shipping data
   },
   "max_delivery_date": "2016-03-13T12:52:32.123Z",
   "estimated_delivery_date": "2016-03-13T12:52:32.123Z",
-  "type": "type0"
+  "type": "type4"
 }
 ```
 

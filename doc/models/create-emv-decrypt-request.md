@@ -18,15 +18,15 @@
 
 ```json
 {
-  "icc_data": "icc_data6",
-  "card_sequence_number": "card_sequence_number0",
+  "icc_data": "icc_data4",
+  "card_sequence_number": "card_sequence_number2",
   "data": {
     "cipher": "cipher4",
     "tags": [
       {
-        "tag": "tag9",
-        "lenght": "lenght7",
-        "value": "value7"
+        "tag": "tag4",
+        "lenght": "lenght2",
+        "value": "value2"
       }
     ],
     "dukpt": {

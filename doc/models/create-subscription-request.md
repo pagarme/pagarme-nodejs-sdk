@@ -64,7 +64,9 @@ Request for creating a subcription
       "country": "country0",
       "complement": "complement2",
       "metadata": {
-        "key0": "metadata3"
+        "key0": "metadata3",
+        "key1": "metadata2",
+        "key2": "metadata1"
       },
       "line_1": "line_10",
       "line_2": "line_24"
@@ -74,14 +76,16 @@ Request for creating a subcription
     },
     "phones": {
       "home_phone": {
-        "country_code": "country_code2",
-        "number": "number0",
-        "area_code": "area_code2"
+        "country_code": "country_code0",
+        "number": "number2",
+        "area_code": "area_code0",
+        "Type": "Type0"
       },
       "mobile_phone": {
-        "country_code": "country_code8",
-        "number": "number4",
-        "area_code": "area_code8"
+        "country_code": "country_code0",
+        "number": "number8",
+        "area_code": "area_code0",
+        "Type": "Type0"
       }
     },
     "code": "code8",
@@ -96,34 +100,34 @@ Request for creating a subcription
     "exp_year": 68,
     "cvv": "cvv4"
   },
-  "code": "code8",
-  "payment_method": "payment_method0",
-  "billing_type": "billing_type6",
-  "statement_descriptor": "statement_descriptor0",
-  "description": "description0",
-  "currency": "currency0",
-  "interval": "interval2",
-  "interval_count": 82,
+  "code": "code0",
+  "payment_method": "payment_method8",
+  "billing_type": "billing_type4",
+  "statement_descriptor": "statement_descriptor2",
+  "description": "description8",
+  "currency": "currency2",
+  "interval": "interval0",
+  "interval_count": 220,
   "pricing_scheme": {
     "scheme_type": "scheme_type8",
     "price_brackets": [
       {
-        "start_quantity": 119,
-        "price": 57,
-        "end_quantity": 127,
-        "overage_price": 141
+        "start_quantity": 144,
+        "price": 174,
+        "end_quantity": 152,
+        "overage_price": 166
       },
       {
-        "start_quantity": 120,
-        "price": 58,
-        "end_quantity": 128,
-        "overage_price": 142
+        "start_quantity": 144,
+        "price": 174,
+        "end_quantity": 152,
+        "overage_price": 166
       },
       {
-        "start_quantity": 121,
-        "price": 59,
-        "end_quantity": 129,
-        "overage_price": 143
+        "start_quantity": 144,
+        "price": 174,
+        "end_quantity": 152,
+        "overage_price": 166
       }
     ],
     "price": 166,
@@ -132,48 +136,48 @@ Request for creating a subcription
   },
   "items": [
     {
-      "description": "description7",
+      "description": "description2",
       "pricing_scheme": {
-        "scheme_type": "scheme_type1",
+        "scheme_type": "scheme_type8",
         "price_brackets": [
           {
-            "start_quantity": 60,
-            "price": 2,
-            "end_quantity": 68,
-            "overage_price": 82
+            "start_quantity": 144,
+            "price": 174,
+            "end_quantity": 152,
+            "overage_price": 166
           },
           {
-            "start_quantity": 61,
-            "price": 1,
-            "end_quantity": 69,
-            "overage_price": 83
+            "start_quantity": 144,
+            "price": 174,
+            "end_quantity": 152,
+            "overage_price": 166
           },
           {
-            "start_quantity": 62,
-            "price": 0,
-            "end_quantity": 70,
-            "overage_price": 84
+            "start_quantity": 144,
+            "price": 174,
+            "end_quantity": 152,
+            "overage_price": 166
           }
         ],
-        "price": 149,
-        "minimum_price": 53,
-        "percentage": 25.89
+        "price": 166,
+        "minimum_price": 6,
+        "percentage": 251.76
       },
-      "id": "id7",
-      "plan_item_id": "plan_item_id7",
+      "id": "id8",
+      "plan_item_id": "plan_item_id8",
       "discounts": [
         {
-          "value": 236.1,
-          "discount_type": "discount_type6",
-          "item_id": "item_id8",
-          "cycles": 82,
-          "description": "description8"
+          "value": 90.66,
+          "discount_type": "discount_type2",
+          "item_id": "item_id4",
+          "cycles": 126,
+          "description": "description4"
         }
       ],
-      "name": "name7",
-      "cycles": 109,
-      "quantity": 127,
-      "minimum_price": 117
+      "name": "name8",
+      "cycles": 214,
+      "quantity": 22,
+      "minimum_price": 222
     }
   ],
   "shipping": {
@@ -183,19 +187,21 @@ Request for creating a subcription
     "recipient_phone": "recipient_phone6",
     "address_id": "address_id6",
     "address": {
-      "street": "street0",
-      "number": "number8",
-      "zip_code": "zip_code4",
-      "neighborhood": "neighborhood6",
-      "city": "city0",
-      "state": "state6",
-      "country": "country4",
-      "complement": "complement6",
+      "street": "street6",
+      "number": "number4",
+      "zip_code": "zip_code0",
+      "neighborhood": "neighborhood2",
+      "city": "city6",
+      "state": "state2",
+      "country": "country0",
+      "complement": "complement2",
       "metadata": {
-        "key0": "metadata7"
+        "key0": "metadata3",
+        "key1": "metadata2",
+        "key2": "metadata1"
       },
-      "line_1": "line_14",
-      "line_2": "line_28"
+      "line_1": "line_10",
+      "line_2": "line_24"
     },
     "max_delivery_date": "2016-03-13T12:52:32.123Z",
     "estimated_delivery_date": "2016-03-13T12:52:32.123Z",
@@ -203,110 +209,107 @@ Request for creating a subcription
   },
   "discounts": [
     {
-      "value": 10.23,
-      "discount_type": "discount_type9",
-      "item_id": "item_id1",
-      "cycles": 233,
-      "description": "description1"
+      "value": 90.66,
+      "discount_type": "discount_type2",
+      "item_id": "item_id4",
+      "cycles": 126,
+      "description": "description4"
     }
   ],
   "metadata": {
-    "key0": "metadata3",
-    "key1": "metadata4",
-    "key2": "metadata5"
+    "key0": "metadata1"
   },
   "increments": [
     {
-      "value": 124.19,
-      "increment_type": "increment_type9",
-      "item_id": "item_id3",
-      "cycles": 101,
-      "description": "description3"
+      "value": 252.86,
+      "increment_type": "increment_type6",
+      "item_id": "item_id6",
+      "cycles": 34,
+      "description": "description4"
     }
   ],
   "setup": {
     "amount": 110,
     "description": "description4",
     "payment": {
-      "payment_method": "payment_method8",
+      "payment_method": "payment_method4",
       "credit_card": {
-        "installments": 228,
-        "statement_descriptor": "statement_descriptor0",
+        "installments": 52,
+        "statement_descriptor": "statement_descriptor8",
         "card": {
-          "number": "number2",
-          "holder_name": "holder_name0",
-          "exp_month": 134,
-          "exp_year": 162,
-          "cvv": "cvv2"
+          "number": "number6",
+          "holder_name": "holder_name2",
+          "exp_month": 228,
+          "exp_year": 68,
+          "cvv": "cvv4"
         },
-        "card_id": "card_id6",
-        "card_token": "card_token0"
+        "card_id": "card_id4",
+        "card_token": "card_token2"
       },
       "debit_card": {
-        "statement_descriptor": "statement_descriptor6",
+        "statement_descriptor": "statement_descriptor4",
         "card": {
-          "number": "number2",
-          "holder_name": "holder_name6",
-          "exp_month": 60,
-          "exp_year": 236,
-          "cvv": "cvv8"
+          "number": "number6",
+          "holder_name": "holder_name2",
+          "exp_month": 228,
+          "exp_year": 68,
+          "cvv": "cvv4"
         },
-        "card_id": "card_id2",
-        "card_token": "card_token4",
+        "card_id": "card_id0",
+        "card_token": "card_token6",
         "recurrence": false
       },
       "boleto": {
-        "retries": 154,
-        "bank": "bank0",
-        "instructions": "instructions0",
+        "retries": 226,
+        "bank": "bank8",
+        "instructions": "instructions2",
         "due_at": "2016-03-13T12:52:32.123Z",
         "billing_address": {
-          "street": "street4",
-          "number": "number8",
-          "zip_code": "zip_code8",
-          "neighborhood": "neighborhood0",
-          "city": "city6",
-          "state": "state0",
-          "country": "country8",
-          "complement": "complement0",
+          "street": "street8",
+          "number": "number4",
+          "zip_code": "zip_code2",
+          "neighborhood": "neighborhood4",
+          "city": "city2",
+          "state": "state6",
+          "country": "country2",
+          "complement": "complement6",
           "metadata": {
-            "key0": "metadata9",
-            "key1": "metadata0",
-            "key2": "metadata1"
+            "key0": "metadata5",
+            "key1": "metadata6"
           },
-          "line_1": "line_12",
-          "line_2": "line_22"
+          "line_1": "line_18",
+          "line_2": "line_26"
         },
-        "billing_address_id": "billing_address_id8",
-        "nosso_numero": "nosso_numero2",
-        "document_number": "document_number4",
-        "statement_descriptor": "statement_descriptor2",
+        "billing_address_id": "billing_address_id6",
+        "nosso_numero": "nosso_numero0",
+        "document_number": "document_number6",
+        "statement_descriptor": "statement_descriptor0",
         "interest": {
-          "days": 232,
-          "type": "type2",
-          "amount": 50
+          "days": 156,
+          "type": "type0",
+          "amount": 230
         }
       },
-      "currency": "currency2",
+      "currency": "currency6",
       "voucher": {
-        "statement_descriptor": "statement_descriptor0",
-        "card_id": "card_id4",
-        "card_token": "card_token0",
+        "statement_descriptor": "statement_descriptor2",
+        "card_id": "card_id8",
+        "card_token": "card_token8",
         "Card": {
           "number": "number8",
           "holder_name": "holder_name6",
-          "exp_month": 22,
-          "exp_year": 62,
+          "exp_month": 240,
+          "exp_year": 56,
           "cvv": "cvv8"
         },
-        "recurrency_cycle": "recurrency_cycle4"
+        "recurrency_cycle": "recurrency_cycle6"
       }
     }
   },
-  "plan_id": "plan_id8",
-  "customer_id": "customer_id8",
-  "card_id": "card_id4",
-  "billing_day": 34
+  "plan_id": "plan_id4",
+  "customer_id": "customer_id0",
+  "card_id": "card_id2",
+  "billing_day": 152
 }
 ```
 

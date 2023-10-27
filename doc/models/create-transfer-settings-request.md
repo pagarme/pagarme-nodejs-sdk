@@ -20,8 +20,8 @@ Informações de transferência do recebedor
 ```json
 {
   "transfer_enabled": false,
-  "transfer_interval": "transfer_interval0",
-  "transfer_day": 18
+  "transfer_interval": "transfer_interval4",
+  "transfer_day": 82
 }
 ```
 

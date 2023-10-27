@@ -71,7 +71,7 @@ npm install
 
 ## Initialize the API Client
 
-**_Note:_** Documentation for the client can be found [here.](doc/client.md)
+**_Note:_** Documentation for the client can be found [here.](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.1/doc/client.md)
 
 The following parameters are configurable for the API Client:
 
@@ -126,30 +126,30 @@ Here is the list of errors that the API might throw.
 
 | HTTP Status Code | Error Description | Exception Class |
 |  --- | --- | --- |
-| 400 | Invalid request | [`CustomError`](doc/models/custom-error.md) |
-| 401 | Invalid API key | [`CustomError`](doc/models/custom-error.md) |
-| 404 | An informed resource was not found | [`CustomError`](doc/models/custom-error.md) |
-| 412 | Business validation error | [`CustomError`](doc/models/custom-error.md) |
-| 422 | Contract validation error | [`CustomError`](doc/models/custom-error.md) |
-| 500 | Internal server error | [`CustomError`](doc/models/custom-error.md) |
+| 400 | Invalid request | [`CustomError`](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.1/doc/models/custom-error.md) |
+| 401 | Invalid API key | [`CustomError`](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.1/doc/models/custom-error.md) |
+| 404 | An informed resource was not found | [`CustomError`](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.1/doc/models/custom-error.md) |
+| 412 | Business validation error | [`CustomError`](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.1/doc/models/custom-error.md) |
+| 422 | Contract validation error | [`CustomError`](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.1/doc/models/custom-error.md) |
+| 500 | Internal server error | [`CustomError`](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.1/doc/models/custom-error.md) |
 
 ## List of APIs
 
-* [Subscriptions](doc/controllers/subscriptions.md)
-* [Orders](doc/controllers/orders.md)
-* [Plans](doc/controllers/plans.md)
-* [Invoices](doc/controllers/invoices.md)
-* [Customers](doc/controllers/customers.md)
-* [Charges](doc/controllers/charges.md)
-* [Recipients](doc/controllers/recipients.md)
-* [Tokens](doc/controllers/tokens.md)
-* [Transactions](doc/controllers/transactions.md)
-* [Transfers](doc/controllers/transfers.md)
-* [Payables](doc/controllers/payables.md)
-* [Balance Operations](doc/controllers/balance-operations.md)
+* [Subscriptions](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.1/doc/controllers/subscriptions.md)
+* [Orders](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.1/doc/controllers/orders.md)
+* [Plans](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.1/doc/controllers/plans.md)
+* [Invoices](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.1/doc/controllers/invoices.md)
+* [Customers](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.1/doc/controllers/customers.md)
+* [Charges](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.1/doc/controllers/charges.md)
+* [Recipients](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.1/doc/controllers/recipients.md)
+* [Tokens](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.1/doc/controllers/tokens.md)
+* [Transactions](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.1/doc/controllers/transactions.md)
+* [Transfers](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.1/doc/controllers/transfers.md)
+* [Payables](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.1/doc/controllers/payables.md)
+* [Balance Operations](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.1/doc/controllers/balance-operations.md)
 
 ## Classes Documentation
 
-* [ApiResponse](doc/api-response.md)
-* [ApiError](doc/api-error.md)
+* [ApiResponse](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.1/doc/api-response.md)
+* [ApiError](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.1/doc/api-error.md)
 

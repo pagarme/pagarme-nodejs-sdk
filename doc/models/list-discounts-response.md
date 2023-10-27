@@ -9,8 +9,8 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `data` | [`GetDiscountResponse[] \| undefined`](../../doc/models/get-discount-response.md) | Optional | The Discounts response |
-| `paging` | [`PagingResponse \| undefined`](../../doc/models/paging-response.md) | Optional | Paging object |
+| `data` | [`GetDiscountResponse[] \| null \| undefined`](../../doc/models/get-discount-response.md) | Optional | The Discounts response |
+| `paging` | [`PagingResponse \| null \| undefined`](../../doc/models/paging-response.md) | Optional | Paging object |
 
 ## Example (as JSON)
 
@@ -18,17 +18,17 @@
 {
   "data": [
     {
-      "id": "id5",
-      "value": 145.67,
-      "discount_type": "discount_type3",
-      "status": "status7",
+      "id": "id0",
+      "value": 95.62,
+      "discount_type": "discount_type8",
+      "status": "status2",
       "created_at": "2016-03-13T12:52:32.123Z"
     },
     {
-      "id": "id6",
-      "value": 145.68,
-      "discount_type": "discount_type4",
-      "status": "status8",
+      "id": "id0",
+      "value": 95.62,
+      "discount_type": "discount_type8",
+      "status": "status2",
       "created_at": "2016-03-13T12:52:32.123Z"
     }
   ],

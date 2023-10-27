@@ -26,7 +26,7 @@ Request for updating the card from a subscription
     "exp_year": 68,
     "cvv": "cvv4"
   },
-  "card_id": "card_id4"
+  "card_id": "card_id0"
 }
 ```
 

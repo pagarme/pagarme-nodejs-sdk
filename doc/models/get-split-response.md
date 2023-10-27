@@ -11,19 +11,19 @@ Split response
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `type` | `string \| undefined` | Optional | Type |
-| `amount` | `number \| undefined` | Optional | Amount |
-| `recipient` | [`GetRecipientResponse \| undefined`](../../doc/models/get-recipient-response.md) | Optional | Recipient |
-| `gatewayId` | `string \| undefined` | Optional | The split rule gateway id |
-| `options` | [`GetSplitOptionsResponse \| undefined`](../../doc/models/get-split-options-response.md) | Optional | - |
-| `id` | `string \| undefined` | Optional | - |
+| `type` | `string \| null \| undefined` | Optional | Type |
+| `amount` | `number \| null \| undefined` | Optional | Amount |
+| `recipient` | [`GetRecipientResponse \| null \| undefined`](../../doc/models/get-recipient-response.md) | Optional | Recipient |
+| `gatewayId` | `string \| null \| undefined` | Optional | The split rule gateway id |
+| `options` | [`GetSplitOptionsResponse \| null \| undefined`](../../doc/models/get-split-options-response.md) | Optional | - |
+| `id` | `string \| null \| undefined` | Optional | - |
 
 ## Example (as JSON)
 
 ```json
 {
   "type": "type0",
-  "amount": 46,
+  "amount": 252,
   "recipient": {
     "id": "id8",
     "name": "name8",

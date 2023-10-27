@@ -19,9 +19,9 @@ Interest Request
 
 ```json
 {
-  "days": 120,
+  "days": 4,
   "type": "\"percentage\" or \"flat\"",
-  "amount": 46
+  "amount": 78
 }
 ```
 

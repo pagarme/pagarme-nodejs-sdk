@@ -18,8 +18,8 @@ Request for creating a location
 
 ```json
 {
-  "latitude": "latitude6",
-  "longitude": "longitude4"
+  "latitude": "latitude0",
+  "longitude": "longitude0"
 }
 ```
 

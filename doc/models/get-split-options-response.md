@@ -9,9 +9,9 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `liable` | `boolean \| undefined` | Optional | - |
-| `chargeProcessingFee` | `boolean \| undefined` | Optional | - |
-| `chargeRemainderFee` | `string \| undefined` | Optional | - |
+| `liable` | `boolean \| null \| undefined` | Optional | - |
+| `chargeProcessingFee` | `boolean \| null \| undefined` | Optional | - |
+| `chargeRemainderFee` | `string \| null \| undefined` | Optional | - |
 
 ## Example (as JSON)
 
@@ -19,7 +19,7 @@
 {
   "liable": false,
   "charge_processing_fee": false,
-  "charge_remainder_fee": "charge_remainder_fee8"
+  "charge_remainder_fee": "charge_remainder_fee6"
 }
 ```
 

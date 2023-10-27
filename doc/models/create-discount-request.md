@@ -21,11 +21,11 @@ Request for creating a new discount
 
 ```json
 {
-  "value": 251.52,
-  "discount_type": "discount_type8",
-  "item_id": "item_id0",
-  "cycles": 168,
-  "description": "description0"
+  "value": 146.6,
+  "discount_type": "discount_type6",
+  "item_id": "item_id2",
+  "cycles": 164,
+  "description": "description2"
 }
 ```
 

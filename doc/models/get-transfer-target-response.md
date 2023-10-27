@@ -9,8 +9,8 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `targetId` | `string \| undefined` | Optional | - |
-| `type` | `string \| undefined` | Optional | - |
+| `targetId` | `string \| null \| undefined` | Optional | - |
+| `type` | `string \| null \| undefined` | Optional | - |
 
 ## Example (as JSON)
 

@@ -18,8 +18,8 @@ Request for creating a bank transfer payment
 
 ```json
 {
-  "bank": "bank8",
-  "retries": 230
+  "bank": "bank4",
+  "retries": 188
 }
 ```
 

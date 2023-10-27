@@ -11,14 +11,14 @@ Generic response object for getting a BalanceOperation.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `id` | `string \| undefined` | Optional | - |
-| `status` | `string \| undefined` | Optional | - |
-| `balanceAmount` | `string \| undefined` | Optional | - |
-| `balanceOldAmount` | `string \| undefined` | Optional | - |
-| `type` | `string \| undefined` | Optional | - |
-| `amount` | `string \| undefined` | Optional | - |
-| `fee` | `string \| undefined` | Optional | - |
-| `createdAt` | `string \| undefined` | Optional | - |
+| `id` | `string \| null \| undefined` | Optional | - |
+| `status` | `string \| null \| undefined` | Optional | - |
+| `balanceAmount` | `string \| null \| undefined` | Optional | - |
+| `balanceOldAmount` | `string \| null \| undefined` | Optional | - |
+| `type` | `string \| null \| undefined` | Optional | - |
+| `amount` | `string \| null \| undefined` | Optional | - |
+| `fee` | `string \| null \| undefined` | Optional | - |
+| `createdAt` | `string \| null \| undefined` | Optional | - |
 | `movementObject` | [`GetMovementObjectBaseResponse \| undefined`](../../doc/models/get-movement-object-base-response.md) | Optional | - |
 
 ## Example (as JSON)
@@ -26,9 +26,9 @@ Generic response object for getting a BalanceOperation.
 ```json
 {
   "id": "id0",
-  "status": "status8",
+  "status": "status2",
   "balance_amount": "balance_amount0",
-  "balance_old_amount": "balance_old_amount2",
+  "balance_old_amount": "balance_old_amount8",
   "type": "type0"
 }
 ```

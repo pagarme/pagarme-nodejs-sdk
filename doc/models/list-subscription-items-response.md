@@ -11,8 +11,8 @@ Response model for listing subscription items
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `data` | [`GetSubscriptionItemResponse[] \| undefined`](../../doc/models/get-subscription-item-response.md) | Optional | The subscription items |
-| `paging` | [`PagingResponse \| undefined`](../../doc/models/paging-response.md) | Optional | Paging object |
+| `data` | [`GetSubscriptionItemResponse[] \| null \| undefined`](../../doc/models/get-subscription-item-response.md) | Optional | The subscription items |
+| `paging` | [`PagingResponse \| null \| undefined`](../../doc/models/paging-response.md) | Optional | Paging object |
 
 ## Example (as JSON)
 
@@ -20,16 +20,23 @@ Response model for listing subscription items
 {
   "data": [
     {
-      "id": "id5",
-      "description": "description5",
-      "status": "status7",
+      "id": "id0",
+      "description": "description0",
+      "status": "status2",
       "created_at": "2016-03-13T12:52:32.123Z",
       "updated_at": "2016-03-13T12:52:32.123Z"
     },
     {
-      "id": "id6",
-      "description": "description6",
-      "status": "status8",
+      "id": "id0",
+      "description": "description0",
+      "status": "status2",
+      "created_at": "2016-03-13T12:52:32.123Z",
+      "updated_at": "2016-03-13T12:52:32.123Z"
+    },
+    {
+      "id": "id0",
+      "description": "description0",
+      "status": "status2",
       "created_at": "2016-03-13T12:52:32.123Z",
       "updated_at": "2016-03-13T12:52:32.123Z"
     }

@@ -11,27 +11,27 @@ Response object for getting a plan
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `id` | `string \| undefined` | Optional | - |
-| `name` | `string \| undefined` | Optional | - |
-| `description` | `string \| undefined` | Optional | - |
-| `url` | `string \| undefined` | Optional | - |
-| `statementDescriptor` | `string \| undefined` | Optional | - |
-| `interval` | `string \| undefined` | Optional | - |
-| `intervalCount` | `number \| undefined` | Optional | - |
-| `billingType` | `string \| undefined` | Optional | - |
-| `paymentMethods` | `string[] \| undefined` | Optional | - |
-| `installments` | `number[] \| undefined` | Optional | - |
-| `status` | `string \| undefined` | Optional | - |
-| `currency` | `string \| undefined` | Optional | - |
-| `createdAt` | `string \| undefined` | Optional | - |
-| `updatedAt` | `string \| undefined` | Optional | - |
-| `items` | [`GetPlanItemResponse[] \| undefined`](../../doc/models/get-plan-item-response.md) | Optional | - |
-| `billingDays` | `number[] \| undefined` | Optional | - |
-| `shippable` | `boolean \| undefined` | Optional | - |
-| `metadata` | `Record<string, string> \| undefined` | Optional | - |
-| `trialPeriodDays` | `number \| undefined` | Optional | - |
-| `minimumPrice` | `number \| undefined` | Optional | - |
-| `deletedAt` | `string \| undefined` | Optional | - |
+| `id` | `string \| null \| undefined` | Optional | - |
+| `name` | `string \| null \| undefined` | Optional | - |
+| `description` | `string \| null \| undefined` | Optional | - |
+| `url` | `string \| null \| undefined` | Optional | - |
+| `statementDescriptor` | `string \| null \| undefined` | Optional | - |
+| `interval` | `string \| null \| undefined` | Optional | - |
+| `intervalCount` | `number \| null \| undefined` | Optional | - |
+| `billingType` | `string \| null \| undefined` | Optional | - |
+| `paymentMethods` | `string[] \| null \| undefined` | Optional | - |
+| `installments` | `number[] \| null \| undefined` | Optional | - |
+| `status` | `string \| null \| undefined` | Optional | - |
+| `currency` | `string \| null \| undefined` | Optional | - |
+| `createdAt` | `string \| null \| undefined` | Optional | - |
+| `updatedAt` | `string \| null \| undefined` | Optional | - |
+| `items` | [`GetPlanItemResponse[] \| null \| undefined`](../../doc/models/get-plan-item-response.md) | Optional | - |
+| `billingDays` | `number[] \| null \| undefined` | Optional | - |
+| `shippable` | `boolean \| null \| undefined` | Optional | - |
+| `metadata` | `Record<string, string> \| null \| undefined` | Optional | - |
+| `trialPeriodDays` | `number \| null \| undefined` | Optional | - |
+| `minimumPrice` | `number \| null \| undefined` | Optional | - |
+| `deletedAt` | `string \| null \| undefined` | Optional | - |
 
 ## Example (as JSON)
 

@@ -26,11 +26,11 @@ Request for creating a recipient
 
 ```json
 {
-  "name": "name0",
-  "email": "email6",
-  "description": "description0",
-  "document": "document6",
-  "type": "type0",
+  "name": "name6",
+  "email": "email0",
+  "description": "description6",
+  "document": "document0",
+  "type": "type4",
   "default_bank_account": {
     "holder_name": "holder_name4",
     "holder_type": "holder_type0",
@@ -49,11 +49,9 @@ Request for creating a recipient
     "pix_key": "pix_key8"
   },
   "metadata": {
-    "key0": "metadata3",
-    "key1": "metadata4",
-    "key2": "metadata5"
+    "key0": "metadata3"
   },
-  "code": "code8",
+  "code": "code4",
   "payment_mode": "bank_transfer",
   "transfer_settings": {
     "transfer_enabled": false,

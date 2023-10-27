@@ -21,15 +21,15 @@ Split
 
 ```json
 {
-  "type": "type0",
-  "amount": 46,
-  "recipient_id": "recipient_id0",
+  "type": "type6",
+  "amount": 100,
+  "recipient_id": "recipient_id6",
   "options": {
     "liable": false,
     "charge_processing_fee": false,
     "charge_remainder_fee": false
   },
-  "split_rule_id": "split_rule_id2"
+  "split_rule_id": "split_rule_id8"
 }
 ```
 

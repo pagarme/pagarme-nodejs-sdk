@@ -21,11 +21,11 @@ Request for creating an order item
 
 ```json
 {
-  "amount": 46,
-  "description": "description0",
-  "quantity": 68,
-  "category": "category2",
-  "code": "code8"
+  "amount": 102,
+  "description": "description4",
+  "quantity": 216,
+  "category": "category4",
+  "code": "code4"
 }
 ```
 

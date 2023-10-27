@@ -9,15 +9,15 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `sourceId` | `string \| undefined` | Optional | - |
-| `type` | `string \| undefined` | Optional | - |
+| `sourceId` | `string \| null \| undefined` | Optional | - |
+| `type` | `string \| null \| undefined` | Optional | - |
 
 ## Example (as JSON)
 
 ```json
 {
-  "source_id": "source_id6",
-  "type": "type0"
+  "source_id": "source_id0",
+  "type": "type4"
 }
 ```
 

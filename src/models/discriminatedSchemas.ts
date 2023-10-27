@@ -50,15 +50,15 @@ export const discriminatedGetTransactionResponseSchema: Schema<any> = discrimina
   'transaction_type',
   {
     'transaction': getTransactionResponseSchema,
-    'voucher': getVoucherTransactionResponseSchema,
     'bank_transfer': getBankTransferTransactionResponseSchema,
     'safetypay': getSafetyPayTransactionResponseSchema,
-    'debit_card': getDebitCardTransactionResponseSchema,
+    'voucher': getVoucherTransactionResponseSchema,
     'boleto': getBoletoTransactionResponseSchema,
-    'cash': getCashTransactionResponseSchema,
+    'debit_card': getDebitCardTransactionResponseSchema,
     'private_label': getPrivateLabelTransactionResponseSchema,
-    'pix': getPixTransactionResponseSchema,
+    'cash': getCashTransactionResponseSchema,
     'credit_card': getCreditCardTransactionResponseSchema,
+    'pix': getPixTransactionResponseSchema,
  },
   'transaction'
 );

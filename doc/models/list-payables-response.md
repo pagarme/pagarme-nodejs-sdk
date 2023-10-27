@@ -11,8 +11,8 @@ Response object for listing payable objects
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `data` | [`GetPayableResponse[] \| undefined`](../../doc/models/get-payable-response.md) | Optional | The payable object |
-| `paging` | [`PagingResponse \| undefined`](../../doc/models/paging-response.md) | Optional | Paging object |
+| `data` | [`GetPayableResponse[] \| null \| undefined`](../../doc/models/get-payable-response.md) | Optional | The payable object |
+| `paging` | [`PagingResponse \| null \| undefined`](../../doc/models/paging-response.md) | Optional | Paging object |
 
 ## Example (as JSON)
 
@@ -20,18 +20,11 @@ Response object for listing payable objects
 {
   "data": [
     {
-      "id": 23,
-      "status": "status7",
-      "amount": 121,
-      "fee": 79,
-      "anticipation_fee": 27
-    },
-    {
-      "id": 24,
-      "status": "status8",
-      "amount": 122,
-      "fee": 80,
-      "anticipation_fee": 28
+      "id": 138,
+      "status": "status2",
+      "amount": 236,
+      "fee": 194,
+      "anticipation_fee": 142
     }
   ],
   "paging": {

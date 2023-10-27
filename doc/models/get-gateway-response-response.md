@@ -11,23 +11,20 @@ The Transaction Gateway Response
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `code` | `string \| undefined` | Optional | The error code |
-| `errors` | [`GetGatewayErrorResponse[] \| undefined`](../../doc/models/get-gateway-error-response.md) | Optional | The gateway response errors list |
+| `code` | `string \| null \| undefined` | Optional | The error code |
+| `errors` | [`GetGatewayErrorResponse[] \| null \| undefined`](../../doc/models/get-gateway-error-response.md) | Optional | The gateway response errors list |
 
 ## Example (as JSON)
 
 ```json
 {
-  "code": "code8",
+  "code": "code6",
   "errors": [
     {
-      "message": "message5"
+      "message": "message0"
     },
     {
-      "message": "message6"
-    },
-    {
-      "message": "message7"
+      "message": "message0"
     }
   ]
 }

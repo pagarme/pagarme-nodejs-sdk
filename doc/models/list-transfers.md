@@ -18,27 +18,27 @@
 {
   "data": [
     {
-      "id": "id5",
-      "gateway_id": "gateway_id5",
-      "amount": 121,
-      "status": "status7",
+      "id": "id0",
+      "gateway_id": "gateway_id0",
+      "amount": 236,
+      "status": "status2",
       "created_at": "2016-03-13T12:52:32.123Z",
       "updated_at": "2016-03-13T12:52:32.123Z",
       "metadata": {
-        "key0": "metadata4",
-        "key1": "metadata3"
+        "key0": "metadata7",
+        "key1": "metadata6"
       },
-      "fee": 79,
+      "fee": 194,
       "funding_date": "2016-03-13T12:52:32.123Z",
       "funding_estimated_date": "2016-03-13T12:52:32.123Z",
-      "type": "type5",
+      "type": "type0",
       "source": {
-        "source_id": "source_id5",
-        "type": "type1"
+        "source_id": "source_id8",
+        "type": "type6"
       },
       "target": {
-        "target_id": "target_id3",
-        "type": "type7"
+        "target_id": "target_id2",
+        "type": "type8"
       }
     }
   ],
