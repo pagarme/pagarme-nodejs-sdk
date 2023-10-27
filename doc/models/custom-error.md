@@ -19,7 +19,7 @@ Api Error Exception
 
 ```json
 {
-  "message": "message0",
+  "message": "message4",
   "errors": {
     "key1": "val1",
     "key2": "val2"

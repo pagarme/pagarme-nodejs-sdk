@@ -9,24 +9,22 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `enabled` | `boolean \| undefined` | Optional | - |
-| `type` | `string \| undefined` | Optional | - |
-| `volumePercentage` | `number \| undefined` | Optional | - |
-| `delay` | `number \| undefined` | Optional | - |
-| `days` | `number[] \| undefined` | Optional | - |
+| `enabled` | `boolean \| null \| undefined` | Optional | - |
+| `type` | `string \| null \| undefined` | Optional | - |
+| `volumePercentage` | `number \| null \| undefined` | Optional | - |
+| `delay` | `number \| null \| undefined` | Optional | - |
+| `days` | `number[] \| null \| undefined` | Optional | - |
 
 ## Example (as JSON)
 
 ```json
 {
   "enabled": false,
-  "type": "type0",
-  "volume_percentage": 62,
-  "delay": 228,
+  "type": "type8",
+  "volume_percentage": 178,
+  "delay": 112,
   "days": [
-    188,
-    189,
-    190
+    88
   ]
 }
 ```

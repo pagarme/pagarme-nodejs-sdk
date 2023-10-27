@@ -15,7 +15,7 @@
 
 ```json
 {
-  "boleto_due_days": 194
+  "boleto_due_days": 56
 }
 ```
 

@@ -11,23 +11,23 @@ Response object for getting the shipping data
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `amount` | `number \| undefined` | Optional | - |
-| `description` | `string \| undefined` | Optional | - |
-| `recipientName` | `string \| undefined` | Optional | - |
-| `recipientPhone` | `string \| undefined` | Optional | - |
-| `address` | [`GetAddressResponse \| undefined`](../../doc/models/get-address-response.md) | Optional | - |
-| `maxDeliveryDate` | `string \| undefined` | Optional | Data máxima de entrega |
-| `estimatedDeliveryDate` | `string \| undefined` | Optional | Prazo estimado de entrega |
-| `type` | `string \| undefined` | Optional | Shipping Type |
+| `amount` | `number \| null \| undefined` | Optional | - |
+| `description` | `string \| null \| undefined` | Optional | - |
+| `recipientName` | `string \| null \| undefined` | Optional | - |
+| `recipientPhone` | `string \| null \| undefined` | Optional | - |
+| `address` | [`GetAddressResponse \| null \| undefined`](../../doc/models/get-address-response.md) | Optional | - |
+| `maxDeliveryDate` | `string \| null \| undefined` | Optional | Data máxima de entrega |
+| `estimatedDeliveryDate` | `string \| null \| undefined` | Optional | Prazo estimado de entrega |
+| `type` | `string \| null \| undefined` | Optional | Shipping Type |
 
 ## Example (as JSON)
 
 ```json
 {
-  "amount": 46,
-  "description": "description0",
-  "recipient_name": "recipient_name8",
-  "recipient_phone": "recipient_phone2",
+  "amount": 214,
+  "description": "description8",
+  "recipient_name": "recipient_name6",
+  "recipient_phone": "recipient_phone0",
   "address": {
     "id": "id6",
     "street": "street6",

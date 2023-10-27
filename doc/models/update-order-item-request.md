@@ -20,9 +20,9 @@ Update Order item Request
 
 ```json
 {
-  "amount": 46,
-  "description": "description0",
-  "quantity": 68,
+  "amount": 130,
+  "description": "description4",
+  "quantity": 244,
   "category": "category2"
 }
 ```

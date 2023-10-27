@@ -21,12 +21,14 @@ export class BalanceOperationsController extends BaseController {
    * @param status
    * @param createdSince
    * @param createdUntil
+   * @param recipientId
    * @return Response from the API call
    */
   async getBalanceOperations(
     status?: string,
     createdSince?: string,
     createdUntil?: string,
+    recipientId?: string,
     requestOptions?: RequestOptions
   ): Promise<ApiResponse<ListBalanceOperationResponse>> {
     const req = this.createRequest('GET', '/balance/operations');
@@ -34,10 +36,12 @@ export class BalanceOperationsController extends BaseController {
       status: [status, optional(string())],
       createdSince: [createdSince, optional(string())],
       createdUntil: [createdUntil, optional(string())],
+      recipientId: [recipientId, optional(string())],
     });
     req.query('status', mapped.status);
     req.query('created_since', mapped.createdSince);
     req.query('created_until', mapped.createdUntil);
+    req.query('recipient_id', mapped.recipientId);
     return req.callAsJson(listBalanceOperationResponseSchema, requestOptions);
   }
 

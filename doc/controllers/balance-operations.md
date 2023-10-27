@@ -21,6 +21,7 @@ async getBalanceOperations(
   status?: string,
   createdSince?: string,
   createdUntil?: string,
+  recipientId?: string,
   requestOptions?: RequestOptions
 ): Promise<ApiResponse<ListBalanceOperationResponse>>
 ```
@@ -32,6 +33,7 @@ async getBalanceOperations(
 | `status` | `string \| undefined` | Query, Optional | - |
 | `createdSince` | `string \| undefined` | Query, Optional | - |
 | `createdUntil` | `string \| undefined` | Query, Optional | - |
+| `recipientId` | `string \| undefined` | Query, Optional | - |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
@@ -42,11 +44,15 @@ async getBalanceOperations(
 
 ```ts
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await balanceOperationsController.getBalanceOperations();
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -80,11 +86,15 @@ async getBalanceOperationById(
 const id = BigInt(112);
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await balanceOperationsController.getBalanceOperationById(id);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }

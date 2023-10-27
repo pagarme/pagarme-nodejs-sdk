@@ -18,13 +18,12 @@
 
 ```json
 {
-  "amount": 46,
+  "amount": 252,
   "source_id": "source_id6",
-  "target_id": "target_id0",
+  "target_id": "target_id8",
   "metadata": [
-    "metadata3",
-    "metadata4",
-    "metadata5"
+    "metadata1",
+    "metadata2"
   ]
 }
 ```

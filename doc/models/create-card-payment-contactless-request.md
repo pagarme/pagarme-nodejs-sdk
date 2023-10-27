@@ -20,7 +20,7 @@ The card payment contactless request
 
 ```json
 {
-  "type": "type0",
+  "type": "type4",
   "apple_pay": {
     "version": "version6",
     "data": "data0",
@@ -36,7 +36,7 @@ The card payment contactless request
     "version": "version4",
     "data": "data8",
     "header": {
-      "ephemeral_public_key": "ephemeral_public_key2"
+      "ephemeral_public_key": "ephemeral_public_key6"
     },
     "signature": "signature6",
     "merchant_identifier": "merchant_identifier2"
@@ -45,24 +45,34 @@ The card payment contactless request
     "icc_data": "icc_data8",
     "card_sequence_number": "card_sequence_number4",
     "data": {
-      "cipher": "cipher8",
+      "cipher": "cipher4",
       "dukpt": {
-        "ksn": "ksn4"
+        "ksn": "ksn0"
       },
       "tags": [
         {
-          "tag": "tag3",
-          "lenght": "lenght1",
-          "value": "value1"
+          "tag": "tag4",
+          "lenght": "lenght2",
+          "value": "value2"
+        },
+        {
+          "tag": "tag4",
+          "lenght": "lenght2",
+          "value": "value2"
+        },
+        {
+          "tag": "tag4",
+          "lenght": "lenght2",
+          "value": "value2"
         }
       ]
     },
     "poi": {
-      "system_name": "system_name0",
-      "model": "model8",
-      "provider": "provider8",
-      "serial_number": "serial_number4",
-      "version_number": "version_number0"
+      "system_name": "system_name4",
+      "model": "model2",
+      "provider": "provider4",
+      "serial_number": "serial_number2",
+      "version_number": "version_number6"
     }
   }
 }

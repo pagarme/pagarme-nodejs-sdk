@@ -20,14 +20,13 @@ Request for updating an address
 
 ```json
 {
-  "number": "number2",
-  "complement": "complement4",
+  "number": "number6",
+  "complement": "complement8",
   "metadata": {
-    "key0": "metadata3",
-    "key1": "metadata4",
-    "key2": "metadata5"
+    "key0": "metadata7",
+    "key1": "metadata8"
   },
-  "line_2": "line_28"
+  "line_2": "line_24"
 }
 ```
 

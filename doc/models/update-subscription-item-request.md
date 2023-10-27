@@ -23,26 +23,26 @@ Request for updating a subscription item
 
 ```json
 {
-  "description": "description0",
-  "status": "status8",
+  "description": "description2",
+  "status": "status4",
   "pricing_scheme": {
     "scheme_type": "scheme_type8",
     "price_brackets": [
       {
-        "start_quantity": 119,
-        "price": 57,
-        "end_quantity": 127,
-        "overage_price": 141
+        "start_quantity": 144,
+        "price": 174,
+        "end_quantity": 152,
+        "overage_price": 166
       }
     ],
     "price": 166,
     "minimum_price": 6,
     "percentage": 251.76
   },
-  "name": "name0",
-  "cycles": 168,
-  "quantity": 68,
-  "minimum_price": 176
+  "name": "name2",
+  "cycles": 108,
+  "quantity": 128,
+  "minimum_price": 140
 }
 ```
 

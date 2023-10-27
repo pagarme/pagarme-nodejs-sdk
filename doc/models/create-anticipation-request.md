@@ -19,7 +19,7 @@ Request for creating an anticipation
 
 ```json
 {
-  "amount": 46,
+  "amount": 68,
   "timeframe": "timeframe2",
   "payment_date": "2016-03-13T12:52:32.123Z"
 }

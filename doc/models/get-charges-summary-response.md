@@ -9,13 +9,13 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `total` | `number \| undefined` | Optional | - |
+| `total` | `number \| null \| undefined` | Optional | - |
 
 ## Example (as JSON)
 
 ```json
 {
-  "total": 10
+  "total": 150
 }
 ```
 

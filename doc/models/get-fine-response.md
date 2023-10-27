@@ -11,17 +11,17 @@ Fine Response
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `days` | `number \| undefined` | Optional | Days |
-| `type` | `string \| undefined` | Optional | Type |
-| `amount` | `number \| undefined` | Optional | Amount |
+| `days` | `number \| null \| undefined` | Optional | Days |
+| `type` | `string \| null \| undefined` | Optional | Type |
+| `amount` | `number \| null \| undefined` | Optional | Amount |
 
 ## Example (as JSON)
 
 ```json
 {
   "type": "\"percentage\" or \"flat\"",
-  "days": 120,
-  "amount": 46
+  "days": 112,
+  "amount": 186
 }
 ```
 

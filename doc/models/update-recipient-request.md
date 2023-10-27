@@ -29,8 +29,7 @@ Request for updating a Recipient
   "status": "status8",
   "metadata": {
     "key0": "metadata3",
-    "key1": "metadata4",
-    "key2": "metadata5"
+    "key1": "metadata4"
   }
 }
 ```

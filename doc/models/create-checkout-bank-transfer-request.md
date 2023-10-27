@@ -19,9 +19,11 @@ Checkout bank transfer payment request
 ```json
 {
   "bank": [
-    "bank7"
+    "bank7",
+    "bank8",
+    "bank9"
   ],
-  "retries": 230
+  "retries": 56
 }
 ```
 

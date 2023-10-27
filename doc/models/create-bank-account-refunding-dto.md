@@ -25,15 +25,15 @@ Bank Account
 
 ```json
 {
-  "holder_name": "holder_name4",
-  "holder_type": "holder_type2",
-  "holder_document": "holder_document6",
-  "bank": "bank8",
-  "branch_number": "branch_number6",
-  "branch_check_digit": "branch_check_digit4",
-  "account_number": "account_number0",
-  "account_check_digit": "account_check_digit6",
-  "type": "type0"
+  "holder_name": "holder_name2",
+  "holder_type": "holder_type8",
+  "holder_document": "holder_document0",
+  "bank": "bank4",
+  "branch_number": "branch_number2",
+  "branch_check_digit": "branch_check_digit2",
+  "account_number": "account_number6",
+  "account_check_digit": "account_check_digit2",
+  "type": "type4"
 }
 ```
 

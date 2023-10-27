@@ -11,8 +11,8 @@ Response object for listing invoices
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `data` | [`GetInvoiceResponse[] \| undefined`](../../doc/models/get-invoice-response.md) | Optional | The Invoice objects |
-| `paging` | [`PagingResponse \| undefined`](../../doc/models/paging-response.md) | Optional | Paging object |
+| `data` | [`GetInvoiceResponse[] \| null \| undefined`](../../doc/models/get-invoice-response.md) | Optional | The Invoice objects |
+| `paging` | [`PagingResponse \| null \| undefined`](../../doc/models/paging-response.md) | Optional | Paging object |
 
 ## Example (as JSON)
 
@@ -20,18 +20,25 @@ Response object for listing invoices
 {
   "data": [
     {
-      "id": "id5",
-      "code": "code3",
-      "url": "url9",
-      "amount": 121,
-      "status": "status7"
+      "id": "id0",
+      "code": "code8",
+      "url": "url4",
+      "amount": 236,
+      "status": "status2"
     },
     {
-      "id": "id6",
-      "code": "code4",
-      "url": "url0",
-      "amount": 122,
-      "status": "status8"
+      "id": "id0",
+      "code": "code8",
+      "url": "url4",
+      "amount": 236,
+      "status": "status2"
+    },
+    {
+      "id": "id0",
+      "code": "code8",
+      "url": "url4",
+      "amount": 236,
+      "status": "status2"
     }
   ],
   "paging": {

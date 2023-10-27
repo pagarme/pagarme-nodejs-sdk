@@ -23,12 +23,12 @@ Creates a 3D-S authentication payment
 
 ```json
 {
-  "mpi": "mpi2",
-  "cavv": "cavv4",
-  "eci": "eci0",
-  "transaction_id": "transaction_id8",
-  "success_url": "success_url2",
-  "ds_transaction_id": "ds_transaction_id8"
+  "mpi": "mpi4",
+  "cavv": "cavv2",
+  "eci": "eci6",
+  "transaction_id": "transaction_id4",
+  "success_url": "success_url8",
+  "ds_transaction_id": "ds_transaction_id4"
 }
 ```
 

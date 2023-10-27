@@ -48,25 +48,29 @@ const publicKey = 'public_key6';
 const request: CreateTokenRequest = {
   type: 'card',
   card: {
-    number: 'number2',
-    holderName: 'holder_name6',
-    expMonth: 80,
-    expYear: 216,
-    cvv: 'cvv8',
-    brand: 'brand4',
-    label: 'label0',
+    number: 'number6',
+    holderName: 'holder_name2',
+    expMonth: 228,
+    expYear: 68,
+    cvv: 'cvv4',
+    brand: 'brand0',
+    label: 'label6',
   },
 };
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await tokensController.createToken(
-    publicKey,
-    request
-  );
+  publicKey,
+  request
+);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -108,14 +112,18 @@ const id = 'id0';
 const publicKey = 'public_key6';
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await tokensController.getToken(
-    id,
-    publicKey
-  );
+  id,
+  publicKey
+);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }

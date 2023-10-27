@@ -18,7 +18,7 @@ The payment authentication request
 
 ```json
 {
-  "type": "type0",
+  "type": "type8",
   "threed_secure": {
     "mpi": "mpi0",
     "cavv": "cavv8",

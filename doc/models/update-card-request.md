@@ -14,7 +14,7 @@ Request for updating a card
 | `holderName` | `string` | Required | Holder name |
 | `expMonth` | `number` | Required | Expiration month |
 | `expYear` | `number` | Required | Expiration year |
-| `billingAddressId` | `string \| undefined` | Optional | Id of the address to be used as billing address |
+| `billingAddressId` | `string \| null \| undefined` | Optional | Id of the address to be used as billing address |
 | `billingAddress` | [`CreateAddressRequest`](../../doc/models/create-address-request.md) | Required | Billing address |
 | `metadata` | `Record<string, string>` | Required | Metadata |
 | `label` | `string` | Required | - |
@@ -23,9 +23,9 @@ Request for updating a card
 
 ```json
 {
-  "holder_name": "holder_name4",
-  "exp_month": 42,
-  "exp_year": 254,
+  "holder_name": "holder_name6",
+  "exp_month": 236,
+  "exp_year": 60,
   "billing_address_id": "billing_address_id6",
   "billing_address": {
     "street": "street8",

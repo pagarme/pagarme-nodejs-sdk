@@ -11,13 +11,13 @@ Gateway Response
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `message` | `string \| undefined` | Optional | The message error |
+| `message` | `string \| null \| undefined` | Optional | The message error |
 
 ## Example (as JSON)
 
 ```json
 {
-  "message": "message0"
+  "message": "message4"
 }
 ```
 

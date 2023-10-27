@@ -18,10 +18,10 @@
 {
   "data": [
     {
-      "id": "id5",
-      "gateway_id": "gateway_id5",
-      "amount": 121,
-      "status": "status7",
+      "id": "id0",
+      "gateway_id": "gateway_id0",
+      "amount": 236,
+      "status": "status2",
       "created_at": "2016-03-13T12:52:32.123Z"
     }
   ],

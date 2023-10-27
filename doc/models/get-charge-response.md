@@ -11,27 +11,27 @@ Response object for getting a charge
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `id` | `string \| undefined` | Optional | - |
-| `code` | `string \| undefined` | Optional | - |
-| `gatewayId` | `string \| undefined` | Optional | - |
-| `amount` | `number \| undefined` | Optional | - |
-| `status` | `string \| undefined` | Optional | - |
-| `currency` | `string \| undefined` | Optional | - |
-| `paymentMethod` | `string \| undefined` | Optional | - |
-| `dueAt` | `string \| undefined` | Optional | - |
-| `createdAt` | `string \| undefined` | Optional | - |
-| `updatedAt` | `string \| undefined` | Optional | - |
-| `lastTransaction` | [`GetTransactionResponse \| undefined`](../../doc/models/get-transaction-response.md) | Optional | - |
-| `invoice` | [`GetInvoiceResponse \| undefined`](../../doc/models/get-invoice-response.md) | Optional | - |
-| `order` | [`GetOrderResponse \| undefined`](../../doc/models/get-order-response.md) | Optional | - |
-| `customer` | [`GetCustomerResponse \| undefined`](../../doc/models/get-customer-response.md) | Optional | - |
-| `metadata` | `Record<string, string> \| undefined` | Optional | - |
-| `paidAt` | `string \| undefined` | Optional | - |
-| `canceledAt` | `string \| undefined` | Optional | - |
-| `canceledAmount` | `number \| undefined` | Optional | Canceled Amount |
-| `paidAmount` | `number \| undefined` | Optional | Paid amount |
-| `interestAndFinePaid` | `number \| undefined` | Optional | interest and fine paid |
-| `recurrencyCycle` | `string \| undefined` | Optional | Defines whether the card has been used one or more times. |
+| `id` | `string \| null \| undefined` | Optional | - |
+| `code` | `string \| null \| undefined` | Optional | - |
+| `gatewayId` | `string \| null \| undefined` | Optional | - |
+| `amount` | `number \| null \| undefined` | Optional | - |
+| `status` | `string \| null \| undefined` | Optional | - |
+| `currency` | `string \| null \| undefined` | Optional | - |
+| `paymentMethod` | `string \| null \| undefined` | Optional | - |
+| `dueAt` | `string \| null \| undefined` | Optional | - |
+| `createdAt` | `string \| null \| undefined` | Optional | - |
+| `updatedAt` | `string \| null \| undefined` | Optional | - |
+| `lastTransaction` | [`GetTransactionResponse \| null \| undefined`](../../doc/models/get-transaction-response.md) | Optional | - |
+| `invoice` | [`GetInvoiceResponse \| null \| undefined`](../../doc/models/get-invoice-response.md) | Optional | - |
+| `order` | [`GetOrderResponse \| null \| undefined`](../../doc/models/get-order-response.md) | Optional | - |
+| `customer` | [`GetCustomerResponse \| null \| undefined`](../../doc/models/get-customer-response.md) | Optional | - |
+| `metadata` | `Record<string, string> \| null \| undefined` | Optional | - |
+| `paidAt` | `string \| null \| undefined` | Optional | - |
+| `canceledAt` | `string \| null \| undefined` | Optional | - |
+| `canceledAmount` | `number \| null \| undefined` | Optional | Canceled Amount |
+| `paidAmount` | `number \| null \| undefined` | Optional | Paid amount |
+| `interestAndFinePaid` | `number \| null \| undefined` | Optional | interest and fine paid |
+| `recurrencyCycle` | `string \| null \| undefined` | Optional | Defines whether the card has been used one or more times. |
 
 ## Example (as JSON)
 
@@ -41,8 +41,8 @@ Response object for getting a charge
   "id": "id0",
   "code": "code8",
   "gateway_id": "gateway_id0",
-  "amount": 46,
-  "status": "status8"
+  "amount": 164,
+  "status": "status2"
 }
 ```
 

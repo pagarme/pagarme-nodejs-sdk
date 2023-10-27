@@ -17,12 +17,12 @@
 
 ```json
 {
-  "cipher": "cipher4",
+  "cipher": "cipher2",
   "tags": [
     {
-      "tag": "tag9",
-      "lenght": "lenght7",
-      "value": "value7"
+      "tag": "tag4",
+      "lenght": "lenght2",
+      "value": "value2"
     }
   ],
   "dukpt": {

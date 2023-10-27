@@ -26,18 +26,18 @@ Request for updating the payment method of a charge
 ```json
 {
   "update_subscription": false,
-  "payment_method": "payment_method0",
+  "payment_method": "payment_method4",
   "credit_card": {
     "installments": 1,
     "capture": true,
     "recurrency_cycle": "\"first\" or \"subsequent\"",
     "statement_descriptor": "statement_descriptor8",
     "card": {
-      "number": "number0",
-      "holder_name": "holder_name8",
-      "exp_month": 54,
-      "exp_year": 242,
-      "cvv": "cvv0"
+      "number": "number6",
+      "holder_name": "holder_name2",
+      "exp_month": 228,
+      "exp_year": 68,
+      "cvv": "cvv4"
     },
     "card_id": "card_id4",
     "card_token": "card_token2"
@@ -45,11 +45,11 @@ Request for updating the payment method of a charge
   "debit_card": {
     "statement_descriptor": "statement_descriptor4",
     "card": {
-      "number": "number0",
-      "holder_name": "holder_name8",
-      "exp_month": 104,
-      "exp_year": 192,
-      "cvv": "cvv0"
+      "number": "number6",
+      "holder_name": "holder_name2",
+      "exp_month": 228,
+      "exp_year": 68,
+      "cvv": "cvv4"
     },
     "card_id": "card_id0",
     "card_token": "card_token6",
@@ -70,7 +70,8 @@ Request for updating the payment method of a charge
       "country": "country2",
       "complement": "complement6",
       "metadata": {
-        "key0": "metadata5"
+        "key0": "metadata5",
+        "key1": "metadata6"
       },
       "line_1": "line_18",
       "line_2": "line_26"
@@ -80,9 +81,9 @@ Request for updating the payment method of a charge
     "document_number": "document_number6",
     "statement_descriptor": "statement_descriptor0",
     "interest": {
-      "days": 160,
+      "days": 156,
       "type": "type0",
-      "amount": 234
+      "amount": 230
     }
   },
   "voucher": {
@@ -91,11 +92,11 @@ Request for updating the payment method of a charge
     "card_id": "card_id8",
     "card_token": "card_token8",
     "Card": {
-      "number": "number0",
-      "holder_name": "holder_name8",
-      "exp_month": 198,
-      "exp_year": 238,
-      "cvv": "cvv0"
+      "number": "number8",
+      "holder_name": "holder_name6",
+      "exp_month": 240,
+      "exp_year": 56,
+      "cvv": "cvv8"
     }
   },
   "cash": {
@@ -112,11 +113,11 @@ Request for updating the payment method of a charge
     "recurrency_cycle": "\"first\" or \"subsequent\"",
     "statement_descriptor": "statement_descriptor0",
     "card": {
-      "number": "number2",
-      "holder_name": "holder_name0",
-      "exp_month": 116,
-      "exp_year": 180,
-      "cvv": "cvv2"
+      "number": "number6",
+      "holder_name": "holder_name2",
+      "exp_month": 228,
+      "exp_year": 68,
+      "cvv": "cvv4"
     },
     "card_id": "card_id6",
     "card_token": "card_token0"

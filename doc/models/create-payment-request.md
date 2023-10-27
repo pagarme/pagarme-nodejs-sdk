@@ -33,16 +33,16 @@ Payment data
 
 ```json
 {
-  "payment_method": "payment_method0",
+  "payment_method": "payment_method6",
   "credit_card": {
     "installments": 52,
     "statement_descriptor": "statement_descriptor8",
     "card": {
-      "number": "number0",
-      "holder_name": "holder_name8",
-      "exp_month": 54,
-      "exp_year": 242,
-      "cvv": "cvv0"
+      "number": "number6",
+      "holder_name": "holder_name2",
+      "exp_month": 228,
+      "exp_year": 68,
+      "cvv": "cvv4"
     },
     "card_id": "card_id4",
     "card_token": "card_token2"
@@ -50,11 +50,11 @@ Payment data
   "debit_card": {
     "statement_descriptor": "statement_descriptor4",
     "card": {
-      "number": "number0",
-      "holder_name": "holder_name8",
-      "exp_month": 104,
-      "exp_year": 192,
-      "cvv": "cvv0"
+      "number": "number6",
+      "holder_name": "holder_name2",
+      "exp_month": 228,
+      "exp_year": 68,
+      "cvv": "cvv4"
     },
     "card_id": "card_id0",
     "card_token": "card_token6",
@@ -75,7 +75,8 @@ Payment data
       "country": "country2",
       "complement": "complement6",
       "metadata": {
-        "key0": "metadata5"
+        "key0": "metadata5",
+        "key1": "metadata6"
       },
       "line_1": "line_18",
       "line_2": "line_26"
@@ -85,22 +86,22 @@ Payment data
     "document_number": "document_number6",
     "statement_descriptor": "statement_descriptor0",
     "interest": {
-      "days": 160,
+      "days": 156,
       "type": "type0",
-      "amount": 234
+      "amount": 230
     }
   },
-  "currency": "currency0",
+  "currency": "currency6",
   "voucher": {
     "statement_descriptor": "statement_descriptor2",
     "card_id": "card_id8",
     "card_token": "card_token8",
     "Card": {
-      "number": "number0",
-      "holder_name": "holder_name8",
-      "exp_month": 198,
-      "exp_year": 238,
-      "cvv": "cvv0"
+      "number": "number8",
+      "holder_name": "holder_name6",
+      "exp_month": 240,
+      "exp_year": 56,
+      "cvv": "cvv8"
     },
     "recurrency_cycle": "recurrency_cycle6"
   }

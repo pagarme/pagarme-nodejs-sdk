@@ -21,7 +21,7 @@ Request for updating card data
 ```json
 {
   "update_subscription": false,
-  "card_id": "card_id4",
+  "card_id": "card_id2",
   "card": {
     "type": "credit",
     "number": "number6",

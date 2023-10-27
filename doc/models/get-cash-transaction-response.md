@@ -15,18 +15,17 @@ Response object for getting a cash transaction
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `description` | `string \| undefined` | Optional | Description |
+| `description` | `string \| null \| undefined` | Optional | Description |
 
 ## Example (as JSON)
 
 ```json
 {
-  "gateway_id": "gateway_id0",
-  "amount": 226,
-  "status": "status2",
+  "gateway_id": "gateway_id8",
+  "amount": 40,
+  "status": "status6",
   "success": false,
   "created_at": "2016-03-13T12:52:32.123Z",
-  "transaction_type": "cash",
   "description": "description0"
 }
 ```

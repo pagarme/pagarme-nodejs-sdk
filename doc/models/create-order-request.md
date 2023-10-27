@@ -15,9 +15,9 @@ Request for creating an order
 | `customer` | [`CreateCustomerRequest`](../../doc/models/create-customer-request.md) | Required | Customer |
 | `payments` | [`CreatePaymentRequest[]`](../../doc/models/create-payment-request.md) | Required | Payment data |
 | `code` | `string` | Required | The order code |
-| `customerId` | `string \| undefined` | Optional | The customer id |
+| `customerId` | `string \| null \| undefined` | Optional | The customer id |
 | `shipping` | [`CreateShippingRequest \| undefined`](../../doc/models/create-shipping-request.md) | Optional | Shipping data |
-| `metadata` | `Record<string, string> \| undefined` | Optional | Metadata |
+| `metadata` | `Record<string, string> \| null \| undefined` | Optional | Metadata |
 | `antifraudEnabled` | `boolean \| undefined` | Optional | Defines whether the order will go through anti-fraud |
 | `ip` | `string \| undefined` | Optional | Ip address |
 | `sessionId` | `string \| undefined` | Optional | Session id |
@@ -34,11 +34,11 @@ Request for creating an order
 {
   "items": [
     {
-      "amount": 13,
-      "description": "description7",
-      "quantity": 127,
-      "category": "category5",
-      "code": "code5"
+      "amount": 164,
+      "description": "description2",
+      "quantity": 22,
+      "category": "category6",
+      "code": "code6"
     }
   ],
   "customer": {
@@ -56,7 +56,9 @@ Request for creating an order
       "country": "country0",
       "complement": "complement2",
       "metadata": {
-        "key0": "metadata3"
+        "key0": "metadata3",
+        "key1": "metadata2",
+        "key2": "metadata1"
       },
       "line_1": "line_10",
       "line_2": "line_24"
@@ -66,14 +68,16 @@ Request for creating an order
     },
     "phones": {
       "home_phone": {
-        "country_code": "country_code2",
-        "number": "number0",
-        "area_code": "area_code2"
+        "country_code": "country_code0",
+        "number": "number2",
+        "area_code": "area_code0",
+        "Type": "Type0"
       },
       "mobile_phone": {
-        "country_code": "country_code8",
-        "number": "number4",
-        "area_code": "area_code8"
+        "country_code": "country_code0",
+        "number": "number8",
+        "area_code": "area_code0",
+        "Type": "Type0"
       }
     },
     "code": "code8",
@@ -82,82 +86,83 @@ Request for creating an order
   },
   "payments": [
     {
-      "payment_method": "payment_method4",
+      "payment_method": "payment_method8",
       "credit_card": {
-        "installments": 176,
-        "statement_descriptor": "statement_descriptor4",
+        "installments": 52,
+        "statement_descriptor": "statement_descriptor8",
         "card": {
-          "number": "number4",
-          "holder_name": "holder_name4",
-          "exp_month": 186,
-          "exp_year": 110,
-          "cvv": "cvv6"
-        },
-        "card_id": "card_id0",
-        "card_token": "card_token6"
-      },
-      "debit_card": {
-        "statement_descriptor": "statement_descriptor0",
-        "card": {
-          "number": "number8",
-          "holder_name": "holder_name0",
-          "exp_month": 112,
-          "exp_year": 184,
-          "cvv": "cvv8"
+          "number": "number6",
+          "holder_name": "holder_name2",
+          "exp_month": 228,
+          "exp_year": 68,
+          "cvv": "cvv4"
         },
         "card_id": "card_id4",
-        "card_token": "card_token0",
+        "card_token": "card_token2"
+      },
+      "debit_card": {
+        "statement_descriptor": "statement_descriptor4",
+        "card": {
+          "number": "number6",
+          "holder_name": "holder_name2",
+          "exp_month": 228,
+          "exp_year": 68,
+          "cvv": "cvv4"
+        },
+        "card_id": "card_id0",
+        "card_token": "card_token6",
         "recurrence": false
       },
       "boleto": {
-        "retries": 102,
-        "bank": "bank4",
-        "instructions": "instructions6",
+        "retries": 226,
+        "bank": "bank8",
+        "instructions": "instructions2",
         "due_at": "2016-03-13T12:52:32.123Z",
         "billing_address": {
-          "street": "street2",
-          "number": "number0",
-          "zip_code": "zip_code6",
-          "neighborhood": "neighborhood8",
-          "city": "city8",
-          "state": "state2",
-          "country": "country6",
-          "complement": "complement2",
+          "street": "street8",
+          "number": "number4",
+          "zip_code": "zip_code2",
+          "neighborhood": "neighborhood4",
+          "city": "city2",
+          "state": "state6",
+          "country": "country2",
+          "complement": "complement6",
           "metadata": {
-            "key0": "metadata1"
+            "key0": "metadata5",
+            "key1": "metadata6"
           },
-          "line_1": "line_14",
-          "line_2": "line_20"
+          "line_1": "line_18",
+          "line_2": "line_26"
         },
-        "billing_address_id": "billing_address_id2",
-        "nosso_numero": "nosso_numero6",
-        "document_number": "document_number0",
-        "statement_descriptor": "statement_descriptor6",
+        "billing_address_id": "billing_address_id6",
+        "nosso_numero": "nosso_numero0",
+        "document_number": "document_number6",
+        "statement_descriptor": "statement_descriptor0",
         "interest": {
-          "days": 28,
-          "type": "type4",
-          "amount": 102
+          "days": 156,
+          "type": "type0",
+          "amount": 230
         }
       },
-      "currency": "currency6",
+      "currency": "currency2",
       "voucher": {
-        "statement_descriptor": "statement_descriptor6",
-        "card_id": "card_id2",
-        "card_token": "card_token4",
+        "statement_descriptor": "statement_descriptor2",
+        "card_id": "card_id8",
+        "card_token": "card_token8",
         "Card": {
-          "number": "number4",
-          "holder_name": "holder_name2",
-          "exp_month": 74,
-          "exp_year": 114,
-          "cvv": "cvv4"
+          "number": "number8",
+          "holder_name": "holder_name6",
+          "exp_month": 240,
+          "exp_year": 56,
+          "cvv": "cvv8"
         },
-        "recurrency_cycle": "recurrency_cycle0"
+        "recurrency_cycle": "recurrency_cycle6"
       }
     }
   ],
-  "code": "code8",
+  "code": "code6",
   "closed": true,
-  "customer_id": "customer_id8",
+  "customer_id": "customer_id6",
   "shipping": {
     "amount": 52,
     "description": "description6",
@@ -165,31 +170,31 @@ Request for creating an order
     "recipient_phone": "recipient_phone6",
     "address_id": "address_id6",
     "address": {
-      "street": "street0",
-      "number": "number8",
-      "zip_code": "zip_code4",
-      "neighborhood": "neighborhood6",
-      "city": "city0",
-      "state": "state6",
-      "country": "country4",
-      "complement": "complement6",
+      "street": "street6",
+      "number": "number4",
+      "zip_code": "zip_code0",
+      "neighborhood": "neighborhood2",
+      "city": "city6",
+      "state": "state2",
+      "country": "country0",
+      "complement": "complement2",
       "metadata": {
-        "key0": "metadata7"
+        "key0": "metadata3",
+        "key1": "metadata2",
+        "key2": "metadata1"
       },
-      "line_1": "line_14",
-      "line_2": "line_28"
+      "line_1": "line_10",
+      "line_2": "line_24"
     },
     "max_delivery_date": "2016-03-13T12:52:32.123Z",
     "estimated_delivery_date": "2016-03-13T12:52:32.123Z",
     "type": "type6"
   },
   "metadata": {
-    "key0": "metadata3",
-    "key1": "metadata4",
-    "key2": "metadata5"
+    "key0": "metadata5"
   },
   "antifraud_enabled": false,
-  "ip": "ip4"
+  "ip": "ip2"
 }
 ```
 

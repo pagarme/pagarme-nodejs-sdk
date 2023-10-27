@@ -13,24 +13,24 @@ const customersController = new CustomersController(client);
 * [Update Card](../../doc/controllers/customers.md#update-card)
 * [Update Address](../../doc/controllers/customers.md#update-address)
 * [Delete Access Token](../../doc/controllers/customers.md#delete-access-token)
-* [Create Address](../../doc/controllers/customers.md#create-address)
 * [Create Customer](../../doc/controllers/customers.md#create-customer)
-* [Create Card](../../doc/controllers/customers.md#create-card)
-* [Get Cards](../../doc/controllers/customers.md#get-cards)
-* [Renew Card](../../doc/controllers/customers.md#renew-card)
+* [Create Address](../../doc/controllers/customers.md#create-address)
+* [Delete Access Tokens](../../doc/controllers/customers.md#delete-access-tokens)
 * [Get Address](../../doc/controllers/customers.md#get-address)
 * [Delete Address](../../doc/controllers/customers.md#delete-address)
-* [Get Access Token](../../doc/controllers/customers.md#get-access-token)
-* [Update Customer Metadata](../../doc/controllers/customers.md#update-customer-metadata)
-* [Get Card](../../doc/controllers/customers.md#get-card)
-* [Delete Access Tokens](../../doc/controllers/customers.md#delete-access-tokens)
-* [Create Access Token](../../doc/controllers/customers.md#create-access-token)
-* [Get Access Tokens](../../doc/controllers/customers.md#get-access-tokens)
+* [Create Card](../../doc/controllers/customers.md#create-card)
 * [Get Customers](../../doc/controllers/customers.md#get-customers)
 * [Update Customer](../../doc/controllers/customers.md#update-customer)
+* [Create Access Token](../../doc/controllers/customers.md#create-access-token)
+* [Get Access Tokens](../../doc/controllers/customers.md#get-access-tokens)
+* [Get Cards](../../doc/controllers/customers.md#get-cards)
+* [Renew Card](../../doc/controllers/customers.md#renew-card)
+* [Get Access Token](../../doc/controllers/customers.md#get-access-token)
+* [Update Customer Metadata](../../doc/controllers/customers.md#update-customer-metadata)
 * [Delete Card](../../doc/controllers/customers.md#delete-card)
 * [Get Addresses](../../doc/controllers/customers.md#get-addresses)
 * [Get Customer](../../doc/controllers/customers.md#get-customer)
+* [Get Card](../../doc/controllers/customers.md#get-card)
 
 
 # Update Card
@@ -77,8 +77,8 @@ const request: UpdateCardRequest = {
     number: 'number4',
     zipCode: 'zip_code2',
     neighborhood: 'neighborhood4',
-    city: 'city8',
-    state: 'state4',
+    city: 'city2',
+    state: 'state6',
     country: 'country2',
     complement: 'complement6',
     line1: 'line_18',
@@ -91,15 +91,19 @@ const request: UpdateCardRequest = {
 };
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await customersController.updateCard(
-    customerId,
-    cardId,
-    request
-  );
+  customerId,
+  cardId,
+  request
+);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -152,15 +156,19 @@ const request: UpdateAddressRequest = {
 };
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await customersController.updateAddress(
-    customerId,
-    addressId,
-    request
-  );
+  customerId,
+  addressId,
+  request
+);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -202,14 +210,86 @@ const customerId = 'customer_id8';
 const tokenId = 'token_id6';
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await customersController.deleteAccessToken(
-    customerId,
-    tokenId
-  );
+  customerId,
+  tokenId
+);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Create Customer
+
+Creates a new customer
+
+```ts
+async createCustomer(
+  request: CreateCustomerRequest,
+  idempotencyKey?: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetCustomerResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `request` | [`CreateCustomerRequest`](../../doc/models/create-customer-request.md) | Body, Required | Request for creating a customer |
+| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`GetCustomerResponse`](../../doc/models/get-customer-response.md)
+
+## Example Usage
+
+```ts
+const request: CreateCustomerRequest = {
+  name: '{\n    "name": "Tony Stark"\n}',
+  email: 'email0',
+  document: 'document0',
+  type: 'type4',
+  address: {
+    street: 'street6',
+    number: 'number4',
+    zipCode: 'zip_code0',
+    neighborhood: 'neighborhood2',
+    city: 'city6',
+    state: 'state2',
+    country: 'country0',
+    complement: 'complement2',
+    line1: 'line_10',
+    line2: 'line_24',
+  },
+  metadata: {
+    'key0': 'metadata3'
+  },
+  phones: {},
+  code: 'code4',
+};
+
+try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { result, ...httpResponse } = await customersController.createCustomer(request);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -262,14 +342,18 @@ const request: CreateAddressRequest = {
 };
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await customersController.createAddress(
-    customerId,
-    request
-  );
+  customerId,
+  request
+);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -277,63 +361,147 @@ try {
 ```
 
 
-# Create Customer
+# Delete Access Tokens
 
-Creates a new customer
+Delete a Customer's access tokens
 
 ```ts
-async createCustomer(
-  request: CreateCustomerRequest,
-  idempotencyKey?: string,
+async deleteAccessTokens(
+  customerId: string,
   requestOptions?: RequestOptions
-): Promise<ApiResponse<GetCustomerResponse>>
+): Promise<ApiResponse<ListAccessTokensResponse>>
 ```
 
 ## Parameters
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `request` | [`CreateCustomerRequest`](../../doc/models/create-customer-request.md) | Body, Required | Request for creating a customer |
+| `customerId` | `string` | Template, Required | Customer Id |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`ListAccessTokensResponse`](../../doc/models/list-access-tokens-response.md)
+
+## Example Usage
+
+```ts
+const customerId = 'customer_id8';
+
+try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { result, ...httpResponse } = await customersController.deleteAccessTokens(customerId);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Get Address
+
+Get a customer's address
+
+```ts
+async getAddress(
+  customerId: string,
+  addressId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetAddressResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `customerId` | `string` | Template, Required | Customer id |
+| `addressId` | `string` | Template, Required | Address Id |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`GetAddressResponse`](../../doc/models/get-address-response.md)
+
+## Example Usage
+
+```ts
+const customerId = 'customer_id8';
+
+const addressId = 'address_id0';
+
+try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { result, ...httpResponse } = await customersController.getAddress(
+  customerId,
+  addressId
+);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Delete Address
+
+Delete a Customer's address
+
+```ts
+async deleteAddress(
+  customerId: string,
+  addressId: string,
+  idempotencyKey?: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetAddressResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `customerId` | `string` | Template, Required | Customer Id |
+| `addressId` | `string` | Template, Required | Address Id |
 | `idempotencyKey` | `string \| undefined` | Header, Optional | - |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
-[`GetCustomerResponse`](../../doc/models/get-customer-response.md)
+[`GetAddressResponse`](../../doc/models/get-address-response.md)
 
 ## Example Usage
 
 ```ts
-const request: CreateCustomerRequest = {
-  name: '{\n    "name": "Tony Stark"\n}',
-  email: 'email0',
-  document: 'document0',
-  type: 'type4',
-  address: {
-    street: 'street2',
-    number: 'number0',
-    zipCode: 'zip_code6',
-    neighborhood: 'neighborhood8',
-    city: 'city2',
-    state: 'state8',
-    country: 'country6',
-    complement: 'complement8',
-    line1: 'line_16',
-    line2: 'line_20',
-  },
-  metadata: {
-    'key0': 'metadata3'
-  },
-  phones: {},
-  code: 'code4',
-};
+const customerId = 'customer_id8';
+
+const addressId = 'address_id0';
 
 try {
-  const { result, ...httpResponse } = await customersController.createCustomer(request);
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { result, ...httpResponse } = await customersController.deleteAddress(
+  customerId,
+  addressId
+);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -377,483 +545,18 @@ const request: CreateCardRequest = {
 };
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await customersController.createCard(
-    customerId,
-    request
-  );
+  customerId,
+  request
+);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Get Cards
-
-Get all cards from a customer
-
-```ts
-async getCards(
-  customerId: string,
-  page?: number,
-  size?: number,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<ListCardsResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `customerId` | `string` | Template, Required | Customer Id |
-| `page` | `number \| undefined` | Query, Optional | Page number |
-| `size` | `number \| undefined` | Query, Optional | Page size |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-[`ListCardsResponse`](../../doc/models/list-cards-response.md)
-
-## Example Usage
-
-```ts
-const customerId = 'customer_id8';
-
-try {
-  const { result, ...httpResponse } = await customersController.getCards(customerId);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Renew Card
-
-Renew a card
-
-```ts
-async renewCard(
-  customerId: string,
-  cardId: string,
-  idempotencyKey?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetCardResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `customerId` | `string` | Template, Required | Customer id |
-| `cardId` | `string` | Template, Required | Card Id |
-| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-[`GetCardResponse`](../../doc/models/get-card-response.md)
-
-## Example Usage
-
-```ts
-const customerId = 'customer_id8';
-
-const cardId = 'card_id4';
-
-try {
-  const { result, ...httpResponse } = await customersController.renewCard(
-    customerId,
-    cardId
-  );
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Get Address
-
-Get a customer's address
-
-```ts
-async getAddress(
-  customerId: string,
-  addressId: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetAddressResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `customerId` | `string` | Template, Required | Customer id |
-| `addressId` | `string` | Template, Required | Address Id |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-[`GetAddressResponse`](../../doc/models/get-address-response.md)
-
-## Example Usage
-
-```ts
-const customerId = 'customer_id8';
-
-const addressId = 'address_id0';
-
-try {
-  const { result, ...httpResponse } = await customersController.getAddress(
-    customerId,
-    addressId
-  );
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Delete Address
-
-Delete a Customer's address
-
-```ts
-async deleteAddress(
-  customerId: string,
-  addressId: string,
-  idempotencyKey?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetAddressResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `customerId` | `string` | Template, Required | Customer Id |
-| `addressId` | `string` | Template, Required | Address Id |
-| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-[`GetAddressResponse`](../../doc/models/get-address-response.md)
-
-## Example Usage
-
-```ts
-const customerId = 'customer_id8';
-
-const addressId = 'address_id0';
-
-try {
-  const { result, ...httpResponse } = await customersController.deleteAddress(
-    customerId,
-    addressId
-  );
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Get Access Token
-
-Get a Customer's access token
-
-```ts
-async getAccessToken(
-  customerId: string,
-  tokenId: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetAccessTokenResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `customerId` | `string` | Template, Required | Customer Id |
-| `tokenId` | `string` | Template, Required | Token Id |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-[`GetAccessTokenResponse`](../../doc/models/get-access-token-response.md)
-
-## Example Usage
-
-```ts
-const customerId = 'customer_id8';
-
-const tokenId = 'token_id6';
-
-try {
-  const { result, ...httpResponse } = await customersController.getAccessToken(
-    customerId,
-    tokenId
-  );
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Update Customer Metadata
-
-Updates the metadata a customer
-
-```ts
-async updateCustomerMetadata(
-  customerId: string,
-  request: UpdateMetadataRequest,
-  idempotencyKey?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetCustomerResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `customerId` | `string` | Template, Required | The customer id |
-| `request` | [`UpdateMetadataRequest`](../../doc/models/update-metadata-request.md) | Body, Required | Request for updating the customer metadata |
-| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-[`GetCustomerResponse`](../../doc/models/get-customer-response.md)
-
-## Example Usage
-
-```ts
-const customerId = 'customer_id8';
-
-const request: UpdateMetadataRequest = {
-  metadata: {
-    'key0': 'metadata3'
-  },
-};
-
-try {
-  const { result, ...httpResponse } = await customersController.updateCustomerMetadata(
-    customerId,
-    request
-  );
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Get Card
-
-Get a customer's card
-
-```ts
-async getCard(
-  customerId: string,
-  cardId: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetCardResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `customerId` | `string` | Template, Required | Customer id |
-| `cardId` | `string` | Template, Required | Card id |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-[`GetCardResponse`](../../doc/models/get-card-response.md)
-
-## Example Usage
-
-```ts
-const customerId = 'customer_id8';
-
-const cardId = 'card_id4';
-
-try {
-  const { result, ...httpResponse } = await customersController.getCard(
-    customerId,
-    cardId
-  );
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Delete Access Tokens
-
-Delete a Customer's access tokens
-
-```ts
-async deleteAccessTokens(
-  customerId: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<ListAccessTokensResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `customerId` | `string` | Template, Required | Customer Id |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-[`ListAccessTokensResponse`](../../doc/models/list-access-tokens-response.md)
-
-## Example Usage
-
-```ts
-const customerId = 'customer_id8';
-
-try {
-  const { result, ...httpResponse } = await customersController.deleteAccessTokens(customerId);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Create Access Token
-
-Creates a access token for a customer
-
-```ts
-async createAccessToken(
-  customerId: string,
-  request: CreateAccessTokenRequest,
-  idempotencyKey?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetAccessTokenResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `customerId` | `string` | Template, Required | Customer Id |
-| `request` | [`CreateAccessTokenRequest`](../../doc/models/create-access-token-request.md) | Body, Required | Request for creating a access token |
-| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-[`GetAccessTokenResponse`](../../doc/models/get-access-token-response.md)
-
-## Example Usage
-
-```ts
-const customerId = 'customer_id8';
-
-const request: CreateAccessTokenRequest = {};
-
-try {
-  const { result, ...httpResponse } = await customersController.createAccessToken(
-    customerId,
-    request
-  );
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Get Access Tokens
-
-Get all access tokens from a customer
-
-```ts
-async getAccessTokens(
-  customerId: string,
-  page?: number,
-  size?: number,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<ListAccessTokensResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `customerId` | `string` | Template, Required | Customer Id |
-| `page` | `number \| undefined` | Query, Optional | Page number |
-| `size` | `number \| undefined` | Query, Optional | Page size |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-[`ListAccessTokensResponse`](../../doc/models/list-access-tokens-response.md)
-
-## Example Usage
-
-```ts
-const customerId = 'customer_id8';
-
-try {
-  const { result, ...httpResponse } = await customersController.getAccessTokens(customerId);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -901,14 +604,20 @@ const page = 1;
 const size = 10;
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await customersController.getCustomers(
-    page,
-    size
-  );
+  undefined,
+  undefined,
+  page,
+  size
+);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -950,14 +659,328 @@ const customerId = 'customer_id8';
 const request: UpdateCustomerRequest = {};
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await customersController.updateCustomer(
-    customerId,
-    request
-  );
+  customerId,
+  request
+);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Create Access Token
+
+Creates a access token for a customer
+
+```ts
+async createAccessToken(
+  customerId: string,
+  request: CreateAccessTokenRequest,
+  idempotencyKey?: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetAccessTokenResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `customerId` | `string` | Template, Required | Customer Id |
+| `request` | [`CreateAccessTokenRequest`](../../doc/models/create-access-token-request.md) | Body, Required | Request for creating a access token |
+| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`GetAccessTokenResponse`](../../doc/models/get-access-token-response.md)
+
+## Example Usage
+
+```ts
+const customerId = 'customer_id8';
+
+const request: CreateAccessTokenRequest = {};
+
+try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { result, ...httpResponse } = await customersController.createAccessToken(
+  customerId,
+  request
+);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Get Access Tokens
+
+Get all access tokens from a customer
+
+```ts
+async getAccessTokens(
+  customerId: string,
+  page?: number,
+  size?: number,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<ListAccessTokensResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `customerId` | `string` | Template, Required | Customer Id |
+| `page` | `number \| undefined` | Query, Optional | Page number |
+| `size` | `number \| undefined` | Query, Optional | Page size |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`ListAccessTokensResponse`](../../doc/models/list-access-tokens-response.md)
+
+## Example Usage
+
+```ts
+const customerId = 'customer_id8';
+
+try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { result, ...httpResponse } = await customersController.getAccessTokens(customerId);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Get Cards
+
+Get all cards from a customer
+
+```ts
+async getCards(
+  customerId: string,
+  page?: number,
+  size?: number,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<ListCardsResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `customerId` | `string` | Template, Required | Customer Id |
+| `page` | `number \| undefined` | Query, Optional | Page number |
+| `size` | `number \| undefined` | Query, Optional | Page size |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`ListCardsResponse`](../../doc/models/list-cards-response.md)
+
+## Example Usage
+
+```ts
+const customerId = 'customer_id8';
+
+try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { result, ...httpResponse } = await customersController.getCards(customerId);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Renew Card
+
+Renew a card
+
+```ts
+async renewCard(
+  customerId: string,
+  cardId: string,
+  idempotencyKey?: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetCardResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `customerId` | `string` | Template, Required | Customer id |
+| `cardId` | `string` | Template, Required | Card Id |
+| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`GetCardResponse`](../../doc/models/get-card-response.md)
+
+## Example Usage
+
+```ts
+const customerId = 'customer_id8';
+
+const cardId = 'card_id4';
+
+try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { result, ...httpResponse } = await customersController.renewCard(
+  customerId,
+  cardId
+);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Get Access Token
+
+Get a Customer's access token
+
+```ts
+async getAccessToken(
+  customerId: string,
+  tokenId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetAccessTokenResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `customerId` | `string` | Template, Required | Customer Id |
+| `tokenId` | `string` | Template, Required | Token Id |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`GetAccessTokenResponse`](../../doc/models/get-access-token-response.md)
+
+## Example Usage
+
+```ts
+const customerId = 'customer_id8';
+
+const tokenId = 'token_id6';
+
+try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { result, ...httpResponse } = await customersController.getAccessToken(
+  customerId,
+  tokenId
+);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Update Customer Metadata
+
+Updates the metadata a customer
+
+```ts
+async updateCustomerMetadata(
+  customerId: string,
+  request: UpdateMetadataRequest,
+  idempotencyKey?: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetCustomerResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `customerId` | `string` | Template, Required | The customer id |
+| `request` | [`UpdateMetadataRequest`](../../doc/models/update-metadata-request.md) | Body, Required | Request for updating the customer metadata |
+| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`GetCustomerResponse`](../../doc/models/get-customer-response.md)
+
+## Example Usage
+
+```ts
+const customerId = 'customer_id8';
+
+const request: UpdateMetadataRequest = {
+  metadata: {
+    'key0': 'metadata3'
+  },
+};
+
+try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { result, ...httpResponse } = await customersController.updateCustomerMetadata(
+  customerId,
+  request
+);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -999,14 +1022,18 @@ const customerId = 'customer_id8';
 const cardId = 'card_id4';
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await customersController.deleteCard(
-    customerId,
-    cardId
-  );
+  customerId,
+  cardId
+);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -1046,11 +1073,15 @@ async getAddresses(
 const customerId = 'customer_id8';
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await customersController.getAddresses(customerId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -1086,11 +1117,66 @@ async getCustomer(
 const customerId = 'customer_id8';
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await customersController.getCustomer(customerId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Get Card
+
+Get a customer's card
+
+```ts
+async getCard(
+  customerId: string,
+  cardId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetCardResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `customerId` | `string` | Template, Required | Customer id |
+| `cardId` | `string` | Template, Required | Card id |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`GetCardResponse`](../../doc/models/get-card-response.md)
+
+## Example Usage
+
+```ts
+const customerId = 'customer_id8';
+
+const cardId = 'card_id4';
+
+try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { result, ...httpResponse } = await customersController.getCard(
+  customerId,
+  cardId
+);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
