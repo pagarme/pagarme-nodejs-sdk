@@ -11,11 +11,11 @@ The GooglePay Token Payment Request
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `version` | `string` | Required | The token version |
-| `data` | `string` | Required | The cryptography data |
-| `header` | [`CreateGooglePayHeaderRequest`](../../doc/models/create-google-pay-header-request.md) | Required | The GooglePay header request |
-| `signature` | `string` | Required | Detached PKCS #7 signature, Base64 encoded as string |
-| `merchantIdentifier` | `string` | Required | GooglePay Merchant identifier |
+| `version` | `string` | Required | Informação sobre a versão do token. Único valor aceito é EC_v2 |
+| `data` | `string` | Required | Dados de pagamento criptografados. Corresponde ao encryptedMessage do token Google. |
+| `intermediateSigningKey` | [`CreateGooglePayIntermediateSigningKeyRequest`](../../doc/models/create-google-pay-intermediate-signing-key-request.md) | Required | The GooglePay intermediate signing key request |
+| `signature` | `string` | Required | Assinatura dos dados de pagamento. Verifica se a origem da mensagem é o Google. Corresponde ao signature do token Google. |
+| `signedMessage` | `string` | Required | - |
 
 ## Example (as JSON)
 
@@ -23,11 +23,16 @@ The GooglePay Token Payment Request
 {
   "version": "version6",
   "data": "data0",
-  "header": {
-    "ephemeral_public_key": "ephemeral_public_key6"
+  "intermediate_signing_key": {
+    "signed_key": "signed_key0",
+    "signatures": [
+      "signatures2",
+      "signatures3",
+      "signatures4"
+    ]
   },
   "signature": "signature8",
-  "merchant_identifier": "merchant_identifier4"
+  "signed_message": "signed_message6"
 }
 ```
 

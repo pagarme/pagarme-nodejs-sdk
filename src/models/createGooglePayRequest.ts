@@ -6,30 +6,32 @@
 
 import { lazy, object, Schema, string } from '../schema';
 import {
-  CreateGooglePayHeaderRequest,
-  createGooglePayHeaderRequestSchema,
-} from './createGooglePayHeaderRequest';
+  CreateGooglePayIntermediateSigningKeyRequest,
+  createGooglePayIntermediateSigningKeyRequestSchema,
+} from './createGooglePayIntermediateSigningKeyRequest';
 
 /** The GooglePay Token Payment Request */
 export interface CreateGooglePayRequest {
-  /** The token version */
+  /** Informação sobre a versão do token. Único valor aceito é EC_v2 */
   version: string;
-  /** The cryptography data */
+  /** Dados de pagamento criptografados. Corresponde ao encryptedMessage do token Google. */
   data: string;
-  /** The GooglePay header request */
-  header: CreateGooglePayHeaderRequest;
-  /** Detached PKCS #7 signature, Base64 encoded as string */
+  /** The GooglePay intermediate signing key request */
+  intermediateSigningKey: CreateGooglePayIntermediateSigningKeyRequest;
+  /** Assinatura dos dados de pagamento. Verifica se a origem da mensagem é o Google. Corresponde ao signature do token Google. */
   signature: string;
-  /** GooglePay Merchant identifier */
-  merchantIdentifier: string;
+  signedMessage: string;
 }
 
 export const createGooglePayRequestSchema: Schema<CreateGooglePayRequest> = object(
   {
     version: ['version', string()],
     data: ['data', string()],
-    header: ['header', lazy(() => createGooglePayHeaderRequestSchema)],
+    intermediateSigningKey: [
+      'intermediate_signing_key',
+      lazy(() => createGooglePayIntermediateSigningKeyRequestSchema),
+    ],
     signature: ['signature', string()],
-    merchantIdentifier: ['merchant_identifier', string()],
+    signedMessage: ['signed_message', string()],
   }
 );

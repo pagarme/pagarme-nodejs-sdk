@@ -46,6 +46,7 @@ export type { CreateCancelChargeSplitRulesRequest } from './models/createCancelC
 export type { CreateCancelSubscriptionRequest } from './models/createCancelSubscriptionRequest';
 export type { CreateCaptureChargeRequest } from './models/createCaptureChargeRequest';
 export type { CreateCardOptionsRequest } from './models/createCardOptionsRequest';
+export type { CreateCardPayloadRequest } from './models/createCardPayloadRequest';
 export type { CreateCardPaymentContactlessPOIRequest } from './models/createCardPaymentContactlessPOIRequest';
 export type { CreateCardPaymentContactlessRequest } from './models/createCardPaymentContactlessRequest';
 export type { CreateCardRequest } from './models/createCardRequest';
@@ -72,6 +73,7 @@ export type { CreateEmvDataTlvDecryptRequest } from './models/createEmvDataTlvDe
 export type { CreateEmvDecryptRequest } from './models/createEmvDecryptRequest';
 export type { CreateFineRequest } from './models/createFineRequest';
 export type { CreateGooglePayHeaderRequest } from './models/createGooglePayHeaderRequest';
+export type { CreateGooglePayIntermediateSigningKeyRequest } from './models/createGooglePayIntermediateSigningKeyRequest';
 export type { CreateGooglePayRequest } from './models/createGooglePayRequest';
 export type { CreateIncrementRequest } from './models/createIncrementRequest';
 export type { CreateInterestRequest } from './models/createInterestRequest';

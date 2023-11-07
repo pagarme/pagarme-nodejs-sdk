@@ -12,21 +12,25 @@ Response object for getting an order item
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `id` | `string \| null \| undefined` | Optional | Id |
-| `amount` | `number \| null \| undefined` | Optional | - |
+| `type` | `string \| null \| undefined` | Optional | - |
 | `description` | `string \| null \| undefined` | Optional | - |
+| `amount` | `number \| null \| undefined` | Optional | - |
 | `quantity` | `number \| null \| undefined` | Optional | - |
 | `category` | `string \| null \| undefined` | Optional | Category |
 | `code` | `string \| null \| undefined` | Optional | Code |
+| `status` | `string \| null \| undefined` | Optional | - |
+| `createdAt` | `string \| null \| undefined` | Optional | - |
+| `updatedAt` | `string \| null \| undefined` | Optional | - |
 
 ## Example (as JSON)
 
 ```json
 {
   "id": "id8",
-  "amount": 224,
+  "type": "type8",
   "description": "description8",
-  "quantity": 82,
-  "category": "category6"
+  "amount": 224,
+  "quantity": 82
 }
 ```
 

@@ -26,6 +26,7 @@ The settings for creating a credit card payment
 | `autoRecovery` | `boolean \| undefined` | Optional | Indicates whether a particular payment will enter the offline retry flow |
 | `operationType` | `string \| undefined` | Optional | AuthOnly, AuthAndCapture, PreAuth |
 | `recurrencyCycle` | `string \| undefined` | Optional | Defines whether the card has been used one or more times. |
+| `payload` | [`CreateCardPayloadRequest \| undefined`](../../doc/models/create-card-payload-request.md) | Optional | - |
 
 ## Example (as JSON)
 

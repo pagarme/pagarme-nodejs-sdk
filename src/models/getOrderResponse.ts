@@ -10,6 +10,7 @@ import {
   dict,
   lazy,
   nullable,
+  number,
   object,
   optional,
   Schema,
@@ -42,12 +43,16 @@ import {
 export interface GetOrderResponse {
   id?: string | null;
   code?: string | null;
+  amount?: number | null;
   currency?: string | null;
+  /** Indicates whether the order is closed */
+  closed?: boolean | null;
   items?: GetOrderItemResponse[] | null;
   customer?: GetCustomerResponse | null;
   status?: string | null;
   createdAt?: string | null;
   updatedAt?: string | null;
+  closedAt?: string | null;
   charges?: GetChargeResponse[] | null;
   invoiceUrl?: string | null;
   shipping?: GetShippingResponse | null;
@@ -62,14 +67,14 @@ export interface GetOrderResponse {
   location?: GetLocationResponse | null;
   /** Device's informations */
   device?: GetDeviceResponse | null;
-  /** Indicates whether the order is closed */
-  closed?: boolean | null;
 }
 
 export const getOrderResponseSchema: Schema<any> = object({
   id: ['id', optional(nullable(string()))],
   code: ['code', optional(nullable(string()))],
+  amount: ['amount', optional(nullable(number()))],
   currency: ['currency', optional(nullable(string()))],
+  closed: ['closed', optional(nullable(boolean()))],
   items: [
     'items',
     optional(nullable(array(lazy(() => getOrderItemResponseSchema)))),
@@ -81,6 +86,7 @@ export const getOrderResponseSchema: Schema<any> = object({
   status: ['status', optional(nullable(string()))],
   createdAt: ['created_at', optional(nullable(string()))],
   updatedAt: ['updated_at', optional(nullable(string()))],
+  closedAt: ['closed_at', optional(nullable(string()))],
   charges: [
     'charges',
     optional(nullable(array(lazy(() => getChargeResponseSchema)))),
@@ -102,5 +108,4 @@ export const getOrderResponseSchema: Schema<any> = object({
     optional(nullable(lazy(() => getLocationResponseSchema))),
   ],
   device: ['device', optional(nullable(lazy(() => getDeviceResponseSchema)))],
-  closed: ['closed', optional(nullable(boolean()))],
 });
