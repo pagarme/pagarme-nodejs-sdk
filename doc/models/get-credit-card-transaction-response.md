@@ -28,6 +28,7 @@ Response object for getting a credit card transaction
 | `installments` | `number \| null \| undefined` | Optional | Number of installments |
 | `threedAuthenticationUrl` | `string \| null \| undefined` | Optional | 3D-S authentication Url |
 | `fundingSource` | `string \| null \| undefined` | Optional | Identify when a card is prepaid, credit or debit. |
+| `retryInfo` | [`GetRetryTransactionInformationResponse \| null \| undefined`](../../doc/models/get-retry-transaction-information-response.md) | Optional | Retry transaction information |
 
 ## Example (as JSON)
 

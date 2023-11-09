@@ -172,6 +172,7 @@ export type { GetPriceBracketResponse } from './models/getPriceBracketResponse';
 export type { GetPricingSchemeResponse } from './models/getPricingSchemeResponse';
 export type { GetPrivateLabelTransactionResponse } from './models/getPrivateLabelTransactionResponse';
 export type { GetRecipientResponse } from './models/getRecipientResponse';
+export type { GetRetryTransactionInformationResponse } from './models/getRetryTransactionInformationResponse';
 export type { GetSafetyPayTransactionResponse } from './models/getSafetyPayTransactionResponse';
 export type { GetSetupResponse } from './models/getSetupResponse';
 export type { GetShippingResponse } from './models/getShippingResponse';
