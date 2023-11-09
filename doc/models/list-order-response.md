@@ -22,107 +22,23 @@ Response object for listing order objects
     {
       "id": "id0",
       "code": "code8",
+      "amount": 236,
       "currency": "currency0",
-      "items": [
-        {
-          "id": "id8",
-          "amount": 164,
-          "description": "description2",
-          "quantity": 22,
-          "category": "category6"
-        },
-        {
-          "id": "id8",
-          "amount": 164,
-          "description": "description2",
-          "quantity": 22,
-          "category": "category6"
-        },
-        {
-          "id": "id8",
-          "amount": 164,
-          "description": "description2",
-          "quantity": 22,
-          "category": "category6"
-        }
-      ],
-      "customer": {
-        "id": "id0",
-        "name": "name0",
-        "email": "email6",
-        "delinquent": false,
-        "created_at": "2016-03-13T12:52:32.123Z"
-      }
+      "closed": false
     },
     {
       "id": "id0",
       "code": "code8",
+      "amount": 236,
       "currency": "currency0",
-      "items": [
-        {
-          "id": "id8",
-          "amount": 164,
-          "description": "description2",
-          "quantity": 22,
-          "category": "category6"
-        },
-        {
-          "id": "id8",
-          "amount": 164,
-          "description": "description2",
-          "quantity": 22,
-          "category": "category6"
-        },
-        {
-          "id": "id8",
-          "amount": 164,
-          "description": "description2",
-          "quantity": 22,
-          "category": "category6"
-        }
-      ],
-      "customer": {
-        "id": "id0",
-        "name": "name0",
-        "email": "email6",
-        "delinquent": false,
-        "created_at": "2016-03-13T12:52:32.123Z"
-      }
+      "closed": false
     },
     {
       "id": "id0",
       "code": "code8",
+      "amount": 236,
       "currency": "currency0",
-      "items": [
-        {
-          "id": "id8",
-          "amount": 164,
-          "description": "description2",
-          "quantity": 22,
-          "category": "category6"
-        },
-        {
-          "id": "id8",
-          "amount": 164,
-          "description": "description2",
-          "quantity": 22,
-          "category": "category6"
-        },
-        {
-          "id": "id8",
-          "amount": 164,
-          "description": "description2",
-          "quantity": 22,
-          "category": "category6"
-        }
-      ],
-      "customer": {
-        "id": "id0",
-        "name": "name0",
-        "email": "email6",
-        "delinquent": false,
-        "created_at": "2016-03-13T12:52:32.123Z"
-      }
+      "closed": false
     }
   ],
   "paging": {

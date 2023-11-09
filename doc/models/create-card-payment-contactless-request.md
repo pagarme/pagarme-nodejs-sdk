@@ -35,11 +35,16 @@ The card payment contactless request
   "google_pay": {
     "version": "version4",
     "data": "data8",
-    "header": {
-      "ephemeral_public_key": "ephemeral_public_key6"
+    "intermediate_signing_key": {
+      "signed_key": "signed_key0",
+      "signatures": [
+        "signatures2",
+        "signatures3",
+        "signatures4"
+      ]
     },
     "signature": "signature6",
-    "merchant_identifier": "merchant_identifier2"
+    "signed_message": "signed_message4"
   },
   "emv": {
     "icc_data": "icc_data8",

@@ -15,6 +15,10 @@ import {
   string,
 } from '../schema';
 import {
+  CreateCardPayloadRequest,
+  createCardPayloadRequestSchema,
+} from './createCardPayloadRequest';
+import {
   CreateCardPaymentContactlessRequest,
   createCardPaymentContactlessRequestSchema,
 } from './createCardPaymentContactlessRequest';
@@ -55,6 +59,7 @@ export interface CreateCreditCardPaymentRequest {
   operationType?: string;
   /** Defines whether the card has been used one or more times. */
   recurrencyCycle?: string;
+  payload?: CreateCardPayloadRequest;
 }
 
 export const createCreditCardPaymentRequestSchema: Schema<CreateCreditCardPaymentRequest> = object(
@@ -80,5 +85,6 @@ export const createCreditCardPaymentRequestSchema: Schema<CreateCreditCardPaymen
     autoRecovery: ['auto_recovery', optional(boolean())],
     operationType: ['operation_type', optional(string())],
     recurrencyCycle: ['recurrency_cycle', optional(string())],
+    payload: ['payload', optional(lazy(() => createCardPayloadRequestSchema))],
   }
 );
