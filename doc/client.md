@@ -9,7 +9,7 @@ The following parameters are configurable for the API Client:
 | `timeout` | `number` | Timeout for API calls.<br>*Default*: `0` |
 | `httpClientOptions` | `Partial<HttpClientOptions>` | Stable configurable http client options. |
 | `unstableHttpClientOptions` | `any` | Unstable configurable http client options. |
-| `basicAuthUserName` | `string` | The username to use with basic authentication |
+| `basicAuthUserName` | `string` | The username to use with basic authentication (in v5 it would be the SecretKey) |
 | `basicAuthPassword` | `string` | The password to use with basic authentication |
 
 ## HttpClientOptions
