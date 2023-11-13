@@ -8,14 +8,14 @@ import { nullable, number, object, Schema, string } from '../schema';
 
 export interface GetCheckoutCardInstallmentOptionsResponse {
   /** Número de parcelas */
-  number: string | null;
+  number: number | null;
   /** Valor total da compra */
   total: number | null;
 }
 
 export const getCheckoutCardInstallmentOptionsResponseSchema: Schema<GetCheckoutCardInstallmentOptionsResponse> = object(
   {
-    number: ['number', nullable(string())],
+    number: ['number', nullable(number())],
     total: ['total', nullable(number())],
   }
 );
