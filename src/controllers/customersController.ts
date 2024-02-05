@@ -157,28 +157,6 @@ export class CustomersController extends BaseController {
   }
 
   /**
-   * Creates a new customer
-   *
-   * @param request         Request for creating a customer
-   * @param idempotencyKey
-   * @return Response from the API call
-   */
-  async createCustomer(
-    request: CreateCustomerRequest,
-    idempotencyKey?: string,
-    requestOptions?: RequestOptions
-  ): Promise<ApiResponse<GetCustomerResponse>> {
-    const req = this.createRequest('POST', '/customers');
-    const mapped = req.prepareArgs({
-      request: [request, createCustomerRequestSchema],
-      idempotencyKey: [idempotencyKey, optional(string())],
-    });
-    req.header('idempotency-key', mapped.idempotencyKey);
-    req.json(mapped.request);
-    return req.callAsJson(getCustomerResponseSchema, requestOptions);
-  }
-
-  /**
    * Creates a new address for a customer
    *
    * @param customerId      Customer Id
@@ -205,19 +183,102 @@ export class CustomersController extends BaseController {
   }
 
   /**
-   * Delete a Customer's access tokens
+   * Creates a new customer
    *
-   * @param customerId  Customer Id
+   * @param request         Request for creating a customer
+   * @param idempotencyKey
    * @return Response from the API call
    */
-  async deleteAccessTokens(
-    customerId: string,
+  async createCustomer(
+    request: CreateCustomerRequest,
+    idempotencyKey?: string,
     requestOptions?: RequestOptions
-  ): Promise<ApiResponse<ListAccessTokensResponse>> {
+  ): Promise<ApiResponse<GetCustomerResponse>> {
+    const req = this.createRequest('POST', '/customers');
+    const mapped = req.prepareArgs({
+      request: [request, createCustomerRequestSchema],
+      idempotencyKey: [idempotencyKey, optional(string())],
+    });
+    req.header('idempotency-key', mapped.idempotencyKey);
+    req.json(mapped.request);
+    return req.callAsJson(getCustomerResponseSchema, requestOptions);
+  }
+
+  /**
+   * Creates a new card for a customer
+   *
+   * @param customerId      Customer id
+   * @param request         Request for creating a card
+   * @param idempotencyKey
+   * @return Response from the API call
+   */
+  async createCard(
+    customerId: string,
+    request: CreateCardRequest,
+    idempotencyKey?: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<GetCardResponse>> {
+    const req = this.createRequest('POST');
+    const mapped = req.prepareArgs({
+      customerId: [customerId, string()],
+      request: [request, createCardRequestSchema],
+      idempotencyKey: [idempotencyKey, optional(string())],
+    });
+    req.header('idempotency-key', mapped.idempotencyKey);
+    req.json(mapped.request);
+    req.appendTemplatePath`/customers/${mapped.customerId}/cards`;
+    return req.callAsJson(getCardResponseSchema, requestOptions);
+  }
+
+  /**
+   * Get all cards from a customer
+   *
+   * @param customerId  Customer Id
+   * @param page        Page number
+   * @param size        Page size
+   * @return Response from the API call
+   */
+  async getCards(
+    customerId: string,
+    page?: number,
+    size?: number,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<ListCardsResponse>> {
     const req = this.createRequest('GET');
-    const mapped = req.prepareArgs({ customerId: [customerId, string()] });
-    req.appendTemplatePath`/customers/${mapped.customerId}/access-tokens/`;
-    return req.callAsJson(listAccessTokensResponseSchema, requestOptions);
+    const mapped = req.prepareArgs({
+      customerId: [customerId, string()],
+      page: [page, optional(number())],
+      size: [size, optional(number())],
+    });
+    req.query('page', mapped.page);
+    req.query('size', mapped.size);
+    req.appendTemplatePath`/customers/${mapped.customerId}/cards`;
+    return req.callAsJson(listCardsResponseSchema, requestOptions);
+  }
+
+  /**
+   * Renew a card
+   *
+   * @param customerId      Customer id
+   * @param cardId          Card Id
+   * @param idempotencyKey
+   * @return Response from the API call
+   */
+  async renewCard(
+    customerId: string,
+    cardId: string,
+    idempotencyKey?: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<GetCardResponse>> {
+    const req = this.createRequest('POST');
+    const mapped = req.prepareArgs({
+      customerId: [customerId, string()],
+      cardId: [cardId, string()],
+      idempotencyKey: [idempotencyKey, optional(string())],
+    });
+    req.header('idempotency-key', mapped.idempotencyKey);
+    req.appendTemplatePath`/customers/${mapped.customerId}/cards/${mapped.cardId}/renew`;
+    return req.callAsJson(getCardResponseSchema, requestOptions);
   }
 
   /**
@@ -267,29 +328,139 @@ export class CustomersController extends BaseController {
   }
 
   /**
-   * Creates a new card for a customer
+   * Get a Customer's access token
    *
-   * @param customerId      Customer id
-   * @param request         Request for creating a card
+   * @param customerId  Customer Id
+   * @param tokenId     Token Id
+   * @return Response from the API call
+   */
+  async getAccessToken(
+    customerId: string,
+    tokenId: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<GetAccessTokenResponse>> {
+    const req = this.createRequest('GET');
+    const mapped = req.prepareArgs({
+      customerId: [customerId, string()],
+      tokenId: [tokenId, string()],
+    });
+    req.appendTemplatePath`/customers/${mapped.customerId}/access-tokens/${mapped.tokenId}`;
+    return req.callAsJson(getAccessTokenResponseSchema, requestOptions);
+  }
+
+  /**
+   * Updates the metadata a customer
+   *
+   * @param customerId      The customer id
+   * @param request         Request for updating the customer metadata
    * @param idempotencyKey
    * @return Response from the API call
    */
-  async createCard(
+  async updateCustomerMetadata(
     customerId: string,
-    request: CreateCardRequest,
+    request: UpdateMetadataRequest,
     idempotencyKey?: string,
     requestOptions?: RequestOptions
-  ): Promise<ApiResponse<GetCardResponse>> {
-    const req = this.createRequest('POST');
+  ): Promise<ApiResponse<GetCustomerResponse>> {
+    const req = this.createRequest('PATCH');
     const mapped = req.prepareArgs({
       customerId: [customerId, string()],
-      request: [request, createCardRequestSchema],
+      request: [request, updateMetadataRequestSchema],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.request);
-    req.appendTemplatePath`/customers/${mapped.customerId}/cards`;
+    req.appendTemplatePath`/Customers/${mapped.customerId}/metadata`;
+    return req.callAsJson(getCustomerResponseSchema, requestOptions);
+  }
+
+  /**
+   * Get a customer's card
+   *
+   * @param customerId  Customer id
+   * @param cardId      Card id
+   * @return Response from the API call
+   */
+  async getCard(
+    customerId: string,
+    cardId: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<GetCardResponse>> {
+    const req = this.createRequest('GET');
+    const mapped = req.prepareArgs({
+      customerId: [customerId, string()],
+      cardId: [cardId, string()],
+    });
+    req.appendTemplatePath`/customers/${mapped.customerId}/cards/${mapped.cardId}`;
     return req.callAsJson(getCardResponseSchema, requestOptions);
+  }
+
+  /**
+   * Delete a Customer's access tokens
+   *
+   * @param customerId  Customer Id
+   * @return Response from the API call
+   */
+  async deleteAccessTokens(
+    customerId: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<ListAccessTokensResponse>> {
+    const req = this.createRequest('GET');
+    const mapped = req.prepareArgs({ customerId: [customerId, string()] });
+    req.appendTemplatePath`/customers/${mapped.customerId}/access-tokens/`;
+    return req.callAsJson(listAccessTokensResponseSchema, requestOptions);
+  }
+
+  /**
+   * Creates a access token for a customer
+   *
+   * @param customerId      Customer Id
+   * @param request         Request for creating a access token
+   * @param idempotencyKey
+   * @return Response from the API call
+   */
+  async createAccessToken(
+    customerId: string,
+    request: CreateAccessTokenRequest,
+    idempotencyKey?: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<GetAccessTokenResponse>> {
+    const req = this.createRequest('POST');
+    const mapped = req.prepareArgs({
+      customerId: [customerId, string()],
+      request: [request, createAccessTokenRequestSchema],
+      idempotencyKey: [idempotencyKey, optional(string())],
+    });
+    req.header('idempotency-key', mapped.idempotencyKey);
+    req.json(mapped.request);
+    req.appendTemplatePath`/customers/${mapped.customerId}/access-tokens`;
+    return req.callAsJson(getAccessTokenResponseSchema, requestOptions);
+  }
+
+  /**
+   * Get all access tokens from a customer
+   *
+   * @param customerId  Customer Id
+   * @param page        Page number
+   * @param size        Page size
+   * @return Response from the API call
+   */
+  async getAccessTokens(
+    customerId: string,
+    page?: number,
+    size?: number,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<ListAccessTokensResponse>> {
+    const req = this.createRequest('GET');
+    const mapped = req.prepareArgs({
+      customerId: [customerId, string()],
+      page: [page, optional(number())],
+      size: [size, optional(number())],
+    });
+    req.query('page', mapped.page);
+    req.query('size', mapped.size);
+    req.appendTemplatePath`/customers/${mapped.customerId}/access-tokens`;
+    return req.callAsJson(listAccessTokensResponseSchema, requestOptions);
   }
 
   /**
@@ -353,156 +524,6 @@ export class CustomersController extends BaseController {
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.request);
     req.appendTemplatePath`/customers/${mapped.customerId}`;
-    return req.callAsJson(getCustomerResponseSchema, requestOptions);
-  }
-
-  /**
-   * Creates a access token for a customer
-   *
-   * @param customerId      Customer Id
-   * @param request         Request for creating a access token
-   * @param idempotencyKey
-   * @return Response from the API call
-   */
-  async createAccessToken(
-    customerId: string,
-    request: CreateAccessTokenRequest,
-    idempotencyKey?: string,
-    requestOptions?: RequestOptions
-  ): Promise<ApiResponse<GetAccessTokenResponse>> {
-    const req = this.createRequest('POST');
-    const mapped = req.prepareArgs({
-      customerId: [customerId, string()],
-      request: [request, createAccessTokenRequestSchema],
-      idempotencyKey: [idempotencyKey, optional(string())],
-    });
-    req.header('idempotency-key', mapped.idempotencyKey);
-    req.json(mapped.request);
-    req.appendTemplatePath`/customers/${mapped.customerId}/access-tokens`;
-    return req.callAsJson(getAccessTokenResponseSchema, requestOptions);
-  }
-
-  /**
-   * Get all access tokens from a customer
-   *
-   * @param customerId  Customer Id
-   * @param page        Page number
-   * @param size        Page size
-   * @return Response from the API call
-   */
-  async getAccessTokens(
-    customerId: string,
-    page?: number,
-    size?: number,
-    requestOptions?: RequestOptions
-  ): Promise<ApiResponse<ListAccessTokensResponse>> {
-    const req = this.createRequest('GET');
-    const mapped = req.prepareArgs({
-      customerId: [customerId, string()],
-      page: [page, optional(number())],
-      size: [size, optional(number())],
-    });
-    req.query('page', mapped.page);
-    req.query('size', mapped.size);
-    req.appendTemplatePath`/customers/${mapped.customerId}/access-tokens`;
-    return req.callAsJson(listAccessTokensResponseSchema, requestOptions);
-  }
-
-  /**
-   * Get all cards from a customer
-   *
-   * @param customerId  Customer Id
-   * @param page        Page number
-   * @param size        Page size
-   * @return Response from the API call
-   */
-  async getCards(
-    customerId: string,
-    page?: number,
-    size?: number,
-    requestOptions?: RequestOptions
-  ): Promise<ApiResponse<ListCardsResponse>> {
-    const req = this.createRequest('GET');
-    const mapped = req.prepareArgs({
-      customerId: [customerId, string()],
-      page: [page, optional(number())],
-      size: [size, optional(number())],
-    });
-    req.query('page', mapped.page);
-    req.query('size', mapped.size);
-    req.appendTemplatePath`/customers/${mapped.customerId}/cards`;
-    return req.callAsJson(listCardsResponseSchema, requestOptions);
-  }
-
-  /**
-   * Renew a card
-   *
-   * @param customerId      Customer id
-   * @param cardId          Card Id
-   * @param idempotencyKey
-   * @return Response from the API call
-   */
-  async renewCard(
-    customerId: string,
-    cardId: string,
-    idempotencyKey?: string,
-    requestOptions?: RequestOptions
-  ): Promise<ApiResponse<GetCardResponse>> {
-    const req = this.createRequest('POST');
-    const mapped = req.prepareArgs({
-      customerId: [customerId, string()],
-      cardId: [cardId, string()],
-      idempotencyKey: [idempotencyKey, optional(string())],
-    });
-    req.header('idempotency-key', mapped.idempotencyKey);
-    req.appendTemplatePath`/customers/${mapped.customerId}/cards/${mapped.cardId}/renew`;
-    return req.callAsJson(getCardResponseSchema, requestOptions);
-  }
-
-  /**
-   * Get a Customer's access token
-   *
-   * @param customerId  Customer Id
-   * @param tokenId     Token Id
-   * @return Response from the API call
-   */
-  async getAccessToken(
-    customerId: string,
-    tokenId: string,
-    requestOptions?: RequestOptions
-  ): Promise<ApiResponse<GetAccessTokenResponse>> {
-    const req = this.createRequest('GET');
-    const mapped = req.prepareArgs({
-      customerId: [customerId, string()],
-      tokenId: [tokenId, string()],
-    });
-    req.appendTemplatePath`/customers/${mapped.customerId}/access-tokens/${mapped.tokenId}`;
-    return req.callAsJson(getAccessTokenResponseSchema, requestOptions);
-  }
-
-  /**
-   * Updates the metadata a customer
-   *
-   * @param customerId      The customer id
-   * @param request         Request for updating the customer metadata
-   * @param idempotencyKey
-   * @return Response from the API call
-   */
-  async updateCustomerMetadata(
-    customerId: string,
-    request: UpdateMetadataRequest,
-    idempotencyKey?: string,
-    requestOptions?: RequestOptions
-  ): Promise<ApiResponse<GetCustomerResponse>> {
-    const req = this.createRequest('PATCH');
-    const mapped = req.prepareArgs({
-      customerId: [customerId, string()],
-      request: [request, updateMetadataRequestSchema],
-      idempotencyKey: [idempotencyKey, optional(string())],
-    });
-    req.header('idempotency-key', mapped.idempotencyKey);
-    req.json(mapped.request);
-    req.appendTemplatePath`/Customers/${mapped.customerId}/metadata`;
     return req.callAsJson(getCustomerResponseSchema, requestOptions);
   }
 
@@ -571,26 +592,5 @@ export class CustomersController extends BaseController {
     const mapped = req.prepareArgs({ customerId: [customerId, string()] });
     req.appendTemplatePath`/customers/${mapped.customerId}`;
     return req.callAsJson(getCustomerResponseSchema, requestOptions);
-  }
-
-  /**
-   * Get a customer's card
-   *
-   * @param customerId  Customer id
-   * @param cardId      Card id
-   * @return Response from the API call
-   */
-  async getCard(
-    customerId: string,
-    cardId: string,
-    requestOptions?: RequestOptions
-  ): Promise<ApiResponse<GetCardResponse>> {
-    const req = this.createRequest('GET');
-    const mapped = req.prepareArgs({
-      customerId: [customerId, string()],
-      cardId: [cardId, string()],
-    });
-    req.appendTemplatePath`/customers/${mapped.customerId}/cards/${mapped.cardId}`;
-    return req.callAsJson(getCardResponseSchema, requestOptions);
   }
 }

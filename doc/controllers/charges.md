@@ -12,17 +12,17 @@ const chargesController = new ChargesController(client);
 
 * [Update Charge Metadata](../../doc/controllers/charges.md#update-charge-metadata)
 * [Update Charge Payment Method](../../doc/controllers/charges.md#update-charge-payment-method)
-* [Get Charge Transactions](../../doc/controllers/charges.md#get-charge-transactions)
-* [Update Charge Due Date](../../doc/controllers/charges.md#update-charge-due-date)
-* [Get Charges](../../doc/controllers/charges.md#get-charges)
-* [Capture Charge](../../doc/controllers/charges.md#capture-charge)
 * [Update Charge Card](../../doc/controllers/charges.md#update-charge-card)
-* [Get Charge](../../doc/controllers/charges.md#get-charge)
 * [Get Charges Summary](../../doc/controllers/charges.md#get-charges-summary)
-* [Retry Charge](../../doc/controllers/charges.md#retry-charge)
-* [Cancel Charge](../../doc/controllers/charges.md#cancel-charge)
 * [Create Charge](../../doc/controllers/charges.md#create-charge)
+* [Get Charge Transactions](../../doc/controllers/charges.md#get-charge-transactions)
+* [Capture Charge](../../doc/controllers/charges.md#capture-charge)
+* [Get Charge](../../doc/controllers/charges.md#get-charge)
+* [Cancel Charge](../../doc/controllers/charges.md#cancel-charge)
+* [Get Charges](../../doc/controllers/charges.md#get-charges)
 * [Confirm Payment](../../doc/controllers/charges.md#confirm-payment)
+* [Update Charge Due Date](../../doc/controllers/charges.md#update-charge-due-date)
+* [Retry Charge](../../doc/controllers/charges.md#retry-charge)
 
 
 # Update Charge Metadata
@@ -178,6 +178,164 @@ try {
 ```
 
 
+# Update Charge Card
+
+Updates the card from a charge
+
+```ts
+async updateChargeCard(
+  chargeId: string,
+  request: UpdateChargeCardRequest,
+  idempotencyKey?: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetChargeResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `chargeId` | `string` | Template, Required | Charge id |
+| `request` | [`UpdateChargeCardRequest`](../../doc/models/update-charge-card-request.md) | Body, Required | Request for updating a charge's card |
+| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`GetChargeResponse`](../../doc/models/get-charge-response.md)
+
+## Example Usage
+
+```ts
+const chargeId = 'charge_id8';
+
+const request: UpdateChargeCardRequest = {
+  updateSubscription: false,
+  cardId: 'card_id2',
+  card: {
+    type: 'credit',
+  },
+  recurrence: false,
+};
+
+try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { result, ...httpResponse } = await chargesController.updateChargeCard(
+  chargeId,
+  request
+);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Get Charges Summary
+
+```ts
+async getChargesSummary(
+  status: string,
+  createdSince?: string,
+  createdUntil?: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetChargesSummaryResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `status` | `string` | Query, Required | - |
+| `createdSince` | `string \| undefined` | Query, Optional | - |
+| `createdUntil` | `string \| undefined` | Query, Optional | - |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`GetChargesSummaryResponse`](../../doc/models/get-charges-summary-response.md)
+
+## Example Usage
+
+```ts
+const status = 'status8';
+
+try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { result, ...httpResponse } = await chargesController.getChargesSummary(status);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Create Charge
+
+Creates a new charge
+
+```ts
+async createCharge(
+  request: CreateChargeRequest,
+  idempotencyKey?: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetChargeResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `request` | [`CreateChargeRequest`](../../doc/models/create-charge-request.md) | Body, Required | Request for creating a charge |
+| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`GetChargeResponse`](../../doc/models/get-charge-response.md)
+
+## Example Usage
+
+```ts
+const request: CreateChargeRequest = {
+  amount: 242,
+  payment: {
+    paymentMethod: 'payment_method4',
+  },
+  orderId: 'order_id0',
+};
+
+try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { result, ...httpResponse } = await chargesController.createCharge(request);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
 # Get Charge Transactions
 
 ```ts
@@ -224,14 +382,14 @@ try {
 ```
 
 
-# Update Charge Due Date
+# Capture Charge
 
-Updates the due date from a charge
+Captures a charge
 
 ```ts
-async updateChargeDueDate(
+async captureCharge(
   chargeId: string,
-  request: UpdateChargeDueDateRequest,
+  request?: CreateCaptureChargeRequest,
   idempotencyKey?: string,
   requestOptions?: RequestOptions
 ): Promise<ApiResponse<GetChargeResponse>>
@@ -241,8 +399,8 @@ async updateChargeDueDate(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `chargeId` | `string` | Template, Required | Charge Id |
-| `request` | [`UpdateChargeDueDateRequest`](../../doc/models/update-charge-due-date-request.md) | Body, Required | Request for updating the due date |
+| `chargeId` | `string` | Template, Required | Charge id |
+| `request` | [`CreateCaptureChargeRequest \| undefined`](../../doc/models/create-capture-charge-request.md) | Body, Optional | Request for capturing a charge |
 | `idempotencyKey` | `string \| undefined` | Header, Optional | - |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
@@ -255,15 +413,102 @@ async updateChargeDueDate(
 ```ts
 const chargeId = 'charge_id8';
 
-const request: UpdateChargeDueDateRequest = {};
+try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { result, ...httpResponse } = await chargesController.captureCharge(chargeId);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Get Charge
+
+Get a charge from its id
+
+```ts
+async getCharge(
+  chargeId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetChargeResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `chargeId` | `string` | Template, Required | Charge id |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`GetChargeResponse`](../../doc/models/get-charge-response.md)
+
+## Example Usage
+
+```ts
+const chargeId = 'charge_id8';
 
 try {
   // @ts-expect-error: unused variables
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { result, ...httpResponse } = await chargesController.updateChargeDueDate(
-  chargeId,
-  request
-);
+  const { result, ...httpResponse } = await chargesController.getCharge(chargeId);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Cancel Charge
+
+Cancel a charge
+
+```ts
+async cancelCharge(
+  chargeId: string,
+  request?: CreateCancelChargeRequest,
+  idempotencyKey?: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetChargeResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `chargeId` | `string` | Template, Required | Charge id |
+| `request` | [`CreateCancelChargeRequest \| undefined`](../../doc/models/create-cancel-charge-request.md) | Body, Optional | Request for cancelling a charge |
+| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`GetChargeResponse`](../../doc/models/get-charge-response.md)
+
+## Example Usage
+
+```ts
+const chargeId = 'charge_id8';
+
+try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { result, ...httpResponse } = await chargesController.cancelCharge(chargeId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
@@ -335,14 +580,12 @@ try {
 ```
 
 
-# Capture Charge
-
-Captures a charge
+# Confirm Payment
 
 ```ts
-async captureCharge(
+async confirmPayment(
   chargeId: string,
-  request?: CreateCaptureChargeRequest,
+  request?: CreateConfirmPaymentRequest,
   idempotencyKey?: string,
   requestOptions?: RequestOptions
 ): Promise<ApiResponse<GetChargeResponse>>
@@ -352,8 +595,8 @@ async captureCharge(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `chargeId` | `string` | Template, Required | Charge id |
-| `request` | [`CreateCaptureChargeRequest \| undefined`](../../doc/models/create-capture-charge-request.md) | Body, Optional | Request for capturing a charge |
+| `chargeId` | `string` | Template, Required | - |
+| `request` | [`CreateConfirmPaymentRequest \| undefined`](../../doc/models/create-confirm-payment-request.md) | Body, Optional | Request for confirm payment |
 | `idempotencyKey` | `string \| undefined` | Header, Optional | - |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
@@ -369,7 +612,7 @@ const chargeId = 'charge_id8';
 try {
   // @ts-expect-error: unused variables
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { result, ...httpResponse } = await chargesController.captureCharge(chargeId);
+  const { result, ...httpResponse } = await chargesController.confirmPayment(chargeId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
@@ -383,14 +626,14 @@ try {
 ```
 
 
-# Update Charge Card
+# Update Charge Due Date
 
-Updates the card from a charge
+Updates the due date from a charge
 
 ```ts
-async updateChargeCard(
+async updateChargeDueDate(
   chargeId: string,
-  request: UpdateChargeCardRequest,
+  request: UpdateChargeDueDateRequest,
   idempotencyKey?: string,
   requestOptions?: RequestOptions
 ): Promise<ApiResponse<GetChargeResponse>>
@@ -400,8 +643,8 @@ async updateChargeCard(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `chargeId` | `string` | Template, Required | Charge id |
-| `request` | [`UpdateChargeCardRequest`](../../doc/models/update-charge-card-request.md) | Body, Required | Request for updating a charge's card |
+| `chargeId` | `string` | Template, Required | Charge Id |
+| `request` | [`UpdateChargeDueDateRequest`](../../doc/models/update-charge-due-date-request.md) | Body, Required | Request for updating the due date |
 | `idempotencyKey` | `string \| undefined` | Header, Optional | - |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
@@ -414,112 +657,15 @@ async updateChargeCard(
 ```ts
 const chargeId = 'charge_id8';
 
-const request: UpdateChargeCardRequest = {
-  updateSubscription: false,
-  cardId: 'card_id2',
-  card: {
-    type: 'credit',
-  },
-  recurrence: false,
-};
+const request: UpdateChargeDueDateRequest = {};
 
 try {
   // @ts-expect-error: unused variables
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { result, ...httpResponse } = await chargesController.updateChargeCard(
+  const { result, ...httpResponse } = await chargesController.updateChargeDueDate(
   chargeId,
   request
 );
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    // @ts-expect-error: unused variables
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Get Charge
-
-Get a charge from its id
-
-```ts
-async getCharge(
-  chargeId: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetChargeResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `chargeId` | `string` | Template, Required | Charge id |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-[`GetChargeResponse`](../../doc/models/get-charge-response.md)
-
-## Example Usage
-
-```ts
-const chargeId = 'charge_id8';
-
-try {
-  // @ts-expect-error: unused variables
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { result, ...httpResponse } = await chargesController.getCharge(chargeId);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    // @ts-expect-error: unused variables
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Get Charges Summary
-
-```ts
-async getChargesSummary(
-  status: string,
-  createdSince?: string,
-  createdUntil?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetChargesSummaryResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `status` | `string` | Query, Required | - |
-| `createdSince` | `string \| undefined` | Query, Optional | - |
-| `createdUntil` | `string \| undefined` | Query, Optional | - |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-[`GetChargesSummaryResponse`](../../doc/models/get-charges-summary-response.md)
-
-## Example Usage
-
-```ts
-const status = 'status8';
-
-try {
-  // @ts-expect-error: unused variables
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { result, ...httpResponse } = await chargesController.getChargesSummary(status);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
@@ -566,152 +712,6 @@ try {
   // @ts-expect-error: unused variables
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await chargesController.retryCharge(chargeId);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    // @ts-expect-error: unused variables
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Cancel Charge
-
-Cancel a charge
-
-```ts
-async cancelCharge(
-  chargeId: string,
-  request?: CreateCancelChargeRequest,
-  idempotencyKey?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetChargeResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `chargeId` | `string` | Template, Required | Charge id |
-| `request` | [`CreateCancelChargeRequest \| undefined`](../../doc/models/create-cancel-charge-request.md) | Body, Optional | Request for cancelling a charge |
-| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-[`GetChargeResponse`](../../doc/models/get-charge-response.md)
-
-## Example Usage
-
-```ts
-const chargeId = 'charge_id8';
-
-try {
-  // @ts-expect-error: unused variables
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { result, ...httpResponse } = await chargesController.cancelCharge(chargeId);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    // @ts-expect-error: unused variables
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Create Charge
-
-Creates a new charge
-
-```ts
-async createCharge(
-  request: CreateChargeRequest,
-  idempotencyKey?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetChargeResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `request` | [`CreateChargeRequest`](../../doc/models/create-charge-request.md) | Body, Required | Request for creating a charge |
-| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-[`GetChargeResponse`](../../doc/models/get-charge-response.md)
-
-## Example Usage
-
-```ts
-const request: CreateChargeRequest = {
-  amount: 242,
-  payment: {
-    paymentMethod: 'payment_method4',
-  },
-  orderId: 'order_id0',
-};
-
-try {
-  // @ts-expect-error: unused variables
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { result, ...httpResponse } = await chargesController.createCharge(request);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    // @ts-expect-error: unused variables
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Confirm Payment
-
-```ts
-async confirmPayment(
-  chargeId: string,
-  request?: CreateConfirmPaymentRequest,
-  idempotencyKey?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetChargeResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `chargeId` | `string` | Template, Required | - |
-| `request` | [`CreateConfirmPaymentRequest \| undefined`](../../doc/models/create-confirm-payment-request.md) | Body, Optional | Request for confirm payment |
-| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-[`GetChargeResponse`](../../doc/models/get-charge-response.md)
-
-## Example Usage
-
-```ts
-const chargeId = 'charge_id8';
-
-try {
-  // @ts-expect-error: unused variables
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { result, ...httpResponse } = await chargesController.confirmPayment(chargeId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {

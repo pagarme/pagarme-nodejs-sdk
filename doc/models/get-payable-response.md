@@ -18,7 +18,7 @@ Response object for getting an payable
 | `anticipationFee` | `number \| null \| undefined` | Optional | - |
 | `fraudCoverageFee` | `number \| null \| undefined` | Optional | - |
 | `installment` | `number \| null \| undefined` | Optional | - |
-| `gatewayId` | `number \| null \| undefined` | Optional | - |
+| `gatewayId` | `bigint \| null \| undefined` | Optional | - |
 | `chargeId` | `string \| null \| undefined` | Optional | - |
 | `splitId` | `string \| null \| undefined` | Optional | - |
 | `bulkAnticipationId` | `string \| null \| undefined` | Optional | - |

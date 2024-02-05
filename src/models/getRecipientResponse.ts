@@ -27,6 +27,10 @@ import {
   getGatewayRecipientResponseSchema,
 } from './getGatewayRecipientResponse';
 import {
+  GetRegisterInformationResponse,
+  getRegisterInformationResponseSchema,
+} from './getRegisterInformationResponse';
+import {
   GetTransferSettingsResponse,
   getTransferSettingsResponseSchema,
 } from './getTransferSettingsResponse';
@@ -65,6 +69,7 @@ export interface GetRecipientResponse {
   code?: string | null;
   /** Payment mode */
   paymentMode?: string | null;
+  registerInformation?: GetRegisterInformationResponse | null;
 }
 
 export const getRecipientResponseSchema: Schema<GetRecipientResponse> = object({
@@ -97,4 +102,8 @@ export const getRecipientResponseSchema: Schema<GetRecipientResponse> = object({
   ],
   code: ['code', optional(nullable(string()))],
   paymentMode: ['payment_mode', optional(nullable(string()))],
+  registerInformation: [
+    'register_information',
+    optional(nullable(lazy(() => getRegisterInformationResponseSchema))),
+  ],
 });
