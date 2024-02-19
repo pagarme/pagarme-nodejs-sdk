@@ -40,11 +40,20 @@ Generic response object for getting a transaction.
   "status": "status6",
   "success": false,
   "created_at": "2016-03-13T12:52:32.123Z",
-  "statement_descriptor": "statement_descriptor2",
-  "acquirer_name": "acquirer_name6",
-  "acquirer_affiliation_code": "acquirer_affiliation_code6",
-  "acquirer_tid": "acquirer_tid8",
-  "acquirer_nsu": "acquirer_nsu8"
+  "qr_code": "qr_code0",
+  "qr_code_url": "qr_code_url6",
+  "expires_at": "2016-03-13T12:52:32.123Z",
+  "additional_information": [
+    {
+      "Name": "Name0",
+      "Value": "Value2"
+    },
+    {
+      "Name": "Name0",
+      "Value": "Value2"
+    }
+  ],
+  "end_to_end_id": "end_to_end_id6"
 }
 ```
 

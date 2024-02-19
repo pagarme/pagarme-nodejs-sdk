@@ -16,7 +16,7 @@
 | `name` | `string` | Required | - |
 | `motherName` | `string \| null \| undefined` | Optional | - |
 | `birthdate` | `string` | Required | - |
-| `monthlyIncome` | `string` | Required | - |
+| `monthlyIncome` | `number` | Required | - |
 | `professionalOccupation` | `string` | Required | - |
 | `address` | [`CreateRegisterInformationAddressRequest`](../../doc/models/create-register-information-address-request.md) | Required | - |
 
@@ -43,7 +43,7 @@
   "name": "name6",
   "mother_name": "mother_name2",
   "birthdate": "birthdate0",
-  "monthly_income": "monthly_income2",
+  "monthly_income": 206,
   "professional_occupation": "professional_occupation0",
   "address": {
     "street": "street6",

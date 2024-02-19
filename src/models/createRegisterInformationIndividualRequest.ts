@@ -8,6 +8,7 @@ import {
   array,
   lazy,
   nullable,
+  number,
   object,
   optional,
   Schema,
@@ -28,7 +29,7 @@ export interface CreateRegisterInformationIndividualRequest extends CreateRegist
   name: string;
   motherName?: string | null;
   birthdate: string;
-  monthlyIncome: string;
+  monthlyIncome: number;
   professionalOccupation: string;
   address: CreateRegisterInformationAddressRequest;
 }
@@ -38,7 +39,7 @@ export const createRegisterInformationIndividualRequestSchema: Schema<any> = obj
     name: ['name', string()],
     motherName: ['mother_name', optional(nullable(string()))],
     birthdate: ['birthdate', string()],
-    monthlyIncome: ['monthly_income', string()],
+    monthlyIncome: ['monthly_income', number()],
     professionalOccupation: ['professional_occupation', string()],
     address: [
       'address',

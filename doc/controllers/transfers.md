@@ -10,49 +10,9 @@ const transfersController = new TransfersController(client);
 
 ## Methods
 
-* [Get Transfers](../../doc/controllers/transfers.md#get-transfers)
 * [Get Transfer by Id](../../doc/controllers/transfers.md#get-transfer-by-id)
 * [Create Transfer](../../doc/controllers/transfers.md#create-transfer)
-
-
-# Get Transfers
-
-Gets all transfers
-
-```ts
-async getTransfers(
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<ListTransfers>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-[`ListTransfers`](../../doc/models/list-transfers.md)
-
-## Example Usage
-
-```ts
-try {
-  // @ts-expect-error: unused variables
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { result, ...httpResponse } = await transfersController.getTransfers();
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    // @ts-expect-error: unused variables
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
+* [Get Transfers](../../doc/controllers/transfers.md#get-transfers)
 
 
 # Get Transfer by Id
@@ -130,6 +90,46 @@ try {
   // @ts-expect-error: unused variables
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await transfersController.createTransfer(request);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Get Transfers
+
+Gets all transfers
+
+```ts
+async getTransfers(
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<ListTransfers>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`ListTransfers`](../../doc/models/list-transfers.md)
+
+## Example Usage
+
+```ts
+try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { result, ...httpResponse } = await transfersController.getTransfers();
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {

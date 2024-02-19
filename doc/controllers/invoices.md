@@ -10,13 +10,158 @@ const invoicesController = new InvoicesController(client);
 
 ## Methods
 
-* [Create Invoice](../../doc/controllers/invoices.md#create-invoice)
-* [Get Invoices](../../doc/controllers/invoices.md#get-invoices)
-* [Cancel Invoice](../../doc/controllers/invoices.md#cancel-invoice)
 * [Update Invoice Metadata](../../doc/controllers/invoices.md#update-invoice-metadata)
 * [Get Partial Invoice](../../doc/controllers/invoices.md#get-partial-invoice)
-* [Update Invoice Status](../../doc/controllers/invoices.md#update-invoice-status)
+* [Cancel Invoice](../../doc/controllers/invoices.md#cancel-invoice)
+* [Create Invoice](../../doc/controllers/invoices.md#create-invoice)
+* [Get Invoices](../../doc/controllers/invoices.md#get-invoices)
 * [Get Invoice](../../doc/controllers/invoices.md#get-invoice)
+* [Update Invoice Status](../../doc/controllers/invoices.md#update-invoice-status)
+
+
+# Update Invoice Metadata
+
+Updates the metadata from an invoice
+
+```ts
+async updateInvoiceMetadata(
+  invoiceId: string,
+  request: UpdateMetadataRequest,
+  idempotencyKey?: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetInvoiceResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `invoiceId` | `string` | Template, Required | The invoice id |
+| `request` | [`UpdateMetadataRequest`](../../doc/models/update-metadata-request.md) | Body, Required | Request for updating the invoice metadata |
+| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`GetInvoiceResponse`](../../doc/models/get-invoice-response.md)
+
+## Example Usage
+
+```ts
+const invoiceId = 'invoice_id0';
+
+const request: UpdateMetadataRequest = {
+  metadata: {
+    'key0': 'metadata3'
+  },
+};
+
+try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { result, ...httpResponse } = await invoicesController.updateInvoiceMetadata(
+  invoiceId,
+  request
+);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Get Partial Invoice
+
+```ts
+async getPartialInvoice(
+  subscriptionId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetInvoiceResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | Subscription Id |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`GetInvoiceResponse`](../../doc/models/get-invoice-response.md)
+
+## Example Usage
+
+```ts
+const subscriptionId = 'subscription_id0';
+
+try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { result, ...httpResponse } = await invoicesController.getPartialInvoice(subscriptionId);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Cancel Invoice
+
+Cancels an invoice
+
+```ts
+async cancelInvoice(
+  invoiceId: string,
+  idempotencyKey?: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetInvoiceResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `invoiceId` | `string` | Template, Required | Invoice id |
+| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`GetInvoiceResponse`](../../doc/models/get-invoice-response.md)
+
+## Example Usage
+
+```ts
+const invoiceId = 'invoice_id0';
+
+try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { result, ...httpResponse } = await invoicesController.cancelInvoice(invoiceId);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
 
 
 # Create Invoice
@@ -136,14 +281,13 @@ try {
 ```
 
 
-# Cancel Invoice
+# Get Invoice
 
-Cancels an invoice
+Gets an invoice
 
 ```ts
-async cancelInvoice(
+async getInvoice(
   invoiceId: string,
-  idempotencyKey?: string,
   requestOptions?: RequestOptions
 ): Promise<ApiResponse<GetInvoiceResponse>>
 ```
@@ -152,8 +296,7 @@ async cancelInvoice(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `invoiceId` | `string` | Template, Required | Invoice id |
-| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
+| `invoiceId` | `string` | Template, Required | Invoice Id |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
@@ -168,106 +311,7 @@ const invoiceId = 'invoice_id0';
 try {
   // @ts-expect-error: unused variables
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { result, ...httpResponse } = await invoicesController.cancelInvoice(invoiceId);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    // @ts-expect-error: unused variables
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Update Invoice Metadata
-
-Updates the metadata from an invoice
-
-```ts
-async updateInvoiceMetadata(
-  invoiceId: string,
-  request: UpdateMetadataRequest,
-  idempotencyKey?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetInvoiceResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `invoiceId` | `string` | Template, Required | The invoice id |
-| `request` | [`UpdateMetadataRequest`](../../doc/models/update-metadata-request.md) | Body, Required | Request for updating the invoice metadata |
-| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-[`GetInvoiceResponse`](../../doc/models/get-invoice-response.md)
-
-## Example Usage
-
-```ts
-const invoiceId = 'invoice_id0';
-
-const request: UpdateMetadataRequest = {
-  metadata: {
-    'key0': 'metadata3'
-  },
-};
-
-try {
-  // @ts-expect-error: unused variables
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { result, ...httpResponse } = await invoicesController.updateInvoiceMetadata(
-  invoiceId,
-  request
-);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    // @ts-expect-error: unused variables
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Get Partial Invoice
-
-```ts
-async getPartialInvoice(
-  subscriptionId: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetInvoiceResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscriptionId` | `string` | Template, Required | Subscription Id |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-[`GetInvoiceResponse`](../../doc/models/get-invoice-response.md)
-
-## Example Usage
-
-```ts
-const subscriptionId = 'subscription_id0';
-
-try {
-  // @ts-expect-error: unused variables
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { result, ...httpResponse } = await invoicesController.getPartialInvoice(subscriptionId);
+  const { result, ...httpResponse } = await invoicesController.getInvoice(invoiceId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
@@ -323,50 +367,6 @@ try {
   invoiceId,
   request
 );
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    // @ts-expect-error: unused variables
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Get Invoice
-
-Gets an invoice
-
-```ts
-async getInvoice(
-  invoiceId: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetInvoiceResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `invoiceId` | `string` | Template, Required | Invoice Id |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-[`GetInvoiceResponse`](../../doc/models/get-invoice-response.md)
-
-## Example Usage
-
-```ts
-const invoiceId = 'invoice_id0';
-
-try {
-  // @ts-expect-error: unused variables
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { result, ...httpResponse } = await invoicesController.getInvoice(invoiceId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
