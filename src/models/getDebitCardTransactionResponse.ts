@@ -22,6 +22,10 @@ import { GetCardResponse, getCardResponseSchema } from './getCardResponse';
 import { getFineResponseSchema } from './getFineResponse';
 import { getGatewayResponseResponseSchema } from './getGatewayResponseResponse';
 import { getInterestResponseSchema } from './getInterestResponse';
+import {
+  GetRetryTransactionInformationResponse,
+  getRetryTransactionInformationResponseSchema,
+} from './getRetryTransactionInformationResponse';
 import { getSplitResponseSchema } from './getSplitResponse';
 import { GetTransactionResponse } from './getTransactionResponse';
 
@@ -57,6 +61,8 @@ export interface GetDebitCardTransactionResponse extends GetTransactionResponse 
   threedAuthenticationUrl?: string | null;
   /** Identify when a card is prepaid, credit or debit. */
   fundingSource?: string | null;
+  /** Retry transaction information */
+  retryInfo?: GetRetryTransactionInformationResponse | null;
 }
 
 export const getDebitCardTransactionResponseSchema: Schema<any> = object({
@@ -81,6 +87,12 @@ export const getDebitCardTransactionResponseSchema: Schema<any> = object({
     optional(nullable(string())),
   ],
   fundingSource: ['funding_source', optional(nullable(string()))],
+  retryInfo: [
+    'retry_info',
+    optional(
+      nullable(lazy(() => getRetryTransactionInformationResponseSchema))
+    ),
+  ],
   gatewayId: ['gateway_id', optional(nullable(string()))],
   amount: ['amount', optional(nullable(number()))],
   status: ['status', optional(nullable(string()))],

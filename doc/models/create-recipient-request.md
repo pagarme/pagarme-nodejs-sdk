@@ -11,26 +11,22 @@ Request for creating a recipient
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `name` | `string` | Required | Recipient name |
-| `email` | `string` | Required | Recipient email |
-| `description` | `string` | Required | Recipient description |
-| `document` | `string` | Required | Recipient document number |
-| `type` | `string` | Required | Recipient type |
+| `name` | `string \| null \| undefined` | Optional | Recipient name. Required if the register_information field isn't populated. |
+| `email` | `string \| null \| undefined` | Optional | Recipient email. Required if the register_information field isn't populated. |
+| `description` | `string \| null \| undefined` | Optional | Recipient description |
+| `document` | `string \| null \| undefined` | Optional | Recipient document number. Required if the register_information field isn't populated. |
+| `type` | `string \| null \| undefined` | Optional | Recipient type. Required if the register_information field isn't populated. |
 | `defaultBankAccount` | [`CreateBankAccountRequest`](../../doc/models/create-bank-account-request.md) | Required | Bank account |
 | `metadata` | `Record<string, string>` | Required | Metadata |
 | `transferSettings` | [`CreateTransferSettingsRequest \| undefined`](../../doc/models/create-transfer-settings-request.md) | Optional | Receiver Transfer Information |
 | `code` | `string` | Required | Recipient code |
 | `paymentMode` | `string` | Required | Payment mode<br>**Default**: `'bank_transfer'` |
+| `registerInformation` | [`CreateRegisterInformationBaseRequest \| null \| undefined`](../../doc/models/create-register-information-base-request.md) | Optional | Register Information |
 
 ## Example (as JSON)
 
 ```json
 {
-  "name": "name6",
-  "email": "email0",
-  "description": "description6",
-  "document": "document0",
-  "type": "type4",
   "default_bank_account": {
     "holder_name": "holder_name4",
     "holder_type": "holder_type0",
@@ -53,11 +49,11 @@ Request for creating a recipient
   },
   "code": "code4",
   "payment_mode": "bank_transfer",
-  "transfer_settings": {
-    "transfer_enabled": false,
-    "transfer_interval": "transfer_interval4",
-    "transfer_day": 10
-  }
+  "name": "name6",
+  "email": "email0",
+  "description": "description6",
+  "document": "document0",
+  "type": "type4"
 }
 ```
 

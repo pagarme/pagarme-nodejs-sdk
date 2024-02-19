@@ -12,8 +12,6 @@ export const DEFAULT_CONFIGURATION: Configuration = {
   timeout: 0,
   serviceRefererName: '',
   environment: Environment.Production,
-  basicAuthUserName: 'TODO access token',
-  basicAuthPassword: 'TODO access token',
 };
 
 /** Default values for retry configuration parameters. */

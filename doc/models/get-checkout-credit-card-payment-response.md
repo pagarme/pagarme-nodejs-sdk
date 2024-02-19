@@ -20,7 +20,7 @@
   "statementDescriptor": "statementDescriptor8",
   "installments": [
     {
-      "number": "number2",
+      "number": 164,
       "total": 16
     }
   ],

@@ -7,7 +7,15 @@
 import {
   discriminatedGetMovementObjectBaseResponseSchema,
 } from '../models/discriminatedSchemas';
-import { lazy, nullable, object, optional, Schema, string } from '../schema';
+import {
+  lazy,
+  nullable,
+  number,
+  object,
+  optional,
+  Schema,
+  string,
+} from '../schema';
 import { GetMovementObjectBaseResponse } from './getMovementObjectBaseResponse';
 
 /** Generic response object for getting a BalanceOperation. */
@@ -17,7 +25,7 @@ export interface GetBalanceOperationResponse {
   balanceAmount?: string | null;
   balanceOldAmount?: string | null;
   type?: string | null;
-  amount?: string | null;
+  amount?: number | null;
   fee?: string | null;
   createdAt?: string | null;
   movementObject?: GetMovementObjectBaseResponse;
@@ -29,7 +37,7 @@ export const getBalanceOperationResponseSchema: Schema<any> = object({
   balanceAmount: ['balance_amount', optional(nullable(string()))],
   balanceOldAmount: ['balance_old_amount', optional(nullable(string()))],
   type: ['type', optional(nullable(string()))],
-  amount: ['amount', optional(nullable(string()))],
+  amount: ['amount', optional(nullable(number()))],
   fee: ['fee', optional(nullable(string()))],
   createdAt: ['created_at', optional(nullable(string()))],
   movementObject: [

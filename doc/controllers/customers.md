@@ -586,8 +586,8 @@ async getCustomers(
 |  --- | --- | --- | --- |
 | `name` | `string \| undefined` | Query, Optional | Name of the Customer |
 | `document` | `string \| undefined` | Query, Optional | Document of the Customer |
-| `page` | `number \| undefined` | Query, Optional | Current page the the search<br>**Default**: `1` |
-| `size` | `number \| undefined` | Query, Optional | Quantity pages of the search<br>**Default**: `10` |
+| `page` | `number \| undefined` | Query, Optional | Current page the the search |
+| `size` | `number \| undefined` | Query, Optional | Quantity pages of the search |
 | `email` | `string \| undefined` | Query, Optional | Customer's email |
 | `code` | `string \| undefined` | Query, Optional | Customer's code |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |

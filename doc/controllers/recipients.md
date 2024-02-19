@@ -1030,11 +1030,6 @@ async createRecipient(
 
 ```ts
 const request: CreateRecipientRequest = {
-  name: 'name6',
-  email: 'email0',
-  description: 'description6',
-  document: 'document0',
-  type: 'type4',
   defaultBankAccount: {
     holderName: 'holder_name4',
     holderType: 'holder_type0',

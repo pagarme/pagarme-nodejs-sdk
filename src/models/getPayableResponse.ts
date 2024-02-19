@@ -23,7 +23,7 @@ export interface GetPayableResponse {
   anticipationFee?: number | null;
   fraudCoverageFee?: number | null;
   installment?: number | null;
-  gatewayId?: number | null;
+  gatewayId?: bigint | null;
   chargeId?: string | null;
   splitId?: string | null;
   bulkAnticipationId?: string | null;
@@ -48,7 +48,7 @@ export const getPayableResponseSchema: Schema<GetPayableResponse> = object({
   anticipationFee: ['anticipation_fee', optional(nullable(number()))],
   fraudCoverageFee: ['fraud_coverage_fee', optional(nullable(number()))],
   installment: ['installment', optional(nullable(number()))],
-  gatewayId: ['gateway_id', optional(nullable(number()))],
+  gatewayId: ['gateway_id', optional(nullable(bigint()))],
   chargeId: ['charge_id', optional(nullable(string()))],
   splitId: ['split_id', optional(nullable(string()))],
   bulkAnticipationId: ['bulk_anticipation_id', optional(nullable(string()))],

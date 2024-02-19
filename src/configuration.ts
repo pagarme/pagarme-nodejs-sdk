@@ -11,8 +11,6 @@ export interface Configuration {
   timeout: number;
   serviceRefererName: string;
   environment: Environment;
-  basicAuthUserName: string;
-  basicAuthPassword: string;
   httpClientOptions?: Partial<HttpClientOptions>;
   unstable_httpClientOptions?: any;
 }
