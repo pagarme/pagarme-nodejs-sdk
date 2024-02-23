@@ -99,6 +99,7 @@ export class CustomersController extends BaseController {
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.request);
     req.appendTemplatePath`/customers/${mapped.customerId}/cards/${mapped.cardId}`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getCardResponseSchema, requestOptions);
   }
 
@@ -128,6 +129,7 @@ export class CustomersController extends BaseController {
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.request);
     req.appendTemplatePath`/customers/${mapped.customerId}/addresses/${mapped.addressId}`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getAddressResponseSchema, requestOptions);
   }
 
@@ -153,6 +155,7 @@ export class CustomersController extends BaseController {
     });
     req.header('idempotency-key', mapped.idempotencyKey);
     req.appendTemplatePath`/customers/${mapped.customerId}/access-tokens/${mapped.tokenId}`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getAccessTokenResponseSchema, requestOptions);
   }
 
@@ -175,6 +178,7 @@ export class CustomersController extends BaseController {
     });
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.request);
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getCustomerResponseSchema, requestOptions);
   }
 
@@ -201,6 +205,7 @@ export class CustomersController extends BaseController {
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.request);
     req.appendTemplatePath`/customers/${mapped.customerId}/addresses`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getAddressResponseSchema, requestOptions);
   }
 
@@ -217,6 +222,7 @@ export class CustomersController extends BaseController {
     const req = this.createRequest('GET');
     const mapped = req.prepareArgs({ customerId: [customerId, string()] });
     req.appendTemplatePath`/customers/${mapped.customerId}/access-tokens/`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(listAccessTokensResponseSchema, requestOptions);
   }
 
@@ -238,6 +244,7 @@ export class CustomersController extends BaseController {
       addressId: [addressId, string()],
     });
     req.appendTemplatePath`/customers/${mapped.customerId}/addresses/${mapped.addressId}`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getAddressResponseSchema, requestOptions);
   }
 
@@ -263,6 +270,7 @@ export class CustomersController extends BaseController {
     });
     req.header('idempotency-key', mapped.idempotencyKey);
     req.appendTemplatePath`/customers/${mapped.customerId}/addresses/${mapped.addressId}`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getAddressResponseSchema, requestOptions);
   }
 
@@ -289,6 +297,7 @@ export class CustomersController extends BaseController {
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.request);
     req.appendTemplatePath`/customers/${mapped.customerId}/cards`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getCardResponseSchema, requestOptions);
   }
 
@@ -327,6 +336,7 @@ export class CustomersController extends BaseController {
     req.query('size', mapped.size);
     req.query('email', mapped.email);
     req.query('Code', mapped.code);
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(listCustomersResponseSchema, requestOptions);
   }
 
@@ -353,6 +363,7 @@ export class CustomersController extends BaseController {
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.request);
     req.appendTemplatePath`/customers/${mapped.customerId}`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getCustomerResponseSchema, requestOptions);
   }
 
@@ -379,6 +390,7 @@ export class CustomersController extends BaseController {
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.request);
     req.appendTemplatePath`/customers/${mapped.customerId}/access-tokens`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getAccessTokenResponseSchema, requestOptions);
   }
 
@@ -405,6 +417,7 @@ export class CustomersController extends BaseController {
     req.query('page', mapped.page);
     req.query('size', mapped.size);
     req.appendTemplatePath`/customers/${mapped.customerId}/access-tokens`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(listAccessTokensResponseSchema, requestOptions);
   }
 
@@ -431,6 +444,7 @@ export class CustomersController extends BaseController {
     req.query('page', mapped.page);
     req.query('size', mapped.size);
     req.appendTemplatePath`/customers/${mapped.customerId}/cards`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(listCardsResponseSchema, requestOptions);
   }
 
@@ -456,6 +470,7 @@ export class CustomersController extends BaseController {
     });
     req.header('idempotency-key', mapped.idempotencyKey);
     req.appendTemplatePath`/customers/${mapped.customerId}/cards/${mapped.cardId}/renew`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getCardResponseSchema, requestOptions);
   }
 
@@ -477,6 +492,7 @@ export class CustomersController extends BaseController {
       tokenId: [tokenId, string()],
     });
     req.appendTemplatePath`/customers/${mapped.customerId}/access-tokens/${mapped.tokenId}`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getAccessTokenResponseSchema, requestOptions);
   }
 
@@ -503,6 +519,7 @@ export class CustomersController extends BaseController {
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.request);
     req.appendTemplatePath`/Customers/${mapped.customerId}/metadata`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getCustomerResponseSchema, requestOptions);
   }
 
@@ -528,6 +545,7 @@ export class CustomersController extends BaseController {
     });
     req.header('idempotency-key', mapped.idempotencyKey);
     req.appendTemplatePath`/customers/${mapped.customerId}/cards/${mapped.cardId}`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getCardResponseSchema, requestOptions);
   }
 
@@ -554,6 +572,7 @@ export class CustomersController extends BaseController {
     req.query('page', mapped.page);
     req.query('size', mapped.size);
     req.appendTemplatePath`/customers/${mapped.customerId}/addresses`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(listAddressesResponseSchema, requestOptions);
   }
 
@@ -570,6 +589,7 @@ export class CustomersController extends BaseController {
     const req = this.createRequest('GET');
     const mapped = req.prepareArgs({ customerId: [customerId, string()] });
     req.appendTemplatePath`/customers/${mapped.customerId}`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getCustomerResponseSchema, requestOptions);
   }
 
@@ -591,6 +611,7 @@ export class CustomersController extends BaseController {
       cardId: [cardId, string()],
     });
     req.appendTemplatePath`/customers/${mapped.customerId}/cards/${mapped.cardId}`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getCardResponseSchema, requestOptions);
   }
 }

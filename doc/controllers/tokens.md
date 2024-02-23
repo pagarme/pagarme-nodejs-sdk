@@ -16,6 +16,8 @@ const tokensController = new TokensController(client);
 
 # Create Token
 
+:information_source: **Note** This endpoint does not require authentication.
+
 ```ts
 async createToken(
   publicKey: string,
@@ -79,6 +81,8 @@ try {
 # Get Token
 
 Gets a token from its id
+
+:information_source: **Note** This endpoint does not require authentication.
 
 ```ts
 async getToken(

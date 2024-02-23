@@ -108,6 +108,7 @@ export class RecipientsController extends BaseController {
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.request);
     req.appendTemplatePath`/recipients/${mapped.recipientId}`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getRecipientResponseSchema, requestOptions);
   }
 
@@ -134,6 +135,7 @@ export class RecipientsController extends BaseController {
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.request);
     req.appendTemplatePath`/recipients/${mapped.recipientId}/anticipations`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getAnticipationResponseSchema, requestOptions);
   }
 
@@ -160,6 +162,7 @@ export class RecipientsController extends BaseController {
     req.query('timeframe', mapped.timeframe);
     req.query('payment_date', mapped.paymentDate);
     req.appendTemplatePath`/recipients/${mapped.recipientId}/anticipation_limits`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getAnticipationLimitResponseSchema, requestOptions);
   }
 
@@ -182,6 +185,7 @@ export class RecipientsController extends BaseController {
     });
     req.query('page', mapped.page);
     req.query('size', mapped.size);
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(listRecipientResponseSchema, requestOptions);
   }
 
@@ -201,6 +205,7 @@ export class RecipientsController extends BaseController {
       withdrawalId: [withdrawalId, string()],
     });
     req.appendTemplatePath`/recipients/${mapped.recipientId}/withdrawals/${mapped.withdrawalId}`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getWithdrawResponseSchema, requestOptions);
   }
 
@@ -227,6 +232,7 @@ export class RecipientsController extends BaseController {
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.request);
     req.appendTemplatePath`/recipients/${mapped.recipientId}/default-bank-account`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getRecipientResponseSchema, requestOptions);
   }
 
@@ -253,6 +259,7 @@ export class RecipientsController extends BaseController {
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.request);
     req.appendTemplatePath`/recipients/${mapped.recipientId}/metadata`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getRecipientResponseSchema, requestOptions);
   }
 
@@ -291,6 +298,7 @@ export class RecipientsController extends BaseController {
     req.query('created_since', mapped.createdSince);
     req.query('created_until', mapped.createdUntil);
     req.appendTemplatePath`/recipients/${mapped.recipientId}/transfers`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(listTransferResponseSchema, requestOptions);
   }
 
@@ -312,6 +320,7 @@ export class RecipientsController extends BaseController {
       transferId: [transferId, string()],
     });
     req.appendTemplatePath`/recipients/${mapped.recipientId}/transfers/${mapped.transferId}`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getTransferResponseSchema, requestOptions);
   }
 
@@ -332,6 +341,7 @@ export class RecipientsController extends BaseController {
     });
     req.json(mapped.request);
     req.appendTemplatePath`/recipients/${mapped.recipientId}/withdrawals`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getWithdrawResponseSchema, requestOptions);
   }
 
@@ -358,6 +368,7 @@ export class RecipientsController extends BaseController {
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.request);
     req.appendTemplatePath`/recipients/${mapped.recipientId}/automatic-anticipation-settings`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getRecipientResponseSchema, requestOptions);
   }
 
@@ -379,6 +390,7 @@ export class RecipientsController extends BaseController {
       anticipationId: [anticipationId, string()],
     });
     req.appendTemplatePath`/recipients/${mapped.recipientId}/anticipations/${mapped.anticipationId}`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getAnticipationResponseSchema, requestOptions);
   }
 
@@ -403,6 +415,7 @@ export class RecipientsController extends BaseController {
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.request);
     req.appendTemplatePath`/recipients/${mapped.recipientId}/transfer-settings`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getRecipientResponseSchema, requestOptions);
   }
 
@@ -453,6 +466,7 @@ export class RecipientsController extends BaseController {
     req.query('created_since', mapped.createdSince);
     req.query('created_until', mapped.createdUntil);
     req.appendTemplatePath`/recipients/${mapped.recipientId}/anticipations`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(listAnticipationResponseSchema, requestOptions);
   }
 
@@ -469,6 +483,7 @@ export class RecipientsController extends BaseController {
     const req = this.createRequest('GET');
     const mapped = req.prepareArgs({ recipientId: [recipientId, string()] });
     req.appendTemplatePath`/recipients/${mapped.recipientId}`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getRecipientResponseSchema, requestOptions);
   }
 
@@ -485,6 +500,7 @@ export class RecipientsController extends BaseController {
     const req = this.createRequest('GET');
     const mapped = req.prepareArgs({ recipientId: [recipientId, string()] });
     req.appendTemplatePath`/recipients/${mapped.recipientId}/balance`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getBalanceResponseSchema, requestOptions);
   }
 
@@ -523,6 +539,7 @@ export class RecipientsController extends BaseController {
     req.query('created_since', mapped.createdSince);
     req.query('created_until', mapped.createdUntil);
     req.appendTemplatePath`/recipients/${mapped.recipientId}/withdrawals`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(listWithdrawalsSchema, requestOptions);
   }
 
@@ -549,6 +566,7 @@ export class RecipientsController extends BaseController {
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.request);
     req.appendTemplatePath`/recipients/${mapped.recipientId}/transfers`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getTransferResponseSchema, requestOptions);
   }
 
@@ -571,6 +589,7 @@ export class RecipientsController extends BaseController {
     });
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.request);
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getRecipientResponseSchema, requestOptions);
   }
 
@@ -587,6 +606,7 @@ export class RecipientsController extends BaseController {
     const req = this.createRequest('GET');
     const mapped = req.prepareArgs({ code: [code, string()] });
     req.appendTemplatePath`/recipients/${mapped.code}`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getRecipientResponseSchema, requestOptions);
   }
 
@@ -597,6 +617,7 @@ export class RecipientsController extends BaseController {
     requestOptions?: RequestOptions
   ): Promise<ApiResponse<GetRecipientResponse>> {
     const req = this.createRequest('GET', '/recipients/default');
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getRecipientResponseSchema, requestOptions);
   }
 }

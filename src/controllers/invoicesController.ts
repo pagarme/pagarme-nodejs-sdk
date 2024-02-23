@@ -52,6 +52,7 @@ export class InvoicesController extends BaseController {
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.request);
     req.appendTemplatePath`/invoices/${mapped.invoiceId}/metadata`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getInvoiceResponseSchema, requestOptions);
   }
 
@@ -68,6 +69,7 @@ export class InvoicesController extends BaseController {
       subscriptionId: [subscriptionId, string()],
     });
     req.appendTemplatePath`/subscriptions/${mapped.subscriptionId}/partial-invoice`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getInvoiceResponseSchema, requestOptions);
   }
 
@@ -90,6 +92,7 @@ export class InvoicesController extends BaseController {
     });
     req.header('idempotency-key', mapped.idempotencyKey);
     req.appendTemplatePath`/invoices/${mapped.invoiceId}`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getInvoiceResponseSchema, requestOptions);
   }
 
@@ -119,6 +122,7 @@ export class InvoicesController extends BaseController {
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.request);
     req.appendTemplatePath`/subscriptions/${mapped.subscriptionId}/cycles/${mapped.cycleId}/pay`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getInvoiceResponseSchema, requestOptions);
   }
 
@@ -177,6 +181,7 @@ export class InvoicesController extends BaseController {
     req.query('due_since', mapped.dueSince);
     req.query('due_until', mapped.dueUntil);
     req.query('customer_document', mapped.customerDocument);
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(listInvoicesResponseSchema, requestOptions);
   }
 
@@ -193,6 +198,7 @@ export class InvoicesController extends BaseController {
     const req = this.createRequest('GET');
     const mapped = req.prepareArgs({ invoiceId: [invoiceId, string()] });
     req.appendTemplatePath`/invoices/${mapped.invoiceId}`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getInvoiceResponseSchema, requestOptions);
   }
 
@@ -219,6 +225,7 @@ export class InvoicesController extends BaseController {
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.request);
     req.appendTemplatePath`/invoices/${mapped.invoiceId}/status`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getInvoiceResponseSchema, requestOptions);
   }
 }

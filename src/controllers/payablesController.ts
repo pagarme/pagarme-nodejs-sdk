@@ -98,6 +98,7 @@ export class PayablesController extends BaseController {
     req.query('page', mapped.page);
     req.query('size', mapped.size);
     req.query('gateway_id', mapped.gatewayId);
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(listPayablesResponseSchema, requestOptions);
   }
 
@@ -112,6 +113,7 @@ export class PayablesController extends BaseController {
     const req = this.createRequest('GET');
     const mapped = req.prepareArgs({ id: [id, bigint()] });
     req.appendTemplatePath`/payables/${mapped.id}`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getPayableResponseSchema, requestOptions);
   }
 }

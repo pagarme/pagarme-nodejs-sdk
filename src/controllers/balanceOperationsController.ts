@@ -42,6 +42,7 @@ export class BalanceOperationsController extends BaseController {
     req.query('created_since', mapped.createdSince);
     req.query('created_until', mapped.createdUntil);
     req.query('recipient_id', mapped.recipientId);
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(listBalanceOperationResponseSchema, requestOptions);
   }
 
@@ -56,6 +57,7 @@ export class BalanceOperationsController extends BaseController {
     const req = this.createRequest('GET');
     const mapped = req.prepareArgs({ id: [id, bigint()] });
     req.appendTemplatePath`/balance/operations/${mapped.id}`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getBalanceOperationResponseSchema, requestOptions);
   }
 }

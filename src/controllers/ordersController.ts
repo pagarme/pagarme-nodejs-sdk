@@ -80,6 +80,7 @@ export class OrdersController extends BaseController {
     req.query('created_since', mapped.createdSince);
     req.query('created_until', mapped.createdUntil);
     req.query('customer_id', mapped.customerId);
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(listOrderResponseSchema, requestOptions);
   }
 
@@ -107,6 +108,7 @@ export class OrdersController extends BaseController {
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.request);
     req.appendTemplatePath`/orders/${mapped.orderId}/items/${mapped.itemId}`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getOrderItemResponseSchema, requestOptions);
   }
 
@@ -127,6 +129,7 @@ export class OrdersController extends BaseController {
     });
     req.header('idempotency-key', mapped.idempotencyKey);
     req.appendTemplatePath`/orders/${mapped.orderId}/items`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getOrderResponseSchema, requestOptions);
   }
 
@@ -150,6 +153,7 @@ export class OrdersController extends BaseController {
     });
     req.header('idempotency-key', mapped.idempotencyKey);
     req.appendTemplatePath`/orders/${mapped.orderId}/items/${mapped.itemId}`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getOrderItemResponseSchema, requestOptions);
   }
 
@@ -174,6 +178,7 @@ export class OrdersController extends BaseController {
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.request);
     req.appendTemplatePath`/orders/${mapped.id}/closed`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getOrderResponseSchema, requestOptions);
   }
 
@@ -196,6 +201,7 @@ export class OrdersController extends BaseController {
     });
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.body);
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getOrderResponseSchema, requestOptions);
   }
 
@@ -220,6 +226,7 @@ export class OrdersController extends BaseController {
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.request);
     req.appendTemplatePath`/orders/${mapped.orderId}/items`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getOrderItemResponseSchema, requestOptions);
   }
 
@@ -239,6 +246,7 @@ export class OrdersController extends BaseController {
       itemId: [itemId, string()],
     });
     req.appendTemplatePath`/orders/${mapped.orderId}/items/${mapped.itemId}`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getOrderItemResponseSchema, requestOptions);
   }
 
@@ -265,6 +273,7 @@ export class OrdersController extends BaseController {
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.request);
     req.appendTemplatePath`/Orders/${mapped.orderId}/metadata`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getOrderResponseSchema, requestOptions);
   }
 
@@ -281,6 +290,7 @@ export class OrdersController extends BaseController {
     const req = this.createRequest('GET');
     const mapped = req.prepareArgs({ orderId: [orderId, string()] });
     req.appendTemplatePath`/orders/${mapped.orderId}`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getOrderResponseSchema, requestOptions);
   }
 }
