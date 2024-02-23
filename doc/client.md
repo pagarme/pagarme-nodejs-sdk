@@ -9,6 +9,7 @@ The following parameters are configurable for the API Client:
 | `timeout` | `number` | Timeout for API calls.<br>*Default*: `0` |
 | `httpClientOptions` | `Partial<HttpClientOptions>` | Stable configurable http client options. |
 | `unstableHttpClientOptions` | `any` | Unstable configurable http client options. |
+| `basicAuthCredentials` | [`BasicAuthCredentials`]($a/basic-authentication.md) | The credential object for basicAuth |
 
 ## HttpClientOptions
 
@@ -35,6 +36,10 @@ The API client can be initialized as follows:
 
 ```ts
 const client = new Client({
+  basicAuthCredentials: {
+    username: 'BasicAuthUserName',
+    password: 'BasicAuthPassword'
+  },
   serviceRefererName: 'ServiceRefererName',
   timeout: 0,
 });

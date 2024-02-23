@@ -54,6 +54,7 @@ export class PlansController extends BaseController {
     const req = this.createRequest('GET');
     const mapped = req.prepareArgs({ planId: [planId, string()] });
     req.appendTemplatePath`/plans/${mapped.planId}`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getPlanResponseSchema, requestOptions);
   }
 
@@ -76,6 +77,7 @@ export class PlansController extends BaseController {
     });
     req.header('idempotency-key', mapped.idempotencyKey);
     req.appendTemplatePath`/plans/${mapped.planId}`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getPlanResponseSchema, requestOptions);
   }
 
@@ -102,6 +104,7 @@ export class PlansController extends BaseController {
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.request);
     req.appendTemplatePath`/Plans/${mapped.planId}/metadata`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getPlanResponseSchema, requestOptions);
   }
 
@@ -131,6 +134,7 @@ export class PlansController extends BaseController {
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.body);
     req.appendTemplatePath`/plans/${mapped.planId}/items/${mapped.planItemId}`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getPlanItemResponseSchema, requestOptions);
   }
 
@@ -157,6 +161,7 @@ export class PlansController extends BaseController {
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.request);
     req.appendTemplatePath`/plans/${mapped.planId}/items`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getPlanItemResponseSchema, requestOptions);
   }
 
@@ -178,6 +183,7 @@ export class PlansController extends BaseController {
       planItemId: [planItemId, string()],
     });
     req.appendTemplatePath`/plans/${mapped.planId}/items/${mapped.planItemId}`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getPlanItemResponseSchema, requestOptions);
   }
 
@@ -200,6 +206,7 @@ export class PlansController extends BaseController {
     });
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.body);
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getPlanResponseSchema, requestOptions);
   }
 
@@ -225,6 +232,7 @@ export class PlansController extends BaseController {
     });
     req.header('idempotency-key', mapped.idempotencyKey);
     req.appendTemplatePath`/plans/${mapped.planId}/items/${mapped.planItemId}`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getPlanItemResponseSchema, requestOptions);
   }
 
@@ -267,6 +275,7 @@ export class PlansController extends BaseController {
     req.query('billing_type', mapped.billingType);
     req.query('created_since', mapped.createdSince);
     req.query('created_until', mapped.createdUntil);
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(listPlansResponseSchema, requestOptions);
   }
 
@@ -293,6 +302,7 @@ export class PlansController extends BaseController {
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.request);
     req.appendTemplatePath`/plans/${mapped.planId}`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getPlanResponseSchema, requestOptions);
   }
 }

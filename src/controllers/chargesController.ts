@@ -80,6 +80,7 @@ export class ChargesController extends BaseController {
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.request);
     req.appendTemplatePath`/Charges/${mapped.chargeId}/metadata`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getChargeResponseSchema, requestOptions);
   }
 
@@ -107,6 +108,7 @@ export class ChargesController extends BaseController {
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.request);
     req.appendTemplatePath`/charges/${mapped.chargeId}/payment-method`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getChargeResponseSchema, requestOptions);
   }
 
@@ -131,6 +133,7 @@ export class ChargesController extends BaseController {
     req.query('page', mapped.page);
     req.query('size', mapped.size);
     req.appendTemplatePath`/charges/${mapped.chargeId}/transactions`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(listChargeTransactionsResponseSchema, requestOptions);
   }
 
@@ -157,6 +160,7 @@ export class ChargesController extends BaseController {
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.request);
     req.appendTemplatePath`/Charges/${mapped.chargeId}/due-date`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getChargeResponseSchema, requestOptions);
   }
 
@@ -207,6 +211,7 @@ export class ChargesController extends BaseController {
     req.query('order_id', mapped.orderId);
     req.query('created_since', mapped.createdSince);
     req.query('created_until', mapped.createdUntil);
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(listChargesResponseSchema, requestOptions);
   }
 
@@ -233,6 +238,7 @@ export class ChargesController extends BaseController {
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.request);
     req.appendTemplatePath`/charges/${mapped.chargeId}/capture`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getChargeResponseSchema, requestOptions);
   }
 
@@ -259,6 +265,7 @@ export class ChargesController extends BaseController {
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.request);
     req.appendTemplatePath`/charges/${mapped.chargeId}/card`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getChargeResponseSchema, requestOptions);
   }
 
@@ -275,6 +282,7 @@ export class ChargesController extends BaseController {
     const req = this.createRequest('GET');
     const mapped = req.prepareArgs({ chargeId: [chargeId, string()] });
     req.appendTemplatePath`/charges/${mapped.chargeId}`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getChargeResponseSchema, requestOptions);
   }
 
@@ -299,6 +307,7 @@ export class ChargesController extends BaseController {
     req.query('status', mapped.status);
     req.query('created_since', mapped.createdSince);
     req.query('created_until', mapped.createdUntil);
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getChargesSummaryResponseSchema, requestOptions);
   }
 
@@ -321,6 +330,7 @@ export class ChargesController extends BaseController {
     });
     req.header('idempotency-key', mapped.idempotencyKey);
     req.appendTemplatePath`/charges/${mapped.chargeId}/retry`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getChargeResponseSchema, requestOptions);
   }
 
@@ -347,6 +357,7 @@ export class ChargesController extends BaseController {
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.request);
     req.appendTemplatePath`/charges/${mapped.chargeId}`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getChargeResponseSchema, requestOptions);
   }
 
@@ -369,6 +380,7 @@ export class ChargesController extends BaseController {
     });
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.request);
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getChargeResponseSchema, requestOptions);
   }
 
@@ -393,6 +405,7 @@ export class ChargesController extends BaseController {
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.request);
     req.appendTemplatePath`/charges/${mapped.chargeId}/confirm-payment`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getChargeResponseSchema, requestOptions);
   }
 }

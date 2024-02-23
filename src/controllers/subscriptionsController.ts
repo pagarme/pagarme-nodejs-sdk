@@ -150,6 +150,7 @@ export class SubscriptionsController extends BaseController {
     });
     req.header('idempotency-key', mapped.idempotencyKey);
     req.appendTemplatePath`/subscriptions/${mapped.subscriptionId}/cycles`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getPeriodResponseSchema, requestOptions);
   }
 
@@ -176,6 +177,7 @@ export class SubscriptionsController extends BaseController {
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.request);
     req.appendTemplatePath`/subscriptions/${mapped.subscriptionId}/card`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getSubscriptionResponseSchema, requestOptions);
   }
 
@@ -204,6 +206,7 @@ export class SubscriptionsController extends BaseController {
     });
     req.header('idempotency-key', mapped.idempotencyKey);
     req.appendTemplatePath`/subscriptions/${mapped.subscriptionId}/items/${mapped.itemId}/usages/${mapped.usageId}`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getUsageResponseSchema, requestOptions);
   }
 
@@ -230,6 +233,7 @@ export class SubscriptionsController extends BaseController {
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.request);
     req.appendTemplatePath`/subscriptions/${mapped.subscriptionId}/discounts`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getDiscountResponseSchema, requestOptions);
   }
 
@@ -255,6 +259,7 @@ export class SubscriptionsController extends BaseController {
     });
     req.header('idempotency-key', mapped.idempotencyKey);
     req.appendTemplatePath`/subscriptions/${mapped.subscriptionId}/items/${mapped.itemId}/usages`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getUsageResponseSchema, requestOptions);
   }
 
@@ -280,6 +285,7 @@ export class SubscriptionsController extends BaseController {
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.request);
     req.appendTemplatePath`/subscriptions/${mapped.subscriptionId}/cycle-status`;
+    req.authenticate([{ httpBasic: true }]);
     return req.call(requestOptions);
   }
 
@@ -305,6 +311,7 @@ export class SubscriptionsController extends BaseController {
     });
     req.header('idempotency-key', mapped.idempotencyKey);
     req.appendTemplatePath`/subscriptions/${mapped.subscriptionId}/discounts/${mapped.discountId}`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getDiscountResponseSchema, requestOptions);
   }
 
@@ -355,6 +362,7 @@ export class SubscriptionsController extends BaseController {
     req.query('created_since', mapped.createdSince);
     req.query('created_until', mapped.createdUntil);
     req.appendTemplatePath`/subscriptions/${mapped.subscriptionId}/items`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(listSubscriptionItemsResponseSchema, requestOptions);
   }
 
@@ -382,6 +390,7 @@ export class SubscriptionsController extends BaseController {
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.request);
     req.appendTemplatePath`/subscriptions/${mapped.subscriptionId}/payment-method`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getSubscriptionResponseSchema, requestOptions);
   }
 
@@ -403,6 +412,7 @@ export class SubscriptionsController extends BaseController {
       itemId: [itemId, string()],
     });
     req.appendTemplatePath`/subscriptions/${mapped.subscriptionId}/items/${mapped.itemId}`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getSubscriptionItemResponseSchema, requestOptions);
   }
 
@@ -465,6 +475,7 @@ export class SubscriptionsController extends BaseController {
     req.query('next_billing_until', mapped.nextBillingUntil);
     req.query('created_since', mapped.createdSince);
     req.query('created_until', mapped.createdUntil);
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(listSubscriptionsResponseSchema, requestOptions);
   }
 
@@ -491,6 +502,7 @@ export class SubscriptionsController extends BaseController {
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.request);
     req.appendTemplatePath`/subscriptions/${mapped.subscriptionId}`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getSubscriptionResponseSchema, requestOptions);
   }
 
@@ -517,6 +529,7 @@ export class SubscriptionsController extends BaseController {
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.request);
     req.appendTemplatePath`/subscriptions/${mapped.subscriptionId}/increments`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getIncrementResponseSchema, requestOptions);
   }
 
@@ -546,6 +559,7 @@ export class SubscriptionsController extends BaseController {
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.body);
     req.appendTemplatePath`/subscriptions/${mapped.subscriptionId}/items/${mapped.itemId}/usages`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getUsageResponseSchema, requestOptions);
   }
 
@@ -565,6 +579,7 @@ export class SubscriptionsController extends BaseController {
       discountId: [discountId, string()],
     });
     req.appendTemplatePath`/subscriptions/${mapped.subscriptionId}/discounts/${mapped.discountId}`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getDiscountResponseSchema, requestOptions);
   }
 
@@ -587,6 +602,7 @@ export class SubscriptionsController extends BaseController {
     });
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.body);
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getSubscriptionResponseSchema, requestOptions);
   }
 
@@ -606,6 +622,7 @@ export class SubscriptionsController extends BaseController {
       incrementId: [incrementId, string()],
     });
     req.appendTemplatePath`/subscriptions/${mapped.subscriptionId}/increments/${mapped.incrementId}`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getIncrementResponseSchema, requestOptions);
   }
 
@@ -631,6 +648,7 @@ export class SubscriptionsController extends BaseController {
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.request);
     req.appendTemplatePath`/subscriptions/${mapped.subscriptionId}/gateway-affiliation-id`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getSubscriptionResponseSchema, requestOptions);
   }
 
@@ -657,6 +675,7 @@ export class SubscriptionsController extends BaseController {
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.request);
     req.appendTemplatePath`/Subscriptions/${mapped.subscriptionId}/metadata`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getSubscriptionResponseSchema, requestOptions);
   }
 
@@ -682,6 +701,7 @@ export class SubscriptionsController extends BaseController {
     });
     req.header('idempotency-key', mapped.idempotencyKey);
     req.appendTemplatePath`/subscriptions/${mapped.subscriptionId}/increments/${mapped.incrementId}`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getIncrementResponseSchema, requestOptions);
   }
 
@@ -706,6 +726,7 @@ export class SubscriptionsController extends BaseController {
     req.query('page', mapped.page);
     req.query('size', mapped.size);
     req.appendTemplatePath`/subscriptions/${mapped.subscriptionId}/cycles`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(listCyclesResponseSchema, requestOptions);
   }
 
@@ -730,6 +751,7 @@ export class SubscriptionsController extends BaseController {
     req.query('page', mapped.page);
     req.query('size', mapped.size);
     req.appendTemplatePath`/subscriptions/${mapped.subscriptionId}/discounts/`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(listDiscountsResponseSchema, requestOptions);
   }
 
@@ -757,6 +779,7 @@ export class SubscriptionsController extends BaseController {
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.request);
     req.appendTemplatePath`/subscriptions/${mapped.subscriptionId}/billing-date`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getSubscriptionResponseSchema, requestOptions);
   }
 
@@ -782,6 +805,7 @@ export class SubscriptionsController extends BaseController {
     });
     req.header('idempotency-key', mapped.idempotencyKey);
     req.appendTemplatePath`/subscriptions/${mapped.subscriptionId}/items/${mapped.subscriptionItemId}`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getSubscriptionItemResponseSchema, requestOptions);
   }
 
@@ -806,6 +830,7 @@ export class SubscriptionsController extends BaseController {
     req.query('page', mapped.page);
     req.query('size', mapped.size);
     req.appendTemplatePath`/subscriptions/${mapped.subscriptionId}/increments/`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(listIncrementsResponseSchema, requestOptions);
   }
 
@@ -832,6 +857,7 @@ export class SubscriptionsController extends BaseController {
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.request);
     req.appendTemplatePath`/subscriptions/${mapped.subscriptionId}/boleto-due-days`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getSubscriptionResponseSchema, requestOptions);
   }
 
@@ -859,6 +885,7 @@ export class SubscriptionsController extends BaseController {
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.request);
     req.appendTemplatePath`/subscriptions/${mapped.subscriptionId}/start-at`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getSubscriptionResponseSchema, requestOptions);
   }
 
@@ -888,6 +915,7 @@ export class SubscriptionsController extends BaseController {
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.body);
     req.appendTemplatePath`/subscriptions/${mapped.subscriptionId}/items/${mapped.itemId}`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getSubscriptionItemResponseSchema, requestOptions);
   }
 
@@ -914,6 +942,7 @@ export class SubscriptionsController extends BaseController {
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.request);
     req.appendTemplatePath`/subscriptions/${mapped.subscriptionId}/items`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getSubscriptionItemResponseSchema, requestOptions);
   }
 
@@ -932,6 +961,7 @@ export class SubscriptionsController extends BaseController {
       subscriptionId: [subscriptionId, string()],
     });
     req.appendTemplatePath`/subscriptions/${mapped.subscriptionId}`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getSubscriptionResponseSchema, requestOptions);
   }
 
@@ -977,6 +1007,7 @@ export class SubscriptionsController extends BaseController {
     req.query('used_since', mapped.usedSince);
     req.query('used_until', mapped.usedUntil);
     req.appendTemplatePath`/subscriptions/${mapped.subscriptionId}/items/${mapped.itemId}/usages`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(listUsagesResponseSchema, requestOptions);
   }
 
@@ -1002,6 +1033,7 @@ export class SubscriptionsController extends BaseController {
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.request);
     req.appendTemplatePath`/subscriptions/${mapped.subscriptionId}/periods/latest/end-at`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getSubscriptionResponseSchema, requestOptions);
   }
 
@@ -1029,6 +1061,7 @@ export class SubscriptionsController extends BaseController {
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.request);
     req.appendTemplatePath`/subscriptions/${mapped.subscriptionId}/minimum_price`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getSubscriptionResponseSchema, requestOptions);
   }
 
@@ -1048,6 +1081,7 @@ export class SubscriptionsController extends BaseController {
       cycleId: [cycleId, string()],
     });
     req.appendTemplatePath`/subscriptions/${mapped.subscriptionId}/cycles/${mapped.cycleId}`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getPeriodResponseSchema, requestOptions);
   }
 
@@ -1067,6 +1101,7 @@ export class SubscriptionsController extends BaseController {
       periodId: [periodId, string()],
     });
     req.appendTemplatePath`/subscriptions/${mapped.subscriptionId}/periods/${mapped.periodId}/usages/report`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getUsageReportResponseSchema, requestOptions);
   }
 
@@ -1087,6 +1122,7 @@ export class SubscriptionsController extends BaseController {
     });
     req.json(mapped.request);
     req.appendTemplatePath`/subscriptions/${mapped.id}/split`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getSubscriptionResponseSchema, requestOptions);
   }
 }

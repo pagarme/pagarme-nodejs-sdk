@@ -26,6 +26,7 @@ export class TransactionsController extends BaseController {
       transactionId: [transactionId, string()],
     });
     req.appendTemplatePath`/transactions/${mapped.transactionId}`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(
       discriminatedGetTransactionResponseSchema,
       requestOptions

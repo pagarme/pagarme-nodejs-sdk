@@ -23,6 +23,7 @@ export class TransfersController extends BaseController {
     const req = this.createRequest('GET');
     const mapped = req.prepareArgs({ transferId: [transferId, string()] });
     req.appendTemplatePath`/transfers/${mapped.transferId}`;
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getTransferSchema, requestOptions);
   }
 
@@ -39,6 +40,7 @@ export class TransfersController extends BaseController {
       request: [request, createTransferSchema],
     });
     req.json(mapped.request);
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getTransferSchema, requestOptions);
   }
 
@@ -51,6 +53,7 @@ export class TransfersController extends BaseController {
     requestOptions?: RequestOptions
   ): Promise<ApiResponse<ListTransfers>> {
     const req = this.createRequest('GET', '/transfers');
+    req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(listTransfersSchema, requestOptions);
   }
 }
