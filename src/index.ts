@@ -162,6 +162,7 @@ export type { GetMovementObjectBaseResponse } from './models/getMovementObjectBa
 export type { GetMovementObjectFeeCollectionResponse } from './models/getMovementObjectFeeCollectionResponse';
 export type { GetMovementObjectPayableResponse } from './models/getMovementObjectPayableResponse';
 export type { GetMovementObjectRefundResponse } from './models/getMovementObjectRefundResponse';
+export type { GetMovementObjectSettlementResponse } from './models/getMovementObjectSettlementResponse';
 export type { GetMovementObjectTransferResponse } from './models/getMovementObjectTransferResponse';
 export type { GetOrderItemResponse } from './models/getOrderItemResponse';
 export type { GetOrderResponse } from './models/getOrderResponse';

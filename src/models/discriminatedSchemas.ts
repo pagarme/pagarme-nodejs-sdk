@@ -31,6 +31,9 @@ import {
   getMovementObjectRefundResponseSchema,
 } from './getMovementObjectRefundResponse';
 import {
+  getMovementObjectSettlementResponseSchema,
+} from './getMovementObjectSettlementResponse';
+import {
   getMovementObjectTransferResponseSchema,
 } from './getMovementObjectTransferResponse';
 import { getPixTransactionResponseSchema } from './getPixTransactionResponse';
@@ -72,6 +75,7 @@ export const discriminatedGetMovementObjectBaseResponseSchema: Schema<any> = dis
     'feeCollection': getMovementObjectFeeCollectionResponseSchema,
     'payable': getMovementObjectPayableResponseSchema,
     'transfer': getMovementObjectTransferResponseSchema,
+    'settlement': getMovementObjectSettlementResponseSchema,
  },
   'MovementObject'
 );

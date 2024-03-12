@@ -28,11 +28,11 @@ Generic response object for getting a MovementObjectBase.
   "status": "status4",
   "amount": "amount4",
   "created_at": "created_at0",
-  "source_type": "source_type6",
-  "source_id": "source_id0",
-  "target_type": "target_type8",
-  "target_id": "target_id4",
-  "fee": "fee8"
+  "product": "product2",
+  "brand": "brand6",
+  "payment_date": "payment_date4",
+  "recipient_id": "recipient_id2",
+  "document_type": "document_type0"
 }
 ```
 
