@@ -59,7 +59,7 @@ export class Client implements ClientInterface {
     }
 
     this._userAgent = updateUserAgent(
-      'PagarmeApiSDK - TypeScript 6.8.6',
+      'PagarmeApiSDK - TypeScript 6.8.7',
     );
     this._requestBuilderFactory = createRequestHandlerFactory(
       server => getBaseUri(server, this._config),
