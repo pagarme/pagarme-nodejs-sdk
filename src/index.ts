@@ -78,6 +78,7 @@ export type { CreateGooglePayRequest } from './models/createGooglePayRequest';
 export type { CreateIncrementRequest } from './models/createIncrementRequest';
 export type { CreateInterestRequest } from './models/createInterestRequest';
 export type { CreateInvoiceRequest } from './models/createInvoiceRequest';
+export type { CreateKYCLinkResponse } from './models/createKYCLinkResponse';
 export type { CreateLocationRequest } from './models/createLocationRequest';
 export type { CreateManagingPartnerRequest } from './models/createManagingPartnerRequest';
 export type { CreateOrderItemRequest } from './models/createOrderItemRequest';
