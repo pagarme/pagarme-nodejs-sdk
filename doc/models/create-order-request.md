@@ -42,7 +42,7 @@ Request for creating an order
     }
   ],
   "customer": {
-    "name": "{\n    \"name\": \"Tony Stark\"\n}",
+    "name": "Tony Stark",
     "email": "email6",
     "document": "document6",
     "type": "type0",

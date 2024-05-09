@@ -10,6 +10,10 @@ import {
   createAnticipationRequestSchema,
 } from '../models/createAnticipationRequest';
 import {
+  CreateKYCLinkResponse,
+  createKYCLinkResponseSchema,
+} from '../models/createKYCLinkResponse';
+import {
   CreateRecipientRequest,
   createRecipientRequestSchema,
 } from '../models/createRecipientRequest';
@@ -619,5 +623,22 @@ export class RecipientsController extends BaseController {
     const req = this.createRequest('GET', '/recipients/default');
     req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getRecipientResponseSchema, requestOptions);
+  }
+
+  /**
+   * Create a KYC link
+   *
+   * @param recipientId
+   * @return Response from the API call
+   */
+  async createKYCLink(
+    recipientId: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<CreateKYCLinkResponse>> {
+    const req = this.createRequest('POST');
+    const mapped = req.prepareArgs({ recipientId: [recipientId, string()] });
+    req.appendTemplatePath`/recipients/${mapped.recipientId}/kyc_link`;
+    req.authenticate([{ httpBasic: true }]);
+    return req.callAsJson(createKYCLinkResponseSchema, requestOptions);
   }
 }

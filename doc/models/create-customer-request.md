@@ -26,7 +26,7 @@ Request for creating a new customer
 
 ```json
 {
-  "name": "{\n    \"name\": \"Tony Stark\"\n}",
+  "name": "Tony Stark",
   "email": "email8",
   "document": "document8",
   "type": "type2",

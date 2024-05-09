@@ -1,5 +1,5 @@
 {
-  "version": "6.8.7",
+  "version": "6.8.8",
   "license": "MIT",
   "sideEffects": false,
   "main": "dist/cjs/index.js",
@@ -25,12 +25,12 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "pagarmeapisdklib",
+  "name": "@pagarme/pagarme-nodejs-sdk",
   "description": "Pagarme API",
   "author": {
     "name": "Pagar.me Pagamentos S/A",
     "email": "suporte@pagar.me",
-    "url": "https://github.com/pagarme/"
+    "url": "https://github.com/pagarme/pagarme-nodejs-sdk/issues"
   },
   "devDependencies": {
     "@types/jest": "^29.4.0",
@@ -44,12 +44,16 @@
   },
   "dependencies": {
     "@apimatic/authentication-adapters": "^0.5.0",
-    "@apimatic/axios-client-adapter": "^0.2.0",
+    "@apimatic/axios-client-adapter": "^0.3.0",
     "@apimatic/core": "^0.10.0",
     "@apimatic/schema": "^0.7.0"
   },
   "bugs": {
-    "url": "https://github.com/pagarme/",
+    "url": "https://github.com/pagarme/pagarme-nodejs-sdk/issues",
     "email": "suporte@pagar.me"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/pagarme/pagarme-nodejs-sdk.git"
   }
 }
