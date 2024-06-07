@@ -44,7 +44,6 @@
       "name": "name4",
       "email": "email2",
       "document": "document8",
-      "mother_name": "mother_name0",
       "birthdate": "birthdate8",
       "monthly_income": 202,
       "professional_occupation": "professional_occupation8",
@@ -65,7 +64,8 @@
           "number": "number2",
           "type": "type0"
         }
-      ]
+      ],
+      "mother_name": "mother_name0"
     }
   ],
   "main_address": {
