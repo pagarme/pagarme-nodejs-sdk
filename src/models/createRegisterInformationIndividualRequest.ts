@@ -6,9 +6,9 @@
 
 import {
   array,
+  bigint,
   lazy,
   nullable,
-  number,
   object,
   optional,
   Schema,
@@ -18,18 +18,14 @@ import {
   CreateRegisterInformationAddressRequest,
   createRegisterInformationAddressRequestSchema,
 } from './createRegisterInformationAddressRequest';
-import {
-  CreateRegisterInformationBaseRequest,
-} from './createRegisterInformationBaseRequest';
-import {
-  createRegisterInformationPhoneRequestSchema,
-} from './createRegisterInformationPhoneRequest';
+import { CreateRegisterInformationBaseRequest } from './createRegisterInformationBaseRequest';
+import { createRegisterInformationPhoneRequestSchema } from './createRegisterInformationPhoneRequest';
 
 export interface CreateRegisterInformationIndividualRequest extends CreateRegisterInformationBaseRequest {
   name: string;
   motherName?: string | null;
   birthdate: string;
-  monthlyIncome: number;
+  monthlyIncome: bigint;
   professionalOccupation: string;
   address: CreateRegisterInformationAddressRequest;
 }
@@ -39,7 +35,7 @@ export const createRegisterInformationIndividualRequestSchema: Schema<any> = obj
     name: ['name', string()],
     motherName: ['mother_name', optional(nullable(string()))],
     birthdate: ['birthdate', string()],
-    monthlyIncome: ['monthly_income', number()],
+    monthlyIncome: ['monthly_income', bigint()],
     professionalOccupation: ['professional_occupation', string()],
     address: [
       'address',

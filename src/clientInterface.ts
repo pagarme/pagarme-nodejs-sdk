@@ -20,4 +20,8 @@ export type SdkRequestBuilder = ReturnType<SdkRequestBuilderFactory>;
 
 export type Server = 'default';
 
-export type AuthParams = ReturnType<typeof createAuthProviderFromConfig> extends AuthenticatorInterface<infer X> ? X : never;
+export type AuthParams = ReturnType<
+  typeof createAuthProviderFromConfig
+> extends AuthenticatorInterface<infer X>
+  ? X
+  : never;

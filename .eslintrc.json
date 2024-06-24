@@ -19,8 +19,9 @@
     ],
 
     "rules": {
-        "no-irregular-whitespace": 0,
-        "no-unused-vars": 0,
-        "no-explicit-any": 0
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/no-namespace": "off",
+        "@typescript-eslint/ban-types": "off",
+        "no-irregular-whitespace": "off"
     }
 }

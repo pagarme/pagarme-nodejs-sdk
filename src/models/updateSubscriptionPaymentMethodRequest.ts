@@ -5,7 +5,10 @@
  */
 
 import { lazy, object, optional, Schema, string } from '../schema';
-import { CreateCardRequest, createCardRequestSchema } from './createCardRequest';
+import {
+  CreateCardRequest,
+  createCardRequestSchema,
+} from './createCardRequest';
 import {
   CreateSubscriptionBoletoRequest,
   createSubscriptionBoletoRequestSchema,

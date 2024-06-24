@@ -5,78 +5,50 @@
  */
 
 import { discriminatedObject, Schema } from '../schema';
-import {
-  getBankTransferTransactionResponseSchema,
-} from './getBankTransferTransactionResponse';
-import {
-  getBoletoTransactionResponseSchema,
-} from './getBoletoTransactionResponse';
+import { getBankTransferTransactionResponseSchema } from './getBankTransferTransactionResponse';
+import { getBoletoTransactionResponseSchema } from './getBoletoTransactionResponse';
 import { getCashTransactionResponseSchema } from './getCashTransactionResponse';
-import {
-  getCreditCardTransactionResponseSchema,
-} from './getCreditCardTransactionResponse';
-import {
-  getDebitCardTransactionResponseSchema,
-} from './getDebitCardTransactionResponse';
-import {
-  getMovementObjectBaseResponseSchema,
-} from './getMovementObjectBaseResponse';
-import {
-  getMovementObjectFeeCollectionResponseSchema,
-} from './getMovementObjectFeeCollectionResponse';
-import {
-  getMovementObjectPayableResponseSchema,
-} from './getMovementObjectPayableResponse';
-import {
-  getMovementObjectRefundResponseSchema,
-} from './getMovementObjectRefundResponse';
-import {
-  getMovementObjectSettlementResponseSchema,
-} from './getMovementObjectSettlementResponse';
-import {
-  getMovementObjectTransferResponseSchema,
-} from './getMovementObjectTransferResponse';
+import { getCreditCardTransactionResponseSchema } from './getCreditCardTransactionResponse';
+import { getDebitCardTransactionResponseSchema } from './getDebitCardTransactionResponse';
+import { getMovementObjectBaseResponseSchema } from './getMovementObjectBaseResponse';
+import { getMovementObjectFeeCollectionResponseSchema } from './getMovementObjectFeeCollectionResponse';
+import { getMovementObjectPayableResponseSchema } from './getMovementObjectPayableResponse';
+import { getMovementObjectRefundResponseSchema } from './getMovementObjectRefundResponse';
+import { getMovementObjectSettlementResponseSchema } from './getMovementObjectSettlementResponse';
+import { getMovementObjectTransferResponseSchema } from './getMovementObjectTransferResponse';
 import { getPixTransactionResponseSchema } from './getPixTransactionResponse';
-import {
-  getPrivateLabelTransactionResponseSchema,
-} from './getPrivateLabelTransactionResponse';
-import {
-  getSafetyPayTransactionResponseSchema,
-} from './getSafetyPayTransactionResponse';
+import { getPrivateLabelTransactionResponseSchema } from './getPrivateLabelTransactionResponse';
+import { getSafetyPayTransactionResponseSchema } from './getSafetyPayTransactionResponse';
 import { getTransactionResponseSchema } from './getTransactionResponse';
-import {
-  getVoucherTransactionResponseSchema,
-} from './getVoucherTransactionResponse';
+import { getVoucherTransactionResponseSchema } from './getVoucherTransactionResponse';
 
 export const discriminatedGetTransactionResponseSchema: Schema<any> = discriminatedObject(
   'transactionType',
   'transaction_type',
   {
     'transaction': getTransactionResponseSchema,
-    'bank_transfer': getBankTransferTransactionResponseSchema,
     'safetypay': getSafetyPayTransactionResponseSchema,
     'voucher': getVoucherTransactionResponseSchema,
+    'bank_transfer': getBankTransferTransactionResponseSchema,
     'boleto': getBoletoTransactionResponseSchema,
     'debit_card': getDebitCardTransactionResponseSchema,
-    'private_label': getPrivateLabelTransactionResponseSchema,
     'cash': getCashTransactionResponseSchema,
+    'private_label': getPrivateLabelTransactionResponseSchema,
     'credit_card': getCreditCardTransactionResponseSchema,
     'pix': getPixTransactionResponseSchema,
- },
+  },
   'transaction'
 );
-
 export const discriminatedGetMovementObjectBaseResponseSchema: Schema<any> = discriminatedObject(
   'object',
   'object',
   {
     'MovementObject': getMovementObjectBaseResponseSchema,
-    'refund': getMovementObjectRefundResponseSchema,
     'feeCollection': getMovementObjectFeeCollectionResponseSchema,
     'payable': getMovementObjectPayableResponseSchema,
+    'refund': getMovementObjectRefundResponseSchema,
     'transfer': getMovementObjectTransferResponseSchema,
     'settlement': getMovementObjectSettlementResponseSchema,
- },
+  },
   'MovementObject'
 );
-

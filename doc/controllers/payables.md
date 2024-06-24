@@ -17,8 +17,7 @@ const payablesController = new PayablesController(client);
 # Get Payables
 
 ```ts
-async getPayables(
-  type?: string,
+async getPayables(  type?: string,
   splitId?: string,
   bulkAnticipationId?: string,
   installment?: number,
@@ -36,8 +35,7 @@ async getPayables(
   page?: number,
   size?: number,
   gatewayId?: bigint,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<ListPayablesResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<ListPayablesResponse>>
 ```
 
 ## Parameters
@@ -87,10 +85,8 @@ try {
 # Get Payable by Id
 
 ```ts
-async getPayableById(
-  id: bigint,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetPayableResponse>>
+async getPayableById(  id: bigint,
+requestOptions?: RequestOptions): Promise<ApiResponse<GetPayableResponse>>
 ```
 
 ## Parameters

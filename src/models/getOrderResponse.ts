@@ -16,7 +16,10 @@ import {
   Schema,
   string,
 } from '../schema';
-import { GetChargeResponse, getChargeResponseSchema } from './getChargeResponse';
+import {
+  GetChargeResponse,
+  getChargeResponseSchema,
+} from './getChargeResponse';
 import {
   GetCheckoutPaymentResponse,
   getCheckoutPaymentResponseSchema,
@@ -25,7 +28,10 @@ import {
   GetCustomerResponse,
   getCustomerResponseSchema,
 } from './getCustomerResponse';
-import { GetDeviceResponse, getDeviceResponseSchema } from './getDeviceResponse';
+import {
+  GetDeviceResponse,
+  getDeviceResponseSchema,
+} from './getDeviceResponse';
 import {
   GetLocationResponse,
   getLocationResponseSchema,

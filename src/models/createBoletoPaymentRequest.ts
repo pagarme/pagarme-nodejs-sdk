@@ -17,7 +17,10 @@ import {
   CreateAddressRequest,
   createAddressRequestSchema,
 } from './createAddressRequest';
-import { CreateFineRequest, createFineRequestSchema } from './createFineRequest';
+import {
+  CreateFineRequest,
+  createFineRequestSchema,
+} from './createFineRequest';
 import {
   CreateInterestRequest,
   createInterestRequestSchema,

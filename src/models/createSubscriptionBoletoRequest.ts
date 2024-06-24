@@ -5,7 +5,10 @@
  */
 
 import { lazy, nullable, number, object, optional, Schema } from '../schema';
-import { CreateFineRequest, createFineRequestSchema } from './createFineRequest';
+import {
+  CreateFineRequest,
+  createFineRequestSchema,
+} from './createFineRequest';
 import {
   CreateInterestRequest,
   createInterestRequestSchema,
