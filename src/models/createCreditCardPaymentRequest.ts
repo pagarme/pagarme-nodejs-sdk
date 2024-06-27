@@ -22,7 +22,10 @@ import {
   CreateCardPaymentContactlessRequest,
   createCardPaymentContactlessRequestSchema,
 } from './createCardPaymentContactlessRequest';
-import { CreateCardRequest, createCardRequestSchema } from './createCardRequest';
+import {
+  CreateCardRequest,
+  createCardRequestSchema,
+} from './createCardRequest';
 import {
   CreatePaymentAuthenticationRequest,
   createPaymentAuthenticationRequestSchema,

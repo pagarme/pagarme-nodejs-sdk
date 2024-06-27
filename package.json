@@ -1,5 +1,5 @@
 {
-  "version": "6.8.9",
+  "version": "6.8.10",
   "license": "MIT",
   "sideEffects": false,
   "main": "dist/cjs/index.js",
@@ -23,7 +23,8 @@
     "printWidth": 80,
     "semi": true,
     "singleQuote": true,
-    "trailingComma": "es5"
+    "trailingComma": "es5",
+    "quoteProps": "preserve"
   },
   "name": "@pagarme/pagarme-nodejs-sdk",
   "description": "Pagarme API",

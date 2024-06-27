@@ -12,10 +12,8 @@ const transactionsController = new TransactionsController(client);
 # Get Transaction
 
 ```ts
-async getTransaction(
-  transactionId: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetTransactionResponse>>
+async getTransaction(  transactionId: string,
+requestOptions?: RequestOptions): Promise<ApiResponse<GetTransactionResponse>>
 ```
 
 ## Parameters

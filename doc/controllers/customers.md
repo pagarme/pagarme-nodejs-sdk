@@ -10,27 +10,85 @@ const customersController = new CustomersController(client);
 
 ## Methods
 
+* [Create Address](../../doc/controllers/customers.md#create-address)
 * [Update Card](../../doc/controllers/customers.md#update-card)
-* [Update Address](../../doc/controllers/customers.md#update-address)
 * [Delete Access Token](../../doc/controllers/customers.md#delete-access-token)
 * [Create Customer](../../doc/controllers/customers.md#create-customer)
-* [Create Address](../../doc/controllers/customers.md#create-address)
 * [Delete Access Tokens](../../doc/controllers/customers.md#delete-access-tokens)
+* [Update Address](../../doc/controllers/customers.md#update-address)
 * [Get Address](../../doc/controllers/customers.md#get-address)
 * [Delete Address](../../doc/controllers/customers.md#delete-address)
-* [Create Card](../../doc/controllers/customers.md#create-card)
 * [Get Customers](../../doc/controllers/customers.md#get-customers)
+* [Get Access Tokens](../../doc/controllers/customers.md#get-access-tokens)
+* [Delete Card](../../doc/controllers/customers.md#delete-card)
+* [Get Card](../../doc/controllers/customers.md#get-card)
+* [Create Card](../../doc/controllers/customers.md#create-card)
+* [Get Access Token](../../doc/controllers/customers.md#get-access-token)
+* [Get Addresses](../../doc/controllers/customers.md#get-addresses)
 * [Update Customer](../../doc/controllers/customers.md#update-customer)
 * [Create Access Token](../../doc/controllers/customers.md#create-access-token)
-* [Get Access Tokens](../../doc/controllers/customers.md#get-access-tokens)
 * [Get Cards](../../doc/controllers/customers.md#get-cards)
 * [Renew Card](../../doc/controllers/customers.md#renew-card)
-* [Get Access Token](../../doc/controllers/customers.md#get-access-token)
 * [Update Customer Metadata](../../doc/controllers/customers.md#update-customer-metadata)
-* [Delete Card](../../doc/controllers/customers.md#delete-card)
-* [Get Addresses](../../doc/controllers/customers.md#get-addresses)
 * [Get Customer](../../doc/controllers/customers.md#get-customer)
-* [Get Card](../../doc/controllers/customers.md#get-card)
+
+
+# Create Address
+
+Creates a new address for a customer
+
+```ts
+async createAddress(  customerId: string,
+  request: CreateAddressRequest,
+  idempotencyKey?: string,
+requestOptions?: RequestOptions): Promise<ApiResponse<GetAddressResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `customerId` | `string` | Template, Required | Customer Id |
+| `request` | [`CreateAddressRequest`](../../doc/models/create-address-request.md) | Body, Required | Request for creating an address |
+| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`GetAddressResponse`](../../doc/models/get-address-response.md)
+
+## Example Usage
+
+```ts
+const customerId = 'customer_id8';
+
+const request: CreateAddressRequest = {
+  street: 'street6',
+  number: 'number4',
+  zipCode: 'zip_code0',
+  neighborhood: 'neighborhood2',
+  city: 'city6',
+  state: 'state2',
+  country: 'country0',
+  complement: 'complement2',
+  line1: 'line_10',
+  line2: 'line_24',
+};
+
+try {
+  const { result, ...httpResponse } = await customersController.createAddress(
+  customerId,
+  request
+);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
 
 
 # Update Card
@@ -38,13 +96,11 @@ const customersController = new CustomersController(client);
 Updates a card
 
 ```ts
-async updateCard(
-  customerId: string,
+async updateCard(  customerId: string,
   cardId: string,
   request: UpdateCardRequest,
   idempotencyKey?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetCardResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<GetCardResponse>>
 ```
 
 ## Parameters
@@ -107,78 +163,15 @@ try {
 ```
 
 
-# Update Address
-
-Updates an address
-
-```ts
-async updateAddress(
-  customerId: string,
-  addressId: string,
-  request: UpdateAddressRequest,
-  idempotencyKey?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetAddressResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `customerId` | `string` | Template, Required | Customer Id |
-| `addressId` | `string` | Template, Required | Address Id |
-| `request` | [`UpdateAddressRequest`](../../doc/models/update-address-request.md) | Body, Required | Request for updating an address |
-| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-[`GetAddressResponse`](../../doc/models/get-address-response.md)
-
-## Example Usage
-
-```ts
-const customerId = 'customer_id8';
-
-const addressId = 'address_id0';
-
-const request: UpdateAddressRequest = {
-  number: 'number4',
-  complement: 'complement2',
-  metadata: {
-    'key0': 'metadata3'
-  },
-  line2: 'line_24',
-};
-
-try {
-  const { result, ...httpResponse } = await customersController.updateAddress(
-  customerId,
-  addressId,
-  request
-);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
 # Delete Access Token
 
 Delete a customer's access token
 
 ```ts
-async deleteAccessToken(
-  customerId: string,
+async deleteAccessToken(  customerId: string,
   tokenId: string,
   idempotencyKey?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetAccessTokenResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<GetAccessTokenResponse>>
 ```
 
 ## Parameters
@@ -222,11 +215,9 @@ try {
 Creates a new customer
 
 ```ts
-async createCustomer(
-  request: CreateCustomerRequest,
+async createCustomer(  request: CreateCustomerRequest,
   idempotencyKey?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetCustomerResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<GetCustomerResponse>>
 ```
 
 ## Parameters
@@ -281,75 +272,13 @@ try {
 ```
 
 
-# Create Address
-
-Creates a new address for a customer
-
-```ts
-async createAddress(
-  customerId: string,
-  request: CreateAddressRequest,
-  idempotencyKey?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetAddressResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `customerId` | `string` | Template, Required | Customer Id |
-| `request` | [`CreateAddressRequest`](../../doc/models/create-address-request.md) | Body, Required | Request for creating an address |
-| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-[`GetAddressResponse`](../../doc/models/get-address-response.md)
-
-## Example Usage
-
-```ts
-const customerId = 'customer_id8';
-
-const request: CreateAddressRequest = {
-  street: 'street6',
-  number: 'number4',
-  zipCode: 'zip_code0',
-  neighborhood: 'neighborhood2',
-  city: 'city6',
-  state: 'state2',
-  country: 'country0',
-  complement: 'complement2',
-  line1: 'line_10',
-  line2: 'line_24',
-};
-
-try {
-  const { result, ...httpResponse } = await customersController.createAddress(
-  customerId,
-  request
-);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
 # Delete Access Tokens
 
 Delete a Customer's access tokens
 
 ```ts
-async deleteAccessTokens(
-  customerId: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<ListAccessTokensResponse>>
+async deleteAccessTokens(  customerId: string,
+requestOptions?: RequestOptions): Promise<ApiResponse<ListAccessTokensResponse>>
 ```
 
 ## Parameters
@@ -381,16 +310,73 @@ try {
 ```
 
 
+# Update Address
+
+Updates an address
+
+```ts
+async updateAddress(  customerId: string,
+  addressId: string,
+  request: UpdateAddressRequest,
+  idempotencyKey?: string,
+requestOptions?: RequestOptions): Promise<ApiResponse<GetAddressResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `customerId` | `string` | Template, Required | Customer Id |
+| `addressId` | `string` | Template, Required | Address Id |
+| `request` | [`UpdateAddressRequest`](../../doc/models/update-address-request.md) | Body, Required | Request for updating an address |
+| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`GetAddressResponse`](../../doc/models/get-address-response.md)
+
+## Example Usage
+
+```ts
+const customerId = 'customer_id8';
+
+const addressId = 'address_id0';
+
+const request: UpdateAddressRequest = {
+  number: 'number4',
+  complement: 'complement2',
+  metadata: {
+    'key0': 'metadata3'
+  },
+  line2: 'line_24',
+};
+
+try {
+  const { result, ...httpResponse } = await customersController.updateAddress(
+  customerId,
+  addressId,
+  request
+);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
 # Get Address
 
 Get a customer's address
 
 ```ts
-async getAddress(
-  customerId: string,
+async getAddress(  customerId: string,
   addressId: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetAddressResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<GetAddressResponse>>
 ```
 
 ## Parameters
@@ -433,12 +419,10 @@ try {
 Delete a Customer's address
 
 ```ts
-async deleteAddress(
-  customerId: string,
+async deleteAddress(  customerId: string,
   addressId: string,
   idempotencyKey?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetAddressResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<GetAddressResponse>>
 ```
 
 ## Parameters
@@ -477,71 +461,18 @@ try {
 ```
 
 
-# Create Card
-
-Creates a new card for a customer
-
-```ts
-async createCard(
-  customerId: string,
-  request: CreateCardRequest,
-  idempotencyKey?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetCardResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `customerId` | `string` | Template, Required | Customer id |
-| `request` | [`CreateCardRequest`](../../doc/models/create-card-request.md) | Body, Required | Request for creating a card |
-| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-[`GetCardResponse`](../../doc/models/get-card-response.md)
-
-## Example Usage
-
-```ts
-const customerId = 'customer_id8';
-
-const request: CreateCardRequest = {
-  type: 'credit',
-};
-
-try {
-  const { result, ...httpResponse } = await customersController.createCard(
-  customerId,
-  request
-);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
 # Get Customers
 
 Get all Customers
 
 ```ts
-async getCustomers(
-  name?: string,
+async getCustomers(  name?: string,
   document?: string,
   page?: number,
   size?: number,
   email?: string,
   code?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<ListCustomersResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<ListCustomersResponse>>
 ```
 
 ## Parameters
@@ -585,17 +516,285 @@ try {
 ```
 
 
+# Get Access Tokens
+
+Get all access tokens from a customer
+
+```ts
+async getAccessTokens(  customerId: string,
+  page?: number,
+  size?: number,
+requestOptions?: RequestOptions): Promise<ApiResponse<ListAccessTokensResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `customerId` | `string` | Template, Required | Customer Id |
+| `page` | `number \| undefined` | Query, Optional | Page number |
+| `size` | `number \| undefined` | Query, Optional | Page size |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`ListAccessTokensResponse`](../../doc/models/list-access-tokens-response.md)
+
+## Example Usage
+
+```ts
+const customerId = 'customer_id8';
+
+try {
+  const { result, ...httpResponse } = await customersController.getAccessTokens(customerId);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Delete Card
+
+Delete a customer's card
+
+```ts
+async deleteCard(  customerId: string,
+  cardId: string,
+  idempotencyKey?: string,
+requestOptions?: RequestOptions): Promise<ApiResponse<GetCardResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `customerId` | `string` | Template, Required | Customer Id |
+| `cardId` | `string` | Template, Required | Card Id |
+| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`GetCardResponse`](../../doc/models/get-card-response.md)
+
+## Example Usage
+
+```ts
+const customerId = 'customer_id8';
+
+const cardId = 'card_id4';
+
+try {
+  const { result, ...httpResponse } = await customersController.deleteCard(
+  customerId,
+  cardId
+);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Get Card
+
+Get a customer's card
+
+```ts
+async getCard(  customerId: string,
+  cardId: string,
+requestOptions?: RequestOptions): Promise<ApiResponse<GetCardResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `customerId` | `string` | Template, Required | Customer id |
+| `cardId` | `string` | Template, Required | Card id |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`GetCardResponse`](../../doc/models/get-card-response.md)
+
+## Example Usage
+
+```ts
+const customerId = 'customer_id8';
+
+const cardId = 'card_id4';
+
+try {
+  const { result, ...httpResponse } = await customersController.getCard(
+  customerId,
+  cardId
+);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Create Card
+
+Creates a new card for a customer
+
+```ts
+async createCard(  customerId: string,
+  request: CreateCardRequest,
+  idempotencyKey?: string,
+requestOptions?: RequestOptions): Promise<ApiResponse<GetCardResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `customerId` | `string` | Template, Required | Customer id |
+| `request` | [`CreateCardRequest`](../../doc/models/create-card-request.md) | Body, Required | Request for creating a card |
+| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`GetCardResponse`](../../doc/models/get-card-response.md)
+
+## Example Usage
+
+```ts
+const customerId = 'customer_id8';
+
+const request: CreateCardRequest = {
+  type: 'credit',
+};
+
+try {
+  const { result, ...httpResponse } = await customersController.createCard(
+  customerId,
+  request
+);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Get Access Token
+
+Get a Customer's access token
+
+```ts
+async getAccessToken(  customerId: string,
+  tokenId: string,
+requestOptions?: RequestOptions): Promise<ApiResponse<GetAccessTokenResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `customerId` | `string` | Template, Required | Customer Id |
+| `tokenId` | `string` | Template, Required | Token Id |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`GetAccessTokenResponse`](../../doc/models/get-access-token-response.md)
+
+## Example Usage
+
+```ts
+const customerId = 'customer_id8';
+
+const tokenId = 'token_id6';
+
+try {
+  const { result, ...httpResponse } = await customersController.getAccessToken(
+  customerId,
+  tokenId
+);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Get Addresses
+
+Gets all adressess from a customer
+
+```ts
+async getAddresses(  customerId: string,
+  page?: number,
+  size?: number,
+requestOptions?: RequestOptions): Promise<ApiResponse<ListAddressesResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `customerId` | `string` | Template, Required | Customer id |
+| `page` | `number \| undefined` | Query, Optional | Page number |
+| `size` | `number \| undefined` | Query, Optional | Page size |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`ListAddressesResponse`](../../doc/models/list-addresses-response.md)
+
+## Example Usage
+
+```ts
+const customerId = 'customer_id8';
+
+try {
+  const { result, ...httpResponse } = await customersController.getAddresses(customerId);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
 # Update Customer
 
 Updates a customer
 
 ```ts
-async updateCustomer(
-  customerId: string,
+async updateCustomer(  customerId: string,
   request: UpdateCustomerRequest,
   idempotencyKey?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetCustomerResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<GetCustomerResponse>>
 ```
 
 ## Parameters
@@ -639,12 +838,10 @@ try {
 Creates a access token for a customer
 
 ```ts
-async createAccessToken(
-  customerId: string,
+async createAccessToken(  customerId: string,
   request: CreateAccessTokenRequest,
   idempotencyKey?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetAccessTokenResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<GetAccessTokenResponse>>
 ```
 
 ## Parameters
@@ -683,61 +880,15 @@ try {
 ```
 
 
-# Get Access Tokens
-
-Get all access tokens from a customer
-
-```ts
-async getAccessTokens(
-  customerId: string,
-  page?: number,
-  size?: number,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<ListAccessTokensResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `customerId` | `string` | Template, Required | Customer Id |
-| `page` | `number \| undefined` | Query, Optional | Page number |
-| `size` | `number \| undefined` | Query, Optional | Page size |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-[`ListAccessTokensResponse`](../../doc/models/list-access-tokens-response.md)
-
-## Example Usage
-
-```ts
-const customerId = 'customer_id8';
-
-try {
-  const { result, ...httpResponse } = await customersController.getAccessTokens(customerId);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
 # Get Cards
 
 Get all cards from a customer
 
 ```ts
-async getCards(
-  customerId: string,
+async getCards(  customerId: string,
   page?: number,
   size?: number,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<ListCardsResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<ListCardsResponse>>
 ```
 
 ## Parameters
@@ -776,12 +927,10 @@ try {
 Renew a card
 
 ```ts
-async renewCard(
-  customerId: string,
+async renewCard(  customerId: string,
   cardId: string,
   idempotencyKey?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetCardResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<GetCardResponse>>
 ```
 
 ## Parameters
@@ -820,64 +969,15 @@ try {
 ```
 
 
-# Get Access Token
-
-Get a Customer's access token
-
-```ts
-async getAccessToken(
-  customerId: string,
-  tokenId: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetAccessTokenResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `customerId` | `string` | Template, Required | Customer Id |
-| `tokenId` | `string` | Template, Required | Token Id |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-[`GetAccessTokenResponse`](../../doc/models/get-access-token-response.md)
-
-## Example Usage
-
-```ts
-const customerId = 'customer_id8';
-
-const tokenId = 'token_id6';
-
-try {
-  const { result, ...httpResponse } = await customersController.getAccessToken(
-  customerId,
-  tokenId
-);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
 # Update Customer Metadata
 
 Updates the metadata a customer
 
 ```ts
-async updateCustomerMetadata(
-  customerId: string,
+async updateCustomerMetadata(  customerId: string,
   request: UpdateMetadataRequest,
   idempotencyKey?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetCustomerResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<GetCustomerResponse>>
 ```
 
 ## Parameters
@@ -920,108 +1020,13 @@ try {
 ```
 
 
-# Delete Card
-
-Delete a customer's card
-
-```ts
-async deleteCard(
-  customerId: string,
-  cardId: string,
-  idempotencyKey?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetCardResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `customerId` | `string` | Template, Required | Customer Id |
-| `cardId` | `string` | Template, Required | Card Id |
-| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-[`GetCardResponse`](../../doc/models/get-card-response.md)
-
-## Example Usage
-
-```ts
-const customerId = 'customer_id8';
-
-const cardId = 'card_id4';
-
-try {
-  const { result, ...httpResponse } = await customersController.deleteCard(
-  customerId,
-  cardId
-);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Get Addresses
-
-Gets all adressess from a customer
-
-```ts
-async getAddresses(
-  customerId: string,
-  page?: number,
-  size?: number,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<ListAddressesResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `customerId` | `string` | Template, Required | Customer id |
-| `page` | `number \| undefined` | Query, Optional | Page number |
-| `size` | `number \| undefined` | Query, Optional | Page size |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-[`ListAddressesResponse`](../../doc/models/list-addresses-response.md)
-
-## Example Usage
-
-```ts
-const customerId = 'customer_id8';
-
-try {
-  const { result, ...httpResponse } = await customersController.getAddresses(customerId);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
 # Get Customer
 
 Get a customer
 
 ```ts
-async getCustomer(
-  customerId: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetCustomerResponse>>
+async getCustomer(  customerId: string,
+requestOptions?: RequestOptions): Promise<ApiResponse<GetCustomerResponse>>
 ```
 
 ## Parameters
@@ -1042,53 +1047,6 @@ const customerId = 'customer_id8';
 
 try {
   const { result, ...httpResponse } = await customersController.getCustomer(customerId);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Get Card
-
-Get a customer's card
-
-```ts
-async getCard(
-  customerId: string,
-  cardId: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetCardResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `customerId` | `string` | Template, Required | Customer id |
-| `cardId` | `string` | Template, Required | Card id |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-[`GetCardResponse`](../../doc/models/get-card-response.md)
-
-## Example Usage
-
-```ts
-const customerId = 'customer_id8';
-
-const cardId = 'card_id4';
-
-try {
-  const { result, ...httpResponse } = await customersController.getCard(
-  customerId,
-  cardId
-);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {

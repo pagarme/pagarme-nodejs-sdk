@@ -28,7 +28,7 @@ import {
   HttpClientInterface,
   RetryConfiguration,
 } from './core';
- import { HttpClient } from './clientAdapter';
+import { HttpClient } from './clientAdapter';
 
 export class Client implements ClientInterface {
   private _config: Readonly<Configuration>;
@@ -50,19 +50,17 @@ export class Client implements ClientInterface {
       typeof this._config.httpClientOptions?.timeout != 'undefined'
         ? this._config.httpClientOptions.timeout
         : this._config.timeout;
-    let clonedConfig = {
+    const clonedConfig = {
       ...this._config,
       basicAuthCredentials: this._config.basicAuthCredentials || {
-        username: this._config.basicAuthUserName || '', 
-        password: this._config.basicAuthPassword || '', 
-      }
-    }
+        username: this._config.basicAuthUserName || '',
+        password: this._config.basicAuthPassword || '',
+      },
+    };
 
-    this._userAgent = updateUserAgent(
-      'PagarmeApiSDK - TypeScript 6.8.9',
-    );
+    this._userAgent = updateUserAgent('PagarmeApiSDK - TypeScript 6.8.9');
     this._requestBuilderFactory = createRequestHandlerFactory(
-      server => getBaseUri(server, this._config),
+      (server) => getBaseUri(server, this._config),
       createAuthProviderFromConfig(clonedConfig),
       new HttpClient(AbortError, {
         timeout: this._timeout,
@@ -131,7 +129,7 @@ function tap(
 ): SdkRequestBuilderFactory {
   return (...args) => {
     const requestBuilder = requestBuilderFactory(...args);
-    callback.forEach(c => c(requestBuilder));
+    callback.forEach((c) => c(requestBuilder));
     return requestBuilder;
   };
 }
@@ -147,7 +145,7 @@ function withErrorHandlers(rb: SdkRequestBuilder) {
 
 function withUserAgent(userAgent: string) {
   return (rb: SdkRequestBuilder) => {
-    rb.interceptRequest(request => {
+    rb.interceptRequest((request) => {
       const headers = request.headers ?? {};
       setHeader(headers, 'user-agent', userAgent);
       return { ...request, headers };
@@ -157,7 +155,7 @@ function withUserAgent(userAgent: string) {
 
 function withServiceRefererName({ serviceRefererName }: { serviceRefererName: string }) {
   return (rb: SdkRequestBuilder) => {
-    rb.interceptRequest(request => {
+    rb.interceptRequest((request) => {
       const headers = request.headers ?? {};
       setHeader(headers, 'ServiceRefererName', serviceRefererName);
       return { ...request, headers };
@@ -166,5 +164,5 @@ function withServiceRefererName({ serviceRefererName }: { serviceRefererName: st
 }
 
 function withAuthenticationByDefault(rb: SdkRequestBuilder) {
-  rb.authenticate([{ httpBasic: true }]); 
+  rb.authenticate([{ httpBasic: true }]);
 }

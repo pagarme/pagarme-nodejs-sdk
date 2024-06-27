@@ -6,9 +6,9 @@
 
 import {
   array,
+  bigint,
   lazy,
   nullable,
-  number,
   object,
   optional,
   Schema,
@@ -22,17 +22,13 @@ import {
   CreateRegisterInformationAddressRequest,
   createRegisterInformationAddressRequestSchema,
 } from './createRegisterInformationAddressRequest';
-import {
-  CreateRegisterInformationBaseRequest,
-} from './createRegisterInformationBaseRequest';
-import {
-  createRegisterInformationPhoneRequestSchema,
-} from './createRegisterInformationPhoneRequest';
+import { CreateRegisterInformationBaseRequest } from './createRegisterInformationBaseRequest';
+import { createRegisterInformationPhoneRequestSchema } from './createRegisterInformationPhoneRequest';
 
 export interface CreateRegisterInformationCorporationRequest extends CreateRegisterInformationBaseRequest {
   companyName: string;
   tradingName: string;
-  annualRevenue: number;
+  annualRevenue: bigint;
   corporationType?: string | null;
   foundingDate?: string | null;
   cnae?: string | null;
@@ -44,7 +40,7 @@ export const createRegisterInformationCorporationRequestSchema: Schema<any> = ob
   {
     companyName: ['company_name', string()],
     tradingName: ['trading_name', string()],
-    annualRevenue: ['annual_revenue', number()],
+    annualRevenue: ['annual_revenue', bigint()],
     corporationType: ['corporation_type', optional(nullable(string()))],
     foundingDate: ['founding_date', optional(nullable(string()))],
     cnae: ['cnae', optional(nullable(string()))],

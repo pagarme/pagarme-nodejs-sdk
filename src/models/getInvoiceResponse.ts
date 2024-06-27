@@ -19,7 +19,10 @@ import {
   GetBillingAddressResponse,
   getBillingAddressResponseSchema,
 } from './getBillingAddressResponse';
-import { GetChargeResponse, getChargeResponseSchema } from './getChargeResponse';
+import {
+  GetChargeResponse,
+  getChargeResponseSchema,
+} from './getChargeResponse';
 import {
   GetCustomerResponse,
   getCustomerResponseSchema,
@@ -28,7 +31,10 @@ import {
   GetInvoiceItemResponse,
   getInvoiceItemResponseSchema,
 } from './getInvoiceItemResponse';
-import { GetPeriodResponse, getPeriodResponseSchema } from './getPeriodResponse';
+import {
+  GetPeriodResponse,
+  getPeriodResponseSchema,
+} from './getPeriodResponse';
 import {
   GetShippingResponse,
   getShippingResponseSchema,

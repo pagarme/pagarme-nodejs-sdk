@@ -5,9 +5,7 @@
  */
 
 import { ApiResponse, RequestOptions } from '../core';
-import {
-  discriminatedGetTransactionResponseSchema,
-} from '../models/discriminatedSchemas';
+import { discriminatedGetTransactionResponseSchema } from '../models/discriminatedSchemas';
 import { GetTransactionResponse } from '../models/getTransactionResponse';
 import { string } from '../schema';
 import { BaseController } from './baseController';

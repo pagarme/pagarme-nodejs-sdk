@@ -14,15 +14,14 @@ export function createAuthProviderFromConfig(config: Partial<Configuration>) {
   const authConfig = {
     httpBasic:
       config.basicAuthCredentials &&
-      basicAuthenticationProvider (
+      basicAuthenticationProvider(
         config.basicAuthCredentials.username,
         config.basicAuthCredentials.password
-    ),
+      ),
   };
 
-  return compositeAuthenticationProvider <
+  return compositeAuthenticationProvider<
     keyof typeof authConfig,
     typeof authConfig
-  > (authConfig);
+  >(authConfig);
 }
-

@@ -5,7 +5,10 @@
  */
 
 import { lazy, object, Schema, string } from '../schema';
-import { CreateCardRequest, createCardRequestSchema } from './createCardRequest';
+import {
+  CreateCardRequest,
+  createCardRequestSchema,
+} from './createCardRequest';
 
 /** Request for updating the card from a subscription */
 export interface UpdateSubscriptionCardRequest {

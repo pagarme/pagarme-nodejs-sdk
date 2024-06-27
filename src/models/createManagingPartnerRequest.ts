@@ -6,10 +6,10 @@
 
 import {
   array,
+  bigint,
   boolean,
   lazy,
   nullable,
-  number,
   object,
   optional,
   Schema,
@@ -31,7 +31,7 @@ export interface CreateManagingPartnerRequest {
   document: string;
   motherName?: string | null;
   birthdate: string;
-  monthlyIncome: number;
+  monthlyIncome: bigint;
   professionalOccupation: string;
   selfDeclaredLegalRepresentative: boolean;
   address: CreateRegisterInformationAddressRequest;
@@ -45,7 +45,7 @@ export const createManagingPartnerRequestSchema: Schema<CreateManagingPartnerReq
     document: ['document', string()],
     motherName: ['mother_name', optional(nullable(string()))],
     birthdate: ['birthdate', string()],
-    monthlyIncome: ['monthly_income', number()],
+    monthlyIncome: ['monthly_income', bigint()],
     professionalOccupation: ['professional_occupation', string()],
     selfDeclaredLegalRepresentative: [
       'self_declared_legal_representative',

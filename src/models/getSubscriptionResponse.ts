@@ -29,7 +29,10 @@ import {
   GetIncrementResponse,
   getIncrementResponseSchema,
 } from './getIncrementResponse';
-import { GetPeriodResponse, getPeriodResponseSchema } from './getPeriodResponse';
+import {
+  GetPeriodResponse,
+  getPeriodResponseSchema,
+} from './getPeriodResponse';
 import { GetSetupResponse, getSetupResponseSchema } from './getSetupResponse';
 import {
   GetSubscriptionBoletoResponse,
