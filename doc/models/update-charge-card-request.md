@@ -15,6 +15,8 @@ Request for updating card data
 | `cardId` | `string` | Required | Card id |
 | `card` | [`CreateCardRequest`](../../doc/models/create-card-request.md) | Required | Card data |
 | `recurrence` | `boolean` | Required | Indicates a recurrence |
+| `initiatedType` | `string \| undefined` | Optional | - |
+| `recurrenceModel` | `string \| undefined` | Optional | - |
 
 ## Example (as JSON)
 
@@ -30,7 +32,9 @@ Request for updating card data
     "exp_year": 68,
     "cvv": "cvv4"
   },
-  "recurrence": false
+  "recurrence": false,
+  "initiated_type": "initiated_type8",
+  "recurrence_model": "recurrence_model6"
 }
 ```
 

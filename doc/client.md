@@ -9,7 +9,7 @@ The following parameters are configurable for the API Client:
 | `timeout` | `number` | Timeout for API calls.<br>*Default*: `0` |
 | `httpClientOptions` | `Partial<HttpClientOptions>` | Stable configurable http client options. |
 | `unstableHttpClientOptions` | `any` | Unstable configurable http client options. |
-| `basicAuthCredentials` | [`BasicAuthCredentials`]($a/basic-authentication.md) | The credential object for basicAuth |
+| `basicAuthCredentials` | [`BasicAuthCredentials`](auth/basic-authentication.md) | The credential object for basicAuth |
 
 ## HttpClientOptions
 
