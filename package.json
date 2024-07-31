@@ -1,5 +1,5 @@
 {
-  "version": "6.8.10",
+  "version": "6.8.11",
   "license": "MIT",
   "sideEffects": false,
   "main": "dist/cjs/index.js",
@@ -14,9 +14,9 @@
   },
   "scripts": {
     "build": "rm -rf dist & tsc -p tsconfig.esm.json & tsc -p tsconfig.cjs.json",
-    "test": "jest --coverage --passWithNoTests",
-    "lint": "eslint --ignore-path .eslintignore --ext .js,.ts .",
-    "prepare": "rm -rf dist & tsc -p tsconfig.esm.json & tsc -p tsconfig.cjs.json"
+    "prepare": "rm -rf dist & tsc -p tsconfig.esm.json & tsc -p tsconfig.cjs.json",
+    "lint": "eslint **/*.ts --ignore-path .eslintignore",
+    "lint:fix": "eslint **/*.ts --ignore-path .eslintignore --fix"
   },
   "peerDependencies": {},
   "prettier": {
@@ -26,12 +26,12 @@
     "trailingComma": "es5",
     "quoteProps": "preserve"
   },
-  "name": "@pagarme/pagarme-nodejs-sdk",
+  "name": "pagarmeapisdklib",
   "description": "Pagarme API",
   "author": {
     "name": "Pagar.me Pagamentos S/A",
     "email": "suporte@pagar.me",
-    "url": "https://github.com/pagarme/pagarme-nodejs-sdk/issues"
+    "url": "https://github.com/pagarme/"
   },
   "devDependencies": {
     "@types/jest": "^29.4.0",
@@ -44,17 +44,13 @@
     "typescript": "^4.9.5"
   },
   "dependencies": {
-    "@apimatic/authentication-adapters": "^0.5.0",
-    "@apimatic/axios-client-adapter": "^0.3.0",
-    "@apimatic/core": "^0.10.0",
-    "@apimatic/schema": "^0.7.0"
+    "@apimatic/authentication-adapters": "^0.5.4",
+    "@apimatic/axios-client-adapter": "^0.3.4",
+    "@apimatic/core": "^0.10.12",
+    "@apimatic/schema": "^0.7.12"
   },
   "bugs": {
-    "url": "https://github.com/pagarme/pagarme-nodejs-sdk/issues",
+    "url": "https://github.com/pagarme/",
     "email": "suporte@pagar.me"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/pagarme/pagarme-nodejs-sdk.git"
   }
 }

@@ -34,6 +34,8 @@ export interface CreateDebitCardPaymentRequest {
   authentication?: CreatePaymentAuthenticationRequest;
   /** The Debit card payment token request */
   token?: CreateCardPaymentContactlessRequest;
+  initiatedType?: string;
+  recurrenceModel?: string;
 }
 
 export const createDebitCardPaymentRequestSchema: Schema<CreateDebitCardPaymentRequest> = object(
@@ -51,5 +53,7 @@ export const createDebitCardPaymentRequestSchema: Schema<CreateDebitCardPaymentR
       'token',
       optional(lazy(() => createCardPaymentContactlessRequestSchema)),
     ],
+    initiatedType: ['initiated_type', optional(string())],
+    recurrenceModel: ['recurrence_model', optional(string())],
   }
 );

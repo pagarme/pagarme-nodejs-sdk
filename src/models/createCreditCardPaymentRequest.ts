@@ -63,6 +63,8 @@ export interface CreateCreditCardPaymentRequest {
   /** Defines whether the card has been used one or more times. */
   recurrencyCycle?: string;
   payload?: CreateCardPayloadRequest;
+  initiatedType?: string;
+  recurrenceModel?: string;
 }
 
 export const createCreditCardPaymentRequestSchema: Schema<CreateCreditCardPaymentRequest> = object(
@@ -89,5 +91,7 @@ export const createCreditCardPaymentRequestSchema: Schema<CreateCreditCardPaymen
     operationType: ['operation_type', optional(string())],
     recurrencyCycle: ['recurrency_cycle', optional(string())],
     payload: ['payload', optional(lazy(() => createCardPayloadRequestSchema))],
+    initiatedType: ['initiated_type', optional(string())],
+    recurrenceModel: ['recurrence_model', optional(string())],
   }
 );
