@@ -9,6 +9,10 @@ import {
   CreateCardRequest,
   createCardRequestSchema,
 } from './createCardRequest';
+import {
+  CreatePaymentOriginRequest,
+  createPaymentOriginRequestSchema,
+} from './createPaymentOriginRequest';
 
 /** Request for updating card data */
 export interface UpdateChargeCardRequest {
@@ -22,6 +26,7 @@ export interface UpdateChargeCardRequest {
   recurrence: boolean;
   initiatedType?: string;
   recurrenceModel?: string;
+  paymentOrigin?: CreatePaymentOriginRequest;
 }
 
 export const updateChargeCardRequestSchema: Schema<UpdateChargeCardRequest> = object(
@@ -32,5 +37,9 @@ export const updateChargeCardRequestSchema: Schema<UpdateChargeCardRequest> = ob
     recurrence: ['recurrence', boolean()],
     initiatedType: ['initiated_type', optional(string())],
     recurrenceModel: ['recurrence_model', optional(string())],
+    paymentOrigin: [
+      'payment_origin',
+      optional(lazy(() => createPaymentOriginRequestSchema)),
+    ],
   }
 );

@@ -29,6 +29,7 @@ The settings for creating a credit card payment
 | `payload` | [`CreateCardPayloadRequest \| undefined`](../../doc/models/create-card-payload-request.md) | Optional | - |
 | `initiatedType` | `string \| undefined` | Optional | - |
 | `recurrenceModel` | `string \| undefined` | Optional | - |
+| `paymentOrigin` | [`CreatePaymentOriginRequest \| undefined`](../../doc/models/create-payment-origin-request.md) | Optional | - |
 
 ## Example (as JSON)
 

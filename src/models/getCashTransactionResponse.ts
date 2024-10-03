@@ -9,7 +9,6 @@ import {
   boolean,
   dict,
   lazy,
-  literal,
   nullable,
   number,
   object,
@@ -30,43 +29,45 @@ export interface GetCashTransactionResponse extends GetTransactionResponse {
   description?: string | null;
 }
 
-export const getCashTransactionResponseSchema: Schema<any> = object({
-  description: ['description', optional(nullable(string()))],
-  gatewayId: ['gateway_id', optional(nullable(string()))],
-  amount: ['amount', optional(nullable(number()))],
-  status: ['status', optional(nullable(string()))],
-  success: ['success', optional(nullable(boolean()))],
-  createdAt: ['created_at', optional(nullable(string()))],
-  updatedAt: ['updated_at', optional(nullable(string()))],
-  attemptCount: ['attempt_count', optional(nullable(number()))],
-  maxAttempts: ['max_attempts', optional(nullable(number()))],
-  splits: [
-    'splits',
-    optional(nullable(array(lazy(() => getSplitResponseSchema)))),
-  ],
-  nextAttempt: ['next_attempt', optional(nullable(string()))],
-  id: ['id', optional(nullable(string()))],
-  gatewayResponse: [
-    'gateway_response',
-    optional(nullable(lazy(() => getGatewayResponseResponseSchema))),
-  ],
-  antifraudResponse: [
-    'antifraud_response',
-    optional(nullable(lazy(() => getAntifraudResponseSchema))),
-  ],
-  metadata: ['metadata', optional(nullable(dict(string())))],
-  split: [
-    'split',
-    optional(nullable(array(lazy(() => getSplitResponseSchema)))),
-  ],
-  interest: [
-    'interest',
-    optional(nullable(lazy(() => getInterestResponseSchema))),
-  ],
-  fine: ['fine', optional(nullable(lazy(() => getFineResponseSchema)))],
-  maxDaysToPayPastDue: [
-    'max_days_to_pay_past_due',
-    optional(nullable(number())),
-  ],
-  transactionType: ['transaction_type', optional(literal('cash'))],
-});
+export const getCashTransactionResponseSchema: Schema<GetCashTransactionResponse> = object(
+  {
+    description: ['description', optional(nullable(string()))],
+    gatewayId: ['gateway_id', optional(nullable(string()))],
+    amount: ['amount', optional(nullable(number()))],
+    status: ['status', optional(nullable(string()))],
+    success: ['success', optional(nullable(boolean()))],
+    createdAt: ['created_at', optional(nullable(string()))],
+    updatedAt: ['updated_at', optional(nullable(string()))],
+    attemptCount: ['attempt_count', optional(nullable(number()))],
+    maxAttempts: ['max_attempts', optional(nullable(number()))],
+    splits: [
+      'splits',
+      optional(nullable(array(lazy(() => getSplitResponseSchema)))),
+    ],
+    nextAttempt: ['next_attempt', optional(nullable(string()))],
+    id: ['id', optional(nullable(string()))],
+    gatewayResponse: [
+      'gateway_response',
+      optional(nullable(lazy(() => getGatewayResponseResponseSchema))),
+    ],
+    antifraudResponse: [
+      'antifraud_response',
+      optional(nullable(lazy(() => getAntifraudResponseSchema))),
+    ],
+    metadata: ['metadata', optional(nullable(dict(string())))],
+    split: [
+      'split',
+      optional(nullable(array(lazy(() => getSplitResponseSchema)))),
+    ],
+    interest: [
+      'interest',
+      optional(nullable(lazy(() => getInterestResponseSchema))),
+    ],
+    fine: ['fine', optional(nullable(lazy(() => getFineResponseSchema)))],
+    maxDaysToPayPastDue: [
+      'max_days_to_pay_past_due',
+      optional(nullable(number())),
+    ],
+    transactionType: ['transaction_type', optional(string())],
+  }
+);

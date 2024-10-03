@@ -24,6 +24,10 @@ import {
   getInvoiceResponseSchema,
 } from './getInvoiceResponse';
 import { GetOrderResponse, getOrderResponseSchema } from './getOrderResponse';
+import {
+  GetPaymentOriginResponse,
+  getPaymentOriginResponseSchema,
+} from './getPaymentOriginResponse';
 import { GetTransactionResponse } from './getTransactionResponse';
 
 /** Response object for getting a charge */
@@ -53,9 +57,10 @@ export interface GetChargeResponse {
   interestAndFinePaid?: number | null;
   /** Defines whether the card has been used one or more times. */
   recurrencyCycle?: string | null;
+  paymentOrigin?: GetPaymentOriginResponse | null;
 }
 
-export const getChargeResponseSchema: Schema<any> = object({
+export const getChargeResponseSchema: Schema<GetChargeResponse> = object({
   id: ['id', optional(nullable(string()))],
   code: ['code', optional(nullable(string()))],
   gatewayId: ['gateway_id', optional(nullable(string()))],
@@ -86,4 +91,8 @@ export const getChargeResponseSchema: Schema<any> = object({
   paidAmount: ['paid_amount', optional(nullable(number()))],
   interestAndFinePaid: ['interest_and_fine_paid', optional(nullable(number()))],
   recurrencyCycle: ['recurrency_cycle', optional(nullable(string()))],
+  paymentOrigin: [
+    'payment_origin',
+    optional(nullable(lazy(() => getPaymentOriginResponseSchema))),
+  ],
 });
