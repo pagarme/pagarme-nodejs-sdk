@@ -29,17 +29,19 @@ export interface GetBalanceOperationResponse {
   movementObject?: GetMovementObjectBaseResponse;
 }
 
-export const getBalanceOperationResponseSchema: Schema<any> = object({
-  id: ['id', optional(nullable(string()))],
-  status: ['status', optional(nullable(string()))],
-  balanceAmount: ['balance_amount', optional(nullable(string()))],
-  balanceOldAmount: ['balance_old_amount', optional(nullable(string()))],
-  type: ['type', optional(nullable(string()))],
-  amount: ['amount', optional(nullable(number()))],
-  fee: ['fee', optional(nullable(string()))],
-  createdAt: ['created_at', optional(nullable(string()))],
-  movementObject: [
-    'movement_object',
-    optional(lazy(() => discriminatedGetMovementObjectBaseResponseSchema)),
-  ],
-});
+export const getBalanceOperationResponseSchema: Schema<GetBalanceOperationResponse> = object(
+  {
+    id: ['id', optional(nullable(string()))],
+    status: ['status', optional(nullable(string()))],
+    balanceAmount: ['balance_amount', optional(nullable(string()))],
+    balanceOldAmount: ['balance_old_amount', optional(nullable(string()))],
+    type: ['type', optional(nullable(string()))],
+    amount: ['amount', optional(nullable(number()))],
+    fee: ['fee', optional(nullable(string()))],
+    createdAt: ['created_at', optional(nullable(string()))],
+    movementObject: [
+      'movement_object',
+      optional(lazy(() => discriminatedGetMovementObjectBaseResponseSchema)),
+    ],
+  }
+);

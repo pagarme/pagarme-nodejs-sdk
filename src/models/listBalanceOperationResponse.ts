@@ -18,10 +18,12 @@ export interface ListBalanceOperationResponse {
   paging?: PagingResponse | null;
 }
 
-export const listBalanceOperationResponseSchema: Schema<any> = object({
-  data: [
-    'data',
-    optional(nullable(array(lazy(() => getBalanceOperationResponseSchema)))),
-  ],
-  paging: ['paging', optional(nullable(lazy(() => pagingResponseSchema)))],
-});
+export const listBalanceOperationResponseSchema: Schema<ListBalanceOperationResponse> = object(
+  {
+    data: [
+      'data',
+      optional(nullable(array(lazy(() => getBalanceOperationResponseSchema)))),
+    ],
+    paging: ['paging', optional(nullable(lazy(() => pagingResponseSchema)))],
+  }
+);

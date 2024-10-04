@@ -5,48 +5,114 @@
  */
 
 import { discriminatedObject, Schema } from '../schema';
-import { getBankTransferTransactionResponseSchema } from './getBankTransferTransactionResponse';
-import { getBoletoTransactionResponseSchema } from './getBoletoTransactionResponse';
-import { getCashTransactionResponseSchema } from './getCashTransactionResponse';
-import { getCreditCardTransactionResponseSchema } from './getCreditCardTransactionResponse';
-import { getDebitCardTransactionResponseSchema } from './getDebitCardTransactionResponse';
-import { getMovementObjectBaseResponseSchema } from './getMovementObjectBaseResponse';
-import { getMovementObjectFeeCollectionResponseSchema } from './getMovementObjectFeeCollectionResponse';
-import { getMovementObjectPayableResponseSchema } from './getMovementObjectPayableResponse';
-import { getMovementObjectRefundResponseSchema } from './getMovementObjectRefundResponse';
-import { getMovementObjectSettlementResponseSchema } from './getMovementObjectSettlementResponse';
-import { getMovementObjectTransferResponseSchema } from './getMovementObjectTransferResponse';
-import { getPixTransactionResponseSchema } from './getPixTransactionResponse';
-import { getPrivateLabelTransactionResponseSchema } from './getPrivateLabelTransactionResponse';
-import { getSafetyPayTransactionResponseSchema } from './getSafetyPayTransactionResponse';
-import { getTransactionResponseSchema } from './getTransactionResponse';
-import { getVoucherTransactionResponseSchema } from './getVoucherTransactionResponse';
+import {
+  GetBankTransferTransactionResponse,
+  getBankTransferTransactionResponseSchema,
+} from './getBankTransferTransactionResponse';
+import {
+  GetBoletoTransactionResponse,
+  getBoletoTransactionResponseSchema,
+} from './getBoletoTransactionResponse';
+import {
+  GetCashTransactionResponse,
+  getCashTransactionResponseSchema,
+} from './getCashTransactionResponse';
+import {
+  GetCreditCardTransactionResponse,
+  getCreditCardTransactionResponseSchema,
+} from './getCreditCardTransactionResponse';
+import {
+  GetDebitCardTransactionResponse,
+  getDebitCardTransactionResponseSchema,
+} from './getDebitCardTransactionResponse';
+import {
+  GetMovementObjectBaseResponse,
+  getMovementObjectBaseResponseSchema,
+} from './getMovementObjectBaseResponse';
+import {
+  GetMovementObjectFeeCollectionResponse,
+  getMovementObjectFeeCollectionResponseSchema,
+} from './getMovementObjectFeeCollectionResponse';
+import {
+  GetMovementObjectPayableResponse,
+  getMovementObjectPayableResponseSchema,
+} from './getMovementObjectPayableResponse';
+import {
+  GetMovementObjectRefundResponse,
+  getMovementObjectRefundResponseSchema,
+} from './getMovementObjectRefundResponse';
+import {
+  GetMovementObjectSettlementResponse,
+  getMovementObjectSettlementResponseSchema,
+} from './getMovementObjectSettlementResponse';
+import {
+  GetMovementObjectTransferResponse,
+  getMovementObjectTransferResponseSchema,
+} from './getMovementObjectTransferResponse';
+import {
+  GetPixTransactionResponse,
+  getPixTransactionResponseSchema,
+} from './getPixTransactionResponse';
+import {
+  GetPrivateLabelTransactionResponse,
+  getPrivateLabelTransactionResponseSchema,
+} from './getPrivateLabelTransactionResponse';
+import {
+  GetSafetyPayTransactionResponse,
+  getSafetyPayTransactionResponseSchema,
+} from './getSafetyPayTransactionResponse';
+import {
+  GetTransactionResponse,
+  getTransactionResponseSchema,
+} from './getTransactionResponse';
+import {
+  GetVoucherTransactionResponse,
+  getVoucherTransactionResponseSchema,
+} from './getVoucherTransactionResponse';
 
-export const discriminatedGetTransactionResponseSchema: Schema<any> = discriminatedObject(
+export const discriminatedGetTransactionResponseSchema: Schema<
+  | GetTransactionResponse
+  | GetBankTransferTransactionResponse
+  | GetSafetyPayTransactionResponse
+  | GetVoucherTransactionResponse
+  | GetBoletoTransactionResponse
+  | GetDebitCardTransactionResponse
+  | GetPrivateLabelTransactionResponse
+  | GetCashTransactionResponse
+  | GetCreditCardTransactionResponse
+  | GetPixTransactionResponse
+> = discriminatedObject(
   'transactionType',
   'transaction_type',
   {
     'transaction': getTransactionResponseSchema,
+    'bank_transfer': getBankTransferTransactionResponseSchema,
     'safetypay': getSafetyPayTransactionResponseSchema,
     'voucher': getVoucherTransactionResponseSchema,
-    'bank_transfer': getBankTransferTransactionResponseSchema,
     'boleto': getBoletoTransactionResponseSchema,
     'debit_card': getDebitCardTransactionResponseSchema,
-    'cash': getCashTransactionResponseSchema,
     'private_label': getPrivateLabelTransactionResponseSchema,
+    'cash': getCashTransactionResponseSchema,
     'credit_card': getCreditCardTransactionResponseSchema,
     'pix': getPixTransactionResponseSchema,
   },
   'transaction'
 );
-export const discriminatedGetMovementObjectBaseResponseSchema: Schema<any> = discriminatedObject(
+export const discriminatedGetMovementObjectBaseResponseSchema: Schema<
+  | GetMovementObjectBaseResponse
+  | GetMovementObjectRefundResponse
+  | GetMovementObjectFeeCollectionResponse
+  | GetMovementObjectPayableResponse
+  | GetMovementObjectTransferResponse
+  | GetMovementObjectSettlementResponse
+> = discriminatedObject(
   'object',
   'object',
   {
     'MovementObject': getMovementObjectBaseResponseSchema,
+    'refund': getMovementObjectRefundResponseSchema,
     'feeCollection': getMovementObjectFeeCollectionResponseSchema,
     'payable': getMovementObjectPayableResponseSchema,
-    'refund': getMovementObjectRefundResponseSchema,
     'transfer': getMovementObjectTransferResponseSchema,
     'settlement': getMovementObjectSettlementResponseSchema,
   },

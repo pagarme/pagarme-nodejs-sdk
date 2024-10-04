@@ -30,6 +30,103 @@ import { BaseController } from './baseController';
 
 export class InvoicesController extends BaseController {
   /**
+   * Updates the metadata from an invoice
+   *
+   * @param invoiceId       The invoice id
+   * @param request         Request for updating the invoice metadata
+   * @param idempotencyKey
+   * @return Response from the API call
+   */
+  async updateInvoiceMetadata(
+    invoiceId: string,
+    request: UpdateMetadataRequest,
+    idempotencyKey?: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<GetInvoiceResponse>> {
+    const req = this.createRequest('PATCH');
+    const mapped = req.prepareArgs({
+      invoiceId: [invoiceId, string()],
+      request: [request, updateMetadataRequestSchema],
+      idempotencyKey: [idempotencyKey, optional(string())],
+    });
+    req.header('idempotency-key', mapped.idempotencyKey);
+    req.json(mapped.request);
+    req.appendTemplatePath`/invoices/${mapped.invoiceId}/metadata`;
+    req.authenticate([{ httpBasic: true }]);
+    return req.callAsJson(getInvoiceResponseSchema, requestOptions);
+  }
+
+  /**
+   * @param subscriptionId  Subscription Id
+   * @return Response from the API call
+   */
+  async getPartialInvoice(
+    subscriptionId: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<GetInvoiceResponse>> {
+    const req = this.createRequest('GET');
+    const mapped = req.prepareArgs({
+      subscriptionId: [subscriptionId, string()],
+    });
+    req.appendTemplatePath`/subscriptions/${mapped.subscriptionId}/partial-invoice`;
+    req.authenticate([{ httpBasic: true }]);
+    return req.callAsJson(getInvoiceResponseSchema, requestOptions);
+  }
+
+  /**
+   * Cancels an invoice
+   *
+   * @param invoiceId       Invoice id
+   * @param idempotencyKey
+   * @return Response from the API call
+   */
+  async cancelInvoice(
+    invoiceId: string,
+    idempotencyKey?: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<GetInvoiceResponse>> {
+    const req = this.createRequest('DELETE');
+    const mapped = req.prepareArgs({
+      invoiceId: [invoiceId, string()],
+      idempotencyKey: [idempotencyKey, optional(string())],
+    });
+    req.header('idempotency-key', mapped.idempotencyKey);
+    req.appendTemplatePath`/invoices/${mapped.invoiceId}`;
+    req.authenticate([{ httpBasic: true }]);
+    return req.callAsJson(getInvoiceResponseSchema, requestOptions);
+  }
+
+  /**
+   * Create an Invoice
+   *
+   * @param subscriptionId  Subscription Id
+   * @param cycleId         Cycle Id
+   * @param request
+   * @param idempotencyKey
+   * @return Response from the API call
+   */
+  async createInvoice(
+    subscriptionId: string,
+    cycleId: string,
+    request?: CreateInvoiceRequest,
+    idempotencyKey?: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<GetInvoiceResponse>> {
+    const req = this.createRequest('POST');
+    const mapped = req.prepareArgs({
+      subscriptionId: [subscriptionId, string()],
+      cycleId: [cycleId, string()],
+      request: [request, optional(createInvoiceRequestSchema)],
+      idempotencyKey: [idempotencyKey, optional(string())],
+    });
+    req.header('idempotency-key', mapped.idempotencyKey);
+    req.json(mapped.request);
+    req.appendTemplatePath`/subscriptions/${mapped.subscriptionId}/cycles/${mapped.cycleId}/pay`;
+    req.authenticate([{ httpBasic: true }]);
+    return req.callAsJson(getInvoiceResponseSchema, requestOptions);
+  }
+
+  /**
    * Gets all invoices
    *
    * @param page              Page number
@@ -89,23 +186,17 @@ export class InvoicesController extends BaseController {
   }
 
   /**
-   * Cancels an invoice
+   * Gets an invoice
    *
-   * @param invoiceId       Invoice id
-   * @param idempotencyKey
+   * @param invoiceId  Invoice Id
    * @return Response from the API call
    */
-  async cancelInvoice(
+  async getInvoice(
     invoiceId: string,
-    idempotencyKey?: string,
     requestOptions?: RequestOptions
   ): Promise<ApiResponse<GetInvoiceResponse>> {
-    const req = this.createRequest('DELETE');
-    const mapped = req.prepareArgs({
-      invoiceId: [invoiceId, string()],
-      idempotencyKey: [idempotencyKey, optional(string())],
-    });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    const req = this.createRequest('GET');
+    const mapped = req.prepareArgs({ invoiceId: [invoiceId, string()] });
     req.appendTemplatePath`/invoices/${mapped.invoiceId}`;
     req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getInvoiceResponseSchema, requestOptions);
@@ -134,97 +225,6 @@ export class InvoicesController extends BaseController {
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.request);
     req.appendTemplatePath`/invoices/${mapped.invoiceId}/status`;
-    req.authenticate([{ httpBasic: true }]);
-    return req.callAsJson(getInvoiceResponseSchema, requestOptions);
-  }
-
-  /**
-   * Updates the metadata from an invoice
-   *
-   * @param invoiceId       The invoice id
-   * @param request         Request for updating the invoice metadata
-   * @param idempotencyKey
-   * @return Response from the API call
-   */
-  async updateInvoiceMetadata(
-    invoiceId: string,
-    request: UpdateMetadataRequest,
-    idempotencyKey?: string,
-    requestOptions?: RequestOptions
-  ): Promise<ApiResponse<GetInvoiceResponse>> {
-    const req = this.createRequest('PATCH');
-    const mapped = req.prepareArgs({
-      invoiceId: [invoiceId, string()],
-      request: [request, updateMetadataRequestSchema],
-      idempotencyKey: [idempotencyKey, optional(string())],
-    });
-    req.header('idempotency-key', mapped.idempotencyKey);
-    req.json(mapped.request);
-    req.appendTemplatePath`/invoices/${mapped.invoiceId}/metadata`;
-    req.authenticate([{ httpBasic: true }]);
-    return req.callAsJson(getInvoiceResponseSchema, requestOptions);
-  }
-
-  /**
-   * @param subscriptionId  Subscription Id
-   * @return Response from the API call
-   */
-  async getPartialInvoice(
-    subscriptionId: string,
-    requestOptions?: RequestOptions
-  ): Promise<ApiResponse<GetInvoiceResponse>> {
-    const req = this.createRequest('GET');
-    const mapped = req.prepareArgs({
-      subscriptionId: [subscriptionId, string()],
-    });
-    req.appendTemplatePath`/subscriptions/${mapped.subscriptionId}/partial-invoice`;
-    req.authenticate([{ httpBasic: true }]);
-    return req.callAsJson(getInvoiceResponseSchema, requestOptions);
-  }
-
-  /**
-   * Create an Invoice
-   *
-   * @param subscriptionId  Subscription Id
-   * @param cycleId         Cycle Id
-   * @param request
-   * @param idempotencyKey
-   * @return Response from the API call
-   */
-  async createInvoice(
-    subscriptionId: string,
-    cycleId: string,
-    request?: CreateInvoiceRequest,
-    idempotencyKey?: string,
-    requestOptions?: RequestOptions
-  ): Promise<ApiResponse<GetInvoiceResponse>> {
-    const req = this.createRequest('POST');
-    const mapped = req.prepareArgs({
-      subscriptionId: [subscriptionId, string()],
-      cycleId: [cycleId, string()],
-      request: [request, optional(createInvoiceRequestSchema)],
-      idempotencyKey: [idempotencyKey, optional(string())],
-    });
-    req.header('idempotency-key', mapped.idempotencyKey);
-    req.json(mapped.request);
-    req.appendTemplatePath`/subscriptions/${mapped.subscriptionId}/cycles/${mapped.cycleId}/pay`;
-    req.authenticate([{ httpBasic: true }]);
-    return req.callAsJson(getInvoiceResponseSchema, requestOptions);
-  }
-
-  /**
-   * Gets an invoice
-   *
-   * @param invoiceId  Invoice Id
-   * @return Response from the API call
-   */
-  async getInvoice(
-    invoiceId: string,
-    requestOptions?: RequestOptions
-  ): Promise<ApiResponse<GetInvoiceResponse>> {
-    const req = this.createRequest('GET');
-    const mapped = req.prepareArgs({ invoiceId: [invoiceId, string()] });
-    req.appendTemplatePath`/invoices/${mapped.invoiceId}`;
     req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getInvoiceResponseSchema, requestOptions);
   }

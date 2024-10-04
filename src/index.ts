@@ -84,6 +84,7 @@ export type { CreateManagingPartnerRequest } from './models/createManagingPartne
 export type { CreateOrderItemRequest } from './models/createOrderItemRequest';
 export type { CreateOrderRequest } from './models/createOrderRequest';
 export type { CreatePaymentAuthenticationRequest } from './models/createPaymentAuthenticationRequest';
+export type { CreatePaymentOriginRequest } from './models/createPaymentOriginRequest';
 export type { CreatePaymentRequest } from './models/createPaymentRequest';
 export type { CreatePeriodRequest } from './models/createPeriodRequest';
 export type { CreatePhoneRequest } from './models/createPhoneRequest';
@@ -169,6 +170,7 @@ export type { GetOrderItemResponse } from './models/getOrderItemResponse';
 export type { GetOrderResponse } from './models/getOrderResponse';
 export type { GetPayableResponse } from './models/getPayableResponse';
 export type { GetPaymentAuthenticationResponse } from './models/getPaymentAuthenticationResponse';
+export type { GetPaymentOriginResponse } from './models/getPaymentOriginResponse';
 export type { GetPeriodResponse } from './models/getPeriodResponse';
 export type { GetPhoneNumberResponse } from './models/getPhoneNumberResponse';
 export type { GetPhoneResponse } from './models/getPhoneResponse';

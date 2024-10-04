@@ -17,6 +17,10 @@ import {
   CreatePaymentAuthenticationRequest,
   createPaymentAuthenticationRequestSchema,
 } from './createPaymentAuthenticationRequest';
+import {
+  CreatePaymentOriginRequest,
+  createPaymentOriginRequestSchema,
+} from './createPaymentOriginRequest';
 
 /** The settings for creating a debit card payment */
 export interface CreateDebitCardPaymentRequest {
@@ -36,6 +40,7 @@ export interface CreateDebitCardPaymentRequest {
   token?: CreateCardPaymentContactlessRequest;
   initiatedType?: string;
   recurrenceModel?: string;
+  paymentOrigin?: CreatePaymentOriginRequest;
 }
 
 export const createDebitCardPaymentRequestSchema: Schema<CreateDebitCardPaymentRequest> = object(
@@ -55,5 +60,9 @@ export const createDebitCardPaymentRequestSchema: Schema<CreateDebitCardPaymentR
     ],
     initiatedType: ['initiated_type', optional(string())],
     recurrenceModel: ['recurrence_model', optional(string())],
+    paymentOrigin: [
+      'payment_origin',
+      optional(lazy(() => createPaymentOriginRequestSchema)),
+    ],
   }
 );

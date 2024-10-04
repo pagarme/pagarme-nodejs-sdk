@@ -30,7 +30,7 @@ export interface CreateRegisterInformationIndividualRequest extends CreateRegist
   address: CreateRegisterInformationAddressRequest;
 }
 
-export const createRegisterInformationIndividualRequestSchema: Schema<any> = object(
+export const createRegisterInformationIndividualRequestSchema: Schema<CreateRegisterInformationIndividualRequest> = object(
   {
     name: ['name', string()],
     motherName: ['mother_name', optional(nullable(string()))],

@@ -36,7 +36,7 @@ export interface CreateRegisterInformationCorporationRequest extends CreateRegis
   mainAddress: CreateRegisterInformationAddressRequest;
 }
 
-export const createRegisterInformationCorporationRequestSchema: Schema<any> = object(
+export const createRegisterInformationCorporationRequestSchema: Schema<CreateRegisterInformationCorporationRequest> = object(
   {
     companyName: ['company_name', string()],
     tradingName: ['trading_name', string()],

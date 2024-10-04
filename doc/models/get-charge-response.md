@@ -32,6 +32,7 @@ Response object for getting a charge
 | `paidAmount` | `number \| null \| undefined` | Optional | Paid amount |
 | `interestAndFinePaid` | `number \| null \| undefined` | Optional | interest and fine paid |
 | `recurrencyCycle` | `string \| null \| undefined` | Optional | Defines whether the card has been used one or more times. |
+| `paymentOrigin` | [`GetPaymentOriginResponse \| null \| undefined`](../../doc/models/get-payment-origin-response.md) | Optional | - |
 
 ## Example (as JSON)
 

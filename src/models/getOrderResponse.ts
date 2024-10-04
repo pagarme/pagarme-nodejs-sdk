@@ -75,7 +75,7 @@ export interface GetOrderResponse {
   device?: GetDeviceResponse | null;
 }
 
-export const getOrderResponseSchema: Schema<any> = object({
+export const getOrderResponseSchema: Schema<GetOrderResponse> = object({
   id: ['id', optional(nullable(string()))],
   code: ['code', optional(nullable(string()))],
   amount: ['amount', optional(nullable(number()))],

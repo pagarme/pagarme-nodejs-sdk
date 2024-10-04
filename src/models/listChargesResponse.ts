@@ -19,7 +19,7 @@ export interface ListChargesResponse {
   paging?: PagingResponse | null;
 }
 
-export const listChargesResponseSchema: Schema<any> = object({
+export const listChargesResponseSchema: Schema<ListChargesResponse> = object({
   data: [
     'data',
     optional(nullable(array(lazy(() => getChargeResponseSchema)))),

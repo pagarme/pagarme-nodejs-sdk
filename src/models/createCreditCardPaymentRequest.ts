@@ -30,6 +30,10 @@ import {
   CreatePaymentAuthenticationRequest,
   createPaymentAuthenticationRequestSchema,
 } from './createPaymentAuthenticationRequest';
+import {
+  CreatePaymentOriginRequest,
+  createPaymentOriginRequestSchema,
+} from './createPaymentOriginRequest';
 
 /** The settings for creating a credit card payment */
 export interface CreateCreditCardPaymentRequest {
@@ -65,6 +69,7 @@ export interface CreateCreditCardPaymentRequest {
   payload?: CreateCardPayloadRequest;
   initiatedType?: string;
   recurrenceModel?: string;
+  paymentOrigin?: CreatePaymentOriginRequest;
 }
 
 export const createCreditCardPaymentRequestSchema: Schema<CreateCreditCardPaymentRequest> = object(
@@ -93,5 +98,9 @@ export const createCreditCardPaymentRequestSchema: Schema<CreateCreditCardPaymen
     payload: ['payload', optional(lazy(() => createCardPayloadRequestSchema))],
     initiatedType: ['initiated_type', optional(string())],
     recurrenceModel: ['recurrence_model', optional(string())],
+    paymentOrigin: [
+      'payment_origin',
+      optional(lazy(() => createPaymentOriginRequestSchema)),
+    ],
   }
 );
