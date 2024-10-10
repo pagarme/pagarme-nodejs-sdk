@@ -33,6 +33,10 @@ import {
   getDeviceResponseSchema,
 } from './getDeviceResponse';
 import {
+  GetIntegrationResponse,
+  getIntegrationResponseSchema,
+} from './getIntegrationResponse';
+import {
   GetLocationResponse,
   getLocationResponseSchema,
 } from './getLocationResponse';
@@ -73,6 +77,7 @@ export interface GetOrderResponse {
   location?: GetLocationResponse | null;
   /** Device's informations */
   device?: GetDeviceResponse | null;
+  integration?: GetIntegrationResponse | null;
 }
 
 export const getOrderResponseSchema: Schema<GetOrderResponse> = object({
@@ -114,4 +119,8 @@ export const getOrderResponseSchema: Schema<GetOrderResponse> = object({
     optional(nullable(lazy(() => getLocationResponseSchema))),
   ],
   device: ['device', optional(nullable(lazy(() => getDeviceResponseSchema)))],
+  integration: [
+    'integration',
+    optional(nullable(lazy(() => getIntegrationResponseSchema))),
+  ],
 });

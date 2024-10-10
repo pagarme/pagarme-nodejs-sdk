@@ -155,6 +155,7 @@ export type { GetGatewayErrorResponse } from './models/getGatewayErrorResponse';
 export type { GetGatewayRecipientResponse } from './models/getGatewayRecipientResponse';
 export type { GetGatewayResponseResponse } from './models/getGatewayResponseResponse';
 export type { GetIncrementResponse } from './models/getIncrementResponse';
+export type { GetIntegrationResponse } from './models/getIntegrationResponse';
 export type { GetInterestResponse } from './models/getInterestResponse';
 export type { GetInvoiceItemResponse } from './models/getInvoiceItemResponse';
 export type { GetInvoiceResponse } from './models/getInvoiceResponse';
