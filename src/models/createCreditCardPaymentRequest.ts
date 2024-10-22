@@ -70,6 +70,8 @@ export interface CreateCreditCardPaymentRequest {
   initiatedType?: string;
   recurrenceModel?: string;
   paymentOrigin?: CreatePaymentOriginRequest;
+  /** Business model identifier */
+  indirectAcceptor?: string;
 }
 
 export const createCreditCardPaymentRequestSchema: Schema<CreateCreditCardPaymentRequest> = object(
@@ -102,5 +104,6 @@ export const createCreditCardPaymentRequestSchema: Schema<CreateCreditCardPaymen
       'payment_origin',
       optional(lazy(() => createPaymentOriginRequestSchema)),
     ],
+    indirectAcceptor: ['indirect_acceptor', optional(string())],
   }
 );

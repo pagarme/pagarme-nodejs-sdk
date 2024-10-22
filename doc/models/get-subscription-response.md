@@ -39,6 +39,7 @@
 | `split` | [`GetSubscriptionSplitResponse \| null \| undefined`](../../doc/models/get-subscription-split-response.md) | Optional | Subscription's split response |
 | `boleto` | [`GetSubscriptionBoletoResponse \| null \| undefined`](../../doc/models/get-subscription-boleto-response.md) | Optional | - |
 | `manualBilling` | `boolean \| null \| undefined` | Optional | - |
+| `indirectAcceptor` | `string \| null \| undefined` | Optional | Business model identifier |
 
 ## Example (as JSON)
 

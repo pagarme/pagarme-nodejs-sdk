@@ -27,6 +27,8 @@ export interface UpdateChargeCardRequest {
   initiatedType?: string;
   recurrenceModel?: string;
   paymentOrigin?: CreatePaymentOriginRequest;
+  /** Business model identifier */
+  indirectAcceptor?: string;
 }
 
 export const updateChargeCardRequestSchema: Schema<UpdateChargeCardRequest> = object(
@@ -41,5 +43,6 @@ export const updateChargeCardRequestSchema: Schema<UpdateChargeCardRequest> = ob
       'payment_origin',
       optional(lazy(() => createPaymentOriginRequestSchema)),
     ],
+    indirectAcceptor: ['indirect_acceptor', optional(string())],
   }
 );

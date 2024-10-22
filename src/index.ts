@@ -256,6 +256,7 @@ export type { UpdatePlanRequest } from './models/updatePlanRequest';
 export type { UpdatePriceBracketRequest } from './models/updatePriceBracketRequest';
 export type { UpdatePricingSchemeRequest } from './models/updatePricingSchemeRequest';
 export type { UpdateRecipientBankAccountRequest } from './models/updateRecipientBankAccountRequest';
+export type { UpdateRecipientCodeRequest } from './models/updateRecipientCodeRequest';
 export type { UpdateRecipientRequest } from './models/updateRecipientRequest';
 export type { UpdateSubscriptionAffiliationIdRequest } from './models/updateSubscriptionAffiliationIdRequest';
 export type { UpdateSubscriptionBillingDateRequest } from './models/updateSubscriptionBillingDateRequest';
