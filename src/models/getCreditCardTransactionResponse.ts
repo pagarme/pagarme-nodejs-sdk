@@ -59,6 +59,8 @@ export interface GetCreditCardTransactionResponse extends GetTransactionResponse
   /** Retry transaction information */
   retryInfo?: GetRetryTransactionInformationResponse | null;
   brandId?: string | null;
+  /** Business model identifier */
+  indirectAcceptor?: string | null;
 }
 
 export const getCreditCardTransactionResponseSchema: Schema<GetCreditCardTransactionResponse> = object(
@@ -89,6 +91,7 @@ export const getCreditCardTransactionResponseSchema: Schema<GetCreditCardTransac
       ),
     ],
     brandId: ['brand_id', optional(nullable(string()))],
+    indirectAcceptor: ['indirect_acceptor', optional(nullable(string()))],
     gatewayId: ['gateway_id', optional(nullable(string()))],
     amount: ['amount', optional(nullable(number()))],
     status: ['status', optional(nullable(string()))],

@@ -28,6 +28,19 @@ export class TransfersController extends BaseController {
   }
 
   /**
+   * Gets all transfers
+   *
+   * @return Response from the API call
+   */
+  async getTransfers(
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<ListTransfers>> {
+    const req = this.createRequest('GET', '/transfers');
+    req.authenticate([{ httpBasic: true }]);
+    return req.callAsJson(listTransfersSchema, requestOptions);
+  }
+
+  /**
    * @param request
    * @return Response from the API call
    */
@@ -42,18 +55,5 @@ export class TransfersController extends BaseController {
     req.json(mapped.request);
     req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getTransferSchema, requestOptions);
-  }
-
-  /**
-   * Gets all transfers
-   *
-   * @return Response from the API call
-   */
-  async getTransfers(
-    requestOptions?: RequestOptions
-  ): Promise<ApiResponse<ListTransfers>> {
-    const req = this.createRequest('GET', '/transfers');
-    req.authenticate([{ httpBasic: true }]);
-    return req.callAsJson(listTransfersSchema, requestOptions);
   }
 }

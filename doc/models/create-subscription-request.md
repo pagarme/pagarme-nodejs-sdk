@@ -44,6 +44,7 @@ Request for creating a subcription
 | `submerchant` | [`CreateSubMerchantRequest \| undefined`](../../doc/models/create-sub-merchant-request.md) | Optional | SubMerchant |
 | `split` | [`CreateSubscriptionSplitRequest \| undefined`](../../doc/models/create-subscription-split-request.md) | Optional | Subscription's split |
 | `boleto` | [`CreateSubscriptionBoletoRequest \| undefined`](../../doc/models/create-subscription-boleto-request.md) | Optional | Information about fines and interest on the "boleto" used from payment |
+| `indirectAcceptor` | `string \| undefined` | Optional | Business model identifier |
 
 ## Example (as JSON)
 

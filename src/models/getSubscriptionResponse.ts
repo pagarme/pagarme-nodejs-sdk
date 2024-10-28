@@ -83,6 +83,8 @@ export interface GetSubscriptionResponse {
   split?: GetSubscriptionSplitResponse | null;
   boleto?: GetSubscriptionBoletoResponse | null;
   manualBilling?: boolean | null;
+  /** Business model identifier */
+  indirectAcceptor?: string | null;
 }
 
 export const getSubscriptionResponseSchema: Schema<GetSubscriptionResponse> = object(
@@ -141,5 +143,6 @@ export const getSubscriptionResponseSchema: Schema<GetSubscriptionResponse> = ob
       optional(nullable(lazy(() => getSubscriptionBoletoResponseSchema))),
     ],
     manualBilling: ['manual_billing', optional(nullable(boolean()))],
+    indirectAcceptor: ['indirect_acceptor', optional(nullable(string()))],
   }
 );

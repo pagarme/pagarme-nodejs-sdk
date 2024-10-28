@@ -130,6 +130,8 @@ export interface CreateSubscriptionRequest {
   split?: CreateSubscriptionSplitRequest;
   /** Information about fines and interest on the "boleto" used from payment */
   boleto?: CreateSubscriptionBoletoRequest;
+  /** Business model identifier */
+  indirectAcceptor?: string;
 }
 
 export const createSubscriptionRequestSchema: Schema<CreateSubscriptionRequest> = object(
@@ -179,5 +181,6 @@ export const createSubscriptionRequestSchema: Schema<CreateSubscriptionRequest> 
       'boleto',
       optional(lazy(() => createSubscriptionBoletoRequestSchema)),
     ],
+    indirectAcceptor: ['indirect_acceptor', optional(string())],
   }
 );
