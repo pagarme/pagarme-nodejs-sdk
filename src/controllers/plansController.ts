@@ -59,29 +59,26 @@ export class PlansController extends BaseController {
   }
 
   /**
-   * Removes an item from a plan
+   * Deletes a plan
    *
    * @param planId          Plan id
-   * @param planItemId      Plan item id
    * @param idempotencyKey
    * @return Response from the API call
    */
-  async deletePlanItem(
+  async deletePlan(
     planId: string,
-    planItemId: string,
     idempotencyKey?: string,
     requestOptions?: RequestOptions
-  ): Promise<ApiResponse<GetPlanItemResponse>> {
+  ): Promise<ApiResponse<GetPlanResponse>> {
     const req = this.createRequest('DELETE');
     const mapped = req.prepareArgs({
       planId: [planId, string()],
-      planItemId: [planItemId, string()],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
     req.header('idempotency-key', mapped.idempotencyKey);
-    req.appendTemplatePath`/plans/${mapped.planId}/items/${mapped.planItemId}`;
+    req.appendTemplatePath`/plans/${mapped.planId}`;
     req.authenticate([{ httpBasic: true }]);
-    return req.callAsJson(getPlanItemResponseSchema, requestOptions);
+    return req.callAsJson(getPlanResponseSchema, requestOptions);
   }
 
   /**
@@ -109,122 +106,6 @@ export class PlansController extends BaseController {
     req.appendTemplatePath`/Plans/${mapped.planId}/metadata`;
     req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getPlanResponseSchema, requestOptions);
-  }
-
-  /**
-   * Creates a new plan
-   *
-   * @param body            Request for creating a plan
-   * @param idempotencyKey
-   * @return Response from the API call
-   */
-  async createPlan(
-    body: CreatePlanRequest,
-    idempotencyKey?: string,
-    requestOptions?: RequestOptions
-  ): Promise<ApiResponse<GetPlanResponse>> {
-    const req = this.createRequest('POST', '/plans');
-    const mapped = req.prepareArgs({
-      body: [body, createPlanRequestSchema],
-      idempotencyKey: [idempotencyKey, optional(string())],
-    });
-    req.header('idempotency-key', mapped.idempotencyKey);
-    req.json(mapped.body);
-    req.authenticate([{ httpBasic: true }]);
-    return req.callAsJson(getPlanResponseSchema, requestOptions);
-  }
-
-  /**
-   * Updates a plan
-   *
-   * @param planId          Plan id
-   * @param request         Request for updating a plan
-   * @param idempotencyKey
-   * @return Response from the API call
-   */
-  async updatePlan(
-    planId: string,
-    request: UpdatePlanRequest,
-    idempotencyKey?: string,
-    requestOptions?: RequestOptions
-  ): Promise<ApiResponse<GetPlanResponse>> {
-    const req = this.createRequest('PUT');
-    const mapped = req.prepareArgs({
-      planId: [planId, string()],
-      request: [request, updatePlanRequestSchema],
-      idempotencyKey: [idempotencyKey, optional(string())],
-    });
-    req.header('idempotency-key', mapped.idempotencyKey);
-    req.json(mapped.request);
-    req.appendTemplatePath`/plans/${mapped.planId}`;
-    req.authenticate([{ httpBasic: true }]);
-    return req.callAsJson(getPlanResponseSchema, requestOptions);
-  }
-
-  /**
-   * Deletes a plan
-   *
-   * @param planId          Plan id
-   * @param idempotencyKey
-   * @return Response from the API call
-   */
-  async deletePlan(
-    planId: string,
-    idempotencyKey?: string,
-    requestOptions?: RequestOptions
-  ): Promise<ApiResponse<GetPlanResponse>> {
-    const req = this.createRequest('DELETE');
-    const mapped = req.prepareArgs({
-      planId: [planId, string()],
-      idempotencyKey: [idempotencyKey, optional(string())],
-    });
-    req.header('idempotency-key', mapped.idempotencyKey);
-    req.appendTemplatePath`/plans/${mapped.planId}`;
-    req.authenticate([{ httpBasic: true }]);
-    return req.callAsJson(getPlanResponseSchema, requestOptions);
-  }
-
-  /**
-   * Gets all plans
-   *
-   * @param page          Page number
-   * @param size          Page size
-   * @param name          Filter for Plan's name
-   * @param status        Filter for Plan's status
-   * @param billingType   Filter for plan's billing type
-   * @param createdSince  Filter for plan's creation date start range
-   * @param createdUntil  Filter for plan's creation date end range
-   * @return Response from the API call
-   */
-  async getPlans(
-    page?: number,
-    size?: number,
-    name?: string,
-    status?: string,
-    billingType?: string,
-    createdSince?: string,
-    createdUntil?: string,
-    requestOptions?: RequestOptions
-  ): Promise<ApiResponse<ListPlansResponse>> {
-    const req = this.createRequest('GET', '/plans');
-    const mapped = req.prepareArgs({
-      page: [page, optional(number())],
-      size: [size, optional(number())],
-      name: [name, optional(string())],
-      status: [status, optional(string())],
-      billingType: [billingType, optional(string())],
-      createdSince: [createdSince, optional(string())],
-      createdUntil: [createdUntil, optional(string())],
-    });
-    req.query('page', mapped.page);
-    req.query('size', mapped.size);
-    req.query('name', mapped.name);
-    req.query('status', mapped.status);
-    req.query('billing_type', mapped.billingType);
-    req.query('created_since', mapped.createdSince);
-    req.query('created_until', mapped.createdUntil);
-    req.authenticate([{ httpBasic: true }]);
-    return req.callAsJson(listPlansResponseSchema, requestOptions);
   }
 
   /**
@@ -304,5 +185,124 @@ export class PlansController extends BaseController {
     req.appendTemplatePath`/plans/${mapped.planId}/items/${mapped.planItemId}`;
     req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getPlanItemResponseSchema, requestOptions);
+  }
+
+  /**
+   * Creates a new plan
+   *
+   * @param body            Request for creating a plan
+   * @param idempotencyKey
+   * @return Response from the API call
+   */
+  async createPlan(
+    body: CreatePlanRequest,
+    idempotencyKey?: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<GetPlanResponse>> {
+    const req = this.createRequest('POST', '/plans');
+    const mapped = req.prepareArgs({
+      body: [body, createPlanRequestSchema],
+      idempotencyKey: [idempotencyKey, optional(string())],
+    });
+    req.header('idempotency-key', mapped.idempotencyKey);
+    req.json(mapped.body);
+    req.authenticate([{ httpBasic: true }]);
+    return req.callAsJson(getPlanResponseSchema, requestOptions);
+  }
+
+  /**
+   * Removes an item from a plan
+   *
+   * @param planId          Plan id
+   * @param planItemId      Plan item id
+   * @param idempotencyKey
+   * @return Response from the API call
+   */
+  async deletePlanItem(
+    planId: string,
+    planItemId: string,
+    idempotencyKey?: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<GetPlanItemResponse>> {
+    const req = this.createRequest('DELETE');
+    const mapped = req.prepareArgs({
+      planId: [planId, string()],
+      planItemId: [planItemId, string()],
+      idempotencyKey: [idempotencyKey, optional(string())],
+    });
+    req.header('idempotency-key', mapped.idempotencyKey);
+    req.appendTemplatePath`/plans/${mapped.planId}/items/${mapped.planItemId}`;
+    req.authenticate([{ httpBasic: true }]);
+    return req.callAsJson(getPlanItemResponseSchema, requestOptions);
+  }
+
+  /**
+   * Gets all plans
+   *
+   * @param page          Page number
+   * @param size          Page size
+   * @param name          Filter for Plan's name
+   * @param status        Filter for Plan's status
+   * @param billingType   Filter for plan's billing type
+   * @param createdSince  Filter for plan's creation date start range
+   * @param createdUntil  Filter for plan's creation date end range
+   * @return Response from the API call
+   */
+  async getPlans(
+    page?: number,
+    size?: number,
+    name?: string,
+    status?: string,
+    billingType?: string,
+    createdSince?: string,
+    createdUntil?: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<ListPlansResponse>> {
+    const req = this.createRequest('GET', '/plans');
+    const mapped = req.prepareArgs({
+      page: [page, optional(number())],
+      size: [size, optional(number())],
+      name: [name, optional(string())],
+      status: [status, optional(string())],
+      billingType: [billingType, optional(string())],
+      createdSince: [createdSince, optional(string())],
+      createdUntil: [createdUntil, optional(string())],
+    });
+    req.query('page', mapped.page);
+    req.query('size', mapped.size);
+    req.query('name', mapped.name);
+    req.query('status', mapped.status);
+    req.query('billing_type', mapped.billingType);
+    req.query('created_since', mapped.createdSince);
+    req.query('created_until', mapped.createdUntil);
+    req.authenticate([{ httpBasic: true }]);
+    return req.callAsJson(listPlansResponseSchema, requestOptions);
+  }
+
+  /**
+   * Updates a plan
+   *
+   * @param planId          Plan id
+   * @param request         Request for updating a plan
+   * @param idempotencyKey
+   * @return Response from the API call
+   */
+  async updatePlan(
+    planId: string,
+    request: UpdatePlanRequest,
+    idempotencyKey?: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<GetPlanResponse>> {
+    const req = this.createRequest('PUT');
+    const mapped = req.prepareArgs({
+      planId: [planId, string()],
+      request: [request, updatePlanRequestSchema],
+      idempotencyKey: [idempotencyKey, optional(string())],
+    });
+    req.header('idempotency-key', mapped.idempotencyKey);
+    req.json(mapped.request);
+    req.appendTemplatePath`/plans/${mapped.planId}`;
+    req.authenticate([{ httpBasic: true }]);
+    return req.callAsJson(getPlanResponseSchema, requestOptions);
   }
 }
