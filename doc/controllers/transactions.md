@@ -12,8 +12,10 @@ const transactionsController = new TransactionsController(client);
 # Get Transaction
 
 ```ts
-async getTransaction(  transactionId: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<GetTransactionResponse>>
+async getTransaction(
+  transactionId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetTransactionResponse>>
 ```
 
 ## Parameters
@@ -25,7 +27,7 @@ requestOptions?: RequestOptions): Promise<ApiResponse<GetTransactionResponse>>
 
 ## Response Type
 
-[`GetTransactionResponse`](../../doc/models/get-transaction-response.md)
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [GetTransactionResponse](../../doc/models/get-transaction-response.md).
 
 ## Example Usage
 

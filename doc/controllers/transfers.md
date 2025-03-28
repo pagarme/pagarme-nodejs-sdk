@@ -11,15 +11,17 @@ const transfersController = new TransfersController(client);
 ## Methods
 
 * [Get Transfer by Id](../../doc/controllers/transfers.md#get-transfer-by-id)
-* [Get Transfers](../../doc/controllers/transfers.md#get-transfers)
 * [Create Transfer](../../doc/controllers/transfers.md#create-transfer)
+* [Get Transfers](../../doc/controllers/transfers.md#get-transfers)
 
 
 # Get Transfer by Id
 
 ```ts
-async getTransferById(  transferId: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<GetTransfer>>
+async getTransferById(
+  transferId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetTransfer>>
 ```
 
 ## Parameters
@@ -31,7 +33,7 @@ requestOptions?: RequestOptions): Promise<ApiResponse<GetTransfer>>
 
 ## Response Type
 
-[`GetTransfer`](../../doc/models/get-transfer.md)
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [GetTransfer](../../doc/models/get-transfer.md).
 
 ## Example Usage
 
@@ -51,45 +53,13 @@ try {
 ```
 
 
-# Get Transfers
-
-Gets all transfers
-
-```ts
-async getTransfers(requestOptions?: RequestOptions): Promise<ApiResponse<ListTransfers>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-[`ListTransfers`](../../doc/models/list-transfers.md)
-
-## Example Usage
-
-```ts
-try {
-  const { result, ...httpResponse } = await transfersController.getTransfers();
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
 # Create Transfer
 
 ```ts
-async createTransfer(  request: CreateTransfer,
-requestOptions?: RequestOptions): Promise<ApiResponse<GetTransfer>>
+async createTransfer(
+  request: CreateTransfer,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetTransfer>>
 ```
 
 ## Parameters
@@ -101,7 +71,7 @@ requestOptions?: RequestOptions): Promise<ApiResponse<GetTransfer>>
 
 ## Response Type
 
-[`GetTransfer`](../../doc/models/get-transfer.md)
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [GetTransfer](../../doc/models/get-transfer.md).
 
 ## Example Usage
 
@@ -114,6 +84,42 @@ const request: CreateTransfer = {
 
 try {
   const { result, ...httpResponse } = await transfersController.createTransfer(request);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Get Transfers
+
+Gets all transfers
+
+```ts
+async getTransfers(
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<ListTransfers>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [ListTransfers](../../doc/models/list-transfers.md).
+
+## Example Usage
+
+```ts
+try {
+  const { result, ...httpResponse } = await transfersController.getTransfers();
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {

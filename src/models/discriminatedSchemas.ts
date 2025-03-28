@@ -72,13 +72,13 @@ import {
 
 export const discriminatedGetTransactionResponseSchema: Schema<
   | GetTransactionResponse
+  | GetBankTransferTransactionResponse
   | GetSafetyPayTransactionResponse
   | GetVoucherTransactionResponse
-  | GetBankTransferTransactionResponse
   | GetBoletoTransactionResponse
   | GetDebitCardTransactionResponse
-  | GetCashTransactionResponse
   | GetPrivateLabelTransactionResponse
+  | GetCashTransactionResponse
   | GetCreditCardTransactionResponse
   | GetPixTransactionResponse
 > = discriminatedObject(
@@ -86,13 +86,13 @@ export const discriminatedGetTransactionResponseSchema: Schema<
   'transaction_type',
   {
     'transaction': getTransactionResponseSchema,
+    'bank_transfer': getBankTransferTransactionResponseSchema,
     'safetypay': getSafetyPayTransactionResponseSchema,
     'voucher': getVoucherTransactionResponseSchema,
-    'bank_transfer': getBankTransferTransactionResponseSchema,
     'boleto': getBoletoTransactionResponseSchema,
     'debit_card': getDebitCardTransactionResponseSchema,
-    'cash': getCashTransactionResponseSchema,
     'private_label': getPrivateLabelTransactionResponseSchema,
+    'cash': getCashTransactionResponseSchema,
     'credit_card': getCreditCardTransactionResponseSchema,
     'pix': getPixTransactionResponseSchema,
   },
@@ -100,9 +100,9 @@ export const discriminatedGetTransactionResponseSchema: Schema<
 );
 export const discriminatedGetMovementObjectBaseResponseSchema: Schema<
   | GetMovementObjectBaseResponse
+  | GetMovementObjectRefundResponse
   | GetMovementObjectFeeCollectionResponse
   | GetMovementObjectPayableResponse
-  | GetMovementObjectRefundResponse
   | GetMovementObjectTransferResponse
   | GetMovementObjectSettlementResponse
 > = discriminatedObject(
@@ -110,9 +110,9 @@ export const discriminatedGetMovementObjectBaseResponseSchema: Schema<
   'object',
   {
     'MovementObject': getMovementObjectBaseResponseSchema,
+    'refund': getMovementObjectRefundResponseSchema,
     'feeCollection': getMovementObjectFeeCollectionResponseSchema,
     'payable': getMovementObjectPayableResponseSchema,
-    'refund': getMovementObjectRefundResponseSchema,
     'transfer': getMovementObjectTransferResponseSchema,
     'settlement': getMovementObjectSettlementResponseSchema,
   },

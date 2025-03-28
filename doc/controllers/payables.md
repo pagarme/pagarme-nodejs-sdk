@@ -17,7 +17,8 @@ const payablesController = new PayablesController(client);
 # Get Payables
 
 ```ts
-async getPayables(  type?: string,
+async getPayables(
+  type?: string,
   splitId?: string,
   bulkAnticipationId?: string,
   installment?: number,
@@ -35,7 +36,8 @@ async getPayables(  type?: string,
   page?: number,
   size?: number,
   gatewayId?: bigint,
-requestOptions?: RequestOptions): Promise<ApiResponse<ListPayablesResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<ListPayablesResponse>>
 ```
 
 ## Parameters
@@ -64,7 +66,7 @@ requestOptions?: RequestOptions): Promise<ApiResponse<ListPayablesResponse>>
 
 ## Response Type
 
-[`ListPayablesResponse`](../../doc/models/list-payables-response.md)
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [ListPayablesResponse](../../doc/models/list-payables-response.md).
 
 ## Example Usage
 
@@ -85,8 +87,10 @@ try {
 # Get Payable by Id
 
 ```ts
-async getPayableById(  id: bigint,
-requestOptions?: RequestOptions): Promise<ApiResponse<GetPayableResponse>>
+async getPayableById(
+  id: bigint,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetPayableResponse>>
 ```
 
 ## Parameters
@@ -98,7 +102,7 @@ requestOptions?: RequestOptions): Promise<ApiResponse<GetPayableResponse>>
 
 ## Response Type
 
-[`GetPayableResponse`](../../doc/models/get-payable-response.md)
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [GetPayableResponse](../../doc/models/get-payable-response.md).
 
 ## Example Usage
 
