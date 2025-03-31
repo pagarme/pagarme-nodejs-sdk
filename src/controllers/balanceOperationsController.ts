@@ -18,21 +18,6 @@ import { BaseController } from './baseController';
 
 export class BalanceOperationsController extends BaseController {
   /**
-   * @param id
-   * @return Response from the API call
-   */
-  async getBalanceOperationById(
-    id: bigint,
-    requestOptions?: RequestOptions
-  ): Promise<ApiResponse<GetBalanceOperationResponse>> {
-    const req = this.createRequest('GET');
-    const mapped = req.prepareArgs({ id: [id, bigint()] });
-    req.appendTemplatePath`/balance/operations/${mapped.id}`;
-    req.authenticate([{ httpBasic: true }]);
-    return req.callAsJson(getBalanceOperationResponseSchema, requestOptions);
-  }
-
-  /**
    * @param status
    * @param createdSince
    * @param createdUntil
@@ -59,5 +44,20 @@ export class BalanceOperationsController extends BaseController {
     req.query('recipient_id', mapped.recipientId);
     req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(listBalanceOperationResponseSchema, requestOptions);
+  }
+
+  /**
+   * @param id
+   * @return Response from the API call
+   */
+  async getBalanceOperationById(
+    id: bigint,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<GetBalanceOperationResponse>> {
+    const req = this.createRequest('GET');
+    const mapped = req.prepareArgs({ id: [id, bigint()] });
+    req.appendTemplatePath`/balance/operations/${mapped.id}`;
+    req.authenticate([{ httpBasic: true }]);
+    return req.callAsJson(getBalanceOperationResponseSchema, requestOptions);
   }
 }

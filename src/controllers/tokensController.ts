@@ -18,28 +18,6 @@ import { BaseController } from './baseController';
 
 export class TokensController extends BaseController {
   /**
-   * Gets a token from its id
-   *
-   * @param id         Token id
-   * @param publicKey  Public key
-   * @return Response from the API call
-   */
-  async getToken(
-    id: string,
-    publicKey: string,
-    requestOptions?: RequestOptions
-  ): Promise<ApiResponse<GetTokenResponse>> {
-    const req = this.createRequest('GET');
-    const mapped = req.prepareArgs({
-      id: [id, string()],
-      publicKey: [publicKey, string()],
-    });
-    req.appendTemplatePath`/tokens/${mapped.id}?appId=${mapped.publicKey}`;
-    req.authenticate(false);
-    return req.callAsJson(getTokenResponseSchema, requestOptions);
-  }
-
-  /**
    * @param publicKey       Public key
    * @param request         Request for creating a token
    * @param idempotencyKey
@@ -60,6 +38,28 @@ export class TokensController extends BaseController {
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.request);
     req.appendTemplatePath`/tokens?appId=${mapped.publicKey}`;
+    req.authenticate(false);
+    return req.callAsJson(getTokenResponseSchema, requestOptions);
+  }
+
+  /**
+   * Gets a token from its id
+   *
+   * @param id         Token id
+   * @param publicKey  Public key
+   * @return Response from the API call
+   */
+  async getToken(
+    id: string,
+    publicKey: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<GetTokenResponse>> {
+    const req = this.createRequest('GET');
+    const mapped = req.prepareArgs({
+      id: [id, string()],
+      publicKey: [publicKey, string()],
+    });
+    req.appendTemplatePath`/tokens/${mapped.id}?appId=${mapped.publicKey}`;
     req.authenticate(false);
     return req.callAsJson(getTokenResponseSchema, requestOptions);
   }
