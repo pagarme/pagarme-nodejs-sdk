@@ -11,7 +11,7 @@ Request for creating an order item
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `amount` | `number` | Required | Amount |
+| `amount` | `number` | Required | Amount (in cents) |
 | `description` | `string` | Required | Description |
 | `quantity` | `number` | Required | Quantity |
 | `category` | `string` | Required | Category |
