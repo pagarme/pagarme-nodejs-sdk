@@ -71,38 +71,17 @@ npm install
 
 ## Initialize the API Client
 
-**_Note:_** Documentation for the client can be found [here.](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.16/doc/client.md)
+**_Note:_** Documentation for the client can be found [here.](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.17/doc/client.md)
 
 The following parameters are configurable for the API Client:
 
 | Parameter | Type | Description |
 |  --- | --- | --- |
-| `serviceRefererName` | `string` |  |
-| `timeout` | `number` | Timeout for API calls.<br>*Default*: `0` |
-| `httpClientOptions` | `Partial<HttpClientOptions>` | Stable configurable http client options. |
-| `unstableHttpClientOptions` | `any` | Unstable configurable http client options. |
-| `basicAuthCredentials` | [`BasicAuthCredentials`](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.16/doc/auth/basic-authentication.md) | The credential object for basicAuth |
-
-### HttpClientOptions
-
-| Parameter | Type | Description |
-|  --- | --- | --- |
-| `timeout` | `number` | Timeout in milliseconds. |
-| `httpAgent` | `any` | Custom http agent to be used when performing http requests. |
-| `httpsAgent` | `any` | Custom https agent to be used when performing http requests. |
-| `retryConfig` | `Partial<RetryConfiguration>` | Configurations to retry requests. |
-
-### RetryConfiguration
-
-| Parameter | Type | Description |
-|  --- | --- | --- |
-| `maxNumberOfRetries` | `number` | Maximum number of retries. <br> *Default*: `0` |
-| `retryOnTimeout` | `boolean` | Whether to retry on request timeout. <br> *Default*: `true` |
-| `retryInterval` | `number` | Interval before next retry. Used in calculation of wait time for next request in case of failure. <br> *Default*: `1` |
-| `maximumRetryWaitTime` | `number` | Overall wait time for the requests getting retried. <br> *Default*: `0` |
-| `backoffFactor` | `number` | Used in calculation of wait time for next request in case of failure. <br> *Default*: `2` |
-| `httpStatusCodesToRetry` | `number[]` | Http status codes to retry against. <br> *Default*: `[408, 413, 429, 500, 502, 503, 504, 521, 522, 524]` |
-| `httpMethodsToRetry` | `HttpMethod[]` | Http methods to retry against. <br> *Default*: `['GET', 'PUT']` |
+| serviceRefererName | `string` |  |
+| timeout | `number` | Timeout for API calls.<br>*Default*: `0` |
+| httpClientOptions | [`Partial<HttpClientOptions>`](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.17/doc/http-client-options.md) | Stable configurable http client options. |
+| unstableHttpClientOptions | `any` | Unstable configurable http client options. |
+| basicAuthCredentials | [`BasicAuthCredentials`](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.17/doc/auth/basic-authentication.md) | The credential object for basicAuth |
 
 The API client can be initialized as follows:
 
@@ -121,7 +100,7 @@ const client = new Client({
 
 This API uses the following authentication schemes.
 
-* [`httpBasic (Basic Authentication)`](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.16/doc/auth/basic-authentication.md)
+* [`httpBasic (Basic Authentication)`](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.17/doc/auth/basic-authentication.md)
 
 ## API Errors
 
@@ -129,31 +108,41 @@ Here is the list of errors that the API might throw.
 
 | HTTP Status Code | Error Description | Exception Class |
 |  --- | --- | --- |
-| 400 | Invalid request | [`CustomError`](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.16/doc/models/custom-error.md) |
-| 401 | Invalid API key | [`CustomError`](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.16/doc/models/custom-error.md) |
-| 404 | An informed resource was not found | [`CustomError`](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.16/doc/models/custom-error.md) |
-| 412 | Business validation error | [`CustomError`](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.16/doc/models/custom-error.md) |
-| 422 | Contract validation error | [`CustomError`](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.16/doc/models/custom-error.md) |
-| 500 | Internal server error | [`CustomError`](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.16/doc/models/custom-error.md) |
+| 400 | Invalid request | [`CustomError`](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.17/doc/models/custom-error.md) |
+| 401 | Invalid API key | [`CustomError`](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.17/doc/models/custom-error.md) |
+| 404 | An informed resource was not found | [`CustomError`](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.17/doc/models/custom-error.md) |
+| 412 | Business validation error | [`CustomError`](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.17/doc/models/custom-error.md) |
+| 422 | Contract validation error | [`CustomError`](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.17/doc/models/custom-error.md) |
+| 500 | Internal server error | [`CustomError`](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.17/doc/models/custom-error.md) |
 
 ## List of APIs
 
-* [Subscriptions](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.16/doc/controllers/subscriptions.md)
-* [Orders](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.16/doc/controllers/orders.md)
-* [Plans](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.16/doc/controllers/plans.md)
-* [Invoices](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.16/doc/controllers/invoices.md)
-* [Customers](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.16/doc/controllers/customers.md)
-* [Charges](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.16/doc/controllers/charges.md)
-* [Recipients](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.16/doc/controllers/recipients.md)
-* [Tokens](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.16/doc/controllers/tokens.md)
-* [Transactions](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.16/doc/controllers/transactions.md)
-* [Transfers](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.16/doc/controllers/transfers.md)
-* [Payables](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.16/doc/controllers/payables.md)
-* [Balance Operations](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.16/doc/controllers/balance-operations.md)
+* [Subscriptions](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.17/doc/controllers/subscriptions.md)
+* [Orders](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.17/doc/controllers/orders.md)
+* [Plans](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.17/doc/controllers/plans.md)
+* [Invoices](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.17/doc/controllers/invoices.md)
+* [Customers](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.17/doc/controllers/customers.md)
+* [Charges](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.17/doc/controllers/charges.md)
+* [Recipients](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.17/doc/controllers/recipients.md)
+* [Tokens](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.17/doc/controllers/tokens.md)
+* [Transactions](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.17/doc/controllers/transactions.md)
+* [Transfers](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.17/doc/controllers/transfers.md)
+* [Payables](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.17/doc/controllers/payables.md)
+* [Balance Operations](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.17/doc/controllers/balance-operations.md)
 
-## Classes Documentation
+## SDK Infrastructure
 
-* [ApiResponse](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.16/doc/api-response.md)
-* [HttpRequest](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.16/doc/http-request.md)
-* [ApiError](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.16/doc/api-error.md)
+### Configuration
+
+* [HttpClientOptions](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.17/doc/http-client-options.md)
+* [RetryConfiguration](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.17/doc/retry-configuration.md)
+
+### HTTP
+
+* [HttpRequest](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.17/doc/http-request.md)
+
+### Utilities
+
+* [ApiResponse](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.17/doc/api-response.md)
+* [ApiError](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.17/doc/api-error.md)
 

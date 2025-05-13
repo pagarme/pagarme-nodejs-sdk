@@ -20,7 +20,7 @@ Card data
 | `brand` | `string \| undefined` | Optional | Card brand |
 | `billingAddressId` | `string \| undefined` | Optional | The address id for the billing address |
 | `metadata` | `Record<string, string> \| undefined` | Optional | Metadata |
-| `type` | `string \| undefined` | Optional | Card type<br>**Default**: `'credit'` |
+| `type` | `string \| undefined` | Optional | Card type<br><br>**Default**: `'credit'` |
 | `options` | [`CreateCardOptionsRequest \| undefined`](../../doc/models/create-card-options-request.md) | Optional | Options for creating the card |
 | `holderDocument` | `string \| undefined` | Optional | Document number for the card's holder |
 | `privateLabel` | `boolean \| undefined` | Optional | Indicates whether it is a private label card |

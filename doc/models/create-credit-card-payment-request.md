@@ -11,13 +11,13 @@ The settings for creating a credit card payment
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `installments` | `number \| undefined` | Optional | Number of installments<br>**Default**: `1` |
+| `installments` | `number \| undefined` | Optional | Number of installments<br><br>**Default**: `1` |
 | `statementDescriptor` | `string \| undefined` | Optional | The text that will be shown on the credit card's statement |
 | `card` | [`CreateCardRequest \| undefined`](../../doc/models/create-card-request.md) | Optional | Credit card data |
 | `cardId` | `string \| undefined` | Optional | The credit card id |
 | `cardToken` | `string \| undefined` | Optional | - |
 | `recurrence` | `boolean \| undefined` | Optional | Indicates a recurrence |
-| `capture` | `boolean \| undefined` | Optional | Indicates if the operation should be only authorization or auth and capture.<br>**Default**: `true` |
+| `capture` | `boolean \| undefined` | Optional | Indicates if the operation should be only authorization or auth and capture.<br><br>**Default**: `true` |
 | `extendedLimitEnabled` | `boolean \| undefined` | Optional | Indicates whether the extended label (private label) is enabled |
 | `extendedLimitCode` | `string \| undefined` | Optional | Extended Limit Code |
 | `merchantCategoryCode` | `bigint \| undefined` | Optional | Customer business segment code |

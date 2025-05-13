@@ -34,6 +34,8 @@ export interface CreateSubMerchantRequest {
   address: CreateAddressRequest;
   /** Legal name */
   legalName: string;
+  /** Site Url */
+  siteUrl: string;
 }
 
 export const createSubMerchantRequestSchema: Schema<CreateSubMerchantRequest> = object(
@@ -47,5 +49,6 @@ export const createSubMerchantRequestSchema: Schema<CreateSubMerchantRequest> = 
     phone: ['phone', lazy(() => createPhoneRequestSchema)],
     address: ['address', lazy(() => createAddressRequestSchema)],
     legalName: ['legal_name', string()],
+    siteUrl: ['site_url', string()],
   }
 );

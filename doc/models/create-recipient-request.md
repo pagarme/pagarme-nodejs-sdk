@@ -20,7 +20,7 @@ Request for creating a recipient
 | `metadata` | `Record<string, string>` | Required | Metadata |
 | `transferSettings` | [`CreateTransferSettingsRequest \| undefined`](../../doc/models/create-transfer-settings-request.md) | Optional | Receiver Transfer Information |
 | `code` | `string` | Required | Recipient code |
-| `paymentMode` | `string` | Required | Payment mode<br>**Default**: `'bank_transfer'` |
+| `paymentMode` | `string` | Required | Payment mode<br><br>**Default**: `'bank_transfer'` |
 | `registerInformation` | [`CreateRegisterInformationBaseRequest \| null \| undefined`](../../doc/models/create-register-information-base-request.md) | Optional | Register Information |
 
 ## Example (as JSON)
