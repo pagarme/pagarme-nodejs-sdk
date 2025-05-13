@@ -42,6 +42,115 @@ import { BaseController } from './baseController';
 
 export class OrdersController extends BaseController {
   /**
+   * @param orderId         Order Id
+   * @param idempotencyKey
+   * @return Response from the API call
+   */
+  async deleteAllOrderItems(
+    orderId: string,
+    idempotencyKey?: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<GetOrderResponse>> {
+    const req = this.createRequest('DELETE');
+    const mapped = req.prepareArgs({
+      orderId: [orderId, string()],
+      idempotencyKey: [idempotencyKey, optional(string())],
+    });
+    req.header('idempotency-key', mapped.idempotencyKey);
+    req.appendTemplatePath`/orders/${mapped.orderId}/items`;
+    req.authenticate([{ httpBasic: true }]);
+    return req.callAsJson(getOrderResponseSchema, requestOptions);
+  }
+
+  /**
+   * @param orderId Order Id
+   * @param itemId  Item Id
+   * @return Response from the API call
+   */
+  async getOrderItem(
+    orderId: string,
+    itemId: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<GetOrderItemResponse>> {
+    const req = this.createRequest('GET');
+    const mapped = req.prepareArgs({
+      orderId: [orderId, string()],
+      itemId: [itemId, string()],
+    });
+    req.appendTemplatePath`/orders/${mapped.orderId}/items/${mapped.itemId}`;
+    req.authenticate([{ httpBasic: true }]);
+    return req.callAsJson(getOrderItemResponseSchema, requestOptions);
+  }
+
+  /**
+   * Updates the metadata from an order
+   *
+   * @param orderId         The order id
+   * @param request         Request for updating the order metadata
+   * @param idempotencyKey
+   * @return Response from the API call
+   */
+  async updateOrderMetadata(
+    orderId: string,
+    request: UpdateMetadataRequest,
+    idempotencyKey?: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<GetOrderResponse>> {
+    const req = this.createRequest('PATCH');
+    const mapped = req.prepareArgs({
+      orderId: [orderId, string()],
+      request: [request, updateMetadataRequestSchema],
+      idempotencyKey: [idempotencyKey, optional(string())],
+    });
+    req.header('idempotency-key', mapped.idempotencyKey);
+    req.json(mapped.request);
+    req.appendTemplatePath`/Orders/${mapped.orderId}/metadata`;
+    req.authenticate([{ httpBasic: true }]);
+    return req.callAsJson(getOrderResponseSchema, requestOptions);
+  }
+
+  /**
+   * @param orderId         Order Id
+   * @param itemId          Item Id
+   * @param idempotencyKey
+   * @return Response from the API call
+   */
+  async deleteOrderItem(
+    orderId: string,
+    itemId: string,
+    idempotencyKey?: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<GetOrderItemResponse>> {
+    const req = this.createRequest('DELETE');
+    const mapped = req.prepareArgs({
+      orderId: [orderId, string()],
+      itemId: [itemId, string()],
+      idempotencyKey: [idempotencyKey, optional(string())],
+    });
+    req.header('idempotency-key', mapped.idempotencyKey);
+    req.appendTemplatePath`/orders/${mapped.orderId}/items/${mapped.itemId}`;
+    req.authenticate([{ httpBasic: true }]);
+    return req.callAsJson(getOrderItemResponseSchema, requestOptions);
+  }
+
+  /**
+   * Gets an order
+   *
+   * @param orderId  Order id
+   * @return Response from the API call
+   */
+  async getOrder(
+    orderId: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<GetOrderResponse>> {
+    const req = this.createRequest('GET');
+    const mapped = req.prepareArgs({ orderId: [orderId, string()] });
+    req.appendTemplatePath`/orders/${mapped.orderId}`;
+    req.authenticate([{ httpBasic: true }]);
+    return req.callAsJson(getOrderResponseSchema, requestOptions);
+  }
+
+  /**
    * Gets all orders
    *
    * @param page          Page number
@@ -107,51 +216,6 @@ export class OrdersController extends BaseController {
     });
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.request);
-    req.appendTemplatePath`/orders/${mapped.orderId}/items/${mapped.itemId}`;
-    req.authenticate([{ httpBasic: true }]);
-    return req.callAsJson(getOrderItemResponseSchema, requestOptions);
-  }
-
-  /**
-   * @param orderId         Order Id
-   * @param idempotencyKey
-   * @return Response from the API call
-   */
-  async deleteAllOrderItems(
-    orderId: string,
-    idempotencyKey?: string,
-    requestOptions?: RequestOptions
-  ): Promise<ApiResponse<GetOrderResponse>> {
-    const req = this.createRequest('DELETE');
-    const mapped = req.prepareArgs({
-      orderId: [orderId, string()],
-      idempotencyKey: [idempotencyKey, optional(string())],
-    });
-    req.header('idempotency-key', mapped.idempotencyKey);
-    req.appendTemplatePath`/orders/${mapped.orderId}/items`;
-    req.authenticate([{ httpBasic: true }]);
-    return req.callAsJson(getOrderResponseSchema, requestOptions);
-  }
-
-  /**
-   * @param orderId         Order Id
-   * @param itemId          Item Id
-   * @param idempotencyKey
-   * @return Response from the API call
-   */
-  async deleteOrderItem(
-    orderId: string,
-    itemId: string,
-    idempotencyKey?: string,
-    requestOptions?: RequestOptions
-  ): Promise<ApiResponse<GetOrderItemResponse>> {
-    const req = this.createRequest('DELETE');
-    const mapped = req.prepareArgs({
-      orderId: [orderId, string()],
-      itemId: [itemId, string()],
-      idempotencyKey: [idempotencyKey, optional(string())],
-    });
-    req.header('idempotency-key', mapped.idempotencyKey);
     req.appendTemplatePath`/orders/${mapped.orderId}/items/${mapped.itemId}`;
     req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getOrderItemResponseSchema, requestOptions);
@@ -228,69 +292,5 @@ export class OrdersController extends BaseController {
     req.appendTemplatePath`/orders/${mapped.orderId}/items`;
     req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getOrderItemResponseSchema, requestOptions);
-  }
-
-  /**
-   * @param orderId Order Id
-   * @param itemId  Item Id
-   * @return Response from the API call
-   */
-  async getOrderItem(
-    orderId: string,
-    itemId: string,
-    requestOptions?: RequestOptions
-  ): Promise<ApiResponse<GetOrderItemResponse>> {
-    const req = this.createRequest('GET');
-    const mapped = req.prepareArgs({
-      orderId: [orderId, string()],
-      itemId: [itemId, string()],
-    });
-    req.appendTemplatePath`/orders/${mapped.orderId}/items/${mapped.itemId}`;
-    req.authenticate([{ httpBasic: true }]);
-    return req.callAsJson(getOrderItemResponseSchema, requestOptions);
-  }
-
-  /**
-   * Updates the metadata from an order
-   *
-   * @param orderId         The order id
-   * @param request         Request for updating the order metadata
-   * @param idempotencyKey
-   * @return Response from the API call
-   */
-  async updateOrderMetadata(
-    orderId: string,
-    request: UpdateMetadataRequest,
-    idempotencyKey?: string,
-    requestOptions?: RequestOptions
-  ): Promise<ApiResponse<GetOrderResponse>> {
-    const req = this.createRequest('PATCH');
-    const mapped = req.prepareArgs({
-      orderId: [orderId, string()],
-      request: [request, updateMetadataRequestSchema],
-      idempotencyKey: [idempotencyKey, optional(string())],
-    });
-    req.header('idempotency-key', mapped.idempotencyKey);
-    req.json(mapped.request);
-    req.appendTemplatePath`/Orders/${mapped.orderId}/metadata`;
-    req.authenticate([{ httpBasic: true }]);
-    return req.callAsJson(getOrderResponseSchema, requestOptions);
-  }
-
-  /**
-   * Gets an order
-   *
-   * @param orderId  Order id
-   * @return Response from the API call
-   */
-  async getOrder(
-    orderId: string,
-    requestOptions?: RequestOptions
-  ): Promise<ApiResponse<GetOrderResponse>> {
-    const req = this.createRequest('GET');
-    const mapped = req.prepareArgs({ orderId: [orderId, string()] });
-    req.appendTemplatePath`/orders/${mapped.orderId}`;
-    req.authenticate([{ httpBasic: true }]);
-    return req.callAsJson(getOrderResponseSchema, requestOptions);
   }
 }

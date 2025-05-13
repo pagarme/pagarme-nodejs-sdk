@@ -121,57 +121,57 @@ export class RecipientsController extends BaseController {
   }
 
   /**
-   * Creates an anticipation
-   *
-   * @param recipientId     Recipient id
-   * @param request         Anticipation data
-   * @param idempotencyKey
+   * @param recipientId
+   * @param withdrawalId
    * @return Response from the API call
    */
-  async createAnticipation(
+  async getWithdrawById(
     recipientId: string,
-    request: CreateAnticipationRequest,
-    idempotencyKey?: string,
+    withdrawalId: string,
     requestOptions?: RequestOptions
-  ): Promise<ApiResponse<GetAnticipationResponse>> {
-    const req = this.createRequest('POST');
-    const mapped = req.prepareArgs({
-      recipientId: [recipientId, string()],
-      request: [request, createAnticipationRequestSchema],
-      idempotencyKey: [idempotencyKey, optional(string())],
-    });
-    req.header('idempotency-key', mapped.idempotencyKey);
-    req.json(mapped.request);
-    req.appendTemplatePath`/recipients/${mapped.recipientId}/anticipations`;
-    req.authenticate([{ httpBasic: true }]);
-    return req.callAsJson(getAnticipationResponseSchema, requestOptions);
-  }
-
-  /**
-   * Gets the anticipation limits for a recipient
-   *
-   * @param recipientId  Recipient id
-   * @param timeframe    Timeframe
-   * @param paymentDate  Anticipation payment date
-   * @return Response from the API call
-   */
-  async getAnticipationLimits(
-    recipientId: string,
-    timeframe: string,
-    paymentDate: string,
-    requestOptions?: RequestOptions
-  ): Promise<ApiResponse<GetAnticipationLimitResponse>> {
+  ): Promise<ApiResponse<GetWithdrawResponse>> {
     const req = this.createRequest('GET');
     const mapped = req.prepareArgs({
       recipientId: [recipientId, string()],
-      timeframe: [timeframe, string()],
-      paymentDate: [paymentDate, string()],
+      withdrawalId: [withdrawalId, string()],
     });
-    req.query('timeframe', mapped.timeframe);
-    req.query('payment_date', mapped.paymentDate);
-    req.appendTemplatePath`/recipients/${mapped.recipientId}/anticipation_limits`;
+    req.appendTemplatePath`/recipients/${mapped.recipientId}/withdrawals/${mapped.withdrawalId}`;
     req.authenticate([{ httpBasic: true }]);
-    return req.callAsJson(getAnticipationLimitResponseSchema, requestOptions);
+    return req.callAsJson(getWithdrawResponseSchema, requestOptions);
+  }
+
+  /**
+   * Retrieves recipient information
+   *
+   * @param recipientId  Recipiend id
+   * @return Response from the API call
+   */
+  async getRecipient(
+    recipientId: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<GetRecipientResponse>> {
+    const req = this.createRequest('GET');
+    const mapped = req.prepareArgs({ recipientId: [recipientId, string()] });
+    req.appendTemplatePath`/recipients/${mapped.recipientId}`;
+    req.authenticate([{ httpBasic: true }]);
+    return req.callAsJson(getRecipientResponseSchema, requestOptions);
+  }
+
+  /**
+   * Get balance information for a recipient
+   *
+   * @param recipientId  Recipient id
+   * @return Response from the API call
+   */
+  async getBalance(
+    recipientId: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<GetBalanceResponse>> {
+    const req = this.createRequest('GET');
+    const mapped = req.prepareArgs({ recipientId: [recipientId, string()] });
+    req.appendTemplatePath`/recipients/${mapped.recipientId}/balance`;
+    req.authenticate([{ httpBasic: true }]);
+    return req.callAsJson(getBalanceResponseSchema, requestOptions);
   }
 
   /**
@@ -198,26 +198,6 @@ export class RecipientsController extends BaseController {
   }
 
   /**
-   * @param recipientId
-   * @param withdrawalId
-   * @return Response from the API call
-   */
-  async getWithdrawById(
-    recipientId: string,
-    withdrawalId: string,
-    requestOptions?: RequestOptions
-  ): Promise<ApiResponse<GetWithdrawResponse>> {
-    const req = this.createRequest('GET');
-    const mapped = req.prepareArgs({
-      recipientId: [recipientId, string()],
-      withdrawalId: [withdrawalId, string()],
-    });
-    req.appendTemplatePath`/recipients/${mapped.recipientId}/withdrawals/${mapped.withdrawalId}`;
-    req.authenticate([{ httpBasic: true }]);
-    return req.callAsJson(getWithdrawResponseSchema, requestOptions);
-  }
-
-  /**
    * Updates the default bank account from a recipient
    *
    * @param recipientId     Recipient id
@@ -240,33 +220,6 @@ export class RecipientsController extends BaseController {
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.request);
     req.appendTemplatePath`/recipients/${mapped.recipientId}/default-bank-account`;
-    req.authenticate([{ httpBasic: true }]);
-    return req.callAsJson(getRecipientResponseSchema, requestOptions);
-  }
-
-  /**
-   * Updates recipient metadata
-   *
-   * @param recipientId     Recipient id
-   * @param request         Metadata
-   * @param idempotencyKey
-   * @return Response from the API call
-   */
-  async updateRecipientMetadata(
-    recipientId: string,
-    request: UpdateMetadataRequest,
-    idempotencyKey?: string,
-    requestOptions?: RequestOptions
-  ): Promise<ApiResponse<GetRecipientResponse>> {
-    const req = this.createRequest('PATCH');
-    const mapped = req.prepareArgs({
-      recipientId: [recipientId, string()],
-      request: [request, updateMetadataRequestSchema],
-      idempotencyKey: [idempotencyKey, optional(string())],
-    });
-    req.header('idempotency-key', mapped.idempotencyKey);
-    req.json(mapped.request);
-    req.appendTemplatePath`/recipients/${mapped.recipientId}/metadata`;
     req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getRecipientResponseSchema, requestOptions);
   }
@@ -354,33 +307,6 @@ export class RecipientsController extends BaseController {
   }
 
   /**
-   * Updates recipient metadata
-   *
-   * @param recipientId     Recipient id
-   * @param request         Metadata
-   * @param idempotencyKey
-   * @return Response from the API call
-   */
-  async updateAutomaticAnticipationSettings(
-    recipientId: string,
-    request: UpdateAutomaticAnticipationSettingsRequest,
-    idempotencyKey?: string,
-    requestOptions?: RequestOptions
-  ): Promise<ApiResponse<GetRecipientResponse>> {
-    const req = this.createRequest('PATCH');
-    const mapped = req.prepareArgs({
-      recipientId: [recipientId, string()],
-      request: [request, updateAutomaticAnticipationSettingsRequestSchema],
-      idempotencyKey: [idempotencyKey, optional(string())],
-    });
-    req.header('idempotency-key', mapped.idempotencyKey);
-    req.json(mapped.request);
-    req.appendTemplatePath`/recipients/${mapped.recipientId}/automatic-anticipation-settings`;
-    req.authenticate([{ httpBasic: true }]);
-    return req.callAsJson(getRecipientResponseSchema, requestOptions);
-  }
-
-  /**
    * Gets an anticipation
    *
    * @param recipientId     Recipient id
@@ -423,6 +349,192 @@ export class RecipientsController extends BaseController {
     req.header('idempotency-key', mapped.idempotencyKey);
     req.json(mapped.request);
     req.appendTemplatePath`/recipients/${mapped.recipientId}/transfer-settings`;
+    req.authenticate([{ httpBasic: true }]);
+    return req.callAsJson(getRecipientResponseSchema, requestOptions);
+  }
+
+  /**
+   * Retrieves recipient information
+   *
+   * @param code Recipient code
+   * @return Response from the API call
+   */
+  async getRecipientByCode(
+    code: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<GetRecipientResponse>> {
+    const req = this.createRequest('GET');
+    const mapped = req.prepareArgs({ code: [code, string()] });
+    req.appendTemplatePath`/recipients/${mapped.code}`;
+    req.authenticate([{ httpBasic: true }]);
+    return req.callAsJson(getRecipientResponseSchema, requestOptions);
+  }
+
+  /**
+   * Updates recipient metadata
+   *
+   * @param recipientId     Recipient id
+   * @param request         Metadata
+   * @param idempotencyKey
+   * @return Response from the API call
+   */
+  async updateAutomaticAnticipationSettings(
+    recipientId: string,
+    request: UpdateAutomaticAnticipationSettingsRequest,
+    idempotencyKey?: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<GetRecipientResponse>> {
+    const req = this.createRequest('PATCH');
+    const mapped = req.prepareArgs({
+      recipientId: [recipientId, string()],
+      request: [request, updateAutomaticAnticipationSettingsRequestSchema],
+      idempotencyKey: [idempotencyKey, optional(string())],
+    });
+    req.header('idempotency-key', mapped.idempotencyKey);
+    req.json(mapped.request);
+    req.appendTemplatePath`/recipients/${mapped.recipientId}/automatic-anticipation-settings`;
+    req.authenticate([{ httpBasic: true }]);
+    return req.callAsJson(getRecipientResponseSchema, requestOptions);
+  }
+
+  /**
+   * Creates a transfer for a recipient
+   *
+   * @param recipientId     Recipient Id
+   * @param request         Transfer data
+   * @param idempotencyKey
+   * @return Response from the API call
+   */
+  async createTransfer(
+    recipientId: string,
+    request: CreateTransferRequest,
+    idempotencyKey?: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<GetTransferResponse>> {
+    const req = this.createRequest('POST');
+    const mapped = req.prepareArgs({
+      recipientId: [recipientId, string()],
+      request: [request, createTransferRequestSchema],
+      idempotencyKey: [idempotencyKey, optional(string())],
+    });
+    req.header('idempotency-key', mapped.idempotencyKey);
+    req.json(mapped.request);
+    req.appendTemplatePath`/recipients/${mapped.recipientId}/transfers`;
+    req.authenticate([{ httpBasic: true }]);
+    return req.callAsJson(getTransferResponseSchema, requestOptions);
+  }
+
+  /**
+   * Creates a new recipient
+   *
+   * @param request         Recipient data
+   * @param idempotencyKey
+   * @return Response from the API call
+   */
+  async createRecipient(
+    request: CreateRecipientRequest,
+    idempotencyKey?: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<GetRecipientResponse>> {
+    const req = this.createRequest('POST', '/recipients');
+    const mapped = req.prepareArgs({
+      request: [request, createRecipientRequestSchema],
+      idempotencyKey: [idempotencyKey, optional(string())],
+    });
+    req.header('idempotency-key', mapped.idempotencyKey);
+    req.json(mapped.request);
+    req.authenticate([{ httpBasic: true }]);
+    return req.callAsJson(getRecipientResponseSchema, requestOptions);
+  }
+
+  /**
+   * @return Response from the API call
+   */
+  async getDefaultRecipient(
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<GetRecipientResponse>> {
+    const req = this.createRequest('GET', '/recipients/default');
+    req.authenticate([{ httpBasic: true }]);
+    return req.callAsJson(getRecipientResponseSchema, requestOptions);
+  }
+
+  /**
+   * Creates an anticipation
+   *
+   * @param recipientId     Recipient id
+   * @param request         Anticipation data
+   * @param idempotencyKey
+   * @return Response from the API call
+   */
+  async createAnticipation(
+    recipientId: string,
+    request: CreateAnticipationRequest,
+    idempotencyKey?: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<GetAnticipationResponse>> {
+    const req = this.createRequest('POST');
+    const mapped = req.prepareArgs({
+      recipientId: [recipientId, string()],
+      request: [request, createAnticipationRequestSchema],
+      idempotencyKey: [idempotencyKey, optional(string())],
+    });
+    req.header('idempotency-key', mapped.idempotencyKey);
+    req.json(mapped.request);
+    req.appendTemplatePath`/recipients/${mapped.recipientId}/anticipations`;
+    req.authenticate([{ httpBasic: true }]);
+    return req.callAsJson(getAnticipationResponseSchema, requestOptions);
+  }
+
+  /**
+   * Gets the anticipation limits for a recipient
+   *
+   * @param recipientId  Recipient id
+   * @param timeframe    Timeframe
+   * @param paymentDate  Anticipation payment date
+   * @return Response from the API call
+   */
+  async getAnticipationLimits(
+    recipientId: string,
+    timeframe: string,
+    paymentDate: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<GetAnticipationLimitResponse>> {
+    const req = this.createRequest('GET');
+    const mapped = req.prepareArgs({
+      recipientId: [recipientId, string()],
+      timeframe: [timeframe, string()],
+      paymentDate: [paymentDate, string()],
+    });
+    req.query('timeframe', mapped.timeframe);
+    req.query('payment_date', mapped.paymentDate);
+    req.appendTemplatePath`/recipients/${mapped.recipientId}/anticipation_limits`;
+    req.authenticate([{ httpBasic: true }]);
+    return req.callAsJson(getAnticipationLimitResponseSchema, requestOptions);
+  }
+
+  /**
+   * Updates recipient metadata
+   *
+   * @param recipientId     Recipient id
+   * @param request         Metadata
+   * @param idempotencyKey
+   * @return Response from the API call
+   */
+  async updateRecipientMetadata(
+    recipientId: string,
+    request: UpdateMetadataRequest,
+    idempotencyKey?: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<GetRecipientResponse>> {
+    const req = this.createRequest('PATCH');
+    const mapped = req.prepareArgs({
+      recipientId: [recipientId, string()],
+      request: [request, updateMetadataRequestSchema],
+      idempotencyKey: [idempotencyKey, optional(string())],
+    });
+    req.header('idempotency-key', mapped.idempotencyKey);
+    req.json(mapped.request);
+    req.appendTemplatePath`/recipients/${mapped.recipientId}/metadata`;
     req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getRecipientResponseSchema, requestOptions);
   }
@@ -479,40 +591,6 @@ export class RecipientsController extends BaseController {
   }
 
   /**
-   * Retrieves recipient information
-   *
-   * @param recipientId  Recipiend id
-   * @return Response from the API call
-   */
-  async getRecipient(
-    recipientId: string,
-    requestOptions?: RequestOptions
-  ): Promise<ApiResponse<GetRecipientResponse>> {
-    const req = this.createRequest('GET');
-    const mapped = req.prepareArgs({ recipientId: [recipientId, string()] });
-    req.appendTemplatePath`/recipients/${mapped.recipientId}`;
-    req.authenticate([{ httpBasic: true }]);
-    return req.callAsJson(getRecipientResponseSchema, requestOptions);
-  }
-
-  /**
-   * Get balance information for a recipient
-   *
-   * @param recipientId  Recipient id
-   * @return Response from the API call
-   */
-  async getBalance(
-    recipientId: string,
-    requestOptions?: RequestOptions
-  ): Promise<ApiResponse<GetBalanceResponse>> {
-    const req = this.createRequest('GET');
-    const mapped = req.prepareArgs({ recipientId: [recipientId, string()] });
-    req.appendTemplatePath`/recipients/${mapped.recipientId}/balance`;
-    req.authenticate([{ httpBasic: true }]);
-    return req.callAsJson(getBalanceResponseSchema, requestOptions);
-  }
-
-  /**
    * Gets a paginated list of transfers for the recipient
    *
    * @param recipientId
@@ -549,84 +627,6 @@ export class RecipientsController extends BaseController {
     req.appendTemplatePath`/recipients/${mapped.recipientId}/withdrawals`;
     req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(listWithdrawalsSchema, requestOptions);
-  }
-
-  /**
-   * Creates a transfer for a recipient
-   *
-   * @param recipientId     Recipient Id
-   * @param request         Transfer data
-   * @param idempotencyKey
-   * @return Response from the API call
-   */
-  async createTransfer(
-    recipientId: string,
-    request: CreateTransferRequest,
-    idempotencyKey?: string,
-    requestOptions?: RequestOptions
-  ): Promise<ApiResponse<GetTransferResponse>> {
-    const req = this.createRequest('POST');
-    const mapped = req.prepareArgs({
-      recipientId: [recipientId, string()],
-      request: [request, createTransferRequestSchema],
-      idempotencyKey: [idempotencyKey, optional(string())],
-    });
-    req.header('idempotency-key', mapped.idempotencyKey);
-    req.json(mapped.request);
-    req.appendTemplatePath`/recipients/${mapped.recipientId}/transfers`;
-    req.authenticate([{ httpBasic: true }]);
-    return req.callAsJson(getTransferResponseSchema, requestOptions);
-  }
-
-  /**
-   * Creates a new recipient
-   *
-   * @param request         Recipient data
-   * @param idempotencyKey
-   * @return Response from the API call
-   */
-  async createRecipient(
-    request: CreateRecipientRequest,
-    idempotencyKey?: string,
-    requestOptions?: RequestOptions
-  ): Promise<ApiResponse<GetRecipientResponse>> {
-    const req = this.createRequest('POST', '/recipients');
-    const mapped = req.prepareArgs({
-      request: [request, createRecipientRequestSchema],
-      idempotencyKey: [idempotencyKey, optional(string())],
-    });
-    req.header('idempotency-key', mapped.idempotencyKey);
-    req.json(mapped.request);
-    req.authenticate([{ httpBasic: true }]);
-    return req.callAsJson(getRecipientResponseSchema, requestOptions);
-  }
-
-  /**
-   * Retrieves recipient information
-   *
-   * @param code Recipient code
-   * @return Response from the API call
-   */
-  async getRecipientByCode(
-    code: string,
-    requestOptions?: RequestOptions
-  ): Promise<ApiResponse<GetRecipientResponse>> {
-    const req = this.createRequest('GET');
-    const mapped = req.prepareArgs({ code: [code, string()] });
-    req.appendTemplatePath`/recipients/${mapped.code}`;
-    req.authenticate([{ httpBasic: true }]);
-    return req.callAsJson(getRecipientResponseSchema, requestOptions);
-  }
-
-  /**
-   * @return Response from the API call
-   */
-  async getDefaultRecipient(
-    requestOptions?: RequestOptions
-  ): Promise<ApiResponse<GetRecipientResponse>> {
-    const req = this.createRequest('GET', '/recipients/default');
-    req.authenticate([{ httpBasic: true }]);
-    return req.callAsJson(getRecipientResponseSchema, requestOptions);
   }
 
   /**
