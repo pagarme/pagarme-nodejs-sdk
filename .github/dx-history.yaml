@@ -1,0 +1,16 @@
+name: Trigger Labeler
+
+on:
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        required: false
+        type: string
+        default: ''
+
+jobs:
+  call-dx-labeler:
+    uses: pagarme/.github-private/.github/workflows/dx-labeler.yaml@main
+    with:
+      pr_number: ${{ inputs.pr_number }}
+    secrets: inherit
