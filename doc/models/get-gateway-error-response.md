@@ -13,11 +13,13 @@ Gateway Response
 |  --- | --- | --- | --- |
 | `message` | `string \| null \| undefined` | Optional | The message error |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "message": "message4"
-}
+```ts
+import { GetGatewayErrorResponse } from 'pagarmeapisdklib';
+
+const getGatewayErrorResponse: GetGatewayErrorResponse = {
+  message: 'message2',
+};
 ```
 

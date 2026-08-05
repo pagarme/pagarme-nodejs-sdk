@@ -14,15 +14,15 @@ import {
   optional,
   Schema,
   string,
-} from '../schema';
+} from '../schema.js';
 import {
   GetAddressResponse,
   getAddressResponseSchema,
-} from './getAddressResponse';
+} from './getAddressResponse.js';
 import {
   GetPhonesResponse,
   getPhonesResponseSchema,
-} from './getPhonesResponse';
+} from './getPhonesResponse.js';
 
 /** Response object for getting a customer */
 export interface GetCustomerResponse {
@@ -44,23 +44,22 @@ export interface GetCustomerResponse {
   documentType?: string | null;
 }
 
-export const getCustomerResponseSchema: Schema<GetCustomerResponse> = object({
-  id: ['id', optional(nullable(string()))],
-  name: ['name', optional(nullable(string()))],
-  email: ['email', optional(nullable(string()))],
-  delinquent: ['delinquent', optional(nullable(boolean()))],
-  createdAt: ['created_at', optional(nullable(string()))],
-  updatedAt: ['updated_at', optional(nullable(string()))],
-  document: ['document', optional(nullable(string()))],
-  type: ['type', optional(nullable(string()))],
-  fbAccessToken: ['fb_access_token', optional(nullable(string()))],
-  address: [
-    'address',
-    optional(nullable(lazy(() => getAddressResponseSchema))),
-  ],
-  metadata: ['metadata', optional(nullable(dict(string())))],
-  phones: ['phones', optional(nullable(lazy(() => getPhonesResponseSchema)))],
-  fbId: ['fb_id', optional(nullable(bigint()))],
-  code: ['code', optional(nullable(string()))],
-  documentType: ['document_type', optional(nullable(string()))],
-});
+export const getCustomerResponseSchema: Schema<GetCustomerResponse> = lazy(() =>
+  object({
+    id: ['id', optional(nullable(string()))],
+    name: ['name', optional(nullable(string()))],
+    email: ['email', optional(nullable(string()))],
+    delinquent: ['delinquent', optional(nullable(boolean()))],
+    createdAt: ['created_at', optional(nullable(string()))],
+    updatedAt: ['updated_at', optional(nullable(string()))],
+    document: ['document', optional(nullable(string()))],
+    type: ['type', optional(nullable(string()))],
+    fbAccessToken: ['fb_access_token', optional(nullable(string()))],
+    address: ['address', optional(nullable(getAddressResponseSchema))],
+    metadata: ['metadata', optional(nullable(dict(string())))],
+    phones: ['phones', optional(nullable(getPhonesResponseSchema))],
+    fbId: ['fb_id', optional(nullable(bigint()))],
+    code: ['code', optional(nullable(string()))],
+    documentType: ['document_type', optional(nullable(string()))],
+  })
+);

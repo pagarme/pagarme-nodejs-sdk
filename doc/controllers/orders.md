@@ -10,16 +10,241 @@ const ordersController = new OrdersController(client);
 
 ## Methods
 
-* [Delete All Order Items](../../doc/controllers/orders.md#delete-all-order-items)
-* [Get Order Item](../../doc/controllers/orders.md#get-order-item)
-* [Update Order Metadata](../../doc/controllers/orders.md#update-order-metadata)
-* [Delete Order Item](../../doc/controllers/orders.md#delete-order-item)
-* [Get Order](../../doc/controllers/orders.md#get-order)
-* [Get Orders](../../doc/controllers/orders.md#get-orders)
-* [Update Order Item](../../doc/controllers/orders.md#update-order-item)
 * [Close Order](../../doc/controllers/orders.md#close-order)
 * [Create Order](../../doc/controllers/orders.md#create-order)
 * [Create Order Item](../../doc/controllers/orders.md#create-order-item)
+* [Delete All Order Items](../../doc/controllers/orders.md#delete-all-order-items)
+* [Delete Order Item](../../doc/controllers/orders.md#delete-order-item)
+* [Get Order](../../doc/controllers/orders.md#get-order)
+* [Get Order Item](../../doc/controllers/orders.md#get-order-item)
+* [Get Orders](../../doc/controllers/orders.md#get-orders)
+* [Update Order Item](../../doc/controllers/orders.md#update-order-item)
+* [Update Order Metadata](../../doc/controllers/orders.md#update-order-metadata)
+
+
+# Close Order
+
+```ts
+async closeOrder(
+  id: string,
+  request: UpdateOrderStatusRequest,
+  idempotencyKey?: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetOrderResponse>>
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `id` | `string` | Template, Required | Order Id |
+| `request` | [`UpdateOrderStatusRequest`](../../doc/models/update-order-status-request.md) | Body, Required | Update Order Model |
+| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+**200**
+
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [`GetOrderResponse`](../../doc/models/get-order-response.md).
+
+## Example Usage
+
+```ts
+const id = 'id0';
+
+const request: UpdateOrderStatusRequest = {
+  status: 'status8',
+};
+
+try {
+  const response = await ordersController.closeOrder(
+    id,
+    request
+  );
+
+  // Extracting fully parsed response body.
+  console.log(response.result);
+
+  // Extracting response status code.
+  console.log(response.statusCode);
+  // Extracting response headers.
+  console.log(response.headers);
+  // Extracting response body of type `string | Stream`
+  console.log(response.body);
+} catch (error) {
+  if (error instanceof ApiError) {
+    // Extracting response error status code.
+    console.log(error.statusCode);
+    // Extracting response error headers.
+    console.log(error.headers);
+    // Extracting response error body of type `string | Stream`.
+    console.log(error.body);
+    if (error instanceof CustomError) {
+      console.log(error.result);
+    }
+  }
+}
+```
+
+
+# Create Order
+
+Creates a new Order
+
+```ts
+async createOrder(
+  body: CreateOrderRequest,
+  idempotencyKey?: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetOrderResponse>>
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `body` | [`CreateOrderRequest`](../../doc/models/create-order-request.md) | Body, Required | Request for creating an order |
+| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+**200**
+
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [`GetOrderResponse`](../../doc/models/get-order-response.md).
+
+## Example Usage
+
+```ts
+const body: CreateOrderRequest = {
+  items: [
+    {}
+  ],
+  customer: {
+    name: 'Tony Stark',
+    email: '',
+    document: '',
+    type: '',
+    address: {},
+    metadata: {},
+    phones: {},
+    code: '',
+  },
+  payments: [
+    {}
+  ],
+  code: '',
+  closed: true,
+};
+
+try {
+  const response = await ordersController.createOrder(body);
+
+  // Extracting fully parsed response body.
+  console.log(response.result);
+
+  // Extracting response status code.
+  console.log(response.statusCode);
+  // Extracting response headers.
+  console.log(response.headers);
+  // Extracting response body of type `string | Stream`
+  console.log(response.body);
+} catch (error) {
+  if (error instanceof ApiError) {
+    // Extracting response error status code.
+    console.log(error.statusCode);
+    // Extracting response error headers.
+    console.log(error.headers);
+    // Extracting response error body of type `string | Stream`.
+    console.log(error.body);
+    if (error instanceof CustomError) {
+      console.log(error.result);
+    }
+  }
+}
+```
+
+
+# Create Order Item
+
+```ts
+async createOrderItem(
+  orderId: string,
+  request: CreateOrderItemRequest,
+  idempotencyKey?: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetOrderItemResponse>>
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `orderId` | `string` | Template, Required | Order Id |
+| `request` | [`CreateOrderItemRequest`](../../doc/models/create-order-item-request.md) | Body, Required | Order Item Model |
+| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+**200**
+
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [`GetOrderItemResponse`](../../doc/models/get-order-item-response.md).
+
+## Example Usage
+
+```ts
+const orderId = 'orderId2';
+
+const request: CreateOrderItemRequest = {
+  amount: 242,
+  description: 'description6',
+  quantity: 100,
+  category: 'category4',
+};
+
+try {
+  const response = await ordersController.createOrderItem(
+    orderId,
+    request
+  );
+
+  // Extracting fully parsed response body.
+  console.log(response.result);
+
+  // Extracting response status code.
+  console.log(response.statusCode);
+  // Extracting response headers.
+  console.log(response.headers);
+  // Extracting response body of type `string | Stream`
+  console.log(response.body);
+} catch (error) {
+  if (error instanceof ApiError) {
+    // Extracting response error status code.
+    console.log(error.statusCode);
+    // Extracting response error headers.
+    console.log(error.headers);
+    // Extracting response error body of type `string | Stream`.
+    console.log(error.body);
+    if (error instanceof CustomError) {
+      console.log(error.result);
+    }
+  }
+}
+```
 
 
 # Delete All Order Items
@@ -32,6 +257,10 @@ async deleteAllOrderItems(
 ): Promise<ApiResponse<GetOrderResponse>>
 ```
 
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -42,7 +271,9 @@ async deleteAllOrderItems(
 
 ## Response Type
 
-This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [GetOrderResponse](../../doc/models/get-order-response.md).
+**200**
+
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [`GetOrderResponse`](../../doc/models/get-order-response.md).
 
 ## Example Usage
 
@@ -50,111 +281,28 @@ This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The 
 const orderId = 'orderId2';
 
 try {
-  const { result, ...httpResponse } = await ordersController.deleteAllOrderItems(orderId);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
+  const response = await ordersController.deleteAllOrderItems(orderId);
+
+  // Extracting fully parsed response body.
+  console.log(response.result);
+
+  // Extracting response status code.
+  console.log(response.statusCode);
+  // Extracting response headers.
+  console.log(response.headers);
+  // Extracting response body of type `string | Stream`
+  console.log(response.body);
 } catch (error) {
   if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Get Order Item
-
-```ts
-async getOrderItem(
-  orderId: string,
-  itemId: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetOrderItemResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `orderId` | `string` | Template, Required | Order Id |
-| `itemId` | `string` | Template, Required | Item Id |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [GetOrderItemResponse](../../doc/models/get-order-item-response.md).
-
-## Example Usage
-
-```ts
-const orderId = 'orderId2';
-
-const itemId = 'itemId8';
-
-try {
-  const { result, ...httpResponse } = await ordersController.getOrderItem(
-  orderId,
-  itemId
-);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Update Order Metadata
-
-Updates the metadata from an order
-
-```ts
-async updateOrderMetadata(
-  orderId: string,
-  request: UpdateMetadataRequest,
-  idempotencyKey?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetOrderResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `orderId` | `string` | Template, Required | The order id |
-| `request` | [`UpdateMetadataRequest`](../../doc/models/update-metadata-request.md) | Body, Required | Request for updating the order metadata |
-| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [GetOrderResponse](../../doc/models/get-order-response.md).
-
-## Example Usage
-
-```ts
-const orderId = 'order_id6';
-
-const request: UpdateMetadataRequest = {
-  metadata: {
-    'key0': 'metadata3'
-  },
-};
-
-try {
-  const { result, ...httpResponse } = await ordersController.updateOrderMetadata(
-  orderId,
-  request
-);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
+    // Extracting response error status code.
+    console.log(error.statusCode);
+    // Extracting response error headers.
+    console.log(error.headers);
+    // Extracting response error body of type `string | Stream`.
+    console.log(error.body);
+    if (error instanceof CustomError) {
+      console.log(error.result);
+    }
   }
 }
 ```
@@ -171,6 +319,10 @@ async deleteOrderItem(
 ): Promise<ApiResponse<GetOrderItemResponse>>
 ```
 
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -182,7 +334,9 @@ async deleteOrderItem(
 
 ## Response Type
 
-This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [GetOrderItemResponse](../../doc/models/get-order-item-response.md).
+**200**
+
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [`GetOrderItemResponse`](../../doc/models/get-order-item-response.md).
 
 ## Example Usage
 
@@ -192,16 +346,31 @@ const orderId = 'orderId2';
 const itemId = 'itemId8';
 
 try {
-  const { result, ...httpResponse } = await ordersController.deleteOrderItem(
-  orderId,
-  itemId
-);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
+  const response = await ordersController.deleteOrderItem(
+    orderId,
+    itemId
+  );
+
+  // Extracting fully parsed response body.
+  console.log(response.result);
+
+  // Extracting response status code.
+  console.log(response.statusCode);
+  // Extracting response headers.
+  console.log(response.headers);
+  // Extracting response body of type `string | Stream`
+  console.log(response.body);
 } catch (error) {
   if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
+    // Extracting response error status code.
+    console.log(error.statusCode);
+    // Extracting response error headers.
+    console.log(error.headers);
+    // Extracting response error body of type `string | Stream`.
+    console.log(error.body);
+    if (error instanceof CustomError) {
+      console.log(error.result);
+    }
   }
 }
 ```
@@ -218,6 +387,10 @@ async getOrder(
 ): Promise<ApiResponse<GetOrderResponse>>
 ```
 
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -227,7 +400,9 @@ async getOrder(
 
 ## Response Type
 
-This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [GetOrderResponse](../../doc/models/get-order-response.md).
+**200**
+
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [`GetOrderResponse`](../../doc/models/get-order-response.md).
 
 ## Example Usage
 
@@ -235,13 +410,94 @@ This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The 
 const orderId = 'order_id6';
 
 try {
-  const { result, ...httpResponse } = await ordersController.getOrder(orderId);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
+  const response = await ordersController.getOrder(orderId);
+
+  // Extracting fully parsed response body.
+  console.log(response.result);
+
+  // Extracting response status code.
+  console.log(response.statusCode);
+  // Extracting response headers.
+  console.log(response.headers);
+  // Extracting response body of type `string | Stream`
+  console.log(response.body);
 } catch (error) {
   if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
+    // Extracting response error status code.
+    console.log(error.statusCode);
+    // Extracting response error headers.
+    console.log(error.headers);
+    // Extracting response error body of type `string | Stream`.
+    console.log(error.body);
+    if (error instanceof CustomError) {
+      console.log(error.result);
+    }
+  }
+}
+```
+
+
+# Get Order Item
+
+```ts
+async getOrderItem(
+  orderId: string,
+  itemId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetOrderItemResponse>>
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `orderId` | `string` | Template, Required | Order Id |
+| `itemId` | `string` | Template, Required | Item Id |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+**200**
+
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [`GetOrderItemResponse`](../../doc/models/get-order-item-response.md).
+
+## Example Usage
+
+```ts
+const orderId = 'orderId2';
+
+const itemId = 'itemId8';
+
+try {
+  const response = await ordersController.getOrderItem(
+    orderId,
+    itemId
+  );
+
+  // Extracting fully parsed response body.
+  console.log(response.result);
+
+  // Extracting response status code.
+  console.log(response.statusCode);
+  // Extracting response headers.
+  console.log(response.headers);
+  // Extracting response body of type `string | Stream`
+  console.log(response.body);
+} catch (error) {
+  if (error instanceof ApiError) {
+    // Extracting response error status code.
+    console.log(error.statusCode);
+    // Extracting response error headers.
+    console.log(error.headers);
+    // Extracting response error body of type `string | Stream`.
+    console.log(error.body);
+    if (error instanceof CustomError) {
+      console.log(error.result);
+    }
   }
 }
 ```
@@ -264,6 +520,10 @@ async getOrders(
 ): Promise<ApiResponse<ListOrderResponse>>
 ```
 
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -279,19 +539,36 @@ async getOrders(
 
 ## Response Type
 
-This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [ListOrderResponse](../../doc/models/list-order-response.md).
+**200**
+
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [`ListOrderResponse`](../../doc/models/list-order-response.md).
 
 ## Example Usage
 
 ```ts
 try {
-  const { result, ...httpResponse } = await ordersController.getOrders();
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
+  const response = await ordersController.getOrders();
+
+  // Extracting fully parsed response body.
+  console.log(response.result);
+
+  // Extracting response status code.
+  console.log(response.statusCode);
+  // Extracting response headers.
+  console.log(response.headers);
+  // Extracting response body of type `string | Stream`
+  console.log(response.body);
 } catch (error) {
   if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
+    // Extracting response error status code.
+    console.log(error.statusCode);
+    // Extracting response error headers.
+    console.log(error.headers);
+    // Extracting response error body of type `string | Stream`.
+    console.log(error.body);
+    if (error instanceof CustomError) {
+      console.log(error.result);
+    }
   }
 }
 ```
@@ -309,6 +586,10 @@ async updateOrderItem(
 ): Promise<ApiResponse<GetOrderItemResponse>>
 ```
 
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -321,7 +602,9 @@ async updateOrderItem(
 
 ## Response Type
 
-This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [GetOrderItemResponse](../../doc/models/get-order-item-response.md).
+**200**
+
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [`GetOrderItemResponse`](../../doc/models/get-order-item-response.md).
 
 ## Example Usage
 
@@ -338,200 +621,106 @@ const request: UpdateOrderItemRequest = {
 };
 
 try {
-  const { result, ...httpResponse } = await ordersController.updateOrderItem(
-  orderId,
-  itemId,
-  request
-);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
+  const response = await ordersController.updateOrderItem(
+    orderId,
+    itemId,
+    request
+  );
+
+  // Extracting fully parsed response body.
+  console.log(response.result);
+
+  // Extracting response status code.
+  console.log(response.statusCode);
+  // Extracting response headers.
+  console.log(response.headers);
+  // Extracting response body of type `string | Stream`
+  console.log(response.body);
 } catch (error) {
   if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Close Order
-
-```ts
-async closeOrder(
-  id: string,
-  request: UpdateOrderStatusRequest,
-  idempotencyKey?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetOrderResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `id` | `string` | Template, Required | Order Id |
-| `request` | [`UpdateOrderStatusRequest`](../../doc/models/update-order-status-request.md) | Body, Required | Update Order Model |
-| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [GetOrderResponse](../../doc/models/get-order-response.md).
-
-## Example Usage
-
-```ts
-const id = 'id0';
-
-const request: UpdateOrderStatusRequest = {
-  status: 'status8',
-};
-
-try {
-  const { result, ...httpResponse } = await ordersController.closeOrder(
-  id,
-  request
-);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Create Order
-
-Creates a new Order
-
-```ts
-async createOrder(
-  body: CreateOrderRequest,
-  idempotencyKey?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetOrderResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `body` | [`CreateOrderRequest`](../../doc/models/create-order-request.md) | Body, Required | Request for creating an order |
-| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [GetOrderResponse](../../doc/models/get-order-response.md).
-
-## Example Usage
-
-```ts
-const body: CreateOrderRequest = {
-  items: [
-    {
-      amount: 164,
-      description: 'description2',
-      quantity: 22,
-      category: 'category6',
+    // Extracting response error status code.
+    console.log(error.statusCode);
+    // Extracting response error headers.
+    console.log(error.headers);
+    // Extracting response error body of type `string | Stream`.
+    console.log(error.body);
+    if (error instanceof CustomError) {
+      console.log(error.result);
     }
-  ],
-  customer: {
-    name: 'Tony Stark',
-    email: 'email6',
-    document: 'document6',
-    type: 'type0',
-    address: {
-      street: 'street6',
-      number: 'number4',
-      zipCode: 'zip_code0',
-      neighborhood: 'neighborhood2',
-      city: 'city6',
-      state: 'state2',
-      country: 'country0',
-      complement: 'complement2',
-      line1: 'line_10',
-      line2: 'line_24',
-    },
-    metadata: {
-      'key0': 'metadata3'
-    },
-    phones: {
-    },
-    code: 'code8',
-  },
-  payments: [
-    {
-      paymentMethod: 'payment_method8',
-    }
-  ],
-  code: 'code4',
-  closed: true,
-};
-
-try {
-  const { result, ...httpResponse } = await ordersController.createOrder(body);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
   }
 }
 ```
 
 
-# Create Order Item
+# Update Order Metadata
+
+Updates the metadata from an order
 
 ```ts
-async createOrderItem(
+async updateOrderMetadata(
   orderId: string,
-  request: CreateOrderItemRequest,
+  request: UpdateMetadataRequest,
   idempotencyKey?: string,
   requestOptions?: RequestOptions
-): Promise<ApiResponse<GetOrderItemResponse>>
+): Promise<ApiResponse<GetOrderResponse>>
 ```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
 
 ## Parameters
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `orderId` | `string` | Template, Required | Order Id |
-| `request` | [`CreateOrderItemRequest`](../../doc/models/create-order-item-request.md) | Body, Required | Order Item Model |
+| `orderId` | `string` | Template, Required | The order id |
+| `request` | [`UpdateMetadataRequest`](../../doc/models/update-metadata-request.md) | Body, Required | Request for updating the order metadata |
 | `idempotencyKey` | `string \| undefined` | Header, Optional | - |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
-This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [GetOrderItemResponse](../../doc/models/get-order-item-response.md).
+**200**
+
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [`GetOrderResponse`](../../doc/models/get-order-response.md).
 
 ## Example Usage
 
 ```ts
-const orderId = 'orderId2';
+const orderId = 'order_id6';
 
-const request: CreateOrderItemRequest = {
-  amount: 242,
-  description: 'description6',
-  quantity: 100,
-  category: 'category4',
+const request: UpdateMetadataRequest = {
+  metadata: {
+    'key0': 'metadata3'
+  },
 };
 
 try {
-  const { result, ...httpResponse } = await ordersController.createOrderItem(
-  orderId,
-  request
-);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
+  const response = await ordersController.updateOrderMetadata(
+    orderId,
+    request
+  );
+
+  // Extracting fully parsed response body.
+  console.log(response.result);
+
+  // Extracting response status code.
+  console.log(response.statusCode);
+  // Extracting response headers.
+  console.log(response.headers);
+  // Extracting response body of type `string | Stream`
+  console.log(response.body);
 } catch (error) {
   if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
+    // Extracting response error status code.
+    console.log(error.statusCode);
+    // Extracting response error headers.
+    console.log(error.headers);
+    // Extracting response error body of type `string | Stream`.
+    console.log(error.body);
+    if (error instanceof CustomError) {
+      console.log(error.result);
+    }
   }
 }
 ```

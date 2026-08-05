@@ -19,17 +19,19 @@ Generic response object for getting a MovementObjectFeeCollection.
 | `paymentDate` | `string \| null \| undefined` | Optional | - |
 | `recipientId` | `string \| null \| undefined` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id2",
-  "status": "status4",
-  "amount": "amount4",
-  "created_at": "created_at0",
-  "description": "description4",
-  "payment_date": "payment_date4",
-  "recipient_id": "recipient_id6"
-}
+```ts
+import { GetMovementObjectFeeCollectionResponse } from 'pagarmeapisdklib';
+
+const getMovementObjectFeeCollectionResponse: GetMovementObjectFeeCollectionResponse = {
+  description: 'description0',
+  paymentDate: 'payment_date8',
+  recipientId: 'recipient_id0',
+  id: 'id2',
+  status: 'status4',
+  amount: 'amount4',
+  createdAt: 'created_at0',
+};
 ```
 

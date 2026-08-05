@@ -12,12 +12,14 @@
 | `targetId` | `string \| null \| undefined` | Optional | - |
 | `type` | `string \| null \| undefined` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "target_id": "target_id0",
-  "type": "type0"
-}
+```ts
+import { GetTransferTargetResponse } from 'pagarmeapisdklib';
+
+const getTransferTargetResponse: GetTransferTargetResponse = {
+  targetId: 'target_id4',
+  type: 'type6',
+};
 ```
 

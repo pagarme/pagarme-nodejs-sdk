@@ -15,22 +15,21 @@ Contains information to create a pix payment
 | `expiresIn` | `number \| undefined` | Optional | Seconds until pix payment expires |
 | `additionalInformation` | [`PixAdditionalInformation[] \| undefined`](../../doc/models/pix-additional-information.md) | Optional | Pix additional information |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "expires_at": "2016-03-13T12:52:32.123Z",
-  "expires_in": 216,
-  "additional_information": [
+```ts
+import { CreatePixPaymentRequest } from 'pagarmeapisdklib';
+
+const createPixPaymentRequest: CreatePixPaymentRequest = {
+  expiresAt: '2016-03-13T12:52:32.123Z',
+  expiresIn: 54,
+  additionalInformation: [
+    {},
     {
-      "Name": "Name0",
-      "Value": "Value2"
     },
     {
-      "Name": "Name0",
-      "Value": "Value2"
     }
-  ]
-}
+  ],
+};
 ```
 

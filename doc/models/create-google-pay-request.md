@@ -18,22 +18,17 @@ The GooglePay Token Payment Request
 | `signedMessage` | `string \| null \| undefined` | Optional | - |
 | `merchantIdentifier` | `string \| null \| undefined` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "version": "version6",
-  "data": "data0",
-  "intermediate_signing_key": {
-    "signed_key": "signed_key0",
-    "signatures": [
-      "signatures2",
-      "signatures3",
-      "signatures4"
-    ]
-  },
-  "signature": "signature8",
-  "signed_message": "signed_message6"
-}
+```ts
+import { CreateGooglePayRequest } from 'pagarmeapisdklib';
+
+const createGooglePayRequest: CreateGooglePayRequest = {
+  version: 'version2',
+  data: 'data6',
+  intermediateSigningKey: null,
+  signature: 'signature4',
+  signedMessage: 'signed_message2',
+};
 ```
 

@@ -13,13 +13,15 @@
 | `transferInterval` | `string` | Required | - |
 | `transferDay` | `string` | Required | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "transfer_enabled": "transfer_enabled4",
-  "transfer_interval": "transfer_interval0",
-  "transfer_day": "transfer_day0"
-}
+```ts
+import { UpdateTransferSettingsRequest } from 'pagarmeapisdklib';
+
+const updateTransferSettingsRequest: UpdateTransferSettingsRequest = {
+  transferEnabled: 'transfer_enabled8',
+  transferInterval: 'transfer_interval2',
+  transferDay: 'transfer_day2',
+};
 ```
 

@@ -14,38 +14,20 @@ Response object for listing cards
 | `data` | [`GetCardResponse[] \| null \| undefined`](../../doc/models/get-card-response.md) | Optional | The card objects |
 | `paging` | [`PagingResponse \| null \| undefined`](../../doc/models/paging-response.md) | Optional | Paging object |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "data": [
+```ts
+import { ListCardsResponse } from 'pagarmeapisdklib';
+
+const listCardsResponse: ListCardsResponse = {
+  data: [
+    null,
     {
-      "id": "id0",
-      "last_four_digits": "last_four_digits6",
-      "brand": "brand4",
-      "holder_name": "holder_name6",
-      "exp_month": 240
     },
     {
-      "id": "id0",
-      "last_four_digits": "last_four_digits6",
-      "brand": "brand4",
-      "holder_name": "holder_name6",
-      "exp_month": 240
-    },
-    {
-      "id": "id0",
-      "last_four_digits": "last_four_digits6",
-      "brand": "brand4",
-      "holder_name": "holder_name6",
-      "exp_month": 240
     }
   ],
-  "paging": {
-    "total": 6,
-    "previous": "previous2",
-    "next": "next8"
-  }
-}
+  paging: null,
+};
 ```
 

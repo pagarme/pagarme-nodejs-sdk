@@ -15,13 +15,15 @@ Interest Response
 | `type` | `string \| null \| undefined` | Optional | Type |
 | `amount` | `number \| null \| undefined` | Optional | Amount |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "type": "\"percentage\" or \"flat\"",
-  "days": 114,
-  "amount": 188
-}
+```ts
+import { GetInterestResponse } from 'pagarmeapisdklib';
+
+const getInterestResponse: GetInterestResponse = {
+  days: 82,
+  type: '"percentage" or "flat"',
+  amount: 156,
+};
 ```
 

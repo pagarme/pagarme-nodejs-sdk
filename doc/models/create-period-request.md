@@ -11,11 +11,13 @@
 |  --- | --- | --- | --- |
 | `endAt` | `string \| undefined` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "end_at": "2016-03-13T12:52:32.123Z"
-}
+```ts
+import { CreatePeriodRequest } from 'pagarmeapisdklib';
+
+const createPeriodRequest: CreatePeriodRequest = {
+  endAt: '2016-03-13T12:52:32.123Z',
+};
 ```
 

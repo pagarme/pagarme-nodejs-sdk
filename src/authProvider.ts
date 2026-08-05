@@ -7,8 +7,8 @@
 import {
   basicAuthenticationProvider,
   compositeAuthenticationProvider,
-} from './authentication';
-import { Configuration } from './configuration';
+} from './authentication.js';
+import { Configuration } from './configuration.js';
 
 export function createAuthProviderFromConfig(config: Partial<Configuration>) {
   const authConfig = {

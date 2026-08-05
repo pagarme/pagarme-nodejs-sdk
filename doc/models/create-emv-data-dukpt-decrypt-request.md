@@ -11,11 +11,13 @@
 |  --- | --- | --- | --- |
 | `ksn` | `string` | Required | Key serial number |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "ksn": "ksn8"
-}
+```ts
+import { CreateEmvDataDukptDecryptRequest } from 'pagarmeapisdklib';
+
+const createEmvDataDukptDecryptRequest: CreateEmvDataDukptDecryptRequest = {
+  ksn: 'ksn2',
+};
 ```
 

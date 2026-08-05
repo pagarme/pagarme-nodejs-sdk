@@ -8,6 +8,7 @@ import {
   array,
   boolean,
   dict,
+  isMappedValueValidForSchema,
   lazy,
   nullable,
   number,
@@ -15,21 +16,60 @@ import {
   optional,
   Schema,
   string,
-} from '../schema';
+} from '../schema.js';
 import {
   GetAntifraudResponse,
   getAntifraudResponseSchema,
-} from './getAntifraudResponse';
-import { GetFineResponse, getFineResponseSchema } from './getFineResponse';
+} from './getAntifraudResponse.js';
+import {
+  GetBankTransferTransactionResponse,
+  getBankTransferTransactionResponseSchema,
+} from './getBankTransferTransactionResponse.js';
+import {
+  GetBoletoTransactionResponse,
+  getBoletoTransactionResponseSchema,
+} from './getBoletoTransactionResponse.js';
+import {
+  GetCashTransactionResponse,
+  getCashTransactionResponseSchema,
+} from './getCashTransactionResponse.js';
+import {
+  GetCreditCardTransactionResponse,
+  getCreditCardTransactionResponseSchema,
+} from './getCreditCardTransactionResponse.js';
+import {
+  GetDebitCardTransactionResponse,
+  getDebitCardTransactionResponseSchema,
+} from './getDebitCardTransactionResponse.js';
+import { GetFineResponse, getFineResponseSchema } from './getFineResponse.js';
 import {
   GetGatewayResponseResponse,
   getGatewayResponseResponseSchema,
-} from './getGatewayResponseResponse';
+} from './getGatewayResponseResponse.js';
 import {
   GetInterestResponse,
   getInterestResponseSchema,
-} from './getInterestResponse';
-import { GetSplitResponse, getSplitResponseSchema } from './getSplitResponse';
+} from './getInterestResponse.js';
+import {
+  GetPixTransactionResponse,
+  getPixTransactionResponseSchema,
+} from './getPixTransactionResponse.js';
+import {
+  GetPrivateLabelTransactionResponse,
+  getPrivateLabelTransactionResponseSchema,
+} from './getPrivateLabelTransactionResponse.js';
+import {
+  GetSafetyPayTransactionResponse,
+  getSafetyPayTransactionResponseSchema,
+} from './getSafetyPayTransactionResponse.js';
+import {
+  GetSplitResponse,
+  getSplitResponseSchema,
+} from './getSplitResponse.js';
+import {
+  GetVoucherTransactionResponse,
+  getVoucherTransactionResponseSchema,
+} from './getVoucherTransactionResponse.js';
 
 /** Generic response object for getting a transaction. */
 export interface GetTransactionResponse {
@@ -66,44 +106,149 @@ export interface GetTransactionResponse {
   maxDaysToPayPastDue?: number | null;
 }
 
-export const getTransactionResponseSchema: Schema<GetTransactionResponse> = object(
-  {
-    gatewayId: ['gateway_id', optional(nullable(string()))],
-    amount: ['amount', optional(nullable(number()))],
-    status: ['status', optional(nullable(string()))],
-    success: ['success', optional(nullable(boolean()))],
-    createdAt: ['created_at', optional(nullable(string()))],
-    updatedAt: ['updated_at', optional(nullable(string()))],
-    attemptCount: ['attempt_count', optional(nullable(number()))],
-    maxAttempts: ['max_attempts', optional(nullable(number()))],
-    splits: [
-      'splits',
-      optional(nullable(array(lazy(() => getSplitResponseSchema)))),
-    ],
-    nextAttempt: ['next_attempt', optional(nullable(string()))],
-    transactionType: ['transaction_type', optional(string())],
-    id: ['id', optional(nullable(string()))],
-    gatewayResponse: [
-      'gateway_response',
-      optional(nullable(lazy(() => getGatewayResponseResponseSchema))),
-    ],
-    antifraudResponse: [
-      'antifraud_response',
-      optional(nullable(lazy(() => getAntifraudResponseSchema))),
-    ],
-    metadata: ['metadata', optional(nullable(dict(string())))],
-    split: [
-      'split',
-      optional(nullable(array(lazy(() => getSplitResponseSchema)))),
-    ],
-    interest: [
-      'interest',
-      optional(nullable(lazy(() => getInterestResponseSchema))),
-    ],
-    fine: ['fine', optional(nullable(lazy(() => getFineResponseSchema)))],
-    maxDaysToPayPastDue: [
-      'max_days_to_pay_past_due',
-      optional(nullable(number())),
-    ],
+export namespace GetTransactionResponse {
+  /**
+   * Validation method to check if the given GetTransactionResponse instance is
+   * also a GetPixTransactionResponse.
+   */
+  export function isGetPixTransactionResponse(
+    value: GetTransactionResponse
+  ): value is GetPixTransactionResponse {
+    return isMappedValueValidForSchema(value, getPixTransactionResponseSchema);
   }
+
+  /**
+   * Validation method to check if the given GetTransactionResponse instance is
+   * also a GetCreditCardTransactionResponse.
+   */
+  export function isGetCreditCardTransactionResponse(
+    value: GetTransactionResponse
+  ): value is GetCreditCardTransactionResponse {
+    return isMappedValueValidForSchema(
+      value,
+      getCreditCardTransactionResponseSchema
+    );
+  }
+
+  /**
+   * Validation method to check if the given GetTransactionResponse instance is
+   * also a GetPrivateLabelTransactionResponse.
+   */
+  export function isGetPrivateLabelTransactionResponse(
+    value: GetTransactionResponse
+  ): value is GetPrivateLabelTransactionResponse {
+    return isMappedValueValidForSchema(
+      value,
+      getPrivateLabelTransactionResponseSchema
+    );
+  }
+
+  /**
+   * Validation method to check if the given GetTransactionResponse instance is
+   * also a GetCashTransactionResponse.
+   */
+  export function isGetCashTransactionResponse(
+    value: GetTransactionResponse
+  ): value is GetCashTransactionResponse {
+    return isMappedValueValidForSchema(value, getCashTransactionResponseSchema);
+  }
+
+  /**
+   * Validation method to check if the given GetTransactionResponse instance is
+   * also a GetDebitCardTransactionResponse.
+   */
+  export function isGetDebitCardTransactionResponse(
+    value: GetTransactionResponse
+  ): value is GetDebitCardTransactionResponse {
+    return isMappedValueValidForSchema(
+      value,
+      getDebitCardTransactionResponseSchema
+    );
+  }
+
+  /**
+   * Validation method to check if the given GetTransactionResponse instance is
+   * also a GetBoletoTransactionResponse.
+   */
+  export function isGetBoletoTransactionResponse(
+    value: GetTransactionResponse
+  ): value is GetBoletoTransactionResponse {
+    return isMappedValueValidForSchema(
+      value,
+      getBoletoTransactionResponseSchema
+    );
+  }
+
+  /**
+   * Validation method to check if the given GetTransactionResponse instance is
+   * also a GetBankTransferTransactionResponse.
+   */
+  export function isGetBankTransferTransactionResponse(
+    value: GetTransactionResponse
+  ): value is GetBankTransferTransactionResponse {
+    return isMappedValueValidForSchema(
+      value,
+      getBankTransferTransactionResponseSchema
+    );
+  }
+
+  /**
+   * Validation method to check if the given GetTransactionResponse instance is
+   * also a GetVoucherTransactionResponse.
+   */
+  export function isGetVoucherTransactionResponse(
+    value: GetTransactionResponse
+  ): value is GetVoucherTransactionResponse {
+    return isMappedValueValidForSchema(
+      value,
+      getVoucherTransactionResponseSchema
+    );
+  }
+
+  /**
+   * Validation method to check if the given GetTransactionResponse instance is
+   * also a GetSafetyPayTransactionResponse.
+   */
+  export function isGetSafetyPayTransactionResponse(
+    value: GetTransactionResponse
+  ): value is GetSafetyPayTransactionResponse {
+    return isMappedValueValidForSchema(
+      value,
+      getSafetyPayTransactionResponseSchema
+    );
+  }
+}
+
+export const getTransactionResponseSchema: Schema<GetTransactionResponse> = lazy(
+  () =>
+    object({
+      gatewayId: ['gateway_id', optional(nullable(string()))],
+      amount: ['amount', optional(nullable(number()))],
+      status: ['status', optional(nullable(string()))],
+      success: ['success', optional(nullable(boolean()))],
+      createdAt: ['created_at', optional(nullable(string()))],
+      updatedAt: ['updated_at', optional(nullable(string()))],
+      attemptCount: ['attempt_count', optional(nullable(number()))],
+      maxAttempts: ['max_attempts', optional(nullable(number()))],
+      splits: ['splits', optional(nullable(array(getSplitResponseSchema)))],
+      nextAttempt: ['next_attempt', optional(nullable(string()))],
+      transactionType: ['transaction_type', optional(string())],
+      id: ['id', optional(nullable(string()))],
+      gatewayResponse: [
+        'gateway_response',
+        optional(nullable(getGatewayResponseResponseSchema)),
+      ],
+      antifraudResponse: [
+        'antifraud_response',
+        optional(nullable(getAntifraudResponseSchema)),
+      ],
+      metadata: ['metadata', optional(nullable(dict(string())))],
+      split: ['split', optional(nullable(array(getSplitResponseSchema)))],
+      interest: ['interest', optional(nullable(getInterestResponseSchema))],
+      fine: ['fine', optional(nullable(getFineResponseSchema))],
+      maxDaysToPayPastDue: [
+        'max_days_to_pay_past_due',
+        optional(nullable(number())),
+      ],
+    })
 );

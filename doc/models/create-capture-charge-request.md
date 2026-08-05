@@ -16,37 +16,18 @@ Request for capturing a charge
 | `split` | [`CreateSplitRequest[] \| undefined`](../../doc/models/create-split-request.md) | Optional | Splits |
 | `operationReference` | `string` | Required | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "code": "code8",
-  "amount": 96,
-  "split": [
-    {
-      "type": "type2",
-      "amount": 10,
-      "recipient_id": "recipient_id2",
-      "options": {
-        "liable": false,
-        "charge_processing_fee": false,
-        "charge_remainder_fee": false
-      },
-      "split_rule_id": "split_rule_id0"
-    },
-    {
-      "type": "type2",
-      "amount": 10,
-      "recipient_id": "recipient_id2",
-      "options": {
-        "liable": false,
-        "charge_processing_fee": false,
-        "charge_remainder_fee": false
-      },
-      "split_rule_id": "split_rule_id0"
-    }
+```ts
+import { CreateCaptureChargeRequest } from 'pagarmeapisdklib';
+
+const createCaptureChargeRequest: CreateCaptureChargeRequest = {
+  code: 'code8',
+  operationReference: 'operation_reference0',
+  amount: 236,
+  split: [
+    {}
   ],
-  "operation_reference": "operation_reference0"
-}
+};
 ```
 

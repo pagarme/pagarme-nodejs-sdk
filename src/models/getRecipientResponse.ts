@@ -13,27 +13,27 @@ import {
   optional,
   Schema,
   string,
-} from '../schema';
+} from '../schema.js';
 import {
   GetAutomaticAnticipationResponse,
   getAutomaticAnticipationResponseSchema,
-} from './getAutomaticAnticipationResponse';
+} from './getAutomaticAnticipationResponse.js';
 import {
   GetBankAccountResponse,
   getBankAccountResponseSchema,
-} from './getBankAccountResponse';
+} from './getBankAccountResponse.js';
 import {
   GetGatewayRecipientResponse,
   getGatewayRecipientResponseSchema,
-} from './getGatewayRecipientResponse';
+} from './getGatewayRecipientResponse.js';
 import {
   GetRegisterInformationResponse,
   getRegisterInformationResponseSchema,
-} from './getRegisterInformationResponse';
+} from './getRegisterInformationResponse.js';
 import {
   GetTransferSettingsResponse,
   getTransferSettingsResponseSchema,
-} from './getTransferSettingsResponse';
+} from './getTransferSettingsResponse.js';
 
 /** Recipient response */
 export interface GetRecipientResponse {
@@ -72,38 +72,41 @@ export interface GetRecipientResponse {
   registerInformation?: GetRegisterInformationResponse | null;
 }
 
-export const getRecipientResponseSchema: Schema<GetRecipientResponse> = object({
-  id: ['id', optional(nullable(string()))],
-  name: ['name', optional(nullable(string()))],
-  email: ['email', optional(nullable(string()))],
-  document: ['document', optional(nullable(string()))],
-  description: ['description', optional(nullable(string()))],
-  type: ['type', optional(nullable(string()))],
-  status: ['status', optional(nullable(string()))],
-  createdAt: ['created_at', optional(nullable(string()))],
-  updatedAt: ['updated_at', optional(nullable(string()))],
-  deletedAt: ['deleted_at', optional(nullable(string()))],
-  defaultBankAccount: [
-    'default_bank_account',
-    optional(nullable(lazy(() => getBankAccountResponseSchema))),
-  ],
-  gatewayRecipients: [
-    'gateway_recipients',
-    optional(nullable(array(lazy(() => getGatewayRecipientResponseSchema)))),
-  ],
-  metadata: ['metadata', optional(nullable(dict(string())))],
-  automaticAnticipationSettings: [
-    'automatic_anticipation_settings',
-    optional(nullable(lazy(() => getAutomaticAnticipationResponseSchema))),
-  ],
-  transferSettings: [
-    'transfer_settings',
-    optional(nullable(lazy(() => getTransferSettingsResponseSchema))),
-  ],
-  code: ['code', optional(nullable(string()))],
-  paymentMode: ['payment_mode', optional(nullable(string()))],
-  registerInformation: [
-    'register_information',
-    optional(nullable(lazy(() => getRegisterInformationResponseSchema))),
-  ],
-});
+export const getRecipientResponseSchema: Schema<GetRecipientResponse> = lazy(
+  () =>
+    object({
+      id: ['id', optional(nullable(string()))],
+      name: ['name', optional(nullable(string()))],
+      email: ['email', optional(nullable(string()))],
+      document: ['document', optional(nullable(string()))],
+      description: ['description', optional(nullable(string()))],
+      type: ['type', optional(nullable(string()))],
+      status: ['status', optional(nullable(string()))],
+      createdAt: ['created_at', optional(nullable(string()))],
+      updatedAt: ['updated_at', optional(nullable(string()))],
+      deletedAt: ['deleted_at', optional(nullable(string()))],
+      defaultBankAccount: [
+        'default_bank_account',
+        optional(nullable(getBankAccountResponseSchema)),
+      ],
+      gatewayRecipients: [
+        'gateway_recipients',
+        optional(nullable(array(getGatewayRecipientResponseSchema))),
+      ],
+      metadata: ['metadata', optional(nullable(dict(string())))],
+      automaticAnticipationSettings: [
+        'automatic_anticipation_settings',
+        optional(nullable(getAutomaticAnticipationResponseSchema)),
+      ],
+      transferSettings: [
+        'transfer_settings',
+        optional(nullable(getTransferSettingsResponseSchema)),
+      ],
+      code: ['code', optional(nullable(string()))],
+      paymentMode: ['payment_mode', optional(nullable(string()))],
+      registerInformation: [
+        'register_information',
+        optional(nullable(getRegisterInformationResponseSchema)),
+      ],
+    })
+);

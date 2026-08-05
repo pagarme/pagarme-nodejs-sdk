@@ -12,15 +12,15 @@ import {
   optional,
   Schema,
   string,
-} from '../schema';
+} from '../schema.js';
 import {
   CreateDiscountRequest,
   createDiscountRequestSchema,
-} from './createDiscountRequest';
+} from './createDiscountRequest.js';
 import {
   CreatePricingSchemeRequest,
   createPricingSchemeRequestSchema,
-} from './createPricingSchemeRequest';
+} from './createPricingSchemeRequest.js';
 
 /** Request for creating a new subscription item */
 export interface CreateSubscriptionItemRequest {
@@ -44,19 +44,17 @@ export interface CreateSubscriptionItemRequest {
   minimumPrice?: number;
 }
 
-export const createSubscriptionItemRequestSchema: Schema<CreateSubscriptionItemRequest> = object(
-  {
-    description: ['description', string()],
-    pricingScheme: [
-      'pricing_scheme',
-      lazy(() => createPricingSchemeRequestSchema),
-    ],
-    id: ['id', string()],
-    planItemId: ['plan_item_id', string()],
-    discounts: ['discounts', array(lazy(() => createDiscountRequestSchema))],
-    name: ['name', string()],
-    cycles: ['cycles', optional(number())],
-    quantity: ['quantity', optional(number())],
-    minimumPrice: ['minimum_price', optional(number())],
-  }
+export const createSubscriptionItemRequestSchema: Schema<CreateSubscriptionItemRequest> = lazy(
+  () =>
+    object({
+      description: ['description', string()],
+      pricingScheme: ['pricing_scheme', createPricingSchemeRequestSchema],
+      id: ['id', string()],
+      planItemId: ['plan_item_id', string()],
+      discounts: ['discounts', array(createDiscountRequestSchema)],
+      name: ['name', string()],
+      cycles: ['cycles', optional(number())],
+      quantity: ['quantity', optional(number())],
+      minimumPrice: ['minimum_price', optional(number())],
+    })
 );

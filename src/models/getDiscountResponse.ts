@@ -12,15 +12,15 @@ import {
   optional,
   Schema,
   string,
-} from '../schema';
+} from '../schema.js';
 import {
   GetSubscriptionItemResponse,
   getSubscriptionItemResponseSchema,
-} from './getSubscriptionItemResponse';
+} from './getSubscriptionItemResponse.js';
 import {
   GetSubscriptionResponse,
   getSubscriptionResponseSchema,
-} from './getSubscriptionResponse';
+} from './getSubscriptionResponse.js';
 
 /** Response object for getting a discount */
 export interface GetDiscountResponse {
@@ -37,21 +37,23 @@ export interface GetDiscountResponse {
   subscriptionItem?: GetSubscriptionItemResponse | null;
 }
 
-export const getDiscountResponseSchema: Schema<GetDiscountResponse> = object({
-  id: ['id', optional(nullable(string()))],
-  value: ['value', optional(nullable(number()))],
-  discountType: ['discount_type', optional(nullable(string()))],
-  status: ['status', optional(nullable(string()))],
-  createdAt: ['created_at', optional(nullable(string()))],
-  cycles: ['cycles', optional(nullable(number()))],
-  deletedAt: ['deleted_at', optional(nullable(string()))],
-  description: ['description', optional(nullable(string()))],
-  subscription: [
-    'subscription',
-    optional(nullable(lazy(() => getSubscriptionResponseSchema))),
-  ],
-  subscriptionItem: [
-    'subscription_item',
-    optional(nullable(lazy(() => getSubscriptionItemResponseSchema))),
-  ],
-});
+export const getDiscountResponseSchema: Schema<GetDiscountResponse> = lazy(() =>
+  object({
+    id: ['id', optional(nullable(string()))],
+    value: ['value', optional(nullable(number()))],
+    discountType: ['discount_type', optional(nullable(string()))],
+    status: ['status', optional(nullable(string()))],
+    createdAt: ['created_at', optional(nullable(string()))],
+    cycles: ['cycles', optional(nullable(number()))],
+    deletedAt: ['deleted_at', optional(nullable(string()))],
+    description: ['description', optional(nullable(string()))],
+    subscription: [
+      'subscription',
+      optional(nullable(getSubscriptionResponseSchema)),
+    ],
+    subscriptionItem: [
+      'subscription_item',
+      optional(nullable(getSubscriptionItemResponseSchema)),
+    ],
+  })
+);

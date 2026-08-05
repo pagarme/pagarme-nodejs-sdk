@@ -23,15 +23,17 @@
 | `source` | [`GetWithdrawSourceResponse \| null \| undefined`](../../doc/models/get-withdraw-source-response.md) | Optional | - |
 | `target` | [`GetWithdrawTargetResponse \| null \| undefined`](../../doc/models/get-withdraw-target-response.md) | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id6",
-  "gateway_id": "gateway_id4",
-  "amount": 78,
-  "status": "status8",
-  "created_at": "2016-03-13T12:52:32.123Z"
-}
+```ts
+import { GetWithdrawResponse } from 'pagarmeapisdklib';
+
+const getWithdrawResponse: GetWithdrawResponse = {
+  id: 'id0',
+  gatewayId: 'gateway_id0',
+  amount: 166,
+  status: 'status2',
+  createdAt: '2016-03-13T12:52:32.123Z',
+};
 ```
 

@@ -12,11 +12,11 @@ import {
   optional,
   Schema,
   string,
-} from '../schema';
+} from '../schema.js';
 import {
   GetAddressResponse,
   getAddressResponseSchema,
-} from './getAddressResponse';
+} from './getAddressResponse.js';
 
 /** Response object for getting the shipping data */
 export interface GetShippingResponse {
@@ -33,19 +33,18 @@ export interface GetShippingResponse {
   type?: string | null;
 }
 
-export const getShippingResponseSchema: Schema<GetShippingResponse> = object({
-  amount: ['amount', optional(nullable(number()))],
-  description: ['description', optional(nullable(string()))],
-  recipientName: ['recipient_name', optional(nullable(string()))],
-  recipientPhone: ['recipient_phone', optional(nullable(string()))],
-  address: [
-    'address',
-    optional(nullable(lazy(() => getAddressResponseSchema))),
-  ],
-  maxDeliveryDate: ['max_delivery_date', optional(nullable(string()))],
-  estimatedDeliveryDate: [
-    'estimated_delivery_date',
-    optional(nullable(string())),
-  ],
-  type: ['type', optional(nullable(string()))],
-});
+export const getShippingResponseSchema: Schema<GetShippingResponse> = lazy(() =>
+  object({
+    amount: ['amount', optional(nullable(number()))],
+    description: ['description', optional(nullable(string()))],
+    recipientName: ['recipient_name', optional(nullable(string()))],
+    recipientPhone: ['recipient_phone', optional(nullable(string()))],
+    address: ['address', optional(nullable(getAddressResponseSchema))],
+    maxDeliveryDate: ['max_delivery_date', optional(nullable(string()))],
+    estimatedDeliveryDate: [
+      'estimated_delivery_date',
+      optional(nullable(string())),
+    ],
+    type: ['type', optional(nullable(string()))],
+  })
+);

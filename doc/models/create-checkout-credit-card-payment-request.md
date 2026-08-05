@@ -16,29 +16,22 @@ Checkout card payment request
 | `authentication` | [`CreatePaymentAuthenticationRequest \| undefined`](../../doc/models/create-payment-authentication-request.md) | Optional | Creates payment authentication |
 | `capture` | `boolean \| undefined` | Optional | Authorize and capture? |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "statement_descriptor": "statement_descriptor0",
-  "installments": [
+```ts
+import { CreateCheckoutCreditCardPaymentRequest } from 'pagarmeapisdklib';
+
+const createCheckoutCreditCardPaymentRequest: CreateCheckoutCreditCardPaymentRequest = {
+  statementDescriptor: 'statement_descriptor8',
+  installments: [
+    {},
     {
-      "number": 164,
-      "total": 16
+      number: 0,
+      total: 0,
     }
   ],
-  "authentication": {
-    "type": "type2",
-    "threed_secure": {
-      "mpi": "mpi0",
-      "cavv": "cavv8",
-      "eci": "eci2",
-      "transaction_id": "transaction_id0",
-      "success_url": "success_url4",
-      "ds_transaction_id": "ds_transaction_id0"
-    }
-  },
-  "capture": false
-}
+  authentication: {},
+  capture: false,
+};
 ```
 

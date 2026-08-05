@@ -12,8 +12,11 @@ import {
   object,
   optional,
   Schema,
-} from '../schema';
-import { GetSplitResponse, getSplitResponseSchema } from './getSplitResponse';
+} from '../schema.js';
+import {
+  GetSplitResponse,
+  getSplitResponseSchema,
+} from './getSplitResponse.js';
 
 export interface GetSubscriptionSplitResponse {
   /** Defines if the split is enabled */
@@ -22,12 +25,10 @@ export interface GetSubscriptionSplitResponse {
   rules?: GetSplitResponse[] | null;
 }
 
-export const getSubscriptionSplitResponseSchema: Schema<GetSubscriptionSplitResponse> = object(
-  {
-    enabled: ['enabled', optional(nullable(boolean()))],
-    rules: [
-      'rules',
-      optional(nullable(array(lazy(() => getSplitResponseSchema)))),
-    ],
-  }
+export const getSubscriptionSplitResponseSchema: Schema<GetSubscriptionSplitResponse> = lazy(
+  () =>
+    object({
+      enabled: ['enabled', optional(nullable(boolean()))],
+      rules: ['rules', optional(nullable(array(getSplitResponseSchema)))],
+    })
 );

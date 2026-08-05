@@ -12,12 +12,14 @@
 | `number` | `bigint \| null` | Required | Número de parcelas |
 | `total` | `number \| null` | Required | Valor total da compra |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "number": 40,
-  "total": 188
-}
+```ts
+import { GetCheckoutCardInstallmentOptionsResponse } from 'pagarmeapisdklib';
+
+const getCheckoutCardInstallmentOptionsResponse: GetCheckoutCardInstallmentOptionsResponse = {
+  number: BigInt(40),
+  total: 188,
+};
 ```
 

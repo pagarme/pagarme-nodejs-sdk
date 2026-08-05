@@ -13,55 +13,55 @@ import {
   optional,
   Schema,
   string,
-} from '../schema';
+} from '../schema.js';
 import {
   CreateCardRequest,
   createCardRequestSchema,
-} from './createCardRequest';
+} from './createCardRequest.js';
 import {
   CreateCustomerRequest,
   createCustomerRequestSchema,
-} from './createCustomerRequest';
+} from './createCustomerRequest.js';
 import {
   CreateDiscountRequest,
   createDiscountRequestSchema,
-} from './createDiscountRequest';
+} from './createDiscountRequest.js';
 import {
   CreateIncrementRequest,
   createIncrementRequestSchema,
-} from './createIncrementRequest';
+} from './createIncrementRequest.js';
 import {
   CreatePeriodRequest,
   createPeriodRequestSchema,
-} from './createPeriodRequest';
+} from './createPeriodRequest.js';
 import {
   CreatePricingSchemeRequest,
   createPricingSchemeRequestSchema,
-} from './createPricingSchemeRequest';
+} from './createPricingSchemeRequest.js';
 import {
   CreateSetupRequest,
   createSetupRequestSchema,
-} from './createSetupRequest';
+} from './createSetupRequest.js';
 import {
   CreateShippingRequest,
   createShippingRequestSchema,
-} from './createShippingRequest';
+} from './createShippingRequest.js';
 import {
   CreateSubMerchantRequest,
   createSubMerchantRequestSchema,
-} from './createSubMerchantRequest';
+} from './createSubMerchantRequest.js';
 import {
   CreateSubscriptionBoletoRequest,
   createSubscriptionBoletoRequestSchema,
-} from './createSubscriptionBoletoRequest';
+} from './createSubscriptionBoletoRequest.js';
 import {
   CreateSubscriptionItemRequest,
   createSubscriptionItemRequestSchema,
-} from './createSubscriptionItemRequest';
+} from './createSubscriptionItemRequest.js';
 import {
   CreateSubscriptionSplitRequest,
   createSubscriptionSplitRequestSchema,
-} from './createSubscriptionSplitRequest';
+} from './createSubscriptionSplitRequest.js';
 
 /** Request for creating a subcription */
 export interface CreateSubscriptionRequest {
@@ -134,53 +134,42 @@ export interface CreateSubscriptionRequest {
   indirectAcceptor?: string;
 }
 
-export const createSubscriptionRequestSchema: Schema<CreateSubscriptionRequest> = object(
-  {
-    customer: ['customer', lazy(() => createCustomerRequestSchema)],
-    card: ['card', lazy(() => createCardRequestSchema)],
-    code: ['code', string()],
-    paymentMethod: ['payment_method', string()],
-    billingType: ['billing_type', string()],
-    statementDescriptor: ['statement_descriptor', string()],
-    description: ['description', string()],
-    currency: ['currency', string()],
-    interval: ['interval', string()],
-    intervalCount: ['interval_count', number()],
-    pricingScheme: [
-      'pricing_scheme',
-      lazy(() => createPricingSchemeRequestSchema),
-    ],
-    items: ['items', array(lazy(() => createSubscriptionItemRequestSchema))],
-    shipping: ['shipping', lazy(() => createShippingRequestSchema)],
-    discounts: ['discounts', array(lazy(() => createDiscountRequestSchema))],
-    metadata: ['metadata', dict(string())],
-    setup: ['setup', optional(lazy(() => createSetupRequestSchema))],
-    planId: ['plan_id', optional(string())],
-    customerId: ['customer_id', optional(string())],
-    cardId: ['card_id', optional(string())],
-    billingDay: ['billing_day', optional(number())],
-    installments: ['installments', optional(number())],
-    startAt: ['start_at', optional(string())],
-    minimumPrice: ['minimum_price', optional(number())],
-    cycles: ['cycles', optional(number())],
-    cardToken: ['card_token', optional(string())],
-    gatewayAffiliationId: ['gateway_affiliation_id', optional(string())],
-    quantity: ['quantity', optional(number())],
-    boletoDueDays: ['boleto_due_days', optional(number())],
-    increments: ['increments', array(lazy(() => createIncrementRequestSchema))],
-    period: ['period', optional(lazy(() => createPeriodRequestSchema))],
-    submerchant: [
-      'submerchant',
-      optional(lazy(() => createSubMerchantRequestSchema)),
-    ],
-    split: [
-      'split',
-      optional(lazy(() => createSubscriptionSplitRequestSchema)),
-    ],
-    boleto: [
-      'boleto',
-      optional(lazy(() => createSubscriptionBoletoRequestSchema)),
-    ],
-    indirectAcceptor: ['indirect_acceptor', optional(string())],
-  }
+export const createSubscriptionRequestSchema: Schema<CreateSubscriptionRequest> = lazy(
+  () =>
+    object({
+      customer: ['customer', createCustomerRequestSchema],
+      card: ['card', createCardRequestSchema],
+      code: ['code', string()],
+      paymentMethod: ['payment_method', string()],
+      billingType: ['billing_type', string()],
+      statementDescriptor: ['statement_descriptor', string()],
+      description: ['description', string()],
+      currency: ['currency', string()],
+      interval: ['interval', string()],
+      intervalCount: ['interval_count', number()],
+      pricingScheme: ['pricing_scheme', createPricingSchemeRequestSchema],
+      items: ['items', array(createSubscriptionItemRequestSchema)],
+      shipping: ['shipping', createShippingRequestSchema],
+      discounts: ['discounts', array(createDiscountRequestSchema)],
+      metadata: ['metadata', dict(string())],
+      setup: ['setup', optional(createSetupRequestSchema)],
+      planId: ['plan_id', optional(string())],
+      customerId: ['customer_id', optional(string())],
+      cardId: ['card_id', optional(string())],
+      billingDay: ['billing_day', optional(number())],
+      installments: ['installments', optional(number())],
+      startAt: ['start_at', optional(string())],
+      minimumPrice: ['minimum_price', optional(number())],
+      cycles: ['cycles', optional(number())],
+      cardToken: ['card_token', optional(string())],
+      gatewayAffiliationId: ['gateway_affiliation_id', optional(string())],
+      quantity: ['quantity', optional(number())],
+      boletoDueDays: ['boleto_due_days', optional(number())],
+      increments: ['increments', array(createIncrementRequestSchema)],
+      period: ['period', optional(createPeriodRequestSchema)],
+      submerchant: ['submerchant', optional(createSubMerchantRequestSchema)],
+      split: ['split', optional(createSubscriptionSplitRequestSchema)],
+      boleto: ['boleto', optional(createSubscriptionBoletoRequestSchema)],
+      indirectAcceptor: ['indirect_acceptor', optional(string())],
+    })
 );

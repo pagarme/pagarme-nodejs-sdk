@@ -17,15 +17,17 @@ Request for creating a new increment
 | `cycles` | `number \| undefined` | Optional | Number of cycles that the increment will be applied |
 | `description` | `string \| undefined` | Optional | Description |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "value": 72.04,
-  "increment_type": "increment_type4",
-  "item_id": "item_id8",
-  "cycles": 196,
-  "description": "description8"
-}
+```ts
+import { CreateIncrementRequest } from 'pagarmeapisdklib';
+
+const createIncrementRequest: CreateIncrementRequest = {
+  value: 84.78,
+  incrementType: 'increment_type8',
+  itemId: 'item_id4',
+  cycles: 202,
+  description: 'description4',
+};
 ```
 

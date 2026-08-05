@@ -14,12 +14,14 @@ Anticipation limit
 | `amount` | `number \| null \| undefined` | Optional | Amount |
 | `anticipationFee` | `number \| null \| undefined` | Optional | Anticipation fee |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "amount": 6,
-  "anticipation_fee": 88
-}
+```ts
+import { GetAnticipationLimitResponse } from 'pagarmeapisdklib';
+
+const getAnticipationLimitResponse: GetAnticipationLimitResponse = {
+  amount: 160,
+  anticipationFee: 190,
+};
 ```
 

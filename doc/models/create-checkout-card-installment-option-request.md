@@ -14,12 +14,14 @@ Options for card installment
 | `number` | `number` | Required | Installment quantity |
 | `total` | `number` | Required | Total amount |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "number": 154,
-  "total": 46
-}
+```ts
+import { CreateCheckoutCardInstallmentOptionRequest } from 'pagarmeapisdklib';
+
+const createCheckoutCardInstallmentOptionRequest: CreateCheckoutCardInstallmentOptionRequest = {
+  number: 68,
+  total: 176,
+};
 ```
 

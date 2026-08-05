@@ -12,12 +12,14 @@
 | `chargeId` | `string \| undefined` | Optional | - |
 | `brandId` | `string \| undefined` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "charge_id": "charge_id8",
-  "brand_id": "brand_id4"
-}
+```ts
+import { GetPaymentOriginResponse } from 'pagarmeapisdklib';
+
+const getPaymentOriginResponse: GetPaymentOriginResponse = {
+  chargeId: 'charge_id4',
+  brandId: 'brand_id0',
+};
 ```
 

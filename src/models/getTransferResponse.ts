@@ -13,11 +13,11 @@ import {
   optional,
   Schema,
   string,
-} from '../schema';
+} from '../schema.js';
 import {
   GetBankAccountResponse,
   getBankAccountResponseSchema,
-} from './getBankAccountResponse';
+} from './getBankAccountResponse.js';
 
 /** Transfer response */
 export interface GetTransferResponse {
@@ -37,15 +37,17 @@ export interface GetTransferResponse {
   metadata?: Record<string, string> | null;
 }
 
-export const getTransferResponseSchema: Schema<GetTransferResponse> = object({
-  id: ['id', optional(nullable(string()))],
-  amount: ['amount', optional(nullable(number()))],
-  status: ['status', optional(nullable(string()))],
-  createdAt: ['created_at', optional(nullable(string()))],
-  updatedAt: ['updated_at', optional(nullable(string()))],
-  bankAccount: [
-    'bank_account',
-    optional(nullable(lazy(() => getBankAccountResponseSchema))),
-  ],
-  metadata: ['metadata', optional(nullable(dict(string())))],
-});
+export const getTransferResponseSchema: Schema<GetTransferResponse> = lazy(() =>
+  object({
+    id: ['id', optional(nullable(string()))],
+    amount: ['amount', optional(nullable(number()))],
+    status: ['status', optional(nullable(string()))],
+    createdAt: ['created_at', optional(nullable(string()))],
+    updatedAt: ['updated_at', optional(nullable(string()))],
+    bankAccount: [
+      'bank_account',
+      optional(nullable(getBankAccountResponseSchema)),
+    ],
+    metadata: ['metadata', optional(nullable(dict(string())))],
+  })
+);

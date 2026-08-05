@@ -14,16 +14,18 @@ Checkout bank transfer payment request
 | `bank` | `string[]` | Required | Bank |
 | `retries` | `number` | Required | Number of retries for processing |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "bank": [
-    "bank7",
-    "bank8",
-    "bank9"
+```ts
+import { CreateCheckoutBankTransferRequest } from 'pagarmeapisdklib';
+
+const createCheckoutBankTransferRequest: CreateCheckoutBankTransferRequest = {
+  bank: [
+    'bank1',
+    'bank2',
+    'bank3'
   ],
-  "retries": 56
-}
+  retries: 56,
+};
 ```
 

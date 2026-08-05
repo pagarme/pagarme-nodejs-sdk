@@ -15,13 +15,15 @@ Fine Response
 | `type` | `string \| null \| undefined` | Optional | Type |
 | `amount` | `number \| null \| undefined` | Optional | Amount |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "type": "\"percentage\" or \"flat\"",
-  "days": 112,
-  "amount": 186
-}
+```ts
+import { GetFineResponse } from 'pagarmeapisdklib';
+
+const getFineResponse: GetFineResponse = {
+  days: 20,
+  type: '"percentage" or "flat"',
+  amount: 94,
+};
 ```
 

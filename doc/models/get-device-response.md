@@ -13,11 +13,13 @@ Response object for geetting an order device
 |  --- | --- | --- | --- |
 | `platform` | `string \| null \| undefined` | Optional | Device's platform name |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "platform": "platform8"
-}
+```ts
+import { GetDeviceResponse } from 'pagarmeapisdklib';
+
+const getDeviceResponse: GetDeviceResponse = {
+  platform: 'platform0',
+};
 ```
 

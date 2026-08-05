@@ -9,8 +9,8 @@ Documentation for accessing and setting credentials for httpBasic.
 
 | Name | Type | Description | Setter |
 |  --- | --- | --- | --- |
-| BasicAuthUserName | `string` | The username to use with basic authentication | `username` |
-| BasicAuthPassword | `string` | The password to use with basic authentication | `password` |
+| basicAuthUserName | `string` | The username to use with basic authentication | `username` |
+| basicAuthPassword | `string` | The password to use with basic authentication | `password` |
 
 
 
@@ -23,6 +23,8 @@ Documentation for accessing and setting credentials for httpBasic.
 You must provide credentials in the client as shown in the following code snippet.
 
 ```ts
+import { Client } from 'pagarmeapisdklib';
+
 const client = new Client({
   basicAuthCredentials: {
     username: 'BasicAuthUserName',

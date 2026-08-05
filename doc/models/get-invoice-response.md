@@ -35,15 +35,17 @@ Response object for getting an invoice
 | `totalIncrement` | `number \| null \| undefined` | Optional | Total discounted value |
 | `subscriptionId` | `string \| null \| undefined` | Optional | Subscription Id |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id0",
-  "code": "code8",
-  "url": "url4",
-  "amount": 168,
-  "status": "status8"
-}
+```ts
+import { GetInvoiceResponse } from 'pagarmeapisdklib';
+
+const getInvoiceResponse: GetInvoiceResponse = {
+  id: 'id8',
+  code: 'code6',
+  url: 'url2',
+  amount: 132,
+  status: 'status0',
+};
 ```
 

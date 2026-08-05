@@ -15,13 +15,15 @@ The ApplePay header request
 | `ephemeralPublicKey` | `string` | Required | X.509 encoded key bytes, Base64 encoded as a string |
 | `transactionId` | `string \| undefined` | Optional | Transaction identifier, generated on Device |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "public_key_hash": "public_key_hash8",
-  "ephemeral_public_key": "ephemeral_public_key0",
-  "transaction_id": "transaction_id8"
-}
+```ts
+import { CreateApplePayHeaderRequest } from 'pagarmeapisdklib';
+
+const createApplePayHeaderRequest: CreateApplePayHeaderRequest = {
+  ephemeralPublicKey: 'ephemeral_public_key0',
+  publicKeyHash: 'public_key_hash8',
+  transactionId: 'transaction_id8',
+};
 ```
 

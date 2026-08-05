@@ -13,13 +13,15 @@
 | `number` | `string \| null \| undefined` | Optional | - |
 | `areaCode` | `string \| null \| undefined` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "country_code": "country_code6",
-  "number": "number4",
-  "area_code": "area_code6"
-}
+```ts
+import { GetPhoneResponse } from 'pagarmeapisdklib';
+
+const getPhoneResponse: GetPhoneResponse = {
+  countryCode: 'country_code2',
+  number: 'number0',
+  areaCode: 'area_code2',
+};
 ```
 

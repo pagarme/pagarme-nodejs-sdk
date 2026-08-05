@@ -27,15 +27,17 @@ Response object for getting a customer
 | `code` | `string \| null \| undefined` | Optional | Código de referência do cliente no sistema da loja. Max: 52 caracteres |
 | `documentType` | `string \| null \| undefined` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id4",
-  "name": "name4",
-  "email": "email2",
-  "delinquent": false,
-  "created_at": "2016-03-13T12:52:32.123Z"
-}
+```ts
+import { GetCustomerResponse } from 'pagarmeapisdklib';
+
+const getCustomerResponse: GetCustomerResponse = {
+  id: 'id6',
+  name: 'name6',
+  email: 'email0',
+  delinquent: false,
+  createdAt: '2016-03-13T12:52:32.123Z',
+};
 ```
 

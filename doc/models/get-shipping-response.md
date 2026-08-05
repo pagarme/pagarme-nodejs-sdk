@@ -20,21 +20,17 @@ Response object for getting the shipping data
 | `estimatedDeliveryDate` | `string \| null \| undefined` | Optional | Prazo estimado de entrega |
 | `type` | `string \| null \| undefined` | Optional | Shipping Type |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "amount": 214,
-  "description": "description8",
-  "recipient_name": "recipient_name6",
-  "recipient_phone": "recipient_phone0",
-  "address": {
-    "id": "id6",
-    "street": "street6",
-    "number": "number4",
-    "complement": "complement2",
-    "zip_code": "zip_code0"
-  }
-}
+```ts
+import { GetShippingResponse } from 'pagarmeapisdklib';
+
+const getShippingResponse: GetShippingResponse = {
+  amount: 228,
+  description: 'description8',
+  recipientName: 'recipient_name0',
+  recipientPhone: 'recipient_phone4',
+  address: null,
+};
 ```
 

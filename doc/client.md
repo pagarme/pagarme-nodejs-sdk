@@ -13,7 +13,11 @@ The following parameters are configurable for the API Client:
 
 The API client can be initialized as follows:
 
+## Code-Based Client Initialization
+
 ```ts
+import { Client } from 'pagarmeapisdklib';
+
 const client = new Client({
   basicAuthCredentials: {
     username: 'BasicAuthUserName',
@@ -24,24 +28,44 @@ const client = new Client({
 });
 ```
 
-## PagarmeApiSDK Client
+## Configuration-Based Client Initialization
 
-The gateway for the SDK. This class acts as a factory for the Controllers and also holds the configuration of the SDK.
+```ts
+import * as path from 'path';
+import * as fs from 'fs';
+import { Client } from 'pagarmeapisdklib';
 
-## Controllers
+// Provide absolute path for the configuration file
+const absolutePath = path.resolve('./config.json');
 
-| Name | Description |
-|  --- | --- |
-| subscriptions | Gets SubscriptionsController |
-| orders | Gets OrdersController |
-| plans | Gets PlansController |
-| invoices | Gets InvoicesController |
-| customers | Gets CustomersController |
-| charges | Gets ChargesController |
-| recipients | Gets RecipientsController |
-| tokens | Gets TokensController |
-| transactions | Gets TransactionsController |
-| transfers | Gets TransfersController |
-| payables | Gets PayablesController |
-| balanceOperations | Gets BalanceOperationsController |
+// Read the configuration file content
+const fileContent = fs.readFileSync(absolutePath, 'utf-8');
+
+// Initialize client from JSON configuration content
+const client = Client.fromJsonConfig(fileContent);
+```
+
+See the [Configuration-Based Client Initialization](../doc/configuration-based-client-initialization.md) section for details.
+
+## Environment-Based Client Initialization
+
+```ts
+import * as dotenv from 'dotenv';
+import * as path from 'path';
+import * as fs from 'fs';
+import { Client } from 'pagarmeapisdklib';
+
+// Optional - Provide absolute path for the .env file
+const absolutePath = path.resolve('./.env');
+
+if (fs.existsSync(absolutePath)) {
+  // Load environment variables from .env file
+  dotenv.config({ path: absolutePath, override: true });
+}
+
+// Initialize client using environment variables
+const client = Client.fromEnvironment(process.env);
+```
+
+See the [Environment-Based Client Initialization](../doc/environment-based-client-initialization.md) section for details.
 

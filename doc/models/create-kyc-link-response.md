@@ -15,13 +15,15 @@ KYC Link
 | `url` | `string \| null \| undefined` | Optional | URL |
 | `expirationDate` | `string \| null \| undefined` | Optional | Expiration Date |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "base64": "base644",
-  "url": "url0",
-  "expiration_date": "expiration_date0"
-}
+```ts
+import { CreateKYCLinkResponse } from 'pagarmeapisdklib';
+
+const createKYCLinkResponse: CreateKYCLinkResponse = {
+  base64: 'base648',
+  url: 'url4',
+  expirationDate: 'expiration_date4',
+};
 ```
 

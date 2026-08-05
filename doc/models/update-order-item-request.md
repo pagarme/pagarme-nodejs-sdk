@@ -16,14 +16,16 @@ Update Order item Request
 | `quantity` | `number` | Required | - |
 | `category` | `string` | Required | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "amount": 130,
-  "description": "description4",
-  "quantity": 244,
-  "category": "category2"
-}
+```ts
+import { UpdateOrderItemRequest } from 'pagarmeapisdklib';
+
+const updateOrderItemRequest: UpdateOrderItemRequest = {
+  amount: 202,
+  description: 'description0',
+  quantity: 60,
+  category: 'category8',
+};
 ```
 

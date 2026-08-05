@@ -15,18 +15,14 @@ Api Error Exception
 | `errors` | `unknown \| null` | Required | - |
 | `request` | `unknown \| null` | Required | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "message": "message4",
-  "errors": {
-    "key1": "val1",
-    "key2": "val2"
-  },
-  "request": {
-    "key1": "val1",
-    "key2": "val2"
+```ts
+try {
+  // make the API call
+} catch (error) {
+  if (error instanceof CustomError) {
+    console.log(error.result);
   }
 }
 ```

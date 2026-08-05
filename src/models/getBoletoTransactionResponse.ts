@@ -15,17 +15,17 @@ import {
   optional,
   Schema,
   string,
-} from '../schema';
-import { getAntifraudResponseSchema } from './getAntifraudResponse';
+} from '../schema.js';
+import { getAntifraudResponseSchema } from './getAntifraudResponse.js';
 import {
   GetBillingAddressResponse,
   getBillingAddressResponseSchema,
-} from './getBillingAddressResponse';
-import { getFineResponseSchema } from './getFineResponse';
-import { getGatewayResponseResponseSchema } from './getGatewayResponseResponse';
-import { getInterestResponseSchema } from './getInterestResponse';
-import { getSplitResponseSchema } from './getSplitResponse';
-import { GetTransactionResponse } from './getTransactionResponse';
+} from './getBillingAddressResponse.js';
+import { getFineResponseSchema } from './getFineResponse.js';
+import { getGatewayResponseResponseSchema } from './getGatewayResponseResponse.js';
+import { getInterestResponseSchema } from './getInterestResponse.js';
+import { getSplitResponseSchema } from './getSplitResponse.js';
+import { GetTransactionResponse } from './getTransactionResponse.js';
 
 /** Response object for getting a boleto transaction */
 export interface GetBoletoTransactionResponse extends GetTransactionResponse {
@@ -49,64 +49,59 @@ export interface GetBoletoTransactionResponse extends GetTransactionResponse {
   statementDescriptor?: string | null;
 }
 
-export const getBoletoTransactionResponseSchema: Schema<GetBoletoTransactionResponse> = object(
-  {
-    url: ['url', optional(nullable(string()))],
-    barcode: ['barcode', optional(nullable(string()))],
-    nossoNumero: ['nosso_numero', optional(nullable(string()))],
-    bank: ['bank', optional(nullable(string()))],
-    documentNumber: ['document_number', optional(nullable(string()))],
-    instructions: ['instructions', optional(nullable(string()))],
-    billingAddress: [
-      'billing_address',
-      optional(nullable(lazy(() => getBillingAddressResponseSchema))),
-    ],
-    dueAt: ['due_at', optional(nullable(string()))],
-    qrCode: ['qr_code', optional(nullable(string()))],
-    line: ['line', optional(nullable(string()))],
-    pdfPassword: ['pdf_password', optional(nullable(string()))],
-    pdf: ['pdf', optional(nullable(string()))],
-    paidAt: ['paid_at', optional(nullable(string()))],
-    paidAmount: ['paid_amount', optional(nullable(string()))],
-    type: ['type', optional(nullable(string()))],
-    creditAt: ['credit_at', optional(nullable(string()))],
-    statementDescriptor: ['statement_descriptor', optional(nullable(string()))],
-    gatewayId: ['gateway_id', optional(nullable(string()))],
-    amount: ['amount', optional(nullable(number()))],
-    status: ['status', optional(nullable(string()))],
-    success: ['success', optional(nullable(boolean()))],
-    createdAt: ['created_at', optional(nullable(string()))],
-    updatedAt: ['updated_at', optional(nullable(string()))],
-    attemptCount: ['attempt_count', optional(nullable(number()))],
-    maxAttempts: ['max_attempts', optional(nullable(number()))],
-    splits: [
-      'splits',
-      optional(nullable(array(lazy(() => getSplitResponseSchema)))),
-    ],
-    nextAttempt: ['next_attempt', optional(nullable(string()))],
-    id: ['id', optional(nullable(string()))],
-    gatewayResponse: [
-      'gateway_response',
-      optional(nullable(lazy(() => getGatewayResponseResponseSchema))),
-    ],
-    antifraudResponse: [
-      'antifraud_response',
-      optional(nullable(lazy(() => getAntifraudResponseSchema))),
-    ],
-    metadata: ['metadata', optional(nullable(dict(string())))],
-    split: [
-      'split',
-      optional(nullable(array(lazy(() => getSplitResponseSchema)))),
-    ],
-    interest: [
-      'interest',
-      optional(nullable(lazy(() => getInterestResponseSchema))),
-    ],
-    fine: ['fine', optional(nullable(lazy(() => getFineResponseSchema)))],
-    maxDaysToPayPastDue: [
-      'max_days_to_pay_past_due',
-      optional(nullable(number())),
-    ],
-    transactionType: ['transaction_type', optional(string())],
-  }
+export const getBoletoTransactionResponseSchema: Schema<GetBoletoTransactionResponse> = lazy(
+  () =>
+    object({
+      url: ['url', optional(nullable(string()))],
+      barcode: ['barcode', optional(nullable(string()))],
+      nossoNumero: ['nosso_numero', optional(nullable(string()))],
+      bank: ['bank', optional(nullable(string()))],
+      documentNumber: ['document_number', optional(nullable(string()))],
+      instructions: ['instructions', optional(nullable(string()))],
+      billingAddress: [
+        'billing_address',
+        optional(nullable(getBillingAddressResponseSchema)),
+      ],
+      dueAt: ['due_at', optional(nullable(string()))],
+      qrCode: ['qr_code', optional(nullable(string()))],
+      line: ['line', optional(nullable(string()))],
+      pdfPassword: ['pdf_password', optional(nullable(string()))],
+      pdf: ['pdf', optional(nullable(string()))],
+      paidAt: ['paid_at', optional(nullable(string()))],
+      paidAmount: ['paid_amount', optional(nullable(string()))],
+      type: ['type', optional(nullable(string()))],
+      creditAt: ['credit_at', optional(nullable(string()))],
+      statementDescriptor: [
+        'statement_descriptor',
+        optional(nullable(string())),
+      ],
+      gatewayId: ['gateway_id', optional(nullable(string()))],
+      amount: ['amount', optional(nullable(number()))],
+      status: ['status', optional(nullable(string()))],
+      success: ['success', optional(nullable(boolean()))],
+      createdAt: ['created_at', optional(nullable(string()))],
+      updatedAt: ['updated_at', optional(nullable(string()))],
+      attemptCount: ['attempt_count', optional(nullable(number()))],
+      maxAttempts: ['max_attempts', optional(nullable(number()))],
+      splits: ['splits', optional(nullable(array(getSplitResponseSchema)))],
+      nextAttempt: ['next_attempt', optional(nullable(string()))],
+      id: ['id', optional(nullable(string()))],
+      gatewayResponse: [
+        'gateway_response',
+        optional(nullable(getGatewayResponseResponseSchema)),
+      ],
+      antifraudResponse: [
+        'antifraud_response',
+        optional(nullable(getAntifraudResponseSchema)),
+      ],
+      metadata: ['metadata', optional(nullable(dict(string())))],
+      split: ['split', optional(nullable(array(getSplitResponseSchema)))],
+      interest: ['interest', optional(nullable(getInterestResponseSchema))],
+      fine: ['fine', optional(nullable(getFineResponseSchema))],
+      maxDaysToPayPastDue: [
+        'max_days_to_pay_past_due',
+        optional(nullable(number())),
+      ],
+      transactionType: ['transaction_type', optional(string())],
+    })
 );

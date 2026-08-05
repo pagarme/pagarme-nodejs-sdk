@@ -20,28 +20,27 @@ Request for updating card data
 | `paymentOrigin` | [`CreatePaymentOriginRequest \| undefined`](../../doc/models/create-payment-origin-request.md) | Optional | - |
 | `indirectAcceptor` | `string \| undefined` | Optional | Business model identifier |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "update_subscription": false,
-  "card_id": "card_id2",
-  "card": {
-    "type": "credit",
-    "number": "number6",
-    "holder_name": "holder_name2",
-    "exp_month": 228,
-    "exp_year": 68,
-    "cvv": "cvv4"
+```ts
+import { UpdateChargeCardRequest } from 'pagarmeapisdklib';
+
+const updateChargeCardRequest: UpdateChargeCardRequest = {
+  updateSubscription: false,
+  cardId: '',
+  card: {
+    number: 'number6',
+    holderName: 'holder_name2',
+    expMonth: 228,
+    expYear: 68,
+    cvv: 'cvv4',
+    type: 'credit',
   },
-  "recurrence": false,
-  "initiated_type": "initiated_type8",
-  "recurrence_model": "recurrence_model6",
-  "payment_origin": {
-    "brand_id": "brand_id8",
-    "charge_id": "charge_id2"
-  },
-  "indirect_acceptor": "indirect_acceptor2"
-}
+  recurrence: false,
+  initiatedType: 'initiated_type4',
+  recurrenceModel: 'recurrence_model2',
+  paymentOrigin: {},
+  indirectAcceptor: 'indirect_acceptor8',
+};
 ```
 

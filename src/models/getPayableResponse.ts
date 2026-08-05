@@ -5,65 +5,87 @@
  */
 
 import {
-  bigint,
   nullable,
   number,
   object,
   optional,
   Schema,
   string,
-} from '../schema';
+} from '../schema.js';
 
 /** Response object for getting an payable */
 export interface GetPayableResponse {
-  id?: bigint | null;
-  status?: string | null;
-  amount?: number | null;
+  /** Payable Identifier */
+  id: string;
+  /** Payable status */
+  status: string;
+  /** Payable amount in cents */
+  amount: number;
+  /** Payable fee amount in cents */
   fee?: number | null;
+  /** Antecipation fee amount in cents */
   anticipationFee?: number | null;
+  /** Fraud coverage fee amount in cents */
   fraudCoverageFee?: number | null;
+  /** Number of installment */
   installment?: number | null;
-  gatewayId?: bigint | null;
-  chargeId?: string | null;
-  splitId?: string | null;
-  bulkAnticipationId?: string | null;
+  /** Payment gateway identifier */
+  gatewayId: string | null;
+  /** Charge identifier */
+  chargeId: string | null;
+  splitId: string | null;
+  bulkAnticipationId: string | null;
   anticipationId?: string | null;
-  recipientId?: string | null;
-  originatorModel?: string | null;
-  originatorModelId?: string | null;
+  /** Recipient identifier */
+  recipientId: string | null;
+  originatorModel: string | null;
+  /** Originator model identifier */
+  originatorModelId: string | null;
+  /** Payment Date */
   paymentDate?: string | null;
-  originalPaymentDate?: string | null;
+  /** Original Payment Date */
+  originalPaymentDate: string | null;
+  /** Type of payable */
   type?: string | null;
-  paymentMethod?: string | null;
+  /** Payment method of transaction */
+  paymentMethod: string | null;
+  /** Date issuer identify payment */
   accrualAt?: string | null;
-  createdAt?: string | null;
+  /** Creation date */
+  createdAt: string;
   liquidationArrangementId?: string | null;
+  /** Settlement identifier  (new in v7.x) */
+  settlementId: string | null;
+  /** Operational identifier of merchant inside of payment platform (new in v7.x) */
+  paymentProfileId: string | null;
 }
 
 export const getPayableResponseSchema: Schema<GetPayableResponse> = object({
-  id: ['id', optional(nullable(bigint()))],
-  status: ['status', optional(nullable(string()))],
-  amount: ['amount', optional(nullable(number()))],
+  id: ['id', string()],
+  status: ['status', string()],
+  amount: ['amount', number()],
   fee: ['fee', optional(nullable(number()))],
   anticipationFee: ['anticipation_fee', optional(nullable(number()))],
   fraudCoverageFee: ['fraud_coverage_fee', optional(nullable(number()))],
   installment: ['installment', optional(nullable(number()))],
-  gatewayId: ['gateway_id', optional(nullable(bigint()))],
-  chargeId: ['charge_id', optional(nullable(string()))],
-  splitId: ['split_id', optional(nullable(string()))],
-  bulkAnticipationId: ['bulk_anticipation_id', optional(nullable(string()))],
+  gatewayId: ['gateway_id', nullable(string())],
+  chargeId: ['charge_id', nullable(string())],
+  splitId: ['split_id', nullable(string())],
+  bulkAnticipationId: ['bulk_anticipation_id', nullable(string())],
   anticipationId: ['anticipation_id', optional(nullable(string()))],
-  recipientId: ['recipient_id', optional(nullable(string()))],
-  originatorModel: ['originator_model', optional(nullable(string()))],
-  originatorModelId: ['originator_model_id', optional(nullable(string()))],
+  recipientId: ['recipient_id', nullable(string())],
+  originatorModel: ['originator_model', nullable(string())],
+  originatorModelId: ['originator_model_id', nullable(string())],
   paymentDate: ['payment_date', optional(nullable(string()))],
-  originalPaymentDate: ['original_payment_date', optional(nullable(string()))],
+  originalPaymentDate: ['original_payment_date', nullable(string())],
   type: ['type', optional(nullable(string()))],
-  paymentMethod: ['payment_method', optional(nullable(string()))],
+  paymentMethod: ['payment_method', nullable(string())],
   accrualAt: ['accrual_at', optional(nullable(string()))],
-  createdAt: ['created_at', optional(nullable(string()))],
+  createdAt: ['created_at', string()],
   liquidationArrangementId: [
     'liquidation_arrangement_id',
     optional(nullable(string())),
   ],
+  settlementId: ['settlement_id', nullable(string())],
+  paymentProfileId: ['payment_profile_id', nullable(string())],
 });

@@ -17,21 +17,17 @@ Response object for getting a access token
 | `createdAt` | `string \| null \| undefined` | Optional | - |
 | `customer` | [`GetCustomerResponse \| null \| undefined`](../../doc/models/get-customer-response.md) | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id0",
-  "code": "code8",
-  "status": "status2",
-  "created_at": "2016-03-13T12:52:32.123Z",
-  "customer": {
-    "id": "id0",
-    "name": "name0",
-    "email": "email6",
-    "delinquent": false,
-    "created_at": "2016-03-13T12:52:32.123Z"
-  }
-}
+```ts
+import { GetAccessTokenResponse } from 'pagarmeapisdklib';
+
+const getAccessTokenResponse: GetAccessTokenResponse = {
+  id: 'id2',
+  code: 'code0',
+  status: 'status6',
+  createdAt: '2016-03-13T12:52:32.123Z',
+  customer: null,
+};
 ```
 

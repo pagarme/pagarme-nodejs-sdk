@@ -23,15 +23,17 @@
 | `cycles` | `number \| null \| undefined` | Optional | - |
 | `deletedAt` | `string \| null \| undefined` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id2",
-  "description": "description8",
-  "status": "status6",
-  "created_at": "2016-03-13T12:52:32.123Z",
-  "updated_at": "2016-03-13T12:52:32.123Z"
-}
+```ts
+import { GetSubscriptionItemResponse } from 'pagarmeapisdklib';
+
+const getSubscriptionItemResponse: GetSubscriptionItemResponse = {
+  id: 'id2',
+  description: 'description2',
+  status: 'status4',
+  createdAt: '2016-03-13T12:52:32.123Z',
+  updatedAt: '2016-03-13T12:52:32.123Z',
+};
 ```
 

@@ -11,11 +11,13 @@
 |  --- | --- | --- | --- |
 | `customSla` | `number` | Required | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "custom_sla": 150
-}
+```ts
+import { CreateClearSaleRequest } from 'pagarmeapisdklib';
+
+const createClearSaleRequest: CreateClearSaleRequest = {
+  customSla: 156,
+};
 ```
 

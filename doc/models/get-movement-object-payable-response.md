@@ -29,29 +29,31 @@
 | `accrualAt` | `string` | Required | - |
 | `liquidationArrangementId` | `string` | Required | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id2",
-  "status": "status4",
-  "amount": "amount4",
-  "created_at": "created_at0",
-  "fee": "fee2",
-  "anticipation_fee": "anticipation_fee2",
-  "fraud_coverage_fee": "fraud_coverage_fee8",
-  "installment": "installment8",
-  "split_id": "split_id2",
-  "bulk_anticipation_id": "bulk_anticipation_id6",
-  "anticipation_id": "anticipation_id0",
-  "recipient_id": "recipient_id0",
-  "originator_model": "originator_model6",
-  "originator_model_id": "originator_model_id6",
-  "payment_date": "payment_date2",
-  "original_payment_date": "original_payment_date2",
-  "payment_method": "payment_method0",
-  "accrual_at": "accrual_at2",
-  "liquidation_arrangement_id": "liquidation_arrangement_id4"
-}
+```ts
+import { GetMovementObjectPayableResponse } from 'pagarmeapisdklib';
+
+const getMovementObjectPayableResponse: GetMovementObjectPayableResponse = {
+  anticipationFee: 'anticipation_fee4',
+  fraudCoverageFee: 'fraud_coverage_fee2',
+  installment: 'installment2',
+  splitId: 'split_id6',
+  bulkAnticipationId: 'bulk_anticipation_id0',
+  anticipationId: 'anticipation_id6',
+  recipientId: 'recipient_id6',
+  originatorModel: 'originator_model0',
+  originatorModelId: 'originator_model_id0',
+  paymentDate: 'payment_date6',
+  originalPaymentDate: 'original_payment_date6',
+  paymentMethod: 'payment_method4',
+  accrualAt: 'accrual_at6',
+  liquidationArrangementId: 'liquidation_arrangement_id8',
+  fee: 'fee6',
+  id: 'id2',
+  status: 'status4',
+  amount: 'amount4',
+  createdAt: 'created_at0',
+};
 ```
 

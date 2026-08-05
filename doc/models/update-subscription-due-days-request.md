@@ -11,11 +11,13 @@
 |  --- | --- | --- | --- |
 | `boletoDueDays` | `number` | Required | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "boleto_due_days": 56
-}
+```ts
+import { UpdateSubscriptionDueDaysRequest } from 'pagarmeapisdklib';
+
+const updateSubscriptionDueDaysRequest: UpdateSubscriptionDueDaysRequest = {
+  boletoDueDays: 78,
+};
 ```
 

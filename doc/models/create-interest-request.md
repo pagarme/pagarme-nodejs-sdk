@@ -15,13 +15,15 @@ Interest Request
 | `type` | `string` | Required | Type |
 | `amount` | `number` | Required | Amount |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "days": 4,
-  "type": "\"percentage\" or \"flat\"",
-  "amount": 78
-}
+```ts
+import { CreateInterestRequest } from 'pagarmeapisdklib';
+
+const createInterestRequest: CreateInterestRequest = {
+  days: 0,
+  type: '"percentage" or "flat"',
+  amount: 0,
+};
 ```
 

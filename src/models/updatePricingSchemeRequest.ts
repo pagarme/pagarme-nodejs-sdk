@@ -12,11 +12,11 @@ import {
   optional,
   Schema,
   string,
-} from '../schema';
+} from '../schema.js';
 import {
   UpdatePriceBracketRequest,
   updatePriceBracketRequestSchema,
-} from './updatePriceBracketRequest';
+} from './updatePriceBracketRequest.js';
 
 /** Request for updating a pricing scheme */
 export interface UpdatePricingSchemeRequest {
@@ -32,15 +32,13 @@ export interface UpdatePricingSchemeRequest {
   percentage?: number;
 }
 
-export const updatePricingSchemeRequestSchema: Schema<UpdatePricingSchemeRequest> = object(
-  {
-    schemeType: ['scheme_type', string()],
-    priceBrackets: [
-      'price_brackets',
-      array(lazy(() => updatePriceBracketRequestSchema)),
-    ],
-    price: ['price', optional(number())],
-    minimumPrice: ['minimum_price', optional(number())],
-    percentage: ['percentage', optional(number())],
-  }
+export const updatePricingSchemeRequestSchema: Schema<UpdatePricingSchemeRequest> = lazy(
+  () =>
+    object({
+      schemeType: ['scheme_type', string()],
+      priceBrackets: ['price_brackets', array(updatePriceBracketRequestSchema)],
+      price: ['price', optional(number())],
+      minimumPrice: ['minimum_price', optional(number())],
+      percentage: ['percentage', optional(number())],
+    })
 );

@@ -13,11 +13,13 @@ Update code for a recipient
 |  --- | --- | --- | --- |
 | `code` | `string` | Required | Code |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "code": "code6"
-}
+```ts
+import { UpdateRecipientCodeRequest } from 'pagarmeapisdklib';
+
+const updateRecipientCodeRequest: UpdateRecipientCodeRequest = {
+  code: 'code8',
+};
 ```
 

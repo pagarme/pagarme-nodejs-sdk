@@ -13,15 +13,15 @@ import {
   optional,
   Schema,
   string,
-} from '../schema';
+} from '../schema.js';
 import {
   CreateAddressRequest,
   createAddressRequestSchema,
-} from './createAddressRequest';
+} from './createAddressRequest.js';
 import {
   CreateCardOptionsRequest,
   createCardOptionsRequestSchema,
-} from './createCardOptionsRequest';
+} from './createCardOptionsRequest.js';
 
 /** Card data */
 export interface CreateCardRequest {
@@ -58,24 +58,23 @@ export interface CreateCardRequest {
   token?: string;
 }
 
-export const createCardRequestSchema: Schema<CreateCardRequest> = object({
-  number: ['number', optional(string())],
-  holderName: ['holder_name', optional(string())],
-  expMonth: ['exp_month', optional(number())],
-  expYear: ['exp_year', optional(number())],
-  cvv: ['cvv', optional(string())],
-  billingAddress: [
-    'billing_address',
-    optional(lazy(() => createAddressRequestSchema)),
-  ],
-  brand: ['brand', optional(string())],
-  billingAddressId: ['billing_address_id', optional(string())],
-  metadata: ['metadata', optional(dict(string()))],
-  type: ['type', optional(string())],
-  options: ['options', optional(lazy(() => createCardOptionsRequestSchema))],
-  holderDocument: ['holder_document', optional(string())],
-  privateLabel: ['private_label', optional(boolean())],
-  label: ['label', optional(string())],
-  id: ['id', optional(string())],
-  token: ['token', optional(string())],
-});
+export const createCardRequestSchema: Schema<CreateCardRequest> = lazy(() =>
+  object({
+    number: ['number', optional(string())],
+    holderName: ['holder_name', optional(string())],
+    expMonth: ['exp_month', optional(number())],
+    expYear: ['exp_year', optional(number())],
+    cvv: ['cvv', optional(string())],
+    billingAddress: ['billing_address', optional(createAddressRequestSchema)],
+    brand: ['brand', optional(string())],
+    billingAddressId: ['billing_address_id', optional(string())],
+    metadata: ['metadata', optional(dict(string()))],
+    type: ['type', optional(string())],
+    options: ['options', optional(createCardOptionsRequestSchema)],
+    holderDocument: ['holder_document', optional(string())],
+    privateLabel: ['private_label', optional(boolean())],
+    label: ['label', optional(string())],
+    id: ['id', optional(string())],
+    token: ['token', optional(string())],
+  })
+);

@@ -14,17 +14,18 @@
 | `targetId` | `string` | Required | - |
 | `metadata` | `string[] \| undefined` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "amount": 252,
-  "source_id": "source_id6",
-  "target_id": "target_id8",
-  "metadata": [
-    "metadata1",
-    "metadata2"
-  ]
-}
+```ts
+import { CreateTransfer } from 'pagarmeapisdklib';
+
+const createTransfer: CreateTransfer = {
+  amount: 130,
+  sourceId: 'source_id6',
+  targetId: 'target_id8',
+  metadata: [
+    'metadata1'
+  ],
+};
 ```
 

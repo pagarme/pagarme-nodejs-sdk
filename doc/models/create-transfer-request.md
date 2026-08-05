@@ -14,16 +14,17 @@ Request for creating a transfer
 | `amount` | `number` | Required | Transfer amount |
 | `metadata` | `Record<string, string>` | Required | Metadata |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "amount": 148,
-  "metadata": {
-    "key0": "metadata7",
-    "key1": "metadata8",
-    "key2": "metadata9"
-  }
-}
+```ts
+import { CreateTransferRequest } from 'pagarmeapisdklib';
+
+const createTransferRequest: CreateTransferRequest = {
+  amount: 192,
+  metadata: {
+    'key0': 'metadata3',
+    'key1': 'metadata2'
+  },
+};
 ```
 

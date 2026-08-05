@@ -30,97 +30,32 @@ Request for creating a plan
 | `quantity` | `number \| undefined` | Optional | Quantity |
 | `trialPeriodDays` | `number \| undefined` | Optional | Trial period, where the customer will not be charged. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "name": "name0",
-  "description": "description0",
-  "statement_descriptor": "statement_descriptor0",
-  "items": [
-    {
-      "name": "name8",
-      "pricing_scheme": {
-        "scheme_type": "scheme_type8",
-        "price_brackets": [
-          {
-            "start_quantity": 144,
-            "price": 174,
-            "end_quantity": 152,
-            "overage_price": 166
-          },
-          {
-            "start_quantity": 144,
-            "price": 174,
-            "end_quantity": 152,
-            "overage_price": 166
-          },
-          {
-            "start_quantity": 144,
-            "price": 174,
-            "end_quantity": 152,
-            "overage_price": 166
-          }
-        ],
-        "price": 166,
-        "minimum_price": 6,
-        "percentage": 251.76
-      },
-      "id": "id8",
-      "description": "description2",
-      "cycles": 214,
-      "quantity": 22
-    }
+```ts
+import { CreatePlanRequest } from 'pagarmeapisdklib';
+
+const createPlanRequest: CreatePlanRequest = {
+  name: '',
+  description: '',
+  statementDescriptor: '',
+  items: [
+    {}
   ],
-  "shippable": false,
-  "payment_methods": [
-    "payment_methods5",
-    "payment_methods4"
-  ],
-  "installments": [
-    195,
-    196
-  ],
-  "currency": "currency0",
-  "interval": "interval8",
-  "interval_count": 158,
-  "billing_days": [
-    159
-  ],
-  "billing_type": "billing_type4",
-  "pricing_scheme": {
-    "scheme_type": "scheme_type8",
-    "price_brackets": [
-      {
-        "start_quantity": 144,
-        "price": 174,
-        "end_quantity": 152,
-        "overage_price": 166
-      },
-      {
-        "start_quantity": 144,
-        "price": 174,
-        "end_quantity": 152,
-        "overage_price": 166
-      },
-      {
-        "start_quantity": 144,
-        "price": 174,
-        "end_quantity": 152,
-        "overage_price": 166
-      }
-    ],
-    "price": 166,
-    "minimum_price": 6,
-    "percentage": 251.76
-  },
-  "metadata": {
-    "key0": "metadata7"
-  },
-  "minimum_price": 156,
-  "cycles": 164,
-  "quantity": 144,
-  "trial_period_days": 130
-}
+  shippable: false,
+  paymentMethods: [],
+  installments: [],
+  currency: '',
+  interval: '',
+  intervalCount: 0,
+  billingDays: [],
+  billingType: '',
+  pricingScheme: {},
+  metadata: {},
+  minimumPrice: 56,
+  cycles: 48,
+  quantity: 188,
+  trialPeriodDays: 174,
+};
 ```
 

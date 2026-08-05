@@ -32,20 +32,22 @@ Response object for getting a credit card transaction
 | `brandId` | `string \| null \| undefined` | Optional | - |
 | `indirectAcceptor` | `string \| null \| undefined` | Optional | Business model identifier |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "gateway_id": "gateway_id8",
-  "amount": 40,
-  "status": "status6",
-  "success": false,
-  "created_at": "2016-03-13T12:52:32.123Z",
-  "statement_descriptor": "statement_descriptor2",
-  "acquirer_name": "acquirer_name6",
-  "acquirer_affiliation_code": "acquirer_affiliation_code6",
-  "acquirer_tid": "acquirer_tid8",
-  "acquirer_nsu": "acquirer_nsu8"
-}
+```ts
+import { GetCreditCardTransactionResponse } from 'pagarmeapisdklib';
+
+const getCreditCardTransactionResponse: GetCreditCardTransactionResponse = {
+  statementDescriptor: 'statement_descriptor6',
+  acquirerName: 'acquirer_name0',
+  acquirerAffiliationCode: 'acquirer_affiliation_code2',
+  acquirerTid: 'acquirer_tid4',
+  acquirerNsu: 'acquirer_nsu4',
+  gatewayId: 'gateway_id8',
+  amount: 40,
+  status: 'status6',
+  success: false,
+  createdAt: '2016-03-13T12:52:32.123Z',
+};
 ```
 

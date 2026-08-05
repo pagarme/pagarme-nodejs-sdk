@@ -15,13 +15,15 @@ Creates a refund with split rules
 | `amount` | `number` | Required | The split rule amount |
 | `type` | `string` | Required | The amount type (flat ou percentage) |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id6",
-  "Amount": 222,
-  "type": "type6"
-}
+```ts
+import { CreateCancelChargeSplitRulesRequest } from 'pagarmeapisdklib';
+
+const createCancelChargeSplitRulesRequest: CreateCancelChargeSplitRulesRequest = {
+  id: 'id0',
+  amount: 140,
+  type: 'type0',
+};
 ```
 

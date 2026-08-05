@@ -17,15 +17,17 @@ Request for creating a new discount
 | `cycles` | `number \| undefined` | Optional | Number of cycles that the discount will be applied |
 | `description` | `string \| undefined` | Optional | Description |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "value": 146.6,
-  "discount_type": "discount_type6",
-  "item_id": "item_id2",
-  "cycles": 164,
-  "description": "description2"
-}
+```ts
+import { CreateDiscountRequest } from 'pagarmeapisdklib';
+
+const createDiscountRequest: CreateDiscountRequest = {
+  value: 66.94,
+  discountType: 'discount_type0',
+  itemId: 'item_id8',
+  cycles: 194,
+  description: 'description8',
+};
 ```
 

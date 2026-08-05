@@ -11,27 +11,38 @@ Balance
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `currency` | `string \| null \| undefined` | Optional | Currency |
-| `availableAmount` | `bigint \| null \| undefined` | Optional | Amount available for transferring |
+| `currency` | `string \| null \| undefined` | Optional | Currency (official ISO 4217 currency names) |
+| `availableAmount` | `bigint \| null \| undefined` | Optional | Amount available for transferring in cents |
 | `recipient` | [`GetRecipientResponse \| null \| undefined`](../../doc/models/get-recipient-response.md) | Optional | Recipient |
-| `transferredAmount` | `bigint \| null \| undefined` | Optional | - |
-| `waitingFundsAmount` | `bigint \| null \| undefined` | Optional | - |
+| `transferredAmount` | `bigint \| null \| undefined` | Optional | Amount transfered in cents |
+| `waitingFundsAmount` | `bigint \| null \| undefined` | Optional | Amount waiting in cents |
+| `paymentProfileId` | `string \| null` | Required | Operational id of merchant in payments operations (new) |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "currency": "currency2",
-  "available_amount": 96,
-  "recipient": {
-    "id": "id8",
-    "name": "name8",
-    "email": "email8",
-    "document": "document8",
-    "description": "description2"
+```ts
+import { GetBalanceResponse } from 'pagarmeapisdklib';
+
+const getBalanceResponse: GetBalanceResponse = {
+  paymentProfileId: 'pp_abcdefghoj20klmn09k',
+  currency: 'BRL',
+  availableAmount: BigInt(4996),
+  recipient: {
+    id: 're_abcdefghoj20klmn09k',
+    name: 'Lojista Recebedor LTDA',
+    email: 'email@stone.com.br',
+    document: '01032644222100',
+    description: null,
+    type: null,
+    status: 'active',
+    createdAt: '2026-06-22T19:13:52Z',
+    updatedAt: null,
+    deletedAt: null,
+    code: null,
+    paymentMode: null,
   },
-  "transferred_amount": 142,
-  "waiting_funds_amount": 174
-}
+  transferredAmount: null,
+  waitingFundsAmount: BigInt(0),
+};
 ```
 

@@ -13,15 +13,15 @@ import {
   optional,
   Schema,
   string,
-} from '../schema';
+} from '../schema.js';
 import {
   GetWithdrawSourceResponse,
   getWithdrawSourceResponseSchema,
-} from './getWithdrawSourceResponse';
+} from './getWithdrawSourceResponse.js';
 import {
   GetWithdrawTargetResponse,
   getWithdrawTargetResponseSchema,
-} from './getWithdrawTargetResponse';
+} from './getWithdrawTargetResponse.js';
 
 export interface GetWithdrawResponse {
   id?: string | null;
@@ -39,27 +39,23 @@ export interface GetWithdrawResponse {
   target?: GetWithdrawTargetResponse | null;
 }
 
-export const getWithdrawResponseSchema: Schema<GetWithdrawResponse> = object({
-  id: ['id', optional(nullable(string()))],
-  gatewayId: ['gateway_id', optional(nullable(string()))],
-  amount: ['amount', optional(nullable(number()))],
-  status: ['status', optional(nullable(string()))],
-  createdAt: ['created_at', optional(nullable(string()))],
-  updatedAt: ['updated_at', optional(nullable(string()))],
-  metadata: ['metadata', optional(nullable(array(string())))],
-  fee: ['fee', optional(nullable(number()))],
-  fundingDate: ['funding_date', optional(nullable(string()))],
-  fundingEstimatedDate: [
-    'funding_estimated_date',
-    optional(nullable(string())),
-  ],
-  type: ['type', optional(nullable(string()))],
-  source: [
-    'source',
-    optional(nullable(lazy(() => getWithdrawSourceResponseSchema))),
-  ],
-  target: [
-    'target',
-    optional(nullable(lazy(() => getWithdrawTargetResponseSchema))),
-  ],
-});
+export const getWithdrawResponseSchema: Schema<GetWithdrawResponse> = lazy(() =>
+  object({
+    id: ['id', optional(nullable(string()))],
+    gatewayId: ['gateway_id', optional(nullable(string()))],
+    amount: ['amount', optional(nullable(number()))],
+    status: ['status', optional(nullable(string()))],
+    createdAt: ['created_at', optional(nullable(string()))],
+    updatedAt: ['updated_at', optional(nullable(string()))],
+    metadata: ['metadata', optional(nullable(array(string())))],
+    fee: ['fee', optional(nullable(number()))],
+    fundingDate: ['funding_date', optional(nullable(string()))],
+    fundingEstimatedDate: [
+      'funding_estimated_date',
+      optional(nullable(string())),
+    ],
+    type: ['type', optional(nullable(string()))],
+    source: ['source', optional(nullable(getWithdrawSourceResponseSchema))],
+    target: ['target', optional(nullable(getWithdrawTargetResponseSchema))],
+  })
+);

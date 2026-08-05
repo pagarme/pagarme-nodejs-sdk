@@ -30,16 +30,18 @@ Recipient response
 | `paymentMode` | `string \| null \| undefined` | Optional | Payment mode<br><br>**Default**: `'bank_transfer'` |
 | `registerInformation` | [`GetRegisterInformationResponse \| null \| undefined`](../../doc/models/get-register-information-response.md) | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "payment_mode": "bank_transfer",
-  "id": "id4",
-  "name": "name4",
-  "email": "email2",
-  "document": "document2",
-  "description": "description6"
-}
+```ts
+import { GetRecipientResponse } from 'pagarmeapisdklib';
+
+const getRecipientResponse: GetRecipientResponse = {
+  id: 'id0',
+  name: 'name0',
+  email: 'email6',
+  document: 'document6',
+  description: 'description0',
+  paymentMode: 'bank_transfer',
+};
 ```
 

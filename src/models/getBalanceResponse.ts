@@ -12,31 +12,35 @@ import {
   optional,
   Schema,
   string,
-} from '../schema';
+} from '../schema.js';
 import {
   GetRecipientResponse,
   getRecipientResponseSchema,
-} from './getRecipientResponse';
+} from './getRecipientResponse.js';
 
 /** Balance */
 export interface GetBalanceResponse {
-  /** Currency */
+  /** Currency (official ISO 4217 currency names) */
   currency?: string | null;
-  /** Amount available for transferring */
+  /** Amount available for transferring in cents */
   availableAmount?: bigint | null;
   /** Recipient */
   recipient?: GetRecipientResponse | null;
+  /** Amount transfered in cents */
   transferredAmount?: bigint | null;
+  /** Amount waiting in cents */
   waitingFundsAmount?: bigint | null;
+  /** Operational id of merchant in payments operations (new) */
+  paymentProfileId: string | null;
 }
 
-export const getBalanceResponseSchema: Schema<GetBalanceResponse> = object({
-  currency: ['currency', optional(nullable(string()))],
-  availableAmount: ['available_amount', optional(nullable(bigint()))],
-  recipient: [
-    'recipient',
-    optional(nullable(lazy(() => getRecipientResponseSchema))),
-  ],
-  transferredAmount: ['transferred_amount', optional(nullable(bigint()))],
-  waitingFundsAmount: ['waiting_funds_amount', optional(nullable(bigint()))],
-});
+export const getBalanceResponseSchema: Schema<GetBalanceResponse> = lazy(() =>
+  object({
+    currency: ['currency', optional(nullable(string()))],
+    availableAmount: ['available_amount', optional(nullable(bigint()))],
+    recipient: ['recipient', optional(nullable(getRecipientResponseSchema))],
+    transferredAmount: ['transferred_amount', optional(nullable(bigint()))],
+    waitingFundsAmount: ['waiting_funds_amount', optional(nullable(bigint()))],
+    paymentProfileId: ['payment_profile_id', nullable(string())],
+  })
+);

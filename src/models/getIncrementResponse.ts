@@ -12,15 +12,15 @@ import {
   optional,
   Schema,
   string,
-} from '../schema';
+} from '../schema.js';
 import {
   GetSubscriptionItemResponse,
   getSubscriptionItemResponseSchema,
-} from './getSubscriptionItemResponse';
+} from './getSubscriptionItemResponse.js';
 import {
   GetSubscriptionResponse,
   getSubscriptionResponseSchema,
-} from './getSubscriptionResponse';
+} from './getSubscriptionResponse.js';
 
 /** Response object for getting a increment */
 export interface GetIncrementResponse {
@@ -37,21 +37,24 @@ export interface GetIncrementResponse {
   subscriptionItem?: GetSubscriptionItemResponse | null;
 }
 
-export const getIncrementResponseSchema: Schema<GetIncrementResponse> = object({
-  id: ['id', optional(nullable(string()))],
-  value: ['value', optional(nullable(number()))],
-  incrementType: ['increment_type', optional(nullable(string()))],
-  status: ['status', optional(nullable(string()))],
-  createdAt: ['created_at', optional(nullable(string()))],
-  cycles: ['cycles', optional(nullable(number()))],
-  deletedAt: ['deleted_at', optional(nullable(string()))],
-  description: ['description', optional(nullable(string()))],
-  subscription: [
-    'subscription',
-    optional(nullable(lazy(() => getSubscriptionResponseSchema))),
-  ],
-  subscriptionItem: [
-    'subscription_item',
-    optional(nullable(lazy(() => getSubscriptionItemResponseSchema))),
-  ],
-});
+export const getIncrementResponseSchema: Schema<GetIncrementResponse> = lazy(
+  () =>
+    object({
+      id: ['id', optional(nullable(string()))],
+      value: ['value', optional(nullable(number()))],
+      incrementType: ['increment_type', optional(nullable(string()))],
+      status: ['status', optional(nullable(string()))],
+      createdAt: ['created_at', optional(nullable(string()))],
+      cycles: ['cycles', optional(nullable(number()))],
+      deletedAt: ['deleted_at', optional(nullable(string()))],
+      description: ['description', optional(nullable(string()))],
+      subscription: [
+        'subscription',
+        optional(nullable(getSubscriptionResponseSchema)),
+      ],
+      subscriptionItem: [
+        'subscription_item',
+        optional(nullable(getSubscriptionItemResponseSchema)),
+      ],
+    })
+);

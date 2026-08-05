@@ -13,17 +13,17 @@ import {
   optional,
   Schema,
   string,
-} from '../schema';
+} from '../schema.js';
 import {
   CreateManagingPartnerRequest,
   createManagingPartnerRequestSchema,
-} from './createManagingPartnerRequest';
+} from './createManagingPartnerRequest.js';
 import {
   CreateRegisterInformationAddressRequest,
   createRegisterInformationAddressRequestSchema,
-} from './createRegisterInformationAddressRequest';
-import { CreateRegisterInformationBaseRequest } from './createRegisterInformationBaseRequest';
-import { createRegisterInformationPhoneRequestSchema } from './createRegisterInformationPhoneRequest';
+} from './createRegisterInformationAddressRequest.js';
+import { CreateRegisterInformationBaseRequest } from './createRegisterInformationBaseRequest.js';
+import { createRegisterInformationPhoneRequestSchema } from './createRegisterInformationPhoneRequest.js';
 
 export interface CreateRegisterInformationCorporationRequest extends CreateRegisterInformationBaseRequest {
   companyName: string;
@@ -36,29 +36,30 @@ export interface CreateRegisterInformationCorporationRequest extends CreateRegis
   mainAddress: CreateRegisterInformationAddressRequest;
 }
 
-export const createRegisterInformationCorporationRequestSchema: Schema<CreateRegisterInformationCorporationRequest> = object(
-  {
-    companyName: ['company_name', string()],
-    tradingName: ['trading_name', string()],
-    annualRevenue: ['annual_revenue', bigint()],
-    corporationType: ['corporation_type', optional(nullable(string()))],
-    foundingDate: ['founding_date', optional(nullable(string()))],
-    cnae: ['cnae', optional(nullable(string()))],
-    managingPartners: [
-      'managing_partners',
-      array(lazy(() => createManagingPartnerRequestSchema)),
-    ],
-    mainAddress: [
-      'main_address',
-      lazy(() => createRegisterInformationAddressRequestSchema),
-    ],
-    email: ['email', string()],
-    document: ['document', string()],
-    type: ['type', string()],
-    siteUrl: ['site_url', optional(nullable(string()))],
-    phoneNumbers: [
-      'phone_numbers',
-      array(lazy(() => createRegisterInformationPhoneRequestSchema)),
-    ],
-  }
+export const createRegisterInformationCorporationRequestSchema: Schema<CreateRegisterInformationCorporationRequest> = lazy(
+  () =>
+    object({
+      companyName: ['company_name', string()],
+      tradingName: ['trading_name', string()],
+      annualRevenue: ['annual_revenue', bigint()],
+      corporationType: ['corporation_type', optional(nullable(string()))],
+      foundingDate: ['founding_date', optional(nullable(string()))],
+      cnae: ['cnae', optional(nullable(string()))],
+      managingPartners: [
+        'managing_partners',
+        array(createManagingPartnerRequestSchema),
+      ],
+      mainAddress: [
+        'main_address',
+        createRegisterInformationAddressRequestSchema,
+      ],
+      email: ['email', string()],
+      document: ['document', string()],
+      type: ['type', string()],
+      siteUrl: ['site_url', optional(nullable(string()))],
+      phoneNumbers: [
+        'phone_numbers',
+        array(createRegisterInformationPhoneRequestSchema),
+      ],
+    })
 );

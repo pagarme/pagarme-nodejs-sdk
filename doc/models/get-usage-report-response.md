@@ -13,13 +13,15 @@
 | `usageReportUrl` | `string \| null \| undefined` | Optional | - |
 | `groupedReportUrl` | `string \| null \| undefined` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "url": "url2",
-  "usage_report_url": "usage_report_url0",
-  "grouped_report_url": "grouped_report_url0"
-}
+```ts
+import { GetUsageReportResponse } from 'pagarmeapisdklib';
+
+const getUsageReportResponse: GetUsageReportResponse = {
+  url: 'url2',
+  usageReportUrl: 'usage_report_url0',
+  groupedReportUrl: 'grouped_report_url0',
+};
 ```
 

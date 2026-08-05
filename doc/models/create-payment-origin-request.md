@@ -14,12 +14,14 @@ Request object for PaymentOrigin
 | `brandId` | `string \| null \| undefined` | Optional | - |
 | `chargeId` | `string \| null \| undefined` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "brand_id": "brand_id0",
-  "charge_id": "charge_id4"
-}
+```ts
+import { CreatePaymentOriginRequest } from 'pagarmeapisdklib';
+
+const createPaymentOriginRequest: CreatePaymentOriginRequest = {
+  brandId: 'brand_id8',
+  chargeId: 'charge_id2',
+};
 ```
 

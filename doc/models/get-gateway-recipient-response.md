@@ -17,15 +17,17 @@ Information about the recipient on the gateway
 | `createdAt` | `string \| null \| undefined` | Optional | Creation date |
 | `updatedAt` | `string \| null \| undefined` | Optional | Last update date |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "gateway": "gateway2",
-  "status": "status4",
-  "pgid": "pgid8",
-  "created_at": "created_at0",
-  "updated_at": "updated_at8"
-}
+```ts
+import { GetGatewayRecipientResponse } from 'pagarmeapisdklib';
+
+const getGatewayRecipientResponse: GetGatewayRecipientResponse = {
+  gateway: 'gateway0',
+  status: 'status2',
+  pgid: 'pgid6',
+  createdAt: 'created_at8',
+  updatedAt: 'updated_at6',
+};
 ```
 

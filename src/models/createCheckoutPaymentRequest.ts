@@ -14,31 +14,31 @@ import {
   Schema,
   string,
   unknown,
-} from '../schema';
+} from '../schema.js';
 import {
   CreateAddressRequest,
   createAddressRequestSchema,
-} from './createAddressRequest';
+} from './createAddressRequest.js';
 import {
   CreateCheckoutBankTransferRequest,
   createCheckoutBankTransferRequestSchema,
-} from './createCheckoutBankTransferRequest';
+} from './createCheckoutBankTransferRequest.js';
 import {
   CreateCheckoutBoletoPaymentRequest,
   createCheckoutBoletoPaymentRequestSchema,
-} from './createCheckoutBoletoPaymentRequest';
+} from './createCheckoutBoletoPaymentRequest.js';
 import {
   CreateCheckoutCreditCardPaymentRequest,
   createCheckoutCreditCardPaymentRequestSchema,
-} from './createCheckoutCreditCardPaymentRequest';
+} from './createCheckoutCreditCardPaymentRequest.js';
 import {
   CreateCheckoutDebitCardPaymentRequest,
   createCheckoutDebitCardPaymentRequestSchema,
-} from './createCheckoutDebitCardPaymentRequest';
+} from './createCheckoutDebitCardPaymentRequest.js';
 import {
   CreateCheckoutPixPaymentRequest,
   createCheckoutPixPaymentRequestSchema,
-} from './createCheckoutPixPaymentRequest';
+} from './createCheckoutPixPaymentRequest.js';
 
 /** Checkout payment request */
 export interface CreateCheckoutPaymentRequest {
@@ -76,38 +76,36 @@ export interface CreateCheckoutPaymentRequest {
   pix?: CreateCheckoutPixPaymentRequest;
 }
 
-export const createCheckoutPaymentRequestSchema: Schema<CreateCheckoutPaymentRequest> = object(
-  {
-    acceptedPaymentMethods: ['accepted_payment_methods', array(string())],
-    acceptedMultiPaymentMethods: [
-      'accepted_multi_payment_methods',
-      array(unknown()),
-    ],
-    successUrl: ['success_url', string()],
-    defaultPaymentMethod: ['default_payment_method', optional(string())],
-    gatewayAffiliationId: ['gateway_affiliation_id', optional(string())],
-    creditCard: [
-      'credit_card',
-      optional(lazy(() => createCheckoutCreditCardPaymentRequestSchema)),
-    ],
-    debitCard: [
-      'debit_card',
-      optional(lazy(() => createCheckoutDebitCardPaymentRequestSchema)),
-    ],
-    boleto: [
-      'boleto',
-      optional(lazy(() => createCheckoutBoletoPaymentRequestSchema)),
-    ],
-    customerEditable: ['customer_editable', optional(boolean())],
-    expiresIn: ['expires_in', optional(number())],
-    skipCheckoutSuccessPage: ['skip_checkout_success_page', boolean()],
-    billingAddressEditable: ['billing_address_editable', boolean()],
-    billingAddress: ['billing_address', lazy(() => createAddressRequestSchema)],
-    bankTransfer: [
-      'bank_transfer',
-      optional(lazy(() => createCheckoutBankTransferRequestSchema)),
-    ],
-    acceptedBrands: ['accepted_brands', array(string())],
-    pix: ['pix', optional(lazy(() => createCheckoutPixPaymentRequestSchema))],
-  }
+export const createCheckoutPaymentRequestSchema: Schema<CreateCheckoutPaymentRequest> = lazy(
+  () =>
+    object({
+      acceptedPaymentMethods: ['accepted_payment_methods', array(string())],
+      acceptedMultiPaymentMethods: [
+        'accepted_multi_payment_methods',
+        array(unknown()),
+      ],
+      successUrl: ['success_url', string()],
+      defaultPaymentMethod: ['default_payment_method', optional(string())],
+      gatewayAffiliationId: ['gateway_affiliation_id', optional(string())],
+      creditCard: [
+        'credit_card',
+        optional(createCheckoutCreditCardPaymentRequestSchema),
+      ],
+      debitCard: [
+        'debit_card',
+        optional(createCheckoutDebitCardPaymentRequestSchema),
+      ],
+      boleto: ['boleto', optional(createCheckoutBoletoPaymentRequestSchema)],
+      customerEditable: ['customer_editable', optional(boolean())],
+      expiresIn: ['expires_in', optional(number())],
+      skipCheckoutSuccessPage: ['skip_checkout_success_page', boolean()],
+      billingAddressEditable: ['billing_address_editable', boolean()],
+      billingAddress: ['billing_address', createAddressRequestSchema],
+      bankTransfer: [
+        'bank_transfer',
+        optional(createCheckoutBankTransferRequestSchema),
+      ],
+      acceptedBrands: ['accepted_brands', array(string())],
+      pix: ['pix', optional(createCheckoutPixPaymentRequestSchema)],
+    })
 );

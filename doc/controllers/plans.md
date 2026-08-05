@@ -10,39 +10,202 @@ const plansController = new PlansController(client);
 
 ## Methods
 
-* [Get Plan](../../doc/controllers/plans.md#get-plan)
-* [Delete Plan Item](../../doc/controllers/plans.md#delete-plan-item)
-* [Update Plan Metadata](../../doc/controllers/plans.md#update-plan-metadata)
 * [Create Plan](../../doc/controllers/plans.md#create-plan)
-* [Update Plan](../../doc/controllers/plans.md#update-plan)
-* [Delete Plan](../../doc/controllers/plans.md#delete-plan)
-* [Get Plans](../../doc/controllers/plans.md#get-plans)
-* [Update Plan Item](../../doc/controllers/plans.md#update-plan-item)
 * [Create Plan Item](../../doc/controllers/plans.md#create-plan-item)
+* [Delete Plan](../../doc/controllers/plans.md#delete-plan)
+* [Delete Plan Item](../../doc/controllers/plans.md#delete-plan-item)
+* [Get Plan](../../doc/controllers/plans.md#get-plan)
 * [Get Plan Item](../../doc/controllers/plans.md#get-plan-item)
+* [Get Plans](../../doc/controllers/plans.md#get-plans)
+* [Update Plan](../../doc/controllers/plans.md#update-plan)
+* [Update Plan Item](../../doc/controllers/plans.md#update-plan-item)
+* [Update Plan Metadata](../../doc/controllers/plans.md#update-plan-metadata)
 
 
-# Get Plan
+# Create Plan
 
-Gets a plan
+Creates a new plan
 
 ```ts
-async getPlan(
-  planId: string,
+async createPlan(
+  body: CreatePlanRequest,
+  idempotencyKey?: string,
   requestOptions?: RequestOptions
 ): Promise<ApiResponse<GetPlanResponse>>
 ```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `body` | [`CreatePlanRequest`](../../doc/models/create-plan-request.md) | Body, Required | Request for creating a plan |
+| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+**200**
+
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [`GetPlanResponse`](../../doc/models/get-plan-response.md).
+
+## Example Usage
+
+```ts
+const body: CreatePlanRequest = {
+  name: '',
+  description: '',
+  statementDescriptor: '',
+  items: [
+    {}
+  ],
+  shippable: false,
+  paymentMethods: [],
+  installments: [],
+  currency: '',
+  interval: '',
+  intervalCount: 0,
+  billingDays: [],
+  billingType: '',
+  pricingScheme: {},
+  metadata: {},
+};
+
+try {
+  const response = await plansController.createPlan(body);
+
+  // Extracting fully parsed response body.
+  console.log(response.result);
+
+  // Extracting response status code.
+  console.log(response.statusCode);
+  // Extracting response headers.
+  console.log(response.headers);
+  // Extracting response body of type `string | Stream`
+  console.log(response.body);
+} catch (error) {
+  if (error instanceof ApiError) {
+    // Extracting response error status code.
+    console.log(error.statusCode);
+    // Extracting response error headers.
+    console.log(error.headers);
+    // Extracting response error body of type `string | Stream`.
+    console.log(error.body);
+    if (error instanceof CustomError) {
+      console.log(error.result);
+    }
+  }
+}
+```
+
+
+# Create Plan Item
+
+Adds a new item to a plan
+
+```ts
+async createPlanItem(
+  planId: string,
+  request: CreatePlanItemRequest,
+  idempotencyKey?: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetPlanItemResponse>>
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
 
 ## Parameters
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `planId` | `string` | Template, Required | Plan id |
+| `request` | [`CreatePlanItemRequest`](../../doc/models/create-plan-item-request.md) | Body, Required | Request for creating a plan item |
+| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
-This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [GetPlanResponse](../../doc/models/get-plan-response.md).
+**200**
+
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [`GetPlanItemResponse`](../../doc/models/get-plan-item-response.md).
+
+## Example Usage
+
+```ts
+const planId = 'plan_id8';
+
+const request: CreatePlanItemRequest = {
+  name: 'name6',
+  pricingScheme: {},
+  id: 'id6',
+  description: 'description6',
+};
+
+try {
+  const response = await plansController.createPlanItem(
+    planId,
+    request
+  );
+
+  // Extracting fully parsed response body.
+  console.log(response.result);
+
+  // Extracting response status code.
+  console.log(response.statusCode);
+  // Extracting response headers.
+  console.log(response.headers);
+  // Extracting response body of type `string | Stream`
+  console.log(response.body);
+} catch (error) {
+  if (error instanceof ApiError) {
+    // Extracting response error status code.
+    console.log(error.statusCode);
+    // Extracting response error headers.
+    console.log(error.headers);
+    // Extracting response error body of type `string | Stream`.
+    console.log(error.body);
+    if (error instanceof CustomError) {
+      console.log(error.result);
+    }
+  }
+}
+```
+
+
+# Delete Plan
+
+Deletes a plan
+
+```ts
+async deletePlan(
+  planId: string,
+  idempotencyKey?: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetPlanResponse>>
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `planId` | `string` | Template, Required | Plan id |
+| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+**200**
+
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [`GetPlanResponse`](../../doc/models/get-plan-response.md).
 
 ## Example Usage
 
@@ -50,13 +213,28 @@ This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The 
 const planId = 'plan_id8';
 
 try {
-  const { result, ...httpResponse } = await plansController.getPlan(planId);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
+  const response = await plansController.deletePlan(planId);
+
+  // Extracting fully parsed response body.
+  console.log(response.result);
+
+  // Extracting response status code.
+  console.log(response.statusCode);
+  // Extracting response headers.
+  console.log(response.headers);
+  // Extracting response body of type `string | Stream`
+  console.log(response.body);
 } catch (error) {
   if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
+    // Extracting response error status code.
+    console.log(error.statusCode);
+    // Extracting response error headers.
+    console.log(error.headers);
+    // Extracting response error body of type `string | Stream`.
+    console.log(error.body);
+    if (error instanceof CustomError) {
+      console.log(error.result);
+    }
   }
 }
 ```
@@ -75,6 +253,10 @@ async deletePlanItem(
 ): Promise<ApiResponse<GetPlanItemResponse>>
 ```
 
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -86,7 +268,9 @@ async deletePlanItem(
 
 ## Response Type
 
-This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [GetPlanItemResponse](../../doc/models/get-plan-item-response.md).
+**200**
+
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [`GetPlanItemResponse`](../../doc/models/get-plan-item-response.md).
 
 ## Example Usage
 
@@ -96,147 +280,231 @@ const planId = 'plan_id8';
 const planItemId = 'plan_item_id0';
 
 try {
-  const { result, ...httpResponse } = await plansController.deletePlanItem(
-  planId,
-  planItemId
-);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
+  const response = await plansController.deletePlanItem(
+    planId,
+    planItemId
+  );
+
+  // Extracting fully parsed response body.
+  console.log(response.result);
+
+  // Extracting response status code.
+  console.log(response.statusCode);
+  // Extracting response headers.
+  console.log(response.headers);
+  // Extracting response body of type `string | Stream`
+  console.log(response.body);
 } catch (error) {
   if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
+    // Extracting response error status code.
+    console.log(error.statusCode);
+    // Extracting response error headers.
+    console.log(error.headers);
+    // Extracting response error body of type `string | Stream`.
+    console.log(error.body);
+    if (error instanceof CustomError) {
+      console.log(error.result);
+    }
   }
 }
 ```
 
 
-# Update Plan Metadata
+# Get Plan
 
-Updates the metadata from a plan
+Gets a plan
 
 ```ts
-async updatePlanMetadata(
+async getPlan(
   planId: string,
-  request: UpdateMetadataRequest,
-  idempotencyKey?: string,
   requestOptions?: RequestOptions
 ): Promise<ApiResponse<GetPlanResponse>>
 ```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
 
 ## Parameters
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `planId` | `string` | Template, Required | The plan id |
-| `request` | [`UpdateMetadataRequest`](../../doc/models/update-metadata-request.md) | Body, Required | Request for updating the plan metadata |
-| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
+| `planId` | `string` | Template, Required | Plan id |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
-This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [GetPlanResponse](../../doc/models/get-plan-response.md).
+**200**
+
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [`GetPlanResponse`](../../doc/models/get-plan-response.md).
 
 ## Example Usage
 
 ```ts
 const planId = 'plan_id8';
 
-const request: UpdateMetadataRequest = {
-  metadata: {
-    'key0': 'metadata3'
-  },
-};
-
 try {
-  const { result, ...httpResponse } = await plansController.updatePlanMetadata(
-  planId,
-  request
-);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
+  const response = await plansController.getPlan(planId);
+
+  // Extracting fully parsed response body.
+  console.log(response.result);
+
+  // Extracting response status code.
+  console.log(response.statusCode);
+  // Extracting response headers.
+  console.log(response.headers);
+  // Extracting response body of type `string | Stream`
+  console.log(response.body);
 } catch (error) {
   if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
+    // Extracting response error status code.
+    console.log(error.statusCode);
+    // Extracting response error headers.
+    console.log(error.headers);
+    // Extracting response error body of type `string | Stream`.
+    console.log(error.body);
+    if (error instanceof CustomError) {
+      console.log(error.result);
+    }
   }
 }
 ```
 
 
-# Create Plan
+# Get Plan Item
 
-Creates a new plan
+Gets a plan item
 
 ```ts
-async createPlan(
-  body: CreatePlanRequest,
-  idempotencyKey?: string,
+async getPlanItem(
+  planId: string,
+  planItemId: string,
   requestOptions?: RequestOptions
-): Promise<ApiResponse<GetPlanResponse>>
+): Promise<ApiResponse<GetPlanItemResponse>>
 ```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
 
 ## Parameters
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `body` | [`CreatePlanRequest`](../../doc/models/create-plan-request.md) | Body, Required | Request for creating a plan |
-| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
+| `planId` | `string` | Template, Required | Plan id |
+| `planItemId` | `string` | Template, Required | Plan item id |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
-This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [GetPlanResponse](../../doc/models/get-plan-response.md).
+**200**
+
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [`GetPlanItemResponse`](../../doc/models/get-plan-item-response.md).
 
 ## Example Usage
 
 ```ts
-const body: CreatePlanRequest = {
-  name: 'name6',
-  description: 'description4',
-  statementDescriptor: 'statement_descriptor6',
-  items: [
-    {
-      name: 'name8',
-      pricingScheme: {
-        schemeType: 'scheme_type8',
-      },
-      id: 'id8',
-      description: 'description2',
-    }
-  ],
-  shippable: false,
-  paymentMethods: [
-    'payment_methods9'
-  ],
-  installments: [
-    207
-  ],
-  currency: 'currency6',
-  interval: 'interval6',
-  intervalCount: 170,
-  billingDays: [
-    201,
-    200
-  ],
-  billingType: 'billing_type0',
-  pricingScheme: {
-    schemeType: 'scheme_type8',
-  },
-  metadata: {
-    'key0': 'metadata7',
-    'key1': 'metadata8'
-  },
-};
+const planId = 'plan_id8';
+
+const planItemId = 'plan_item_id0';
 
 try {
-  const { result, ...httpResponse } = await plansController.createPlan(body);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
+  const response = await plansController.getPlanItem(
+    planId,
+    planItemId
+  );
+
+  // Extracting fully parsed response body.
+  console.log(response.result);
+
+  // Extracting response status code.
+  console.log(response.statusCode);
+  // Extracting response headers.
+  console.log(response.headers);
+  // Extracting response body of type `string | Stream`
+  console.log(response.body);
 } catch (error) {
   if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
+    // Extracting response error status code.
+    console.log(error.statusCode);
+    // Extracting response error headers.
+    console.log(error.headers);
+    // Extracting response error body of type `string | Stream`.
+    console.log(error.body);
+    if (error instanceof CustomError) {
+      console.log(error.result);
+    }
+  }
+}
+```
+
+
+# Get Plans
+
+Gets all plans
+
+```ts
+async getPlans(
+  page?: number,
+  size?: number,
+  name?: string,
+  status?: string,
+  billingType?: string,
+  createdSince?: string,
+  createdUntil?: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<ListPlansResponse>>
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `page` | `number \| undefined` | Query, Optional | Page number |
+| `size` | `number \| undefined` | Query, Optional | Page size |
+| `name` | `string \| undefined` | Query, Optional | Filter for Plan's name |
+| `status` | `string \| undefined` | Query, Optional | Filter for Plan's status |
+| `billingType` | `string \| undefined` | Query, Optional | Filter for plan's billing type |
+| `createdSince` | `string \| undefined` | Query, Optional | Filter for plan's creation date start range |
+| `createdUntil` | `string \| undefined` | Query, Optional | Filter for plan's creation date end range |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+**200**
+
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [`ListPlansResponse`](../../doc/models/list-plans-response.md).
+
+## Example Usage
+
+```ts
+try {
+  const response = await plansController.getPlans();
+
+  // Extracting fully parsed response body.
+  console.log(response.result);
+
+  // Extracting response status code.
+  console.log(response.statusCode);
+  // Extracting response headers.
+  console.log(response.headers);
+  // Extracting response body of type `string | Stream`
+  console.log(response.body);
+} catch (error) {
+  if (error instanceof ApiError) {
+    // Extracting response error status code.
+    console.log(error.statusCode);
+    // Extracting response error headers.
+    console.log(error.headers);
+    // Extracting response error body of type `string | Stream`.
+    console.log(error.body);
+    if (error instanceof CustomError) {
+      console.log(error.result);
+    }
   }
 }
 ```
@@ -255,6 +523,10 @@ async updatePlan(
 ): Promise<ApiResponse<GetPlanResponse>>
 ```
 
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -266,7 +538,9 @@ async updatePlan(
 
 ## Response Type
 
-This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [GetPlanResponse](../../doc/models/get-plan-response.md).
+**200**
+
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [`GetPlanResponse`](../../doc/models/get-plan-response.md).
 
 ## Example Usage
 
@@ -301,108 +575,31 @@ const request: UpdatePlanRequest = {
 };
 
 try {
-  const { result, ...httpResponse } = await plansController.updatePlan(
-  planId,
-  request
-);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
+  const response = await plansController.updatePlan(
+    planId,
+    request
+  );
+
+  // Extracting fully parsed response body.
+  console.log(response.result);
+
+  // Extracting response status code.
+  console.log(response.statusCode);
+  // Extracting response headers.
+  console.log(response.headers);
+  // Extracting response body of type `string | Stream`
+  console.log(response.body);
 } catch (error) {
   if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Delete Plan
-
-Deletes a plan
-
-```ts
-async deletePlan(
-  planId: string,
-  idempotencyKey?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetPlanResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `planId` | `string` | Template, Required | Plan id |
-| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [GetPlanResponse](../../doc/models/get-plan-response.md).
-
-## Example Usage
-
-```ts
-const planId = 'plan_id8';
-
-try {
-  const { result, ...httpResponse } = await plansController.deletePlan(planId);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Get Plans
-
-Gets all plans
-
-```ts
-async getPlans(
-  page?: number,
-  size?: number,
-  name?: string,
-  status?: string,
-  billingType?: string,
-  createdSince?: string,
-  createdUntil?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<ListPlansResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `page` | `number \| undefined` | Query, Optional | Page number |
-| `size` | `number \| undefined` | Query, Optional | Page size |
-| `name` | `string \| undefined` | Query, Optional | Filter for Plan's name |
-| `status` | `string \| undefined` | Query, Optional | Filter for Plan's status |
-| `billingType` | `string \| undefined` | Query, Optional | Filter for plan's billing type |
-| `createdSince` | `string \| undefined` | Query, Optional | Filter for plan's creation date start range |
-| `createdUntil` | `string \| undefined` | Query, Optional | Filter for plan's creation date end range |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [ListPlansResponse](../../doc/models/list-plans-response.md).
-
-## Example Usage
-
-```ts
-try {
-  const { result, ...httpResponse } = await plansController.getPlans();
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
+    // Extracting response error status code.
+    console.log(error.statusCode);
+    // Extracting response error headers.
+    console.log(error.headers);
+    // Extracting response error body of type `string | Stream`.
+    console.log(error.body);
+    if (error instanceof CustomError) {
+      console.log(error.result);
+    }
   }
 }
 ```
@@ -422,6 +619,10 @@ async updatePlanItem(
 ): Promise<ApiResponse<GetPlanItemResponse>>
 ```
 
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -434,7 +635,9 @@ async updatePlanItem(
 
 ## Response Type
 
-This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [GetPlanItemResponse](../../doc/models/get-plan-item-response.md).
+**200**
+
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [`GetPlanItemResponse`](../../doc/models/get-plan-item-response.md).
 
 ## Example Usage
 
@@ -444,135 +647,118 @@ const planId = 'plan_id8';
 const planItemId = 'plan_item_id0';
 
 const body: UpdatePlanItemRequest = {
-  name: 'name6',
-  description: 'description4',
-  status: 'status2',
+  name: '',
+  description: '',
+  status: '',
   pricingScheme: {
-    schemeType: 'scheme_type8',
+    schemeType: '',
     priceBrackets: [
-      {
-        startQuantity: 144,
-        price: 174,
-      }
+      {}
     ],
   },
 };
 
 try {
-  const { result, ...httpResponse } = await plansController.updatePlanItem(
-  planId,
-  planItemId,
-  body
-);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
+  const response = await plansController.updatePlanItem(
+    planId,
+    planItemId,
+    body
+  );
+
+  // Extracting fully parsed response body.
+  console.log(response.result);
+
+  // Extracting response status code.
+  console.log(response.statusCode);
+  // Extracting response headers.
+  console.log(response.headers);
+  // Extracting response body of type `string | Stream`
+  console.log(response.body);
 } catch (error) {
   if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
+    // Extracting response error status code.
+    console.log(error.statusCode);
+    // Extracting response error headers.
+    console.log(error.headers);
+    // Extracting response error body of type `string | Stream`.
+    console.log(error.body);
+    if (error instanceof CustomError) {
+      console.log(error.result);
+    }
   }
 }
 ```
 
 
-# Create Plan Item
+# Update Plan Metadata
 
-Adds a new item to a plan
+Updates the metadata from a plan
 
 ```ts
-async createPlanItem(
+async updatePlanMetadata(
   planId: string,
-  request: CreatePlanItemRequest,
+  request: UpdateMetadataRequest,
   idempotencyKey?: string,
   requestOptions?: RequestOptions
-): Promise<ApiResponse<GetPlanItemResponse>>
+): Promise<ApiResponse<GetPlanResponse>>
 ```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
 
 ## Parameters
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `planId` | `string` | Template, Required | Plan id |
-| `request` | [`CreatePlanItemRequest`](../../doc/models/create-plan-item-request.md) | Body, Required | Request for creating a plan item |
+| `planId` | `string` | Template, Required | The plan id |
+| `request` | [`UpdateMetadataRequest`](../../doc/models/update-metadata-request.md) | Body, Required | Request for updating the plan metadata |
 | `idempotencyKey` | `string \| undefined` | Header, Optional | - |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
-This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [GetPlanItemResponse](../../doc/models/get-plan-item-response.md).
+**200**
+
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [`GetPlanResponse`](../../doc/models/get-plan-response.md).
 
 ## Example Usage
 
 ```ts
 const planId = 'plan_id8';
 
-const request: CreatePlanItemRequest = {
-  name: 'name6',
-  pricingScheme: {
-    schemeType: 'scheme_type8',
+const request: UpdateMetadataRequest = {
+  metadata: {
+    'key0': 'metadata3'
   },
-  id: 'id6',
-  description: 'description6',
 };
 
 try {
-  const { result, ...httpResponse } = await plansController.createPlanItem(
-  planId,
-  request
-);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
+  const response = await plansController.updatePlanMetadata(
+    planId,
+    request
+  );
+
+  // Extracting fully parsed response body.
+  console.log(response.result);
+
+  // Extracting response status code.
+  console.log(response.statusCode);
+  // Extracting response headers.
+  console.log(response.headers);
+  // Extracting response body of type `string | Stream`
+  console.log(response.body);
 } catch (error) {
   if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Get Plan Item
-
-Gets a plan item
-
-```ts
-async getPlanItem(
-  planId: string,
-  planItemId: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetPlanItemResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `planId` | `string` | Template, Required | Plan id |
-| `planItemId` | `string` | Template, Required | Plan item id |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [GetPlanItemResponse](../../doc/models/get-plan-item-response.md).
-
-## Example Usage
-
-```ts
-const planId = 'plan_id8';
-
-const planItemId = 'plan_item_id0';
-
-try {
-  const { result, ...httpResponse } = await plansController.getPlanItem(
-  planId,
-  planItemId
-);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
+    // Extracting response error status code.
+    console.log(error.statusCode);
+    // Extracting response error headers.
+    console.log(error.headers);
+    // Extracting response error body of type `string | Stream`.
+    console.log(error.body);
+    if (error instanceof CustomError) {
+      console.log(error.result);
+    }
   }
 }
 ```

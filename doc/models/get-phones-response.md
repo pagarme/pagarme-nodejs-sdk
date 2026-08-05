@@ -12,20 +12,14 @@
 | `homePhone` | [`GetPhoneResponse \| null \| undefined`](../../doc/models/get-phone-response.md) | Optional | - |
 | `mobilePhone` | [`GetPhoneResponse \| null \| undefined`](../../doc/models/get-phone-response.md) | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "home_phone": {
-    "country_code": "country_code0",
-    "number": "number2",
-    "area_code": "area_code0"
-  },
-  "mobile_phone": {
-    "country_code": "country_code0",
-    "number": "number8",
-    "area_code": "area_code0"
-  }
-}
+```ts
+import { GetPhonesResponse } from 'pagarmeapisdklib';
+
+const getPhonesResponse: GetPhonesResponse = {
+  homePhone: null,
+  mobilePhone: null,
+};
 ```
 

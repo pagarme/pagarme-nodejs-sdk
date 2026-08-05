@@ -16,14 +16,16 @@ Request for updating a price bracket
 | `endQuantity` | `number \| undefined` | Optional | End quantity of the bracket |
 | `overagePrice` | `number \| undefined` | Optional | Overage price |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "start_quantity": 154,
-  "price": 164,
-  "end_quantity": 162,
-  "overage_price": 176
-}
+```ts
+import { UpdatePriceBracketRequest } from 'pagarmeapisdklib';
+
+const updatePriceBracketRequest: UpdatePriceBracketRequest = {
+  startQuantity: 160,
+  price: 98,
+  endQuantity: 168,
+  overagePrice: 182,
+};
 ```
 

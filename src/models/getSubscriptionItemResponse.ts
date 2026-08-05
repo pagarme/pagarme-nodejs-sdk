@@ -13,23 +13,23 @@ import {
   optional,
   Schema,
   string,
-} from '../schema';
+} from '../schema.js';
 import {
   GetDiscountResponse,
   getDiscountResponseSchema,
-} from './getDiscountResponse';
+} from './getDiscountResponse.js';
 import {
   GetIncrementResponse,
   getIncrementResponseSchema,
-} from './getIncrementResponse';
+} from './getIncrementResponse.js';
 import {
   GetPricingSchemeResponse,
   getPricingSchemeResponseSchema,
-} from './getPricingSchemeResponse';
+} from './getPricingSchemeResponse.js';
 import {
   GetSubscriptionResponse,
   getSubscriptionResponseSchema,
-} from './getSubscriptionResponse';
+} from './getSubscriptionResponse.js';
 
 export interface GetSubscriptionItemResponse {
   id?: string | null;
@@ -48,32 +48,33 @@ export interface GetSubscriptionItemResponse {
   deletedAt?: string | null;
 }
 
-export const getSubscriptionItemResponseSchema: Schema<GetSubscriptionItemResponse> = object(
-  {
-    id: ['id', optional(nullable(string()))],
-    description: ['description', optional(nullable(string()))],
-    status: ['status', optional(nullable(string()))],
-    createdAt: ['created_at', optional(nullable(string()))],
-    updatedAt: ['updated_at', optional(nullable(string()))],
-    pricingScheme: [
-      'pricing_scheme',
-      optional(nullable(lazy(() => getPricingSchemeResponseSchema))),
-    ],
-    discounts: [
-      'discounts',
-      optional(nullable(array(lazy(() => getDiscountResponseSchema)))),
-    ],
-    increments: [
-      'increments',
-      optional(nullable(array(lazy(() => getIncrementResponseSchema)))),
-    ],
-    subscription: [
-      'subscription',
-      optional(nullable(lazy(() => getSubscriptionResponseSchema))),
-    ],
-    name: ['name', optional(nullable(string()))],
-    quantity: ['quantity', optional(nullable(number()))],
-    cycles: ['cycles', optional(nullable(number()))],
-    deletedAt: ['deleted_at', optional(nullable(string()))],
-  }
+export const getSubscriptionItemResponseSchema: Schema<GetSubscriptionItemResponse> = lazy(
+  () =>
+    object({
+      id: ['id', optional(nullable(string()))],
+      description: ['description', optional(nullable(string()))],
+      status: ['status', optional(nullable(string()))],
+      createdAt: ['created_at', optional(nullable(string()))],
+      updatedAt: ['updated_at', optional(nullable(string()))],
+      pricingScheme: [
+        'pricing_scheme',
+        optional(nullable(getPricingSchemeResponseSchema)),
+      ],
+      discounts: [
+        'discounts',
+        optional(nullable(array(getDiscountResponseSchema))),
+      ],
+      increments: [
+        'increments',
+        optional(nullable(array(getIncrementResponseSchema))),
+      ],
+      subscription: [
+        'subscription',
+        optional(nullable(getSubscriptionResponseSchema)),
+      ],
+      name: ['name', optional(nullable(string()))],
+      quantity: ['quantity', optional(nullable(number()))],
+      cycles: ['cycles', optional(nullable(number()))],
+      deletedAt: ['deleted_at', optional(nullable(string()))],
+    })
 );

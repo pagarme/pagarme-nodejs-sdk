@@ -13,11 +13,11 @@ import {
   optional,
   Schema,
   string,
-} from '../schema';
+} from '../schema.js';
 import {
   GetCustomerResponse,
   getCustomerResponseSchema,
-} from './getCustomerResponse';
+} from './getCustomerResponse.js';
 
 /** Checkout Payment Settings Response */
 export interface GetCheckoutPaymentSettingsResponse {
@@ -39,27 +39,25 @@ export interface GetCheckoutPaymentSettingsResponse {
   gatewayAffiliationId?: string | null;
 }
 
-export const getCheckoutPaymentSettingsResponseSchema: Schema<GetCheckoutPaymentSettingsResponse> = object(
-  {
-    successUrl: ['success_url', optional(nullable(string()))],
-    paymentUrl: ['payment_url', optional(nullable(string()))],
-    acceptedPaymentMethods: [
-      'accepted_payment_methods',
-      optional(nullable(array(string()))),
-    ],
-    status: ['status', optional(nullable(string()))],
-    customer: [
-      'customer',
-      optional(nullable(lazy(() => getCustomerResponseSchema))),
-    ],
-    amount: ['amount', optional(nullable(number()))],
-    defaultPaymentMethod: [
-      'default_payment_method',
-      optional(nullable(string())),
-    ],
-    gatewayAffiliationId: [
-      'gateway_affiliation_id',
-      optional(nullable(string())),
-    ],
-  }
+export const getCheckoutPaymentSettingsResponseSchema: Schema<GetCheckoutPaymentSettingsResponse> = lazy(
+  () =>
+    object({
+      successUrl: ['success_url', optional(nullable(string()))],
+      paymentUrl: ['payment_url', optional(nullable(string()))],
+      acceptedPaymentMethods: [
+        'accepted_payment_methods',
+        optional(nullable(array(string()))),
+      ],
+      status: ['status', optional(nullable(string()))],
+      customer: ['customer', optional(nullable(getCustomerResponseSchema))],
+      amount: ['amount', optional(nullable(number()))],
+      defaultPaymentMethod: [
+        'default_payment_method',
+        optional(nullable(string())),
+      ],
+      gatewayAffiliationId: [
+        'gateway_affiliation_id',
+        optional(nullable(string())),
+      ],
+    })
 );

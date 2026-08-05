@@ -22,23 +22,19 @@ The settings for creating a private label payment
 | `extendedLimitCode` | `string \| undefined` | Optional | Extended Limit Code |
 | `recurrencyCycle` | `string \| undefined` | Optional | Defines whether the card has been used one or more times. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "installments": 1,
-  "capture": true,
-  "recurrency_cycle": "\"first\" or \"subsequent\"",
-  "statement_descriptor": "statement_descriptor8",
-  "card": {
-    "number": "number6",
-    "holder_name": "holder_name2",
-    "exp_month": 228,
-    "exp_year": 68,
-    "cvv": "cvv4"
-  },
-  "card_id": "card_id4",
-  "card_token": "card_token2"
-}
+```ts
+import { CreatePrivateLabelPaymentRequest } from 'pagarmeapisdklib';
+
+const createPrivateLabelPaymentRequest: CreatePrivateLabelPaymentRequest = {
+  installments: 1,
+  statementDescriptor: 'statement_descriptor2',
+  card: {},
+  cardId: 'card_id2',
+  cardToken: 'card_token8',
+  capture: true,
+  recurrencyCycle: '"first" or "subsequent"',
+};
 ```
 
