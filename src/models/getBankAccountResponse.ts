@@ -12,11 +12,11 @@ import {
   optional,
   Schema,
   string,
-} from '../schema';
+} from '../schema.js';
 import {
   GetRecipientResponse,
   getRecipientResponseSchema,
-} from './getRecipientResponse';
+} from './getRecipientResponse.js';
 
 export interface GetBankAccountResponse {
   /** Id */
@@ -53,26 +53,24 @@ export interface GetBankAccountResponse {
   pixKey?: string | null;
 }
 
-export const getBankAccountResponseSchema: Schema<GetBankAccountResponse> = object(
-  {
-    id: ['id', optional(nullable(string()))],
-    holderName: ['holder_name', optional(nullable(string()))],
-    holderType: ['holder_type', optional(nullable(string()))],
-    bank: ['bank', optional(nullable(string()))],
-    branchNumber: ['branch_number', optional(nullable(string()))],
-    branchCheckDigit: ['branch_check_digit', optional(nullable(string()))],
-    accountNumber: ['account_number', optional(nullable(string()))],
-    accountCheckDigit: ['account_check_digit', optional(nullable(string()))],
-    type: ['type', optional(nullable(string()))],
-    status: ['status', optional(nullable(string()))],
-    createdAt: ['created_at', optional(nullable(string()))],
-    updatedAt: ['updated_at', optional(nullable(string()))],
-    deletedAt: ['deleted_at', optional(nullable(string()))],
-    recipient: [
-      'recipient',
-      optional(nullable(lazy(() => getRecipientResponseSchema))),
-    ],
-    metadata: ['metadata', optional(nullable(dict(string())))],
-    pixKey: ['pix_key', optional(nullable(string()))],
-  }
+export const getBankAccountResponseSchema: Schema<GetBankAccountResponse> = lazy(
+  () =>
+    object({
+      id: ['id', optional(nullable(string()))],
+      holderName: ['holder_name', optional(nullable(string()))],
+      holderType: ['holder_type', optional(nullable(string()))],
+      bank: ['bank', optional(nullable(string()))],
+      branchNumber: ['branch_number', optional(nullable(string()))],
+      branchCheckDigit: ['branch_check_digit', optional(nullable(string()))],
+      accountNumber: ['account_number', optional(nullable(string()))],
+      accountCheckDigit: ['account_check_digit', optional(nullable(string()))],
+      type: ['type', optional(nullable(string()))],
+      status: ['status', optional(nullable(string()))],
+      createdAt: ['created_at', optional(nullable(string()))],
+      updatedAt: ['updated_at', optional(nullable(string()))],
+      deletedAt: ['deleted_at', optional(nullable(string()))],
+      recipient: ['recipient', optional(nullable(getRecipientResponseSchema))],
+      metadata: ['metadata', optional(nullable(dict(string())))],
+      pixKey: ['pix_key', optional(nullable(string()))],
+    })
 );

@@ -14,12 +14,14 @@ Response object for geetting an order location request
 | `latitude` | `string \| null \| undefined` | Optional | Latitude |
 | `longitude` | `string \| null \| undefined` | Optional | Longitude |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "latitude": "latitude6",
-  "longitude": "longitude4"
-}
+```ts
+import { GetLocationResponse } from 'pagarmeapisdklib';
+
+const getLocationResponse: GetLocationResponse = {
+  latitude: 'latitude2',
+  longitude: 'longitude8',
+};
 ```
 

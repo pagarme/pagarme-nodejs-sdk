@@ -25,19 +25,21 @@ Generic response object for getting a MovementObjectSettlement.
 | `liquidationArrangementId` | `string \| null \| undefined` | Optional | - |
 | `externalEnginePaymentId` | `string \| null \| undefined` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id2",
-  "status": "status4",
-  "amount": "amount4",
-  "created_at": "created_at0",
-  "product": "product2",
-  "brand": "brand6",
-  "payment_date": "payment_date4",
-  "recipient_id": "recipient_id2",
-  "document_type": "document_type0"
-}
+```ts
+import { GetMovementObjectSettlementResponse } from 'pagarmeapisdklib';
+
+const getMovementObjectSettlementResponse: GetMovementObjectSettlementResponse = {
+  product: 'product2',
+  brand: 'brand6',
+  paymentDate: 'payment_date4',
+  recipientId: 'recipient_id8',
+  documentType: 'document_type0',
+  id: 'id2',
+  status: 'status4',
+  amount: 'amount4',
+  createdAt: 'created_at0',
+};
 ```
 

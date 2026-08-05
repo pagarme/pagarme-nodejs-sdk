@@ -26,15 +26,17 @@
 | `metadata` | `Record<string, string> \| null \| undefined` | Optional | Metadata |
 | `pixKey` | `string \| null \| undefined` | Optional | Pix Key |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id6",
-  "holder_name": "holder_name2",
-  "holder_type": "holder_type8",
-  "bank": "bank4",
-  "branch_number": "branch_number2"
-}
+```ts
+import { GetBankAccountResponse } from 'pagarmeapisdklib';
+
+const getBankAccountResponse: GetBankAccountResponse = {
+  id: 'id4',
+  holderName: 'holder_name0',
+  holderType: 'holder_type6',
+  bank: 'bank2',
+  branchNumber: 'branch_number0',
+};
 ```
 

@@ -22,15 +22,17 @@ Response object for getting a increment
 | `subscription` | [`GetSubscriptionResponse \| null \| undefined`](../../doc/models/get-subscription-response.md) | Optional | - |
 | `subscriptionItem` | [`GetSubscriptionItemResponse \| null \| undefined`](../../doc/models/get-subscription-item-response.md) | Optional | The Subscription Item |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id0",
-  "value": 167.72,
-  "increment_type": "increment_type2",
-  "status": "status2",
-  "created_at": "2016-03-13T12:52:32.123Z"
-}
+```ts
+import { GetIncrementResponse } from 'pagarmeapisdklib';
+
+const getIncrementResponse: GetIncrementResponse = {
+  id: 'id4',
+  value: 191.36,
+  incrementType: 'increment_type6',
+  status: 'status6',
+  createdAt: '2016-03-13T12:52:32.123Z',
+};
 ```
 

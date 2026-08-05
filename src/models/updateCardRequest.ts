@@ -13,11 +13,11 @@ import {
   optional,
   Schema,
   string,
-} from '../schema';
+} from '../schema.js';
 import {
   CreateAddressRequest,
   createAddressRequestSchema,
-} from './createAddressRequest';
+} from './createAddressRequest.js';
 
 /** Request for updating a card */
 export interface UpdateCardRequest {
@@ -36,12 +36,14 @@ export interface UpdateCardRequest {
   label: string;
 }
 
-export const updateCardRequestSchema: Schema<UpdateCardRequest> = object({
-  holderName: ['holder_name', string()],
-  expMonth: ['exp_month', number()],
-  expYear: ['exp_year', number()],
-  billingAddressId: ['billing_address_id', optional(nullable(string()))],
-  billingAddress: ['billing_address', lazy(() => createAddressRequestSchema)],
-  metadata: ['metadata', dict(string())],
-  label: ['label', string()],
-});
+export const updateCardRequestSchema: Schema<UpdateCardRequest> = lazy(() =>
+  object({
+    holderName: ['holder_name', string()],
+    expMonth: ['exp_month', number()],
+    expYear: ['exp_year', number()],
+    billingAddressId: ['billing_address_id', optional(nullable(string()))],
+    billingAddress: ['billing_address', createAddressRequestSchema],
+    metadata: ['metadata', dict(string())],
+    label: ['label', string()],
+  })
+);

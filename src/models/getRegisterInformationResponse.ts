@@ -12,19 +12,19 @@ import {
   optional,
   Schema,
   string,
-} from '../schema';
+} from '../schema.js';
 import {
   GetManagingPartnerResponse,
   getManagingPartnerResponseSchema,
-} from './getManagingPartnerResponse';
+} from './getManagingPartnerResponse.js';
 import {
   GetPhoneNumberResponse,
   getPhoneNumberResponseSchema,
-} from './getPhoneNumberResponse';
+} from './getPhoneNumberResponse.js';
 import {
   GetRegisterInformationAddressResponse,
   getRegisterInformationAddressResponseSchema,
-} from './getRegisterInformationAddressResponse';
+} from './getRegisterInformationAddressResponse.js';
 
 /** Response object for getting an RegisterInformationResponse */
 export interface GetRegisterInformationResponse {
@@ -49,45 +49,42 @@ export interface GetRegisterInformationResponse {
   managingPartners?: GetManagingPartnerResponse[] | null;
 }
 
-export const getRegisterInformationResponseSchema: Schema<GetRegisterInformationResponse> = object(
-  {
-    email: ['email', optional(nullable(string()))],
-    document: ['document', optional(nullable(string()))],
-    type: ['type', optional(nullable(string()))],
-    siteUrl: ['site_url', optional(nullable(string()))],
-    phoneNumbers: [
-      'phone_numbers',
-      optional(nullable(array(lazy(() => getPhoneNumberResponseSchema)))),
-    ],
-    name: ['name', optional(nullable(string()))],
-    motherName: ['mother_name', optional(nullable(string()))],
-    birthdate: ['birthdate', optional(nullable(string()))],
-    monthlyIncome: ['monthly_income', optional(nullable(string()))],
-    professionalOccupation: [
-      'professional_occupation',
-      optional(nullable(string())),
-    ],
-    address: [
-      'address',
-      optional(
-        nullable(lazy(() => getRegisterInformationAddressResponseSchema))
-      ),
-    ],
-    companyName: ['company_name', optional(nullable(string()))],
-    tradingName: ['trading_name', optional(nullable(string()))],
-    annualRevenue: ['annual_revenue', optional(nullable(string()))],
-    corporationType: ['corporation_type', optional(nullable(string()))],
-    foundingDate: ['founding_date', optional(nullable(string()))],
-    cnae: ['cnae', optional(nullable(string()))],
-    mainAddress: [
-      'main_address',
-      optional(
-        nullable(lazy(() => getRegisterInformationAddressResponseSchema))
-      ),
-    ],
-    managingPartners: [
-      'managing_partners',
-      optional(nullable(array(lazy(() => getManagingPartnerResponseSchema)))),
-    ],
-  }
+export const getRegisterInformationResponseSchema: Schema<GetRegisterInformationResponse> = lazy(
+  () =>
+    object({
+      email: ['email', optional(nullable(string()))],
+      document: ['document', optional(nullable(string()))],
+      type: ['type', optional(nullable(string()))],
+      siteUrl: ['site_url', optional(nullable(string()))],
+      phoneNumbers: [
+        'phone_numbers',
+        optional(nullable(array(getPhoneNumberResponseSchema))),
+      ],
+      name: ['name', optional(nullable(string()))],
+      motherName: ['mother_name', optional(nullable(string()))],
+      birthdate: ['birthdate', optional(nullable(string()))],
+      monthlyIncome: ['monthly_income', optional(nullable(string()))],
+      professionalOccupation: [
+        'professional_occupation',
+        optional(nullable(string())),
+      ],
+      address: [
+        'address',
+        optional(nullable(getRegisterInformationAddressResponseSchema)),
+      ],
+      companyName: ['company_name', optional(nullable(string()))],
+      tradingName: ['trading_name', optional(nullable(string()))],
+      annualRevenue: ['annual_revenue', optional(nullable(string()))],
+      corporationType: ['corporation_type', optional(nullable(string()))],
+      foundingDate: ['founding_date', optional(nullable(string()))],
+      cnae: ['cnae', optional(nullable(string()))],
+      mainAddress: [
+        'main_address',
+        optional(nullable(getRegisterInformationAddressResponseSchema)),
+      ],
+      managingPartners: [
+        'managing_partners',
+        optional(nullable(array(getManagingPartnerResponseSchema))),
+      ],
+    })
 );

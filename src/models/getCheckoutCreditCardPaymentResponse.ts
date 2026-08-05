@@ -12,15 +12,15 @@ import {
   optional,
   Schema,
   string,
-} from '../schema';
+} from '../schema.js';
 import {
   GetCheckoutCardInstallmentOptionsResponse,
   getCheckoutCardInstallmentOptionsResponseSchema,
-} from './getCheckoutCardInstallmentOptionsResponse';
+} from './getCheckoutCardInstallmentOptionsResponse.js';
 import {
   GetPaymentAuthenticationResponse,
   getPaymentAuthenticationResponseSchema,
-} from './getPaymentAuthenticationResponse';
+} from './getPaymentAuthenticationResponse.js';
 
 export interface GetCheckoutCreditCardPaymentResponse {
   /** Descrição na fatura */
@@ -31,20 +31,22 @@ export interface GetCheckoutCreditCardPaymentResponse {
   authentication?: GetPaymentAuthenticationResponse | null;
 }
 
-export const getCheckoutCreditCardPaymentResponseSchema: Schema<GetCheckoutCreditCardPaymentResponse> = object(
-  {
-    statementDescriptor: ['statementDescriptor', optional(nullable(string()))],
-    installments: [
-      'installments',
-      optional(
-        nullable(
-          array(lazy(() => getCheckoutCardInstallmentOptionsResponseSchema))
-        )
-      ),
-    ],
-    authentication: [
-      'authentication',
-      optional(nullable(lazy(() => getPaymentAuthenticationResponseSchema))),
-    ],
-  }
+export const getCheckoutCreditCardPaymentResponseSchema: Schema<GetCheckoutCreditCardPaymentResponse> = lazy(
+  () =>
+    object({
+      statementDescriptor: [
+        'statementDescriptor',
+        optional(nullable(string())),
+      ],
+      installments: [
+        'installments',
+        optional(
+          nullable(array(getCheckoutCardInstallmentOptionsResponseSchema))
+        ),
+      ],
+      authentication: [
+        'authentication',
+        optional(nullable(getPaymentAuthenticationResponseSchema)),
+      ],
+    })
 );

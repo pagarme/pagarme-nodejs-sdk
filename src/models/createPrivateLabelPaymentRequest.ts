@@ -12,11 +12,11 @@ import {
   optional,
   Schema,
   string,
-} from '../schema';
+} from '../schema.js';
 import {
   CreateCardRequest,
   createCardRequestSchema,
-} from './createCardRequest';
+} from './createCardRequest.js';
 
 /** The settings for creating a private label payment */
 export interface CreatePrivateLabelPaymentRequest {
@@ -41,17 +41,18 @@ export interface CreatePrivateLabelPaymentRequest {
   recurrencyCycle?: string;
 }
 
-export const createPrivateLabelPaymentRequestSchema: Schema<CreatePrivateLabelPaymentRequest> = object(
-  {
-    installments: ['installments', optional(number())],
-    statementDescriptor: ['statement_descriptor', optional(string())],
-    card: ['card', optional(lazy(() => createCardRequestSchema))],
-    cardId: ['card_id', optional(string())],
-    cardToken: ['card_token', optional(string())],
-    recurrence: ['recurrence', optional(boolean())],
-    capture: ['capture', optional(boolean())],
-    extendedLimitEnabled: ['extended_limit_enabled', optional(boolean())],
-    extendedLimitCode: ['extended_limit_code', optional(string())],
-    recurrencyCycle: ['recurrency_cycle', optional(string())],
-  }
+export const createPrivateLabelPaymentRequestSchema: Schema<CreatePrivateLabelPaymentRequest> = lazy(
+  () =>
+    object({
+      installments: ['installments', optional(number())],
+      statementDescriptor: ['statement_descriptor', optional(string())],
+      card: ['card', optional(createCardRequestSchema)],
+      cardId: ['card_id', optional(string())],
+      cardToken: ['card_token', optional(string())],
+      recurrence: ['recurrence', optional(boolean())],
+      capture: ['capture', optional(boolean())],
+      extendedLimitEnabled: ['extended_limit_enabled', optional(boolean())],
+      extendedLimitCode: ['extended_limit_code', optional(string())],
+      recurrencyCycle: ['recurrency_cycle', optional(string())],
+    })
 );

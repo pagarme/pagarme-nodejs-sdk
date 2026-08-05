@@ -12,11 +12,11 @@ import {
   optional,
   Schema,
   string,
-} from '../schema';
+} from '../schema.js';
 import {
   GetGatewayErrorResponse,
   getGatewayErrorResponseSchema,
-} from './getGatewayErrorResponse';
+} from './getGatewayErrorResponse.js';
 
 /** The Transaction Gateway Response */
 export interface GetGatewayResponseResponse {
@@ -26,12 +26,13 @@ export interface GetGatewayResponseResponse {
   errors?: GetGatewayErrorResponse[] | null;
 }
 
-export const getGatewayResponseResponseSchema: Schema<GetGatewayResponseResponse> = object(
-  {
-    code: ['code', optional(nullable(string()))],
-    errors: [
-      'errors',
-      optional(nullable(array(lazy(() => getGatewayErrorResponseSchema)))),
-    ],
-  }
+export const getGatewayResponseResponseSchema: Schema<GetGatewayResponseResponse> = lazy(
+  () =>
+    object({
+      code: ['code', optional(nullable(string()))],
+      errors: [
+        'errors',
+        optional(nullable(array(getGatewayErrorResponseSchema))),
+      ],
+    })
 );

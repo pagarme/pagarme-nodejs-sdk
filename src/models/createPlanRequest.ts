@@ -14,15 +14,15 @@ import {
   optional,
   Schema,
   string,
-} from '../schema';
+} from '../schema.js';
 import {
   CreatePlanItemRequest,
   createPlanItemRequestSchema,
-} from './createPlanItemRequest';
+} from './createPlanItemRequest.js';
 import {
   CreatePricingSchemeRequest,
   createPricingSchemeRequestSchema,
-} from './createPricingSchemeRequest';
+} from './createPricingSchemeRequest.js';
 
 /** Request for creating a plan */
 export interface CreatePlanRequest {
@@ -64,26 +64,25 @@ export interface CreatePlanRequest {
   trialPeriodDays?: number;
 }
 
-export const createPlanRequestSchema: Schema<CreatePlanRequest> = object({
-  name: ['name', string()],
-  description: ['description', string()],
-  statementDescriptor: ['statement_descriptor', string()],
-  items: ['items', array(lazy(() => createPlanItemRequestSchema))],
-  shippable: ['shippable', boolean()],
-  paymentMethods: ['payment_methods', array(string())],
-  installments: ['installments', array(number())],
-  currency: ['currency', string()],
-  interval: ['interval', string()],
-  intervalCount: ['interval_count', number()],
-  billingDays: ['billing_days', array(number())],
-  billingType: ['billing_type', string()],
-  pricingScheme: [
-    'pricing_scheme',
-    lazy(() => createPricingSchemeRequestSchema),
-  ],
-  metadata: ['metadata', dict(string())],
-  minimumPrice: ['minimum_price', optional(number())],
-  cycles: ['cycles', optional(number())],
-  quantity: ['quantity', optional(number())],
-  trialPeriodDays: ['trial_period_days', optional(number())],
-});
+export const createPlanRequestSchema: Schema<CreatePlanRequest> = lazy(() =>
+  object({
+    name: ['name', string()],
+    description: ['description', string()],
+    statementDescriptor: ['statement_descriptor', string()],
+    items: ['items', array(createPlanItemRequestSchema)],
+    shippable: ['shippable', boolean()],
+    paymentMethods: ['payment_methods', array(string())],
+    installments: ['installments', array(number())],
+    currency: ['currency', string()],
+    interval: ['interval', string()],
+    intervalCount: ['interval_count', number()],
+    billingDays: ['billing_days', array(number())],
+    billingType: ['billing_type', string()],
+    pricingScheme: ['pricing_scheme', createPricingSchemeRequestSchema],
+    metadata: ['metadata', dict(string())],
+    minimumPrice: ['minimum_price', optional(number())],
+    cycles: ['cycles', optional(number())],
+    quantity: ['quantity', optional(number())],
+    trialPeriodDays: ['trial_period_days', optional(number())],
+  })
+);

@@ -10,646 +10,229 @@ const recipientsController = new RecipientsController(client);
 
 ## Methods
 
-* [Update Recipient](../../doc/controllers/recipients.md#update-recipient)
-* [Get Withdraw by Id](../../doc/controllers/recipients.md#get-withdraw-by-id)
-* [Get Recipient](../../doc/controllers/recipients.md#get-recipient)
-* [Get Balance](../../doc/controllers/recipients.md#get-balance)
-* [Get Recipients](../../doc/controllers/recipients.md#get-recipients)
-* [Update Recipient Default Bank Account](../../doc/controllers/recipients.md#update-recipient-default-bank-account)
-* [Get Transfers](../../doc/controllers/recipients.md#get-transfers)
-* [Get Transfer](../../doc/controllers/recipients.md#get-transfer)
+* [Create Anticipation](../../doc/controllers/recipients.md#create-anticipation)
+* [Create KYC Link](../../doc/controllers/recipients.md#create-kyc-link)
+* [Create Recipient](../../doc/controllers/recipients.md#create-recipient)
+* [Create Transfer](../../doc/controllers/recipients.md#create-transfer)
 * [Create Withdraw](../../doc/controllers/recipients.md#create-withdraw)
 * [Get Anticipation](../../doc/controllers/recipients.md#get-anticipation)
-* [Update Recipient Transfer Settings](../../doc/controllers/recipients.md#update-recipient-transfer-settings)
-* [Get Recipient by Code](../../doc/controllers/recipients.md#get-recipient-by-code)
-* [Update Automatic Anticipation Settings](../../doc/controllers/recipients.md#update-automatic-anticipation-settings)
-* [Create Transfer](../../doc/controllers/recipients.md#create-transfer)
-* [Create Recipient](../../doc/controllers/recipients.md#create-recipient)
-* [Get Default Recipient](../../doc/controllers/recipients.md#get-default-recipient)
-* [Create Anticipation](../../doc/controllers/recipients.md#create-anticipation)
 * [Get Anticipation Limits](../../doc/controllers/recipients.md#get-anticipation-limits)
-* [Update Recipient Metadata](../../doc/controllers/recipients.md#update-recipient-metadata)
 * [Get Anticipations](../../doc/controllers/recipients.md#get-anticipations)
+* [Get Balance](../../doc/controllers/recipients.md#get-balance)
+* [Get Default Recipient](../../doc/controllers/recipients.md#get-default-recipient)
+* [Get Recipient](../../doc/controllers/recipients.md#get-recipient)
+* [Get Recipient by Code](../../doc/controllers/recipients.md#get-recipient-by-code)
+* [Get Recipients](../../doc/controllers/recipients.md#get-recipients)
+* [Get Transfer](../../doc/controllers/recipients.md#get-transfer)
+* [Get Transfers](../../doc/controllers/recipients.md#get-transfers)
+* [Get Withdraw by Id](../../doc/controllers/recipients.md#get-withdraw-by-id)
 * [Get Withdrawals](../../doc/controllers/recipients.md#get-withdrawals)
-* [Create KYC Link](../../doc/controllers/recipients.md#create-kyc-link)
+* [Update Automatic Anticipation Settings](../../doc/controllers/recipients.md#update-automatic-anticipation-settings)
+* [Update Recipient](../../doc/controllers/recipients.md#update-recipient)
 * [Update Recipient Code](../../doc/controllers/recipients.md#update-recipient-code)
+* [Update Recipient Default Bank Account](../../doc/controllers/recipients.md#update-recipient-default-bank-account)
+* [Update Recipient Metadata](../../doc/controllers/recipients.md#update-recipient-metadata)
+* [Update Recipient Transfer Settings](../../doc/controllers/recipients.md#update-recipient-transfer-settings)
 
 
-# Update Recipient
+# Create Anticipation
 
-Updates a recipient
+Creates an anticipation
 
 ```ts
-async updateRecipient(
+async createAnticipation(
   recipientId: string,
-  request: UpdateRecipientRequest,
+  request: CreateAnticipationRequest,
   idempotencyKey?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetRecipientResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `recipientId` | `string` | Template, Required | Recipient id |
-| `request` | [`UpdateRecipientRequest`](../../doc/models/update-recipient-request.md) | Body, Required | Recipient data |
-| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [GetRecipientResponse](../../doc/models/get-recipient-response.md).
-
-## Example Usage
-
-```ts
-const recipientId = 'recipient_id0';
-
-const request: UpdateRecipientRequest = {
-  name: 'name6',
-  email: 'email0',
-  description: 'description6',
-  type: 'type4',
-  status: 'status8',
-  metadata: {
-    'key0': 'metadata3'
-  },
-};
-
-try {
-  const { result, ...httpResponse } = await recipientsController.updateRecipient(
-  recipientId,
-  request
-);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Get Withdraw by Id
-
-```ts
-async getWithdrawById(
-  recipientId: string,
-  withdrawalId: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetWithdrawResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `recipientId` | `string` | Template, Required | - |
-| `withdrawalId` | `string` | Template, Required | - |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [GetWithdrawResponse](../../doc/models/get-withdraw-response.md).
-
-## Example Usage
-
-```ts
-const recipientId = 'recipient_id0';
-
-const withdrawalId = 'withdrawal_id2';
-
-try {
-  const { result, ...httpResponse } = await recipientsController.getWithdrawById(
-  recipientId,
-  withdrawalId
-);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Get Recipient
-
-Retrieves recipient information
-
-```ts
-async getRecipient(
-  recipientId: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetRecipientResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `recipientId` | `string` | Template, Required | Recipiend id |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [GetRecipientResponse](../../doc/models/get-recipient-response.md).
-
-## Example Usage
-
-```ts
-const recipientId = 'recipient_id0';
-
-try {
-  const { result, ...httpResponse } = await recipientsController.getRecipient(recipientId);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Get Balance
-
-Get balance information for a recipient
-
-```ts
-async getBalance(
-  recipientId: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetBalanceResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `recipientId` | `string` | Template, Required | Recipient id |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [GetBalanceResponse](../../doc/models/get-balance-response.md).
-
-## Example Usage
-
-```ts
-const recipientId = 'recipient_id0';
-
-try {
-  const { result, ...httpResponse } = await recipientsController.getBalance(recipientId);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Get Recipients
-
-Retrieves paginated recipients information
-
-```ts
-async getRecipients(
-  page?: number,
-  size?: number,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<ListRecipientResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `page` | `number \| undefined` | Query, Optional | Page number |
-| `size` | `number \| undefined` | Query, Optional | Page size |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [ListRecipientResponse](../../doc/models/list-recipient-response.md).
-
-## Example Usage
-
-```ts
-try {
-  const { result, ...httpResponse } = await recipientsController.getRecipients();
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Update Recipient Default Bank Account
-
-Updates the default bank account from a recipient
-
-```ts
-async updateRecipientDefaultBankAccount(
-  recipientId: string,
-  request: UpdateRecipientBankAccountRequest,
-  idempotencyKey?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetRecipientResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `recipientId` | `string` | Template, Required | Recipient id |
-| `request` | [`UpdateRecipientBankAccountRequest`](../../doc/models/update-recipient-bank-account-request.md) | Body, Required | Bank account data |
-| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [GetRecipientResponse](../../doc/models/get-recipient-response.md).
-
-## Example Usage
-
-```ts
-const recipientId = 'recipient_id0';
-
-const request: UpdateRecipientBankAccountRequest = {
-  bankAccount: {
-    holderName: 'holder_name0',
-    holderType: 'holder_type6',
-    holderDocument: 'holder_document8',
-    bank: 'bank2',
-    branchNumber: 'branch_number0',
-    accountNumber: 'account_number4',
-    accountCheckDigit: 'account_check_digit0',
-    type: 'type6',
-    metadata: {
-      'key0': 'metadata1',
-      'key1': 'metadata0'
-    },
-  },
-  paymentMode: 'bank_transfer',
-};
-
-try {
-  const { result, ...httpResponse } = await recipientsController.updateRecipientDefaultBankAccount(
-  recipientId,
-  request
-);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Get Transfers
-
-Gets a paginated list of transfers for the recipient
-
-```ts
-async getTransfers(
-  recipientId: string,
-  page?: number,
-  size?: number,
-  status?: string,
-  createdSince?: string,
-  createdUntil?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<ListTransferResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `recipientId` | `string` | Template, Required | Recipient id |
-| `page` | `number \| undefined` | Query, Optional | Page number |
-| `size` | `number \| undefined` | Query, Optional | Page size |
-| `status` | `string \| undefined` | Query, Optional | Filter for transfer status |
-| `createdSince` | `string \| undefined` | Query, Optional | Filter for start range of transfer creation date |
-| `createdUntil` | `string \| undefined` | Query, Optional | Filter for end range of transfer creation date |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [ListTransferResponse](../../doc/models/list-transfer-response.md).
-
-## Example Usage
-
-```ts
-const recipientId = 'recipient_id0';
-
-try {
-  const { result, ...httpResponse } = await recipientsController.getTransfers(recipientId);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Get Transfer
-
-Gets a transfer
-
-```ts
-async getTransfer(
-  recipientId: string,
-  transferId: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetTransferResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `recipientId` | `string` | Template, Required | Recipient id |
-| `transferId` | `string` | Template, Required | Transfer id |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [GetTransferResponse](../../doc/models/get-transfer-response.md).
-
-## Example Usage
-
-```ts
-const recipientId = 'recipient_id0';
-
-const transferId = 'transfer_id6';
-
-try {
-  const { result, ...httpResponse } = await recipientsController.getTransfer(
-  recipientId,
-  transferId
-);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Create Withdraw
-
-```ts
-async createWithdraw(
-  recipientId: string,
-  request: CreateWithdrawRequest,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetWithdrawResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `recipientId` | `string` | Template, Required | - |
-| `request` | [`CreateWithdrawRequest`](../../doc/models/create-withdraw-request.md) | Body, Required | - |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [GetWithdrawResponse](../../doc/models/get-withdraw-response.md).
-
-## Example Usage
-
-```ts
-const recipientId = 'recipient_id0';
-
-const request: CreateWithdrawRequest = {
-  amount: 242,
-};
-
-try {
-  const { result, ...httpResponse } = await recipientsController.createWithdraw(
-  recipientId,
-  request
-);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Get Anticipation
-
-Gets an anticipation
-
-```ts
-async getAnticipation(
-  recipientId: string,
-  anticipationId: string,
   requestOptions?: RequestOptions
 ): Promise<ApiResponse<GetAnticipationResponse>>
 ```
 
-## Parameters
+## Authentication
 
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `recipientId` | `string` | Template, Required | Recipient id |
-| `anticipationId` | `string` | Template, Required | Anticipation id |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [GetAnticipationResponse](../../doc/models/get-anticipation-response.md).
-
-## Example Usage
-
-```ts
-const recipientId = 'recipient_id0';
-
-const anticipationId = 'anticipation_id0';
-
-try {
-  const { result, ...httpResponse } = await recipientsController.getAnticipation(
-  recipientId,
-  anticipationId
-);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Update Recipient Transfer Settings
-
-```ts
-async updateRecipientTransferSettings(
-  recipientId: string,
-  request: UpdateTransferSettingsRequest,
-  idempotencyKey?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetRecipientResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `recipientId` | `string` | Template, Required | Recipient Identificator |
-| `request` | [`UpdateTransferSettingsRequest`](../../doc/models/update-transfer-settings-request.md) | Body, Required | - |
-| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [GetRecipientResponse](../../doc/models/get-recipient-response.md).
-
-## Example Usage
-
-```ts
-const recipientId = 'recipient_id0';
-
-const request: UpdateTransferSettingsRequest = {
-  transferEnabled: 'transfer_enabled2',
-  transferInterval: 'transfer_interval6',
-  transferDay: 'transfer_day6',
-};
-
-try {
-  const { result, ...httpResponse } = await recipientsController.updateRecipientTransferSettings(
-  recipientId,
-  request
-);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Get Recipient by Code
-
-Retrieves recipient information
-
-```ts
-async getRecipientByCode(
-  code: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetRecipientResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `code` | `string` | Template, Required | Recipient code |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [GetRecipientResponse](../../doc/models/get-recipient-response.md).
-
-## Example Usage
-
-```ts
-const code = 'code8';
-
-try {
-  const { result, ...httpResponse } = await recipientsController.getRecipientByCode(code);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Update Automatic Anticipation Settings
-
-Updates recipient metadata
-
-```ts
-async updateAutomaticAnticipationSettings(
-  recipientId: string,
-  request: UpdateAutomaticAnticipationSettingsRequest,
-  idempotencyKey?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetRecipientResponse>>
-```
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
 
 ## Parameters
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `recipientId` | `string` | Template, Required | Recipient id |
-| `request` | [`UpdateAutomaticAnticipationSettingsRequest`](../../doc/models/update-automatic-anticipation-settings-request.md) | Body, Required | Metadata |
+| `request` | [`CreateAnticipationRequest`](../../doc/models/create-anticipation-request.md) | Body, Required | Anticipation data |
 | `idempotencyKey` | `string \| undefined` | Header, Optional | - |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
-This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [GetRecipientResponse](../../doc/models/get-recipient-response.md).
+**200**
+
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [`GetAnticipationResponse`](../../doc/models/get-anticipation-response.md).
 
 ## Example Usage
 
 ```ts
 const recipientId = 'recipient_id0';
 
-const request: UpdateAutomaticAnticipationSettingsRequest = {
+const request: CreateAnticipationRequest = {
+  amount: 242,
+  timeframe: 'timeframe8',
+  paymentDate: '2016-03-13T12:52:32.123Z',
 };
 
 try {
-  const { result, ...httpResponse } = await recipientsController.updateAutomaticAnticipationSettings(
-  recipientId,
-  request
-);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
+  const response = await recipientsController.createAnticipation(
+    recipientId,
+    request
+  );
+
+  // Extracting fully parsed response body.
+  console.log(response.result);
+
+  // Extracting response status code.
+  console.log(response.statusCode);
+  // Extracting response headers.
+  console.log(response.headers);
+  // Extracting response body of type `string | Stream`
+  console.log(response.body);
 } catch (error) {
   if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
+    // Extracting response error status code.
+    console.log(error.statusCode);
+    // Extracting response error headers.
+    console.log(error.headers);
+    // Extracting response error body of type `string | Stream`.
+    console.log(error.body);
+    if (error instanceof CustomError) {
+      console.log(error.result);
+    }
+  }
+}
+```
+
+
+# Create KYC Link
+
+Create a KYC link
+
+```ts
+async createKYCLink(
+  recipientId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<CreateKYCLinkResponse>>
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `recipientId` | `string` | Template, Required | Recipient id |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+**200**
+
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [`CreateKYCLinkResponse`](../../doc/models/create-kyc-link-response.md).
+
+## Example Usage
+
+```ts
+const recipientId = 'recipient_id0';
+
+try {
+  const response = await recipientsController.createKYCLink(recipientId);
+
+  // Extracting fully parsed response body.
+  console.log(response.result);
+
+  // Extracting response status code.
+  console.log(response.statusCode);
+  // Extracting response headers.
+  console.log(response.headers);
+  // Extracting response body of type `string | Stream`
+  console.log(response.body);
+} catch (error) {
+  if (error instanceof ApiError) {
+    // Extracting response error status code.
+    console.log(error.statusCode);
+    // Extracting response error headers.
+    console.log(error.headers);
+    // Extracting response error body of type `string | Stream`.
+    console.log(error.body);
+    if (error instanceof CustomError) {
+      console.log(error.result);
+    }
+  }
+}
+```
+
+
+# Create Recipient
+
+Creates a new recipient
+
+```ts
+async createRecipient(
+  request: CreateRecipientRequest,
+  idempotencyKey?: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetRecipientResponse>>
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `request` | [`CreateRecipientRequest`](../../doc/models/create-recipient-request.md) | Body, Required | Recipient data |
+| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+**200**
+
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [`GetRecipientResponse`](../../doc/models/get-recipient-response.md).
+
+## Example Usage
+
+```ts
+const request: CreateRecipientRequest = {
+  defaultBankAccount: {},
+  metadata: {},
+  code: '',
+  paymentMode: 'bank_transfer',
+};
+
+try {
+  const response = await recipientsController.createRecipient(request);
+
+  // Extracting fully parsed response body.
+  console.log(response.result);
+
+  // Extracting response status code.
+  console.log(response.statusCode);
+  // Extracting response headers.
+  console.log(response.headers);
+  // Extracting response body of type `string | Stream`
+  console.log(response.body);
+} catch (error) {
+  if (error instanceof ApiError) {
+    // Extracting response error status code.
+    console.log(error.statusCode);
+    // Extracting response error headers.
+    console.log(error.headers);
+    // Extracting response error body of type `string | Stream`.
+    console.log(error.body);
+    if (error instanceof CustomError) {
+      console.log(error.result);
+    }
   }
 }
 ```
@@ -668,6 +251,10 @@ async createTransfer(
 ): Promise<ApiResponse<GetTransferResponse>>
 ```
 
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -679,7 +266,9 @@ async createTransfer(
 
 ## Response Type
 
-This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [GetTransferResponse](../../doc/models/get-transfer-response.md).
+**200**
+
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [`GetTransferResponse`](../../doc/models/get-transfer-response.md).
 
 ## Example Usage
 
@@ -694,166 +283,167 @@ const request: CreateTransferRequest = {
 };
 
 try {
-  const { result, ...httpResponse } = await recipientsController.createTransfer(
-  recipientId,
-  request
-);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
+  const response = await recipientsController.createTransfer(
+    recipientId,
+    request
+  );
+
+  // Extracting fully parsed response body.
+  console.log(response.result);
+
+  // Extracting response status code.
+  console.log(response.statusCode);
+  // Extracting response headers.
+  console.log(response.headers);
+  // Extracting response body of type `string | Stream`
+  console.log(response.body);
 } catch (error) {
   if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
+    // Extracting response error status code.
+    console.log(error.statusCode);
+    // Extracting response error headers.
+    console.log(error.headers);
+    // Extracting response error body of type `string | Stream`.
+    console.log(error.body);
+    if (error instanceof CustomError) {
+      console.log(error.result);
+    }
   }
 }
 ```
 
 
-# Create Recipient
-
-Creates a new recipient
+# Create Withdraw
 
 ```ts
-async createRecipient(
-  request: CreateRecipientRequest,
-  idempotencyKey?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetRecipientResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `request` | [`CreateRecipientRequest`](../../doc/models/create-recipient-request.md) | Body, Required | Recipient data |
-| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [GetRecipientResponse](../../doc/models/get-recipient-response.md).
-
-## Example Usage
-
-```ts
-const request: CreateRecipientRequest = {
-  defaultBankAccount: {
-    holderName: 'holder_name4',
-    holderType: 'holder_type0',
-    holderDocument: 'holder_document2',
-    bank: 'bank6',
-    branchNumber: 'branch_number4',
-    accountNumber: 'account_number8',
-    accountCheckDigit: 'account_check_digit4',
-    type: 'type2',
-    metadata: {
-      'key0': 'metadata5',
-      'key1': 'metadata4',
-      'key2': 'metadata3'
-    },
-  },
-  metadata: {
-    'key0': 'metadata3'
-  },
-  code: 'code4',
-  paymentMode: 'bank_transfer',
-};
-
-try {
-  const { result, ...httpResponse } = await recipientsController.createRecipient(request);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Get Default Recipient
-
-```ts
-async getDefaultRecipient(
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetRecipientResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [GetRecipientResponse](../../doc/models/get-recipient-response.md).
-
-## Example Usage
-
-```ts
-try {
-  const { result, ...httpResponse } = await recipientsController.getDefaultRecipient();
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Create Anticipation
-
-Creates an anticipation
-
-```ts
-async createAnticipation(
+async createWithdraw(
   recipientId: string,
-  request: CreateAnticipationRequest,
-  idempotencyKey?: string,
+  request: CreateWithdrawRequest,
   requestOptions?: RequestOptions
-): Promise<ApiResponse<GetAnticipationResponse>>
+): Promise<ApiResponse<GetWithdrawResponse>>
 ```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
 
 ## Parameters
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `recipientId` | `string` | Template, Required | Recipient id |
-| `request` | [`CreateAnticipationRequest`](../../doc/models/create-anticipation-request.md) | Body, Required | Anticipation data |
-| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
+| `recipientId` | `string` | Template, Required | - |
+| `request` | [`CreateWithdrawRequest`](../../doc/models/create-withdraw-request.md) | Body, Required | - |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
-This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [GetAnticipationResponse](../../doc/models/get-anticipation-response.md).
+**200**
+
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [`GetWithdrawResponse`](../../doc/models/get-withdraw-response.md).
 
 ## Example Usage
 
 ```ts
 const recipientId = 'recipient_id0';
 
-const request: CreateAnticipationRequest = {
+const request: CreateWithdrawRequest = {
   amount: 242,
-  timeframe: 'timeframe8',
-  paymentDate: '2016-03-13T12:52:32.123Z',
 };
 
 try {
-  const { result, ...httpResponse } = await recipientsController.createAnticipation(
-  recipientId,
-  request
-);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
+  const response = await recipientsController.createWithdraw(
+    recipientId,
+    request
+  );
+
+  // Extracting fully parsed response body.
+  console.log(response.result);
+
+  // Extracting response status code.
+  console.log(response.statusCode);
+  // Extracting response headers.
+  console.log(response.headers);
+  // Extracting response body of type `string | Stream`
+  console.log(response.body);
 } catch (error) {
   if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
+    // Extracting response error status code.
+    console.log(error.statusCode);
+    // Extracting response error headers.
+    console.log(error.headers);
+    // Extracting response error body of type `string | Stream`.
+    console.log(error.body);
+    if (error instanceof CustomError) {
+      console.log(error.result);
+    }
+  }
+}
+```
+
+
+# Get Anticipation
+
+Gets an anticipation
+
+```ts
+async getAnticipation(
+  recipientId: string,
+  anticipationId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetAnticipationResponse>>
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `recipientId` | `string` | Template, Required | Recipient id |
+| `anticipationId` | `string` | Template, Required | Anticipation id |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+**200**
+
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [`GetAnticipationResponse`](../../doc/models/get-anticipation-response.md).
+
+## Example Usage
+
+```ts
+const recipientId = 'recipient_id0';
+
+const anticipationId = 'anticipation_id0';
+
+try {
+  const response = await recipientsController.getAnticipation(
+    recipientId,
+    anticipationId
+  );
+
+  // Extracting fully parsed response body.
+  console.log(response.result);
+
+  // Extracting response status code.
+  console.log(response.statusCode);
+  // Extracting response headers.
+  console.log(response.headers);
+  // Extracting response body of type `string | Stream`
+  console.log(response.body);
+} catch (error) {
+  if (error instanceof ApiError) {
+    // Extracting response error status code.
+    console.log(error.statusCode);
+    // Extracting response error headers.
+    console.log(error.headers);
+    // Extracting response error body of type `string | Stream`.
+    console.log(error.body);
+    if (error instanceof CustomError) {
+      console.log(error.result);
+    }
   }
 }
 ```
@@ -872,6 +462,10 @@ async getAnticipationLimits(
 ): Promise<ApiResponse<GetAnticipationLimitResponse>>
 ```
 
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -883,7 +477,9 @@ async getAnticipationLimits(
 
 ## Response Type
 
-This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [GetAnticipationLimitResponse](../../doc/models/get-anticipation-limit-response.md).
+**200**
+
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [`GetAnticipationLimitResponse`](../../doc/models/get-anticipation-limit-response.md).
 
 ## Example Usage
 
@@ -895,70 +491,32 @@ const timeframe = 'timeframe2';
 const paymentDate = '2016-03-13T12:52:32.123Z';
 
 try {
-  const { result, ...httpResponse } = await recipientsController.getAnticipationLimits(
-  recipientId,
-  timeframe,
-  paymentDate
-);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
+  const response = await recipientsController.getAnticipationLimits(
+    recipientId,
+    timeframe,
+    paymentDate
+  );
+
+  // Extracting fully parsed response body.
+  console.log(response.result);
+
+  // Extracting response status code.
+  console.log(response.statusCode);
+  // Extracting response headers.
+  console.log(response.headers);
+  // Extracting response body of type `string | Stream`
+  console.log(response.body);
 } catch (error) {
   if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Update Recipient Metadata
-
-Updates recipient metadata
-
-```ts
-async updateRecipientMetadata(
-  recipientId: string,
-  request: UpdateMetadataRequest,
-  idempotencyKey?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetRecipientResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `recipientId` | `string` | Template, Required | Recipient id |
-| `request` | [`UpdateMetadataRequest`](../../doc/models/update-metadata-request.md) | Body, Required | Metadata |
-| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [GetRecipientResponse](../../doc/models/get-recipient-response.md).
-
-## Example Usage
-
-```ts
-const recipientId = 'recipient_id0';
-
-const request: UpdateMetadataRequest = {
-  metadata: {
-    'key0': 'metadata3'
-  },
-};
-
-try {
-  const { result, ...httpResponse } = await recipientsController.updateRecipientMetadata(
-  recipientId,
-  request
-);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
+    // Extracting response error status code.
+    console.log(error.statusCode);
+    // Extracting response error headers.
+    console.log(error.headers);
+    // Extracting response error body of type `string | Stream`.
+    console.log(error.body);
+    if (error instanceof CustomError) {
+      console.log(error.result);
+    }
   }
 }
 ```
@@ -983,6 +541,10 @@ async getAnticipations(
 ): Promise<ApiResponse<ListAnticipationResponse>>
 ```
 
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -1000,7 +562,9 @@ async getAnticipations(
 
 ## Response Type
 
-This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [ListAnticipationResponse](../../doc/models/list-anticipation-response.md).
+**200**
+
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [`ListAnticipationResponse`](../../doc/models/list-anticipation-response.md).
 
 ## Example Usage
 
@@ -1008,13 +572,532 @@ This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The 
 const recipientId = 'recipient_id0';
 
 try {
-  const { result, ...httpResponse } = await recipientsController.getAnticipations(recipientId);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
+  const response = await recipientsController.getAnticipations(recipientId);
+
+  // Extracting fully parsed response body.
+  console.log(response.result);
+
+  // Extracting response status code.
+  console.log(response.statusCode);
+  // Extracting response headers.
+  console.log(response.headers);
+  // Extracting response body of type `string | Stream`
+  console.log(response.body);
 } catch (error) {
   if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
+    // Extracting response error status code.
+    console.log(error.statusCode);
+    // Extracting response error headers.
+    console.log(error.headers);
+    // Extracting response error body of type `string | Stream`.
+    console.log(error.body);
+    if (error instanceof CustomError) {
+      console.log(error.result);
+    }
+  }
+}
+```
+
+
+# Get Balance
+
+Get balance information for a recipient
+
+```ts
+async getBalance(
+  recipientId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetBalanceResponse>>
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `recipientId` | `string` | Template, Required | Recipient id |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+**200**
+
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [`GetBalanceResponse`](../../doc/models/get-balance-response.md).
+
+## Example Usage
+
+```ts
+const recipientId = 'recipient_id0';
+
+try {
+  const response = await recipientsController.getBalance(recipientId);
+
+  // Extracting fully parsed response body.
+  console.log(response.result);
+
+  // Extracting response status code.
+  console.log(response.statusCode);
+  // Extracting response headers.
+  console.log(response.headers);
+  // Extracting response body of type `string | Stream`
+  console.log(response.body);
+} catch (error) {
+  if (error instanceof ApiError) {
+    // Extracting response error status code.
+    console.log(error.statusCode);
+    // Extracting response error headers.
+    console.log(error.headers);
+    // Extracting response error body of type `string | Stream`.
+    console.log(error.body);
+    if (error instanceof CustomError) {
+      console.log(error.result);
+    }
+  }
+}
+```
+
+
+# Get Default Recipient
+
+```ts
+async getDefaultRecipient(
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetRecipientResponse>>
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+**200**
+
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [`GetRecipientResponse`](../../doc/models/get-recipient-response.md).
+
+## Example Usage
+
+```ts
+try {
+  const response = await recipientsController.getDefaultRecipient();
+
+  // Extracting fully parsed response body.
+  console.log(response.result);
+
+  // Extracting response status code.
+  console.log(response.statusCode);
+  // Extracting response headers.
+  console.log(response.headers);
+  // Extracting response body of type `string | Stream`
+  console.log(response.body);
+} catch (error) {
+  if (error instanceof ApiError) {
+    // Extracting response error status code.
+    console.log(error.statusCode);
+    // Extracting response error headers.
+    console.log(error.headers);
+    // Extracting response error body of type `string | Stream`.
+    console.log(error.body);
+    if (error instanceof CustomError) {
+      console.log(error.result);
+    }
+  }
+}
+```
+
+
+# Get Recipient
+
+Retrieves recipient information
+
+```ts
+async getRecipient(
+  recipientId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetRecipientResponse>>
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `recipientId` | `string` | Template, Required | Recipiend id |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+**200**
+
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [`GetRecipientResponse`](../../doc/models/get-recipient-response.md).
+
+## Example Usage
+
+```ts
+const recipientId = 'recipient_id0';
+
+try {
+  const response = await recipientsController.getRecipient(recipientId);
+
+  // Extracting fully parsed response body.
+  console.log(response.result);
+
+  // Extracting response status code.
+  console.log(response.statusCode);
+  // Extracting response headers.
+  console.log(response.headers);
+  // Extracting response body of type `string | Stream`
+  console.log(response.body);
+} catch (error) {
+  if (error instanceof ApiError) {
+    // Extracting response error status code.
+    console.log(error.statusCode);
+    // Extracting response error headers.
+    console.log(error.headers);
+    // Extracting response error body of type `string | Stream`.
+    console.log(error.body);
+    if (error instanceof CustomError) {
+      console.log(error.result);
+    }
+  }
+}
+```
+
+
+# Get Recipient by Code
+
+Retrieves recipient information
+
+```ts
+async getRecipientByCode(
+  code: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetRecipientResponse>>
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `code` | `string` | Template, Required | Recipient code |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+**200**
+
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [`GetRecipientResponse`](../../doc/models/get-recipient-response.md).
+
+## Example Usage
+
+```ts
+const code = 'code8';
+
+try {
+  const response = await recipientsController.getRecipientByCode(code);
+
+  // Extracting fully parsed response body.
+  console.log(response.result);
+
+  // Extracting response status code.
+  console.log(response.statusCode);
+  // Extracting response headers.
+  console.log(response.headers);
+  // Extracting response body of type `string | Stream`
+  console.log(response.body);
+} catch (error) {
+  if (error instanceof ApiError) {
+    // Extracting response error status code.
+    console.log(error.statusCode);
+    // Extracting response error headers.
+    console.log(error.headers);
+    // Extracting response error body of type `string | Stream`.
+    console.log(error.body);
+    if (error instanceof CustomError) {
+      console.log(error.result);
+    }
+  }
+}
+```
+
+
+# Get Recipients
+
+Retrieves paginated recipients information
+
+```ts
+async getRecipients(
+  page?: number,
+  size?: number,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<ListRecipientResponse>>
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `page` | `number \| undefined` | Query, Optional | Page number |
+| `size` | `number \| undefined` | Query, Optional | Page size |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+**200**
+
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [`ListRecipientResponse`](../../doc/models/list-recipient-response.md).
+
+## Example Usage
+
+```ts
+try {
+  const response = await recipientsController.getRecipients();
+
+  // Extracting fully parsed response body.
+  console.log(response.result);
+
+  // Extracting response status code.
+  console.log(response.statusCode);
+  // Extracting response headers.
+  console.log(response.headers);
+  // Extracting response body of type `string | Stream`
+  console.log(response.body);
+} catch (error) {
+  if (error instanceof ApiError) {
+    // Extracting response error status code.
+    console.log(error.statusCode);
+    // Extracting response error headers.
+    console.log(error.headers);
+    // Extracting response error body of type `string | Stream`.
+    console.log(error.body);
+    if (error instanceof CustomError) {
+      console.log(error.result);
+    }
+  }
+}
+```
+
+
+# Get Transfer
+
+Gets a transfer
+
+```ts
+async getTransfer(
+  recipientId: string,
+  transferId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetTransferResponse>>
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `recipientId` | `string` | Template, Required | Recipient id |
+| `transferId` | `string` | Template, Required | Transfer id |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+**200**
+
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [`GetTransferResponse`](../../doc/models/get-transfer-response.md).
+
+## Example Usage
+
+```ts
+const recipientId = 'recipient_id0';
+
+const transferId = 'transfer_id6';
+
+try {
+  const response = await recipientsController.getTransfer(
+    recipientId,
+    transferId
+  );
+
+  // Extracting fully parsed response body.
+  console.log(response.result);
+
+  // Extracting response status code.
+  console.log(response.statusCode);
+  // Extracting response headers.
+  console.log(response.headers);
+  // Extracting response body of type `string | Stream`
+  console.log(response.body);
+} catch (error) {
+  if (error instanceof ApiError) {
+    // Extracting response error status code.
+    console.log(error.statusCode);
+    // Extracting response error headers.
+    console.log(error.headers);
+    // Extracting response error body of type `string | Stream`.
+    console.log(error.body);
+    if (error instanceof CustomError) {
+      console.log(error.result);
+    }
+  }
+}
+```
+
+
+# Get Transfers
+
+Gets a paginated list of transfers for the recipient
+
+```ts
+async getTransfers(
+  recipientId: string,
+  page?: number,
+  size?: number,
+  status?: string,
+  createdSince?: string,
+  createdUntil?: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<ListTransferResponse>>
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `recipientId` | `string` | Template, Required | Recipient id |
+| `page` | `number \| undefined` | Query, Optional | Page number |
+| `size` | `number \| undefined` | Query, Optional | Page size |
+| `status` | `string \| undefined` | Query, Optional | Filter for transfer status |
+| `createdSince` | `string \| undefined` | Query, Optional | Filter for start range of transfer creation date |
+| `createdUntil` | `string \| undefined` | Query, Optional | Filter for end range of transfer creation date |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+**200**
+
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [`ListTransferResponse`](../../doc/models/list-transfer-response.md).
+
+## Example Usage
+
+```ts
+const recipientId = 'recipient_id0';
+
+try {
+  const response = await recipientsController.getTransfers(recipientId);
+
+  // Extracting fully parsed response body.
+  console.log(response.result);
+
+  // Extracting response status code.
+  console.log(response.statusCode);
+  // Extracting response headers.
+  console.log(response.headers);
+  // Extracting response body of type `string | Stream`
+  console.log(response.body);
+} catch (error) {
+  if (error instanceof ApiError) {
+    // Extracting response error status code.
+    console.log(error.statusCode);
+    // Extracting response error headers.
+    console.log(error.headers);
+    // Extracting response error body of type `string | Stream`.
+    console.log(error.body);
+    if (error instanceof CustomError) {
+      console.log(error.result);
+    }
+  }
+}
+```
+
+
+# Get Withdraw by Id
+
+```ts
+async getWithdrawById(
+  recipientId: string,
+  withdrawalId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetWithdrawResponse>>
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `recipientId` | `string` | Template, Required | - |
+| `withdrawalId` | `string` | Template, Required | - |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+**200**
+
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [`GetWithdrawResponse`](../../doc/models/get-withdraw-response.md).
+
+## Example Usage
+
+```ts
+const recipientId = 'recipient_id0';
+
+const withdrawalId = 'withdrawal_id2';
+
+try {
+  const response = await recipientsController.getWithdrawById(
+    recipientId,
+    withdrawalId
+  );
+
+  // Extracting fully parsed response body.
+  console.log(response.result);
+
+  // Extracting response status code.
+  console.log(response.statusCode);
+  // Extracting response headers.
+  console.log(response.headers);
+  // Extracting response body of type `string | Stream`
+  console.log(response.body);
+} catch (error) {
+  if (error instanceof ApiError) {
+    // Extracting response error status code.
+    console.log(error.statusCode);
+    // Extracting response error headers.
+    console.log(error.headers);
+    // Extracting response error body of type `string | Stream`.
+    console.log(error.body);
+    if (error instanceof CustomError) {
+      console.log(error.result);
+    }
   }
 }
 ```
@@ -1036,6 +1119,10 @@ async getWithdrawals(
 ): Promise<ApiResponse<ListWithdrawals>>
 ```
 
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -1050,7 +1137,9 @@ async getWithdrawals(
 
 ## Response Type
 
-This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [ListWithdrawals](../../doc/models/list-withdrawals.md).
+**200**
+
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [`ListWithdrawals`](../../doc/models/list-withdrawals.md).
 
 ## Example Usage
 
@@ -1058,53 +1147,178 @@ This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The 
 const recipientId = 'recipient_id0';
 
 try {
-  const { result, ...httpResponse } = await recipientsController.getWithdrawals(recipientId);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
+  const response = await recipientsController.getWithdrawals(recipientId);
+
+  // Extracting fully parsed response body.
+  console.log(response.result);
+
+  // Extracting response status code.
+  console.log(response.statusCode);
+  // Extracting response headers.
+  console.log(response.headers);
+  // Extracting response body of type `string | Stream`
+  console.log(response.body);
 } catch (error) {
   if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
+    // Extracting response error status code.
+    console.log(error.statusCode);
+    // Extracting response error headers.
+    console.log(error.headers);
+    // Extracting response error body of type `string | Stream`.
+    console.log(error.body);
+    if (error instanceof CustomError) {
+      console.log(error.result);
+    }
   }
 }
 ```
 
 
-# Create KYC Link
+# Update Automatic Anticipation Settings
 
-Create a KYC link
+Updates recipient metadata
 
 ```ts
-async createKYCLink(
+async updateAutomaticAnticipationSettings(
   recipientId: string,
+  request: UpdateAutomaticAnticipationSettingsRequest,
+  idempotencyKey?: string,
   requestOptions?: RequestOptions
-): Promise<ApiResponse<CreateKYCLinkResponse>>
+): Promise<ApiResponse<GetRecipientResponse>>
 ```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
 
 ## Parameters
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `recipientId` | `string` | Template, Required | Recipient id |
+| `request` | [`UpdateAutomaticAnticipationSettingsRequest`](../../doc/models/update-automatic-anticipation-settings-request.md) | Body, Required | Metadata |
+| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
-This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [CreateKYCLinkResponse](../../doc/models/create-kyc-link-response.md).
+**200**
+
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [`GetRecipientResponse`](../../doc/models/get-recipient-response.md).
 
 ## Example Usage
 
 ```ts
 const recipientId = 'recipient_id0';
 
+const request: UpdateAutomaticAnticipationSettingsRequest = {
+};
+
 try {
-  const { result, ...httpResponse } = await recipientsController.createKYCLink(recipientId);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
+  const response = await recipientsController.updateAutomaticAnticipationSettings(
+    recipientId,
+    request
+  );
+
+  // Extracting fully parsed response body.
+  console.log(response.result);
+
+  // Extracting response status code.
+  console.log(response.statusCode);
+  // Extracting response headers.
+  console.log(response.headers);
+  // Extracting response body of type `string | Stream`
+  console.log(response.body);
 } catch (error) {
   if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
+    // Extracting response error status code.
+    console.log(error.statusCode);
+    // Extracting response error headers.
+    console.log(error.headers);
+    // Extracting response error body of type `string | Stream`.
+    console.log(error.body);
+    if (error instanceof CustomError) {
+      console.log(error.result);
+    }
+  }
+}
+```
+
+
+# Update Recipient
+
+Updates a recipient
+
+```ts
+async updateRecipient(
+  recipientId: string,
+  request: UpdateRecipientRequest,
+  idempotencyKey?: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetRecipientResponse>>
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `recipientId` | `string` | Template, Required | Recipient id |
+| `request` | [`UpdateRecipientRequest`](../../doc/models/update-recipient-request.md) | Body, Required | Recipient data |
+| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+**200**
+
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [`GetRecipientResponse`](../../doc/models/get-recipient-response.md).
+
+## Example Usage
+
+```ts
+const recipientId = 'recipient_id0';
+
+const request: UpdateRecipientRequest = {
+  name: 'name6',
+  email: 'email0',
+  description: 'description6',
+  type: 'type4',
+  status: 'status8',
+  metadata: {
+    'key0': 'metadata3'
+  },
+};
+
+try {
+  const response = await recipientsController.updateRecipient(
+    recipientId,
+    request
+  );
+
+  // Extracting fully parsed response body.
+  console.log(response.result);
+
+  // Extracting response status code.
+  console.log(response.statusCode);
+  // Extracting response headers.
+  console.log(response.headers);
+  // Extracting response body of type `string | Stream`
+  console.log(response.body);
+} catch (error) {
+  if (error instanceof ApiError) {
+    // Extracting response error status code.
+    console.log(error.statusCode);
+    // Extracting response error headers.
+    console.log(error.headers);
+    // Extracting response error body of type `string | Stream`.
+    console.log(error.body);
+    if (error instanceof CustomError) {
+      console.log(error.result);
+    }
   }
 }
 ```
@@ -1123,6 +1337,10 @@ async updateRecipientCode(
 ): Promise<ApiResponse<GetRecipientResponse>>
 ```
 
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -1134,7 +1352,9 @@ async updateRecipientCode(
 
 ## Response Type
 
-This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [GetRecipientResponse](../../doc/models/get-recipient-response.md).
+**200**
+
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [`GetRecipientResponse`](../../doc/models/get-recipient-response.md).
 
 ## Example Usage
 
@@ -1146,16 +1366,250 @@ const request: UpdateRecipientCodeRequest = {
 };
 
 try {
-  const { result, ...httpResponse } = await recipientsController.updateRecipientCode(
-  recipientId,
-  request
-);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
+  const response = await recipientsController.updateRecipientCode(
+    recipientId,
+    request
+  );
+
+  // Extracting fully parsed response body.
+  console.log(response.result);
+
+  // Extracting response status code.
+  console.log(response.statusCode);
+  // Extracting response headers.
+  console.log(response.headers);
+  // Extracting response body of type `string | Stream`
+  console.log(response.body);
 } catch (error) {
   if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
+    // Extracting response error status code.
+    console.log(error.statusCode);
+    // Extracting response error headers.
+    console.log(error.headers);
+    // Extracting response error body of type `string | Stream`.
+    console.log(error.body);
+    if (error instanceof CustomError) {
+      console.log(error.result);
+    }
+  }
+}
+```
+
+
+# Update Recipient Default Bank Account
+
+Updates the default bank account from a recipient
+
+```ts
+async updateRecipientDefaultBankAccount(
+  recipientId: string,
+  request: UpdateRecipientBankAccountRequest,
+  idempotencyKey?: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetRecipientResponse>>
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `recipientId` | `string` | Template, Required | Recipient id |
+| `request` | [`UpdateRecipientBankAccountRequest`](../../doc/models/update-recipient-bank-account-request.md) | Body, Required | Bank account data |
+| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+**200**
+
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [`GetRecipientResponse`](../../doc/models/get-recipient-response.md).
+
+## Example Usage
+
+```ts
+const recipientId = 'recipient_id0';
+
+const request: UpdateRecipientBankAccountRequest = {
+  bankAccount: {},
+  paymentMode: 'bank_transfer',
+};
+
+try {
+  const response = await recipientsController.updateRecipientDefaultBankAccount(
+    recipientId,
+    request
+  );
+
+  // Extracting fully parsed response body.
+  console.log(response.result);
+
+  // Extracting response status code.
+  console.log(response.statusCode);
+  // Extracting response headers.
+  console.log(response.headers);
+  // Extracting response body of type `string | Stream`
+  console.log(response.body);
+} catch (error) {
+  if (error instanceof ApiError) {
+    // Extracting response error status code.
+    console.log(error.statusCode);
+    // Extracting response error headers.
+    console.log(error.headers);
+    // Extracting response error body of type `string | Stream`.
+    console.log(error.body);
+    if (error instanceof CustomError) {
+      console.log(error.result);
+    }
+  }
+}
+```
+
+
+# Update Recipient Metadata
+
+Updates recipient metadata
+
+```ts
+async updateRecipientMetadata(
+  recipientId: string,
+  request: UpdateMetadataRequest,
+  idempotencyKey?: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetRecipientResponse>>
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `recipientId` | `string` | Template, Required | Recipient id |
+| `request` | [`UpdateMetadataRequest`](../../doc/models/update-metadata-request.md) | Body, Required | Metadata |
+| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+**200**
+
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [`GetRecipientResponse`](../../doc/models/get-recipient-response.md).
+
+## Example Usage
+
+```ts
+const recipientId = 'recipient_id0';
+
+const request: UpdateMetadataRequest = {
+  metadata: {
+    'key0': 'metadata3'
+  },
+};
+
+try {
+  const response = await recipientsController.updateRecipientMetadata(
+    recipientId,
+    request
+  );
+
+  // Extracting fully parsed response body.
+  console.log(response.result);
+
+  // Extracting response status code.
+  console.log(response.statusCode);
+  // Extracting response headers.
+  console.log(response.headers);
+  // Extracting response body of type `string | Stream`
+  console.log(response.body);
+} catch (error) {
+  if (error instanceof ApiError) {
+    // Extracting response error status code.
+    console.log(error.statusCode);
+    // Extracting response error headers.
+    console.log(error.headers);
+    // Extracting response error body of type `string | Stream`.
+    console.log(error.body);
+    if (error instanceof CustomError) {
+      console.log(error.result);
+    }
+  }
+}
+```
+
+
+# Update Recipient Transfer Settings
+
+```ts
+async updateRecipientTransferSettings(
+  recipientId: string,
+  request: UpdateTransferSettingsRequest,
+  idempotencyKey?: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetRecipientResponse>>
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `recipientId` | `string` | Template, Required | Recipient Identificator |
+| `request` | [`UpdateTransferSettingsRequest`](../../doc/models/update-transfer-settings-request.md) | Body, Required | - |
+| `idempotencyKey` | `string \| undefined` | Header, Optional | - |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+**200**
+
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [`GetRecipientResponse`](../../doc/models/get-recipient-response.md).
+
+## Example Usage
+
+```ts
+const recipientId = 'recipient_id0';
+
+const request: UpdateTransferSettingsRequest = {
+  transferEnabled: 'transfer_enabled2',
+  transferInterval: 'transfer_interval6',
+  transferDay: 'transfer_day6',
+};
+
+try {
+  const response = await recipientsController.updateRecipientTransferSettings(
+    recipientId,
+    request
+  );
+
+  // Extracting fully parsed response body.
+  console.log(response.result);
+
+  // Extracting response status code.
+  console.log(response.statusCode);
+  // Extracting response headers.
+  console.log(response.headers);
+  // Extracting response body of type `string | Stream`
+  console.log(response.body);
+} catch (error) {
+  if (error instanceof ApiError) {
+    // Extracting response error status code.
+    console.log(error.statusCode);
+    // Extracting response error headers.
+    console.log(error.headers);
+    // Extracting response error body of type `string | Stream`.
+    console.log(error.body);
+    if (error instanceof CustomError) {
+      console.log(error.result);
+    }
   }
 }
 ```

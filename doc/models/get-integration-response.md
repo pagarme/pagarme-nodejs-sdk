@@ -11,11 +11,13 @@
 |  --- | --- | --- | --- |
 | `code` | `string \| undefined` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "code": "code2"
-}
+```ts
+import { GetIntegrationResponse } from 'pagarmeapisdklib';
+
+const getIntegrationResponse: GetIntegrationResponse = {
+  code: 'code2',
+};
 ```
 

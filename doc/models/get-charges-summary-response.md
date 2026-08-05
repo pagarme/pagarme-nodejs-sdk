@@ -11,11 +11,13 @@
 |  --- | --- | --- | --- |
 | `total` | `number \| null \| undefined` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "total": 150
-}
+```ts
+import { GetChargesSummaryResponse } from 'pagarmeapisdklib';
+
+const getChargesSummaryResponse: GetChargesSummaryResponse = {
+  total: 134,
+};
 ```
 

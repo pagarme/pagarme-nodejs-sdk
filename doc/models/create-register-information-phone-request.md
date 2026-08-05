@@ -15,13 +15,15 @@ Register Information Phone
 | `number` | `string` | Required | - |
 | `type` | `string` | Required | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "ddd": "ddd4",
-  "number": "number6",
-  "type": "type8"
-}
+```ts
+import { CreateRegisterInformationPhoneRequest } from 'pagarmeapisdklib';
+
+const createRegisterInformationPhoneRequest: CreateRegisterInformationPhoneRequest = {
+  ddd: 'ddd2',
+  number: 'number0',
+  type: 'type8',
+};
 ```
 

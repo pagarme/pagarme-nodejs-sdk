@@ -12,12 +12,14 @@
 | `sourceId` | `string \| null \| undefined` | Optional | - |
 | `type` | `string \| null \| undefined` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "source_id": "source_id0",
-  "type": "type4"
-}
+```ts
+import { GetTransferSourceResponse } from 'pagarmeapisdklib';
+
+const getTransferSourceResponse: GetTransferSourceResponse = {
+  sourceId: 'source_id8',
+  type: 'type4',
+};
 ```
 

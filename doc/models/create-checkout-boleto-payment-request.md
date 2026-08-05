@@ -13,13 +13,15 @@
 | `instructions` | `string` | Required | Instructions |
 | `dueAt` | `string` | Required | Due date |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "bank": "bank4",
-  "instructions": "instructions4",
-  "due_at": "2016-03-13T12:52:32.123Z"
-}
+```ts
+import { CreateCheckoutBoletoPaymentRequest } from 'pagarmeapisdklib';
+
+const createCheckoutBoletoPaymentRequest: CreateCheckoutBoletoPaymentRequest = {
+  bank: 'bank6',
+  instructions: 'instructions6',
+  dueAt: '2016-03-13T12:52:32.123Z',
+};
 ```
 

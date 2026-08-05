@@ -13,13 +13,15 @@
 | `lenght` | `string` | Required | Emv lenght |
 | `value` | `string` | Required | Emv value |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "tag": "tag6",
-  "lenght": "lenght6",
-  "value": "value4"
-}
+```ts
+import { CreateEmvDataTlvDecryptRequest } from 'pagarmeapisdklib';
+
+const createEmvDataTlvDecryptRequest: CreateEmvDataTlvDecryptRequest = {
+  tag: 'tag8',
+  lenght: 'lenght4',
+  value: 'value6',
+};
 ```
 

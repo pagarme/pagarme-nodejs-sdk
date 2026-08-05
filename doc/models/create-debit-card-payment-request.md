@@ -22,21 +22,17 @@ The settings for creating a debit card payment
 | `recurrenceModel` | `string \| undefined` | Optional | - |
 | `paymentOrigin` | [`CreatePaymentOriginRequest \| undefined`](../../doc/models/create-payment-origin-request.md) | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "statement_descriptor": "statement_descriptor8",
-  "card": {
-    "number": "number6",
-    "holder_name": "holder_name2",
-    "exp_month": 228,
-    "exp_year": 68,
-    "cvv": "cvv4"
-  },
-  "card_id": "card_id4",
-  "card_token": "card_token2",
-  "recurrence": false
-}
+```ts
+import { CreateDebitCardPaymentRequest } from 'pagarmeapisdklib';
+
+const createDebitCardPaymentRequest: CreateDebitCardPaymentRequest = {
+  statementDescriptor: 'statement_descriptor0',
+  card: {},
+  cardId: 'card_id6',
+  cardToken: 'card_token0',
+  recurrence: false,
+};
 ```
 

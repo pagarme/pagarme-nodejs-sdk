@@ -17,15 +17,17 @@
 | `transactionId` | `string \| null \| undefined` | Optional | Identificador da transação (XID) |
 | `successUrl` | `string \| null \| undefined` | Optional | Url de redirecionamento de sucessso |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "mpi": "mpi2",
-  "eci": "eci4",
-  "cavv": "cavv0",
-  "transaction_Id": "transaction_Id0",
-  "success_url": "success_url6"
-}
+```ts
+import { GetThreeDSecureResponse } from 'pagarmeapisdklib';
+
+const getThreeDSecureResponse: GetThreeDSecureResponse = {
+  mpi: 'mpi4',
+  eci: 'eci6',
+  cavv: 'cavv2',
+  transactionId: 'transaction_Id2',
+  successUrl: 'success_url8',
+};
 ```
 

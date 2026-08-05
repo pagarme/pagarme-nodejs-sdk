@@ -12,15 +12,15 @@ import {
   optional,
   Schema,
   string,
-} from '../schema';
+} from '../schema.js';
 import {
   CreateCheckoutCardInstallmentOptionRequest,
   createCheckoutCardInstallmentOptionRequestSchema,
-} from './createCheckoutCardInstallmentOptionRequest';
+} from './createCheckoutCardInstallmentOptionRequest.js';
 import {
   CreatePaymentAuthenticationRequest,
   createPaymentAuthenticationRequestSchema,
-} from './createPaymentAuthenticationRequest';
+} from './createPaymentAuthenticationRequest.js';
 
 /** Checkout card payment request */
 export interface CreateCheckoutCreditCardPaymentRequest {
@@ -34,19 +34,18 @@ export interface CreateCheckoutCreditCardPaymentRequest {
   capture?: boolean;
 }
 
-export const createCheckoutCreditCardPaymentRequestSchema: Schema<CreateCheckoutCreditCardPaymentRequest> = object(
-  {
-    statementDescriptor: ['statement_descriptor', optional(string())],
-    installments: [
-      'installments',
-      optional(
-        array(lazy(() => createCheckoutCardInstallmentOptionRequestSchema))
-      ),
-    ],
-    authentication: [
-      'authentication',
-      optional(lazy(() => createPaymentAuthenticationRequestSchema)),
-    ],
-    capture: ['capture', optional(boolean())],
-  }
+export const createCheckoutCreditCardPaymentRequestSchema: Schema<CreateCheckoutCreditCardPaymentRequest> = lazy(
+  () =>
+    object({
+      statementDescriptor: ['statement_descriptor', optional(string())],
+      installments: [
+        'installments',
+        optional(array(createCheckoutCardInstallmentOptionRequestSchema)),
+      ],
+      authentication: [
+        'authentication',
+        optional(createPaymentAuthenticationRequestSchema),
+      ],
+      capture: ['capture', optional(boolean())],
+    })
 );

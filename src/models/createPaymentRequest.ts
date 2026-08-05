@@ -13,51 +13,51 @@ import {
   optional,
   Schema,
   string,
-} from '../schema';
+} from '../schema.js';
 import {
   CreateBankTransferPaymentRequest,
   createBankTransferPaymentRequestSchema,
-} from './createBankTransferPaymentRequest';
+} from './createBankTransferPaymentRequest.js';
 import {
   CreateBoletoPaymentRequest,
   createBoletoPaymentRequestSchema,
-} from './createBoletoPaymentRequest';
+} from './createBoletoPaymentRequest.js';
 import {
   CreateCashPaymentRequest,
   createCashPaymentRequestSchema,
-} from './createCashPaymentRequest';
+} from './createCashPaymentRequest.js';
 import {
   CreateCheckoutPaymentRequest,
   createCheckoutPaymentRequestSchema,
-} from './createCheckoutPaymentRequest';
+} from './createCheckoutPaymentRequest.js';
 import {
   CreateCreditCardPaymentRequest,
   createCreditCardPaymentRequestSchema,
-} from './createCreditCardPaymentRequest';
+} from './createCreditCardPaymentRequest.js';
 import {
   CreateCustomerRequest,
   createCustomerRequestSchema,
-} from './createCustomerRequest';
+} from './createCustomerRequest.js';
 import {
   CreateDebitCardPaymentRequest,
   createDebitCardPaymentRequestSchema,
-} from './createDebitCardPaymentRequest';
+} from './createDebitCardPaymentRequest.js';
 import {
   CreatePixPaymentRequest,
   createPixPaymentRequestSchema,
-} from './createPixPaymentRequest';
+} from './createPixPaymentRequest.js';
 import {
   CreatePrivateLabelPaymentRequest,
   createPrivateLabelPaymentRequestSchema,
-} from './createPrivateLabelPaymentRequest';
+} from './createPrivateLabelPaymentRequest.js';
 import {
   CreateSplitRequest,
   createSplitRequestSchema,
-} from './createSplitRequest';
+} from './createSplitRequest.js';
 import {
   CreateVoucherPaymentRequest,
   createVoucherPaymentRequestSchema,
-} from './createVoucherPaymentRequest';
+} from './createVoucherPaymentRequest.js';
 
 /** Payment data */
 export interface CreatePaymentRequest {
@@ -97,37 +97,34 @@ export interface CreatePaymentRequest {
   pix?: CreatePixPaymentRequest;
 }
 
-export const createPaymentRequestSchema: Schema<CreatePaymentRequest> = object({
-  paymentMethod: ['payment_method', string()],
-  creditCard: [
-    'credit_card',
-    optional(lazy(() => createCreditCardPaymentRequestSchema)),
-  ],
-  debitCard: [
-    'debit_card',
-    optional(lazy(() => createDebitCardPaymentRequestSchema)),
-  ],
-  boleto: ['boleto', optional(lazy(() => createBoletoPaymentRequestSchema))],
-  currency: ['currency', optional(string())],
-  voucher: ['voucher', optional(lazy(() => createVoucherPaymentRequestSchema))],
-  split: ['split', optional(array(lazy(() => createSplitRequestSchema)))],
-  bankTransfer: [
-    'bank_transfer',
-    optional(lazy(() => createBankTransferPaymentRequestSchema)),
-  ],
-  gatewayAffiliationId: ['gateway_affiliation_id', optional(string())],
-  amount: ['amount', optional(number())],
-  checkout: [
-    'checkout',
-    optional(lazy(() => createCheckoutPaymentRequestSchema)),
-  ],
-  customerId: ['customer_id', optional(string())],
-  customer: ['customer', optional(lazy(() => createCustomerRequestSchema))],
-  metadata: ['metadata', optional(dict(string()))],
-  cash: ['cash', optional(lazy(() => createCashPaymentRequestSchema))],
-  privateLabel: [
-    'private_label',
-    optional(lazy(() => createPrivateLabelPaymentRequestSchema)),
-  ],
-  pix: ['pix', optional(lazy(() => createPixPaymentRequestSchema))],
-});
+export const createPaymentRequestSchema: Schema<CreatePaymentRequest> = lazy(
+  () =>
+    object({
+      paymentMethod: ['payment_method', string()],
+      creditCard: [
+        'credit_card',
+        optional(createCreditCardPaymentRequestSchema),
+      ],
+      debitCard: ['debit_card', optional(createDebitCardPaymentRequestSchema)],
+      boleto: ['boleto', optional(createBoletoPaymentRequestSchema)],
+      currency: ['currency', optional(string())],
+      voucher: ['voucher', optional(createVoucherPaymentRequestSchema)],
+      split: ['split', optional(array(createSplitRequestSchema))],
+      bankTransfer: [
+        'bank_transfer',
+        optional(createBankTransferPaymentRequestSchema),
+      ],
+      gatewayAffiliationId: ['gateway_affiliation_id', optional(string())],
+      amount: ['amount', optional(number())],
+      checkout: ['checkout', optional(createCheckoutPaymentRequestSchema)],
+      customerId: ['customer_id', optional(string())],
+      customer: ['customer', optional(createCustomerRequestSchema)],
+      metadata: ['metadata', optional(dict(string()))],
+      cash: ['cash', optional(createCashPaymentRequestSchema)],
+      privateLabel: [
+        'private_label',
+        optional(createPrivateLabelPaymentRequestSchema),
+      ],
+      pix: ['pix', optional(createPixPaymentRequestSchema)],
+    })
+);

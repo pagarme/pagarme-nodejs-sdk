@@ -15,18 +15,20 @@
 | `delay` | `number` | Required | - |
 | `days` | `number[]` | Required | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "enabled": false,
-  "type": "type8",
-  "volume_percentage": 208,
-  "delay": 82,
-  "days": [
-    58,
-    59
-  ]
-}
+```ts
+import { CreateAutomaticAnticipationSettingsRequest } from 'pagarmeapisdklib';
+
+const createAutomaticAnticipationSettingsRequest: CreateAutomaticAnticipationSettingsRequest = {
+  enabled: false,
+  type: 'type4',
+  volumePercentage: 24,
+  delay: 10,
+  days: [
+    242,
+    243
+  ],
+};
 ```
 

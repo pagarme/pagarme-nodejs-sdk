@@ -14,39 +14,39 @@ import {
   optional,
   Schema,
   string,
-} from '../schema';
+} from '../schema.js';
 import {
   CreateAntifraudRequest,
   createAntifraudRequestSchema,
-} from './createAntifraudRequest';
+} from './createAntifraudRequest.js';
 import {
   CreateCustomerRequest,
   createCustomerRequestSchema,
-} from './createCustomerRequest';
+} from './createCustomerRequest.js';
 import {
   CreateDeviceRequest,
   createDeviceRequestSchema,
-} from './createDeviceRequest';
+} from './createDeviceRequest.js';
 import {
   CreateLocationRequest,
   createLocationRequestSchema,
-} from './createLocationRequest';
+} from './createLocationRequest.js';
 import {
   CreateOrderItemRequest,
   createOrderItemRequestSchema,
-} from './createOrderItemRequest';
+} from './createOrderItemRequest.js';
 import {
   CreatePaymentRequest,
   createPaymentRequestSchema,
-} from './createPaymentRequest';
+} from './createPaymentRequest.js';
 import {
   CreateShippingRequest,
   createShippingRequestSchema,
-} from './createShippingRequest';
+} from './createShippingRequest.js';
 import {
   CreateSubMerchantRequest,
   createSubMerchantRequestSchema,
-} from './createSubMerchantRequest';
+} from './createSubMerchantRequest.js';
 
 /** Request for creating an order */
 export interface CreateOrderRequest {
@@ -82,24 +82,23 @@ export interface CreateOrderRequest {
   submerchant?: CreateSubMerchantRequest;
 }
 
-export const createOrderRequestSchema: Schema<CreateOrderRequest> = object({
-  items: ['items', array(lazy(() => createOrderItemRequestSchema))],
-  customer: ['customer', lazy(() => createCustomerRequestSchema)],
-  payments: ['payments', array(lazy(() => createPaymentRequestSchema))],
-  code: ['code', string()],
-  customerId: ['customer_id', optional(nullable(string()))],
-  shipping: ['shipping', optional(lazy(() => createShippingRequestSchema))],
-  metadata: ['metadata', optional(nullable(dict(string())))],
-  antifraudEnabled: ['antifraud_enabled', optional(boolean())],
-  ip: ['ip', optional(string())],
-  sessionId: ['session_id', optional(string())],
-  location: ['location', optional(lazy(() => createLocationRequestSchema))],
-  device: ['device', optional(lazy(() => createDeviceRequestSchema))],
-  closed: ['closed', boolean()],
-  currency: ['currency', optional(string())],
-  antifraud: ['antifraud', optional(lazy(() => createAntifraudRequestSchema))],
-  submerchant: [
-    'submerchant',
-    optional(lazy(() => createSubMerchantRequestSchema)),
-  ],
-});
+export const createOrderRequestSchema: Schema<CreateOrderRequest> = lazy(() =>
+  object({
+    items: ['items', array(createOrderItemRequestSchema)],
+    customer: ['customer', createCustomerRequestSchema],
+    payments: ['payments', array(createPaymentRequestSchema)],
+    code: ['code', string()],
+    customerId: ['customer_id', optional(nullable(string()))],
+    shipping: ['shipping', optional(createShippingRequestSchema)],
+    metadata: ['metadata', optional(nullable(dict(string())))],
+    antifraudEnabled: ['antifraud_enabled', optional(boolean())],
+    ip: ['ip', optional(string())],
+    sessionId: ['session_id', optional(string())],
+    location: ['location', optional(createLocationRequestSchema)],
+    device: ['device', optional(createDeviceRequestSchema)],
+    closed: ['closed', boolean()],
+    currency: ['currency', optional(string())],
+    antifraud: ['antifraud', optional(createAntifraudRequestSchema)],
+    submerchant: ['submerchant', optional(createSubMerchantRequestSchema)],
+  })
+);

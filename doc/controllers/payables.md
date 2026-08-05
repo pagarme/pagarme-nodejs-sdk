@@ -8,11 +8,6 @@ const payablesController = new PayablesController(client);
 
 `PayablesController`
 
-## Methods
-
-* [Get Payables](../../doc/controllers/payables.md#get-payables)
-* [Get Payable by Id](../../doc/controllers/payables.md#get-payable-by-id)
-
 
 # Get Payables
 
@@ -40,6 +35,10 @@ async getPayables(
 ): Promise<ApiResponse<ListPayablesResponse>>
 ```
 
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -66,57 +65,36 @@ async getPayables(
 
 ## Response Type
 
-This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [ListPayablesResponse](../../doc/models/list-payables-response.md).
+**200**
+
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [`ListPayablesResponse`](../../doc/models/list-payables-response.md).
 
 ## Example Usage
 
 ```ts
 try {
-  const { result, ...httpResponse } = await payablesController.getPayables();
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
+  const response = await payablesController.getPayables();
+
+  // Extracting fully parsed response body.
+  console.log(response.result);
+
+  // Extracting response status code.
+  console.log(response.statusCode);
+  // Extracting response headers.
+  console.log(response.headers);
+  // Extracting response body of type `string | Stream`
+  console.log(response.body);
 } catch (error) {
   if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Get Payable by Id
-
-```ts
-async getPayableById(
-  id: bigint,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetPayableResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `id` | `bigint` | Template, Required | - |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [GetPayableResponse](../../doc/models/get-payable-response.md).
-
-## Example Usage
-
-```ts
-const id = BigInt(112);
-
-try {
-  const { result, ...httpResponse } = await payablesController.getPayableById(id);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
+    // Extracting response error status code.
+    console.log(error.statusCode);
+    // Extracting response error headers.
+    console.log(error.headers);
+    // Extracting response error body of type `string | Stream`.
+    console.log(error.body);
+    if (error instanceof CustomError) {
+      console.log(error.result);
+    }
   }
 }
 ```

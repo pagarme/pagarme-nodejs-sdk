@@ -15,11 +15,11 @@ import {
   optional,
   Schema,
   string,
-} from '../schema';
+} from '../schema.js';
 import {
   GetPlanItemResponse,
   getPlanItemResponseSchema,
-} from './getPlanItemResponse';
+} from './getPlanItemResponse.js';
 
 /** Response object for getting a plan */
 export interface GetPlanResponse {
@@ -46,29 +46,28 @@ export interface GetPlanResponse {
   deletedAt?: string | null;
 }
 
-export const getPlanResponseSchema: Schema<GetPlanResponse> = object({
-  id: ['id', optional(nullable(string()))],
-  name: ['name', optional(nullable(string()))],
-  description: ['description', optional(nullable(string()))],
-  url: ['url', optional(nullable(string()))],
-  statementDescriptor: ['statement_descriptor', optional(nullable(string()))],
-  interval: ['interval', optional(nullable(string()))],
-  intervalCount: ['interval_count', optional(nullable(number()))],
-  billingType: ['billing_type', optional(nullable(string()))],
-  paymentMethods: ['payment_methods', optional(nullable(array(string())))],
-  installments: ['installments', optional(nullable(array(number())))],
-  status: ['status', optional(nullable(string()))],
-  currency: ['currency', optional(nullable(string()))],
-  createdAt: ['created_at', optional(nullable(string()))],
-  updatedAt: ['updated_at', optional(nullable(string()))],
-  items: [
-    'items',
-    optional(nullable(array(lazy(() => getPlanItemResponseSchema)))),
-  ],
-  billingDays: ['billing_days', optional(nullable(array(number())))],
-  shippable: ['shippable', optional(nullable(boolean()))],
-  metadata: ['metadata', optional(nullable(dict(string())))],
-  trialPeriodDays: ['trial_period_days', optional(nullable(number()))],
-  minimumPrice: ['minimum_price', optional(nullable(number()))],
-  deletedAt: ['deleted_at', optional(nullable(string()))],
-});
+export const getPlanResponseSchema: Schema<GetPlanResponse> = lazy(() =>
+  object({
+    id: ['id', optional(nullable(string()))],
+    name: ['name', optional(nullable(string()))],
+    description: ['description', optional(nullable(string()))],
+    url: ['url', optional(nullable(string()))],
+    statementDescriptor: ['statement_descriptor', optional(nullable(string()))],
+    interval: ['interval', optional(nullable(string()))],
+    intervalCount: ['interval_count', optional(nullable(number()))],
+    billingType: ['billing_type', optional(nullable(string()))],
+    paymentMethods: ['payment_methods', optional(nullable(array(string())))],
+    installments: ['installments', optional(nullable(array(number())))],
+    status: ['status', optional(nullable(string()))],
+    currency: ['currency', optional(nullable(string()))],
+    createdAt: ['created_at', optional(nullable(string()))],
+    updatedAt: ['updated_at', optional(nullable(string()))],
+    items: ['items', optional(nullable(array(getPlanItemResponseSchema)))],
+    billingDays: ['billing_days', optional(nullable(array(number())))],
+    shippable: ['shippable', optional(nullable(boolean()))],
+    metadata: ['metadata', optional(nullable(dict(string())))],
+    trialPeriodDays: ['trial_period_days', optional(nullable(number()))],
+    minimumPrice: ['minimum_price', optional(nullable(number()))],
+    deletedAt: ['deleted_at', optional(nullable(string()))],
+  })
+);

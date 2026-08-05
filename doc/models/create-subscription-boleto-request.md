@@ -15,21 +15,15 @@ Information about fines and interest on the "boleto" used from payment
 | `fine` | [`CreateFineRequest \| undefined`](../../doc/models/create-fine-request.md) | Optional | - |
 | `maxDaysToPayPastDue` | `number \| null \| undefined` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "interest": {
-    "days": 156,
-    "type": "type0",
-    "amount": 230
-  },
-  "fine": {
-    "days": 138,
-    "type": "type2",
-    "amount": 212
-  },
-  "max_days_to_pay_past_due": 22
-}
+```ts
+import { CreateSubscriptionBoletoRequest } from 'pagarmeapisdklib';
+
+const createSubscriptionBoletoRequest: CreateSubscriptionBoletoRequest = {
+  interest: {},
+  fine: {},
+  maxDaysToPayPastDue: 250,
+};
 ```
 

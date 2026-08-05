@@ -22,15 +22,17 @@ Response object for getting a discount
 | `subscription` | [`GetSubscriptionResponse \| null \| undefined`](../../doc/models/get-subscription-response.md) | Optional | - |
 | `subscriptionItem` | [`GetSubscriptionItemResponse \| null \| undefined`](../../doc/models/get-subscription-item-response.md) | Optional | The subscription item |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id4",
-  "value": 139.66,
-  "discount_type": "discount_type2",
-  "status": "status6",
-  "created_at": "2016-03-13T12:52:32.123Z"
-}
+```ts
+import { GetDiscountResponse } from 'pagarmeapisdklib';
+
+const getDiscountResponse: GetDiscountResponse = {
+  id: 'id0',
+  value: 135.12,
+  discountType: 'discount_type8',
+  status: 'status2',
+  createdAt: '2016-03-13T12:52:32.123Z',
+};
 ```
 

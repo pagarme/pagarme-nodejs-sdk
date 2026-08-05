@@ -20,15 +20,17 @@ Response object for getting an RegisterInformationAddress
 | `zipCode` | `string \| null \| undefined` | Optional | - |
 | `referencePoint` | `string \| null \| undefined` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "street": "street2",
-  "complementary": "complementary4",
-  "street_number": "street_number2",
-  "neighborhood": "neighborhood8",
-  "city": "city2"
-}
+```ts
+import { GetRegisterInformationAddressResponse } from 'pagarmeapisdklib';
+
+const getRegisterInformationAddressResponse: GetRegisterInformationAddressResponse = {
+  street: 'street4',
+  complementary: 'complementary6',
+  streetNumber: 'street_number4',
+  neighborhood: 'neighborhood0',
+  city: 'city4',
+};
 ```
 

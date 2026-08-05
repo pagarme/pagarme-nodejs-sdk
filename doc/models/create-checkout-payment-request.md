@@ -28,89 +28,30 @@ Checkout payment request
 | `acceptedBrands` | `string[]` | Required | Accepted Brands |
 | `pix` | [`CreateCheckoutPixPaymentRequest \| undefined`](../../doc/models/create-checkout-pix-payment-request.md) | Optional | Pix payment request |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "accepted_payment_methods": [
-    "accepted_payment_methods9",
-    "accepted_payment_methods0"
+```ts
+import { CreateCheckoutPaymentRequest } from 'pagarmeapisdklib';
+
+const createCheckoutPaymentRequest: CreateCheckoutPaymentRequest = {
+  acceptedPaymentMethods: [
+    'accepted_payment_methods1'
   ],
-  "accepted_multi_payment_methods": [
-    {
-      "key1": "val1",
-      "key2": "val2"
-    },
-    {
-      "key1": "val1",
-      "key2": "val2"
-    }
+  acceptedMultiPaymentMethods: [
+    { 'key1': 'val1', 'key2': 'val2' }
   ],
-  "success_url": "success_url8",
-  "default_payment_method": "default_payment_method6",
-  "gateway_affiliation_id": "gateway_affiliation_id2",
-  "credit_card": {
-    "statement_descriptor": "statement_descriptor8",
-    "installments": [
-      {
-        "number": 164,
-        "total": 16
-      }
-    ],
-    "authentication": {
-      "type": "type2",
-      "threed_secure": {
-        "mpi": "mpi0",
-        "cavv": "cavv8",
-        "eci": "eci2",
-        "transaction_id": "transaction_id0",
-        "success_url": "success_url4",
-        "ds_transaction_id": "ds_transaction_id0"
-      }
-    },
-    "capture": false
-  },
-  "debit_card": {
-    "statement_descriptor": "statement_descriptor4",
-    "authentication": {
-      "type": "type2",
-      "threed_secure": {
-        "mpi": "mpi0",
-        "cavv": "cavv8",
-        "eci": "eci2",
-        "transaction_id": "transaction_id0",
-        "success_url": "success_url4",
-        "ds_transaction_id": "ds_transaction_id0"
-      }
-    }
-  },
-  "boleto": {
-    "bank": "bank8",
-    "instructions": "instructions2",
-    "due_at": "2016-03-13T12:52:32.123Z"
-  },
-  "skip_checkout_success_page": false,
-  "billing_address_editable": false,
-  "billing_address": {
-    "street": "street8",
-    "number": "number4",
-    "zip_code": "zip_code2",
-    "neighborhood": "neighborhood4",
-    "city": "city2",
-    "state": "state6",
-    "country": "country2",
-    "complement": "complement6",
-    "metadata": {
-      "key0": "metadata5",
-      "key1": "metadata6"
-    },
-    "line_1": "line_18",
-    "line_2": "line_26"
-  },
-  "accepted_brands": [
-    "accepted_brands2",
-    "accepted_brands3"
-  ]
-}
+  successUrl: 'success_url0',
+  skipCheckoutSuccessPage: false,
+  billingAddressEditable: false,
+  billingAddress: {},
+  acceptedBrands: [
+    'accepted_brands6'
+  ],
+  defaultPaymentMethod: 'default_payment_method8',
+  gatewayAffiliationId: 'gateway_affiliation_id4',
+  creditCard: {},
+  debitCard: {},
+  boleto: {},
+};
 ```
 

@@ -14,12 +14,14 @@ Pix Additional Information
 | `name` | `string \| null \| undefined` | Optional | - |
 | `value` | `string \| null \| undefined` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "Name": "Name6",
-  "Value": "Value6"
-}
+```ts
+import { PixAdditionalInformation } from 'pagarmeapisdklib';
+
+const pixAdditionalInformation: PixAdditionalInformation = {
+  name: 'Name2',
+  value: 'Value0',
+};
 ```
 

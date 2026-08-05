@@ -13,14 +13,16 @@ Bank transfer checkout response
 |  --- | --- | --- | --- |
 | `bank` | `string[] \| null \| undefined` | Optional | bank list response |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "bank": [
-    "bank3",
-    "bank4"
-  ]
-}
+```ts
+import { GetCheckoutBankTransferPaymentResponse } from 'pagarmeapisdklib';
+
+const getCheckoutBankTransferPaymentResponse: GetCheckoutBankTransferPaymentResponse = {
+  bank: [
+    'bank3',
+    'bank4'
+  ],
+};
 ```
 

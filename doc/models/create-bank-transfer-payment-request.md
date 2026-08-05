@@ -14,12 +14,14 @@ Request for creating a bank transfer payment
 | `bank` | `string` | Required | Bank |
 | `retries` | `number` | Required | Number of retries |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "bank": "bank4",
-  "retries": 188
-}
+```ts
+import { CreateBankTransferPaymentRequest } from 'pagarmeapisdklib';
+
+const createBankTransferPaymentRequest: CreateBankTransferPaymentRequest = {
+  bank: 'bank6',
+  retries: 20,
+};
 ```
 

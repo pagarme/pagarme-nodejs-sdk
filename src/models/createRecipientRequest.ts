@@ -12,19 +12,19 @@ import {
   optional,
   Schema,
   string,
-} from '../schema';
+} from '../schema.js';
 import {
   CreateBankAccountRequest,
   createBankAccountRequestSchema,
-} from './createBankAccountRequest';
+} from './createBankAccountRequest.js';
 import {
   CreateRegisterInformationBaseRequest,
   createRegisterInformationBaseRequestSchema,
-} from './createRegisterInformationBaseRequest';
+} from './createRegisterInformationBaseRequest.js';
 import {
   CreateTransferSettingsRequest,
   createTransferSettingsRequestSchema,
-} from './createTransferSettingsRequest';
+} from './createTransferSettingsRequest.js';
 
 /** Request for creating a recipient */
 export interface CreateRecipientRequest {
@@ -52,29 +52,28 @@ export interface CreateRecipientRequest {
   registerInformation?: CreateRegisterInformationBaseRequest | null;
 }
 
-export const createRecipientRequestSchema: Schema<CreateRecipientRequest> = object(
-  {
-    name: ['name', optional(nullable(string()))],
-    email: ['email', optional(nullable(string()))],
-    description: ['description', optional(nullable(string()))],
-    document: ['document', optional(nullable(string()))],
-    type: ['type', optional(nullable(string()))],
-    defaultBankAccount: [
-      'default_bank_account',
-      lazy(() => createBankAccountRequestSchema),
-    ],
-    metadata: ['metadata', dict(string())],
-    transferSettings: [
-      'transfer_settings',
-      optional(lazy(() => createTransferSettingsRequestSchema)),
-    ],
-    code: ['code', string()],
-    paymentMode: ['payment_mode', string()],
-    registerInformation: [
-      'register_information',
-      optional(
-        nullable(lazy(() => createRegisterInformationBaseRequestSchema))
-      ),
-    ],
-  }
+export const createRecipientRequestSchema: Schema<CreateRecipientRequest> = lazy(
+  () =>
+    object({
+      name: ['name', optional(nullable(string()))],
+      email: ['email', optional(nullable(string()))],
+      description: ['description', optional(nullable(string()))],
+      document: ['document', optional(nullable(string()))],
+      type: ['type', optional(nullable(string()))],
+      defaultBankAccount: [
+        'default_bank_account',
+        createBankAccountRequestSchema,
+      ],
+      metadata: ['metadata', dict(string())],
+      transferSettings: [
+        'transfer_settings',
+        optional(createTransferSettingsRequestSchema),
+      ],
+      code: ['code', string()],
+      paymentMode: ['payment_mode', string()],
+      registerInformation: [
+        'register_information',
+        optional(nullable(createRegisterInformationBaseRequestSchema)),
+      ],
+    })
 );

@@ -13,11 +13,13 @@ Invoice Update Status Request
 |  --- | --- | --- | --- |
 | `status` | `string` | Required | Status |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "status": "status8"
-}
+```ts
+import { UpdateInvoiceStatusRequest } from 'pagarmeapisdklib';
+
+const updateInvoiceStatusRequest: UpdateInvoiceStatusRequest = {
+  status: 'status2',
+};
 ```
 

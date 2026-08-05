@@ -14,19 +14,16 @@ The Transaction Gateway Response
 | `code` | `string \| null \| undefined` | Optional | The error code |
 | `errors` | [`GetGatewayErrorResponse[] \| null \| undefined`](../../doc/models/get-gateway-error-response.md) | Optional | The gateway response errors list |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "code": "code6",
-  "errors": [
-    {
-      "message": "message0"
-    },
-    {
-      "message": "message0"
-    }
-  ]
-}
+```ts
+import { GetGatewayResponseResponse } from 'pagarmeapisdklib';
+
+const getGatewayResponseResponse: GetGatewayResponseResponse = {
+  code: 'code4',
+  errors: [
+    null
+  ],
+};
 ```
 

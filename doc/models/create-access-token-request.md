@@ -13,11 +13,13 @@ Request for creating a new Access Token
 |  --- | --- | --- | --- |
 | `expiresIn` | `number \| undefined` | Optional | Minutes to expire the token |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "expires_in": 86
-}
+```ts
+import { CreateAccessTokenRequest } from 'pagarmeapisdklib';
+
+const createAccessTokenRequest: CreateAccessTokenRequest = {
+  expiresIn: 204,
+};
 ```
 

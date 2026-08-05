@@ -16,19 +16,16 @@ Pix payer data.
 | `documentType` | `string \| null \| undefined` | Optional | - |
 | `bankAccount` | [`GetPixBankAccountResponse \| null \| undefined`](../../doc/models/get-pix-bank-account-response.md) | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "name": "name0",
-  "document": "document4",
-  "document_type": "document_type8",
-  "bank_account": {
-    "bank_name": "bank_name0",
-    "ispb": "ispb8",
-    "branch_code": "branch_code2",
-    "account_number": "account_number4"
-  }
-}
+```ts
+import { GetPixPayerResponse } from 'pagarmeapisdklib';
+
+const getPixPayerResponse: GetPixPayerResponse = {
+  name: 'name0',
+  document: 'document6',
+  documentType: 'document_type8',
+  bankAccount: null,
+};
 ```
 

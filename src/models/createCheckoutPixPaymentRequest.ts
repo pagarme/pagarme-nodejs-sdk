@@ -12,11 +12,11 @@ import {
   optional,
   Schema,
   string,
-} from '../schema';
+} from '../schema.js';
 import {
   PixAdditionalInformation,
   pixAdditionalInformationSchema,
-} from './pixAdditionalInformation';
+} from './pixAdditionalInformation.js';
 
 /** Checkout pix payment request */
 export interface CreateCheckoutPixPaymentRequest {
@@ -28,13 +28,14 @@ export interface CreateCheckoutPixPaymentRequest {
   additionalInformation?: PixAdditionalInformation[];
 }
 
-export const createCheckoutPixPaymentRequestSchema: Schema<CreateCheckoutPixPaymentRequest> = object(
-  {
-    expiresAt: ['expires_at', optional(string())],
-    expiresIn: ['expires_in', optional(number())],
-    additionalInformation: [
-      'additional_information',
-      optional(array(lazy(() => pixAdditionalInformationSchema))),
-    ],
-  }
+export const createCheckoutPixPaymentRequestSchema: Schema<CreateCheckoutPixPaymentRequest> = lazy(
+  () =>
+    object({
+      expiresAt: ['expires_at', optional(string())],
+      expiresIn: ['expires_in', optional(number())],
+      additionalInformation: [
+        'additional_information',
+        optional(array(pixAdditionalInformationSchema)),
+      ],
+    })
 );

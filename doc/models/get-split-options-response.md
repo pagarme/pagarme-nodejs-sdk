@@ -13,13 +13,15 @@
 | `chargeProcessingFee` | `boolean \| null \| undefined` | Optional | - |
 | `chargeRemainderFee` | `string \| null \| undefined` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "liable": false,
-  "charge_processing_fee": false,
-  "charge_remainder_fee": "charge_remainder_fee6"
-}
+```ts
+import { GetSplitOptionsResponse } from 'pagarmeapisdklib';
+
+const getSplitOptionsResponse: GetSplitOptionsResponse = {
+  liable: false,
+  chargeProcessingFee: false,
+  chargeRemainderFee: 'charge_remainder_fee6',
+};
 ```
 

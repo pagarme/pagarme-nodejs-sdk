@@ -24,39 +24,22 @@ Contains the settings for creating a boleto payment
 | `fine` | [`CreateFineRequest \| null \| undefined`](../../doc/models/create-fine-request.md) | Optional | - |
 | `maxDaysToPayPastDue` | `number \| null \| undefined` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "retries": 14,
-  "bank": "bank8",
-  "instructions": "instructions8",
-  "due_at": "2016-03-13T12:52:32.123Z",
-  "billing_address": {
-    "street": "street8",
-    "number": "number4",
-    "zip_code": "zip_code2",
-    "neighborhood": "neighborhood4",
-    "city": "city2",
-    "state": "state6",
-    "country": "country2",
-    "complement": "complement6",
-    "metadata": {
-      "key0": "metadata5",
-      "key1": "metadata6"
-    },
-    "line_1": "line_18",
-    "line_2": "line_26"
-  },
-  "billing_address_id": "billing_address_id6",
-  "nosso_numero": "nosso_numero0",
-  "document_number": "document_number4",
-  "statement_descriptor": "statement_descriptor0",
-  "interest": {
-    "days": 156,
-    "type": "type0",
-    "amount": 230
-  }
-}
+```ts
+import { CreateBoletoPaymentRequest } from 'pagarmeapisdklib';
+
+const createBoletoPaymentRequest: CreateBoletoPaymentRequest = {
+  retries: 192,
+  instructions: 'instructions6',
+  billingAddress: {},
+  documentNumber: 'document_number2',
+  statementDescriptor: 'statement_descriptor8',
+  bank: 'bank6',
+  dueAt: '2016-03-13T12:52:32.123Z',
+  billingAddressId: 'billing_address_id4',
+  nossoNumero: 'nosso_numero8',
+  interest: null,
+};
 ```
 

@@ -15,15 +15,17 @@
 | `serialNumber` | `string` | Required | serial number |
 | `versionNumber` | `string` | Required | version number |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "system_name": "system_name0",
-  "model": "model8",
-  "provider": "provider2",
-  "serial_number": "serial_number4",
-  "version_number": "version_number0"
-}
+```ts
+import { CreateCardPaymentContactlessPOIRequest } from 'pagarmeapisdklib';
+
+const createCardPaymentContactlessPOIRequest: CreateCardPaymentContactlessPOIRequest = {
+  systemName: 'system_name4',
+  model: 'model2',
+  provider: 'provider4',
+  serialNumber: 'serial_number8',
+  versionNumber: 'version_number4',
+};
 ```
 

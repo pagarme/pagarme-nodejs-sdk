@@ -27,20 +27,22 @@ Response object for getting a private label transaction
 | `acquirerReturnCode` | `string \| null \| undefined` | Optional | Acquirer Return Code |
 | `installments` | `number \| null \| undefined` | Optional | Number of installments |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "gateway_id": "gateway_id8",
-  "amount": 40,
-  "status": "status6",
-  "success": false,
-  "created_at": "2016-03-13T12:52:32.123Z",
-  "statement_descriptor": "statement_descriptor4",
-  "acquirer_name": "acquirer_name8",
-  "acquirer_affiliation_code": "acquirer_affiliation_code6",
-  "acquirer_tid": "acquirer_tid6",
-  "acquirer_nsu": "acquirer_nsu6"
-}
+```ts
+import { GetPrivateLabelTransactionResponse } from 'pagarmeapisdklib';
+
+const getPrivateLabelTransactionResponse: GetPrivateLabelTransactionResponse = {
+  statementDescriptor: 'statement_descriptor4',
+  acquirerName: 'acquirer_name8',
+  acquirerAffiliationCode: 'acquirer_affiliation_code4',
+  acquirerTid: 'acquirer_tid6',
+  acquirerNsu: 'acquirer_nsu6',
+  gatewayId: 'gateway_id8',
+  amount: 40,
+  status: 'status6',
+  success: false,
+  createdAt: '2016-03-13T12:52:32.123Z',
+};
 ```
 

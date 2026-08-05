@@ -12,12 +12,14 @@
 | `description` | `string` | Required | Description |
 | `confirm` | `boolean` | Required | Indicates whether cash collection will be confirmed in the act of creation |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "description": "description8",
-  "confirm": false
-}
+```ts
+import { CreateCashPaymentRequest } from 'pagarmeapisdklib';
+
+const createCashPaymentRequest: CreateCashPaymentRequest = {
+  description: 'description4',
+  confirm: false,
+};
 ```
 

@@ -21,19 +21,21 @@ Bank Account
 | `accountCheckDigit` | `string` | Required | Dígito verificador da conta |
 | `type` | `string` | Required | Tipo de conta |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "holder_name": "holder_name2",
-  "holder_type": "holder_type8",
-  "holder_document": "holder_document0",
-  "bank": "bank4",
-  "branch_number": "branch_number2",
-  "branch_check_digit": "branch_check_digit2",
-  "account_number": "account_number6",
-  "account_check_digit": "account_check_digit2",
-  "type": "type4"
-}
+```ts
+import { CreateBankAccountRefundingDTO } from 'pagarmeapisdklib';
+
+const createBankAccountRefundingDTO: CreateBankAccountRefundingDTO = {
+  holderName: 'holder_name4',
+  holderType: 'holder_type0',
+  holderDocument: 'holder_document8',
+  bank: 'bank6',
+  branchNumber: 'branch_number4',
+  branchCheckDigit: 'branch_check_digit4',
+  accountNumber: 'account_number2',
+  accountCheckDigit: 'account_check_digit4',
+  type: 'type2',
+};
 ```
 

@@ -12,14 +12,14 @@
 | `type` | `string` | Required | - |
 | `clearsale` | [`CreateClearSaleRequest`](../../doc/models/create-clear-sale-request.md) | Required | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "type": "type0",
-  "clearsale": {
-    "custom_sla": 178
-  }
-}
+```ts
+import { CreateAntifraudRequest } from 'pagarmeapisdklib';
+
+const createAntifraudRequest: CreateAntifraudRequest = {
+  type: 'type0',
+  clearsale: {},
+};
 ```
 

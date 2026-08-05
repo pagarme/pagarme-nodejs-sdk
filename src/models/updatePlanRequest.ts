@@ -13,7 +13,7 @@ import {
   optional,
   Schema,
   string,
-} from '../schema';
+} from '../schema.js';
 
 /** Request for updating a plan */
 export interface UpdatePlanRequest {

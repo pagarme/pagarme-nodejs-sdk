@@ -13,13 +13,15 @@
 | `amount` | `number \| undefined` | Optional | Amount |
 | `code` | `string` | Required | Code reference |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "description": "description0",
-  "Amount": 178,
-  "Code": "Code0"
-}
+```ts
+import { CreateConfirmPaymentRequest } from 'pagarmeapisdklib';
+
+const createConfirmPaymentRequest: CreateConfirmPaymentRequest = {
+  description: 'description8',
+  code: 'Code8',
+  amount: 222,
+};
 ```
 

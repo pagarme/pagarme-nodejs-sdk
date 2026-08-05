@@ -27,39 +27,41 @@ Request for updating a plan
 | `minimumPrice` | `number \| undefined` | Optional | Minimum price |
 | `trialPeriodDays` | `number \| undefined` | Optional | Number of trial period in days, where the customer will not be charged |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "name": "name0",
-  "description": "description0",
-  "installments": [
-    121,
-    122,
-    123
+```ts
+import { UpdatePlanRequest } from 'pagarmeapisdklib';
+
+const updatePlanRequest: UpdatePlanRequest = {
+  name: 'name8',
+  description: 'description8',
+  installments: [
+    139,
+    140,
+    141
   ],
-  "statement_descriptor": "statement_descriptor0",
-  "currency": "currency0",
-  "interval": "interval8",
-  "interval_count": 84,
-  "payment_methods": [
-    "payment_methods5",
-    "payment_methods6"
+  statementDescriptor: 'statement_descriptor8',
+  currency: 'currency8',
+  interval: 'interval6',
+  intervalCount: 102,
+  paymentMethods: [
+    'payment_methods3',
+    'payment_methods2'
   ],
-  "billing_type": "billing_type6",
-  "status": "status8",
-  "shippable": false,
-  "billing_days": [
-    171,
-    170
+  billingType: 'billing_type8',
+  status: 'status0',
+  shippable: false,
+  billingDays: [
+    103,
+    104
   ],
-  "metadata": {
-    "key0": "metadata3",
-    "key1": "metadata4",
-    "key2": "metadata5"
+  metadata: {
+    'key0': 'metadata5',
+    'key1': 'metadata6',
+    'key2': 'metadata7'
   },
-  "minimum_price": 174,
-  "trial_period_days": 56
-}
+  minimumPrice: 156,
+  trialPeriodDays: 74,
+};
 ```
 

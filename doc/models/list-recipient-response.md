@@ -14,38 +14,18 @@ Response for the listing recipient method
 | `data` | [`GetRecipientResponse[] \| null \| undefined`](../../doc/models/get-recipient-response.md) | Optional | Recipients |
 | `paging` | [`PagingResponse \| null \| undefined`](../../doc/models/paging-response.md) | Optional | Paging |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "data": [
+```ts
+import { ListRecipientResponse } from 'pagarmeapisdklib';
+
+const listRecipientResponse: ListRecipientResponse = {
+  data: [
+    null,
     {
-      "id": "id0",
-      "name": "name0",
-      "email": "email6",
-      "document": "document4",
-      "description": "description0"
-    },
-    {
-      "id": "id0",
-      "name": "name0",
-      "email": "email6",
-      "document": "document4",
-      "description": "description0"
-    },
-    {
-      "id": "id0",
-      "name": "name0",
-      "email": "email6",
-      "document": "document4",
-      "description": "description0"
     }
   ],
-  "paging": {
-    "total": 6,
-    "previous": "previous2",
-    "next": "next8"
-  }
-}
+  paging: null,
+};
 ```
 

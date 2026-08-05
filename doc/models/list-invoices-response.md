@@ -14,38 +14,16 @@ Response object for listing invoices
 | `data` | [`GetInvoiceResponse[] \| null \| undefined`](../../doc/models/get-invoice-response.md) | Optional | The Invoice objects |
 | `paging` | [`PagingResponse \| null \| undefined`](../../doc/models/paging-response.md) | Optional | Paging object |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "data": [
-    {
-      "id": "id0",
-      "code": "code8",
-      "url": "url4",
-      "amount": 236,
-      "status": "status2"
-    },
-    {
-      "id": "id0",
-      "code": "code8",
-      "url": "url4",
-      "amount": 236,
-      "status": "status2"
-    },
-    {
-      "id": "id0",
-      "code": "code8",
-      "url": "url4",
-      "amount": 236,
-      "status": "status2"
-    }
+```ts
+import { ListInvoicesResponse } from 'pagarmeapisdklib';
+
+const listInvoicesResponse: ListInvoicesResponse = {
+  data: [
+    null
   ],
-  "paging": {
-    "total": 6,
-    "previous": "previous2",
-    "next": "next8"
-  }
-}
+  paging: null,
+};
 ```
 

@@ -12,11 +12,11 @@ import {
   optional,
   Schema,
   string,
-} from '../schema';
+} from '../schema.js';
 import {
   GetCustomerResponse,
   getCustomerResponseSchema,
-} from './getCustomerResponse';
+} from './getCustomerResponse.js';
 
 /** Response object for getting an Address */
 export interface GetAddressResponse {
@@ -41,25 +41,24 @@ export interface GetAddressResponse {
   deletedAt?: string | null;
 }
 
-export const getAddressResponseSchema: Schema<GetAddressResponse> = object({
-  id: ['id', optional(nullable(string()))],
-  street: ['street', optional(nullable(string()))],
-  number: ['number', optional(nullable(string()))],
-  complement: ['complement', optional(nullable(string()))],
-  zipCode: ['zip_code', optional(nullable(string()))],
-  neighborhood: ['neighborhood', optional(nullable(string()))],
-  city: ['city', optional(nullable(string()))],
-  state: ['state', optional(nullable(string()))],
-  country: ['country', optional(nullable(string()))],
-  status: ['status', optional(nullable(string()))],
-  createdAt: ['created_at', optional(nullable(string()))],
-  updatedAt: ['updated_at', optional(nullable(string()))],
-  customer: [
-    'customer',
-    optional(nullable(lazy(() => getCustomerResponseSchema))),
-  ],
-  metadata: ['metadata', optional(nullable(dict(string())))],
-  line1: ['line_1', optional(nullable(string()))],
-  line2: ['line_2', optional(nullable(string()))],
-  deletedAt: ['deleted_at', optional(nullable(string()))],
-});
+export const getAddressResponseSchema: Schema<GetAddressResponse> = lazy(() =>
+  object({
+    id: ['id', optional(nullable(string()))],
+    street: ['street', optional(nullable(string()))],
+    number: ['number', optional(nullable(string()))],
+    complement: ['complement', optional(nullable(string()))],
+    zipCode: ['zip_code', optional(nullable(string()))],
+    neighborhood: ['neighborhood', optional(nullable(string()))],
+    city: ['city', optional(nullable(string()))],
+    state: ['state', optional(nullable(string()))],
+    country: ['country', optional(nullable(string()))],
+    status: ['status', optional(nullable(string()))],
+    createdAt: ['created_at', optional(nullable(string()))],
+    updatedAt: ['updated_at', optional(nullable(string()))],
+    customer: ['customer', optional(nullable(getCustomerResponseSchema))],
+    metadata: ['metadata', optional(nullable(dict(string())))],
+    line1: ['line_1', optional(nullable(string()))],
+    line2: ['line_2', optional(nullable(string()))],
+    deletedAt: ['deleted_at', optional(nullable(string()))],
+  })
+);

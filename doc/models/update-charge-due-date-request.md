@@ -13,11 +13,13 @@ Request for updating a charge due date
 |  --- | --- | --- | --- |
 | `dueAt` | `string \| undefined` | Optional | The charge's new due date |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "due_at": "2016-03-13T12:52:32.123Z"
-}
+```ts
+import { UpdateChargeDueDateRequest } from 'pagarmeapisdklib';
+
+const updateChargeDueDateRequest: UpdateChargeDueDateRequest = {
+  dueAt: '2016-03-13T12:52:32.123Z',
+};
 ```
 

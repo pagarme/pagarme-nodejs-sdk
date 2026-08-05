@@ -23,15 +23,17 @@ Response object for getting an ManagingPartnerResponse
 | `address` | [`GetRegisterInformationAddressResponse \| null \| undefined`](../../doc/models/get-register-information-address-response.md) | Optional | - |
 | `phoneNumbers` | [`GetPhoneNumberResponse[] \| null \| undefined`](../../doc/models/get-phone-number-response.md) | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "name": "name0",
-  "email": "email6",
-  "document": "document6",
-  "type": "type0",
-  "mother_name": "mother_name6"
-}
+```ts
+import { GetManagingPartnerResponse } from 'pagarmeapisdklib';
+
+const getManagingPartnerResponse: GetManagingPartnerResponse = {
+  name: 'name8',
+  email: 'email8',
+  document: 'document2',
+  type: 'type8',
+  motherName: 'mother_name4',
+};
 ```
 

@@ -33,20 +33,22 @@ Response object for getting a debit card transaction
 | `retryInfo` | [`GetRetryTransactionInformationResponse \| null \| undefined`](../../doc/models/get-retry-transaction-information-response.md) | Optional | Retry transaction information |
 | `brandId` | `string \| null \| undefined` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "gateway_id": "gateway_id8",
-  "amount": 40,
-  "status": "status6",
-  "success": false,
-  "created_at": "2016-03-13T12:52:32.123Z",
-  "statement_descriptor": "statement_descriptor0",
-  "acquirer_name": "acquirer_name4",
-  "acquirer_affiliation_code": "acquirer_affiliation_code8",
-  "acquirer_tid": "acquirer_tid0",
-  "acquirer_nsu": "acquirer_nsu0"
-}
+```ts
+import { GetDebitCardTransactionResponse } from 'pagarmeapisdklib';
+
+const getDebitCardTransactionResponse: GetDebitCardTransactionResponse = {
+  statementDescriptor: 'statement_descriptor6',
+  acquirerName: 'acquirer_name0',
+  acquirerAffiliationCode: 'acquirer_affiliation_code8',
+  acquirerTid: 'acquirer_tid4',
+  acquirerNsu: 'acquirer_nsu4',
+  gatewayId: 'gateway_id8',
+  amount: 40,
+  status: 'status6',
+  success: false,
+  createdAt: '2016-03-13T12:52:32.123Z',
+};
 ```
 

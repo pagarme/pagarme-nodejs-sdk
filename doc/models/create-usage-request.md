@@ -18,16 +18,18 @@ Request for creating a usage
 | `group` | `string \| undefined` | Optional | identification group in the client system |
 | `amount` | `number \| undefined` | Optional | Field used in item scheme type 'Percent' |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "quantity": 224,
-  "description": "description8",
-  "used_at": "2016-03-13T12:52:32.123Z",
-  "code": "code0",
-  "group": "group0",
-  "amount": 110
-}
+```ts
+import { CreateUsageRequest } from 'pagarmeapisdklib';
+
+const createUsageRequest: CreateUsageRequest = {
+  quantity: 254,
+  description: 'description6',
+  usedAt: '2016-03-13T12:52:32.123Z',
+  code: 'code4',
+  group: 'group4',
+  amount: 140,
+};
 ```
 

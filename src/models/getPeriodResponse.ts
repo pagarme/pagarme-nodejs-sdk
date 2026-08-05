@@ -12,11 +12,11 @@ import {
   optional,
   Schema,
   string,
-} from '../schema';
+} from '../schema.js';
 import {
   GetSubscriptionResponse,
   getSubscriptionResponseSchema,
-} from './getSubscriptionResponse';
+} from './getSubscriptionResponse.js';
 
 /** Response object for getting a period */
 export interface GetPeriodResponse {
@@ -32,18 +32,20 @@ export interface GetPeriodResponse {
   cycle?: number | null;
 }
 
-export const getPeriodResponseSchema: Schema<GetPeriodResponse> = object({
-  startAt: ['start_at', optional(nullable(string()))],
-  endAt: ['end_at', optional(nullable(string()))],
-  id: ['id', optional(nullable(string()))],
-  billingAt: ['billing_at', optional(nullable(string()))],
-  subscription: [
-    'subscription',
-    optional(nullable(lazy(() => getSubscriptionResponseSchema))),
-  ],
-  status: ['status', optional(nullable(string()))],
-  duration: ['duration', optional(nullable(number()))],
-  createdAt: ['created_at', optional(nullable(string()))],
-  updatedAt: ['updated_at', optional(nullable(string()))],
-  cycle: ['cycle', optional(nullable(number()))],
-});
+export const getPeriodResponseSchema: Schema<GetPeriodResponse> = lazy(() =>
+  object({
+    startAt: ['start_at', optional(nullable(string()))],
+    endAt: ['end_at', optional(nullable(string()))],
+    id: ['id', optional(nullable(string()))],
+    billingAt: ['billing_at', optional(nullable(string()))],
+    subscription: [
+      'subscription',
+      optional(nullable(getSubscriptionResponseSchema)),
+    ],
+    status: ['status', optional(nullable(string()))],
+    duration: ['duration', optional(nullable(number()))],
+    createdAt: ['created_at', optional(nullable(string()))],
+    updatedAt: ['updated_at', optional(nullable(string()))],
+    cycle: ['cycle', optional(nullable(number()))],
+  })
+);

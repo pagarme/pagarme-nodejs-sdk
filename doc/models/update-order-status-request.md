@@ -11,11 +11,13 @@
 |  --- | --- | --- | --- |
 | `status` | `string` | Required | Order status |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "status": "status6"
-}
+```ts
+import { UpdateOrderStatusRequest } from 'pagarmeapisdklib';
+
+const updateOrderStatusRequest: UpdateOrderStatusRequest = {
+  status: 'status8',
+};
 ```
 

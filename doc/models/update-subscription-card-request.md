@@ -15,20 +15,22 @@ Request for updating the card from a subscription
 | `cardId` | `string` | Required | Credit card id |
 | `indirectAcceptor` | `string \| undefined` | Optional | Business model identifier |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "card": {
-    "type": "credit",
-    "number": "number6",
-    "holder_name": "holder_name2",
-    "exp_month": 228,
-    "exp_year": 68,
-    "cvv": "cvv4"
+```ts
+import { UpdateSubscriptionCardRequest } from 'pagarmeapisdklib';
+
+const updateSubscriptionCardRequest: UpdateSubscriptionCardRequest = {
+  card: {
+    number: 'number6',
+    holderName: 'holder_name2',
+    expMonth: 228,
+    expYear: 68,
+    cvv: 'cvv4',
+    type: 'credit',
   },
-  "card_id": "card_id0",
-  "indirect_acceptor": "indirect_acceptor0"
-}
+  cardId: '',
+  indirectAcceptor: 'indirect_acceptor6',
+};
 ```
 

@@ -18,6 +18,10 @@ async getTransaction(
 ): Promise<ApiResponse<GetTransactionResponse>>
 ```
 
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -27,7 +31,9 @@ async getTransaction(
 
 ## Response Type
 
-This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [GetTransactionResponse](../../doc/models/get-transaction-response.md).
+**200**
+
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [`GetTransactionResponse`](../../doc/models/get-transaction-response.md).
 
 ## Example Usage
 
@@ -35,13 +41,28 @@ This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The 
 const transactionId = 'transaction_id8';
 
 try {
-  const { result, ...httpResponse } = await transactionsController.getTransaction(transactionId);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
+  const response = await transactionsController.getTransaction(transactionId);
+
+  // Extracting fully parsed response body.
+  console.log(response.result);
+
+  // Extracting response status code.
+  console.log(response.statusCode);
+  // Extracting response headers.
+  console.log(response.headers);
+  // Extracting response body of type `string | Stream`
+  console.log(response.body);
 } catch (error) {
   if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
+    // Extracting response error status code.
+    console.log(error.statusCode);
+    // Extracting response error headers.
+    console.log(error.headers);
+    // Extracting response error body of type `string | Stream`.
+    console.log(error.body);
+    if (error instanceof CustomError) {
+      console.log(error.result);
+    }
   }
 }
 ```

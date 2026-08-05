@@ -13,13 +13,15 @@
 | `transferInterval` | `string \| null \| undefined` | Optional | - |
 | `transferDay` | `number \| null \| undefined` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "transfer_enabled": false,
-  "transfer_interval": "transfer_interval0",
-  "transfer_day": 52
-}
+```ts
+import { GetTransferSettingsResponse } from 'pagarmeapisdklib';
+
+const getTransferSettingsResponse: GetTransferSettingsResponse = {
+  transferEnabled: false,
+  transferInterval: 'transfer_interval4',
+  transferDay: 156,
+};
 ```
 

@@ -13,11 +13,13 @@ Request to update the end date of the current subscription cycle
 |  --- | --- | --- | --- |
 | `endAt` | `string \| undefined` | Optional | Current cycle end date |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "end_at": "2016-03-13T12:52:32.123Z"
-}
+```ts
+import { UpdateCurrentCycleEndDateRequest } from 'pagarmeapisdklib';
+
+const updateCurrentCycleEndDateRequest: UpdateCurrentCycleEndDateRequest = {
+  endAt: '2016-03-13T12:52:32.123Z',
+};
 ```
 

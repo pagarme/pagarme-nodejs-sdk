@@ -17,22 +17,19 @@ Response object for getting a pricing scheme
 | `minimumPrice` | `number \| null \| undefined` | Optional | - |
 | `percentage` | `number \| null \| undefined` | Optional | percentual value used in pricing_scheme Percent |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "price": 182,
-  "scheme_type": "scheme_type8",
-  "price_brackets": [
-    {
-      "start_quantity": 144,
-      "price": 174,
-      "end_quantity": 152,
-      "overage_price": 166
-    }
+```ts
+import { GetPricingSchemeResponse } from 'pagarmeapisdklib';
+
+const getPricingSchemeResponse: GetPricingSchemeResponse = {
+  price: 34,
+  schemeType: 'scheme_type2',
+  priceBrackets: [
+    null
   ],
-  "minimum_price": 170,
-  "percentage": 166.36
-}
+  minimumPrice: 130,
+  percentage: 35.4,
+};
 ```
 

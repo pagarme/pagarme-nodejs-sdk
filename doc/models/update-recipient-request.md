@@ -18,19 +18,21 @@ Request for updating a Recipient
 | `status` | `string` | Required | Status |
 | `metadata` | `Record<string, string>` | Required | Metadata |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "name": "name0",
-  "email": "email6",
-  "description": "description0",
-  "type": "type0",
-  "status": "status8",
-  "metadata": {
-    "key0": "metadata3",
-    "key1": "metadata4"
-  }
-}
+```ts
+import { UpdateRecipientRequest } from 'pagarmeapisdklib';
+
+const updateRecipientRequest: UpdateRecipientRequest = {
+  name: 'name4',
+  email: 'email2',
+  description: 'description4',
+  type: 'type4',
+  status: 'status6',
+  metadata: {
+    'key0': 'metadata1',
+    'key1': 'metadata0'
+  },
+};
 ```
 

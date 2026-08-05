@@ -12,15 +12,17 @@
 | `amount` | `number` | Required | - |
 | `metadata` | `Record<string, string> \| undefined` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "amount": 204,
-  "metadata": {
-    "key0": "metadata7",
-    "key1": "metadata6"
-  }
-}
+```ts
+import { CreateWithdrawRequest } from 'pagarmeapisdklib';
+
+const createWithdrawRequest: CreateWithdrawRequest = {
+  amount: 46,
+  metadata: {
+    'key0': 'metadata5',
+    'key1': 'metadata6'
+  },
+};
 ```
 

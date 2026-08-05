@@ -1,9 +1,9 @@
 {
-  "version": "6.8.17",
+  "version": "7.0.0",
   "license": "MIT",
   "sideEffects": false,
   "main": "dist/cjs/index.js",
-  "typings": "dist/types/index.d.ts",
+  "typings": "dist/cjs/types/index.d.ts",
   "module": "dist/esm/index.js",
   "files": [
     "dist",
@@ -13,8 +13,8 @@
     "node": ">=14.17.0"
   },
   "scripts": {
-    "build": "rimraf dist && tsc -p tsconfig.esm.json & tsc -p tsconfig.cjs.json",
-    "prepare": "rimraf dist && tsc -p tsconfig.esm.json & tsc -p tsconfig.cjs.json",
+    "build": "rimraf dist && tsc -p tsconfig.esm.json & tsc -p tsconfig.cjs.json && node ./scripts/split-package-json.mjs",
+    "prepare": "rimraf dist && tsc -p tsconfig.esm.json & tsc -p tsconfig.cjs.json && node ./scripts/split-package-json.mjs",
     "lint": "eslint **/*.ts --ignore-path .eslintignore",
     "lint:fix": "eslint **/*.ts --ignore-path .eslintignore --fix"
   },
@@ -41,17 +41,39 @@
     "jest": "^29.4.3",
     "rimraf": "^3.0.2",
     "ts-jest": "29.2.6",
-    "tslib": "^2.5.0",
-    "typescript": "^4.9.5"
+    "typescript": "^5.2.0"
   },
   "dependencies": {
-    "@apimatic/authentication-adapters": "^0.5.4",
-    "@apimatic/axios-client-adapter": "^0.3.7",
-    "@apimatic/core": "^0.10.16",
-    "@apimatic/schema": "^0.7.14"
+    "@apimatic/authentication-adapters": "^0.5.14",
+    "@apimatic/axios-client-adapter": "^0.3.20",
+    "@apimatic/core": "^0.10.30",
+    "@apimatic/schema": "^0.7.21",
+    "tslib": "^2.5.0"
   },
   "bugs": {
     "url": "https://github.com/pagarme/",
     "email": "suporte@pagar.me"
+  },
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/esm/types/index.d.ts",
+        "default": "./dist/esm/index.js"
+      },
+      "require": {
+        "types": "./dist/cjs/types/index.d.ts",
+        "default": "./dist/cjs/index.js"
+      }
+    },
+    "./metadata": {
+      "import": {
+        "types": "./dist/esm/types/metadata/index.d.ts",
+        "default": "./dist/esm/metadata/index.js"
+      },
+      "require": {
+        "types": "./dist/cjs/types/metadata/index.d.ts",
+        "default": "./dist/cjs/metadata/index.js"
+      }
+    }
   }
 }

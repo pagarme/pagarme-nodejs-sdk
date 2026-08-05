@@ -15,13 +15,15 @@ Informações de transferência do recebedor
 | `transferInterval` | `string` | Required | - |
 | `transferDay` | `number` | Required | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "transfer_enabled": false,
-  "transfer_interval": "transfer_interval4",
-  "transfer_day": 82
-}
+```ts
+import { CreateTransferSettingsRequest } from 'pagarmeapisdklib';
+
+const createTransferSettingsRequest: CreateTransferSettingsRequest = {
+  transferEnabled: false,
+  transferInterval: 'transfer_interval2',
+  transferDay: 128,
+};
 ```
 

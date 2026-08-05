@@ -15,15 +15,17 @@
 | `providerName` | `string \| null \| undefined` | Optional | - |
 | `score` | `string \| null \| undefined` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "status": "status0",
-  "return_code": "return_code8",
-  "return_message": "return_message6",
-  "provider_name": "provider_name6",
-  "score": "score8"
-}
+```ts
+import { GetAntifraudResponse } from 'pagarmeapisdklib';
+
+const getAntifraudResponse: GetAntifraudResponse = {
+  status: 'status0',
+  returnCode: 'return_code8',
+  returnMessage: 'return_message4',
+  providerName: 'provider_name4',
+  score: 'score8',
+};
 ```
 

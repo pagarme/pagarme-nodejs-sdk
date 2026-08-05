@@ -14,38 +14,16 @@ Response object for listing charges
 | `data` | [`GetChargeResponse[] \| null \| undefined`](../../doc/models/get-charge-response.md) | Optional | The charge objects |
 | `paging` | [`PagingResponse \| null \| undefined`](../../doc/models/paging-response.md) | Optional | Paging object |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "data": [
-    {
-      "id": "id0",
-      "code": "code8",
-      "gateway_id": "gateway_id0",
-      "amount": 236,
-      "status": "status2"
-    },
-    {
-      "id": "id0",
-      "code": "code8",
-      "gateway_id": "gateway_id0",
-      "amount": 236,
-      "status": "status2"
-    },
-    {
-      "id": "id0",
-      "code": "code8",
-      "gateway_id": "gateway_id0",
-      "amount": 236,
-      "status": "status2"
-    }
+```ts
+import { ListChargesResponse } from 'pagarmeapisdklib';
+
+const listChargesResponse: ListChargesResponse = {
+  data: [
+    null
   ],
-  "paging": {
-    "total": 6,
-    "previous": "previous2",
-    "next": "next8"
-  }
-}
+  paging: null,
+};
 ```
 

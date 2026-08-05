@@ -13,11 +13,13 @@ Options for creating the card
 |  --- | --- | --- | --- |
 | `verifyCard` | `boolean` | Required | Indicates if the card should be verified before creation. If true, executes an authorization before saving the card. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "verify_card": false
-}
+```ts
+import { CreateCardOptionsRequest } from 'pagarmeapisdklib';
+
+const createCardOptionsRequest: CreateCardOptionsRequest = {
+  verifyCard: false,
+};
 ```
 

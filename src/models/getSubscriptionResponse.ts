@@ -15,37 +15,40 @@ import {
   optional,
   Schema,
   string,
-} from '../schema';
-import { GetCardResponse, getCardResponseSchema } from './getCardResponse';
+} from '../schema.js';
+import { GetCardResponse, getCardResponseSchema } from './getCardResponse.js';
 import {
   GetCustomerResponse,
   getCustomerResponseSchema,
-} from './getCustomerResponse';
+} from './getCustomerResponse.js';
 import {
   GetDiscountResponse,
   getDiscountResponseSchema,
-} from './getDiscountResponse';
+} from './getDiscountResponse.js';
 import {
   GetIncrementResponse,
   getIncrementResponseSchema,
-} from './getIncrementResponse';
+} from './getIncrementResponse.js';
 import {
   GetPeriodResponse,
   getPeriodResponseSchema,
-} from './getPeriodResponse';
-import { GetSetupResponse, getSetupResponseSchema } from './getSetupResponse';
+} from './getPeriodResponse.js';
+import {
+  GetSetupResponse,
+  getSetupResponseSchema,
+} from './getSetupResponse.js';
 import {
   GetSubscriptionBoletoResponse,
   getSubscriptionBoletoResponseSchema,
-} from './getSubscriptionBoletoResponse';
+} from './getSubscriptionBoletoResponse.js';
 import {
   GetSubscriptionItemResponse,
   getSubscriptionItemResponseSchema,
-} from './getSubscriptionItemResponse';
+} from './getSubscriptionItemResponse.js';
 import {
   GetSubscriptionSplitResponse,
   getSubscriptionSplitResponseSchema,
-} from './getSubscriptionSplitResponse';
+} from './getSubscriptionSplitResponse.js';
 
 export interface GetSubscriptionResponse {
   id?: string | null;
@@ -87,62 +90,60 @@ export interface GetSubscriptionResponse {
   indirectAcceptor?: string | null;
 }
 
-export const getSubscriptionResponseSchema: Schema<GetSubscriptionResponse> = object(
-  {
-    id: ['id', optional(nullable(string()))],
-    code: ['code', optional(nullable(string()))],
-    startAt: ['start_at', optional(nullable(string()))],
-    interval: ['interval', optional(nullable(string()))],
-    intervalCount: ['interval_count', optional(nullable(number()))],
-    billingType: ['billing_type', optional(nullable(string()))],
-    currentCycle: [
-      'current_cycle',
-      optional(nullable(lazy(() => getPeriodResponseSchema))),
-    ],
-    paymentMethod: ['payment_method', optional(nullable(string()))],
-    currency: ['currency', optional(nullable(string()))],
-    installments: ['installments', optional(nullable(number()))],
-    status: ['status', optional(nullable(string()))],
-    createdAt: ['created_at', optional(nullable(string()))],
-    updatedAt: ['updated_at', optional(nullable(string()))],
-    customer: [
-      'customer',
-      optional(nullable(lazy(() => getCustomerResponseSchema))),
-    ],
-    card: ['card', optional(nullable(lazy(() => getCardResponseSchema)))],
-    items: [
-      'items',
-      optional(nullable(array(lazy(() => getSubscriptionItemResponseSchema)))),
-    ],
-    statementDescriptor: ['statement_descriptor', optional(nullable(string()))],
-    metadata: ['metadata', optional(nullable(dict(string())))],
-    setup: ['setup', optional(nullable(lazy(() => getSetupResponseSchema)))],
-    gatewayAffiliationId: [
-      'gateway_affiliation_id',
-      optional(nullable(string())),
-    ],
-    nextBillingAt: ['next_billing_at', optional(nullable(string()))],
-    billingDay: ['billing_day', optional(nullable(number()))],
-    minimumPrice: ['minimum_price', optional(nullable(number()))],
-    canceledAt: ['canceled_at', optional(nullable(string()))],
-    discounts: [
-      'discounts',
-      optional(nullable(array(lazy(() => getDiscountResponseSchema)))),
-    ],
-    increments: [
-      'increments',
-      optional(nullable(array(lazy(() => getIncrementResponseSchema)))),
-    ],
-    boletoDueDays: ['boleto_due_days', optional(nullable(number()))],
-    split: [
-      'split',
-      optional(nullable(lazy(() => getSubscriptionSplitResponseSchema))),
-    ],
-    boleto: [
-      'boleto',
-      optional(nullable(lazy(() => getSubscriptionBoletoResponseSchema))),
-    ],
-    manualBilling: ['manual_billing', optional(nullable(boolean()))],
-    indirectAcceptor: ['indirect_acceptor', optional(nullable(string()))],
-  }
+export const getSubscriptionResponseSchema: Schema<GetSubscriptionResponse> = lazy(
+  () =>
+    object({
+      id: ['id', optional(nullable(string()))],
+      code: ['code', optional(nullable(string()))],
+      startAt: ['start_at', optional(nullable(string()))],
+      interval: ['interval', optional(nullable(string()))],
+      intervalCount: ['interval_count', optional(nullable(number()))],
+      billingType: ['billing_type', optional(nullable(string()))],
+      currentCycle: [
+        'current_cycle',
+        optional(nullable(getPeriodResponseSchema)),
+      ],
+      paymentMethod: ['payment_method', optional(nullable(string()))],
+      currency: ['currency', optional(nullable(string()))],
+      installments: ['installments', optional(nullable(number()))],
+      status: ['status', optional(nullable(string()))],
+      createdAt: ['created_at', optional(nullable(string()))],
+      updatedAt: ['updated_at', optional(nullable(string()))],
+      customer: ['customer', optional(nullable(getCustomerResponseSchema))],
+      card: ['card', optional(nullable(getCardResponseSchema))],
+      items: [
+        'items',
+        optional(nullable(array(getSubscriptionItemResponseSchema))),
+      ],
+      statementDescriptor: [
+        'statement_descriptor',
+        optional(nullable(string())),
+      ],
+      metadata: ['metadata', optional(nullable(dict(string())))],
+      setup: ['setup', optional(nullable(getSetupResponseSchema))],
+      gatewayAffiliationId: [
+        'gateway_affiliation_id',
+        optional(nullable(string())),
+      ],
+      nextBillingAt: ['next_billing_at', optional(nullable(string()))],
+      billingDay: ['billing_day', optional(nullable(number()))],
+      minimumPrice: ['minimum_price', optional(nullable(number()))],
+      canceledAt: ['canceled_at', optional(nullable(string()))],
+      discounts: [
+        'discounts',
+        optional(nullable(array(getDiscountResponseSchema))),
+      ],
+      increments: [
+        'increments',
+        optional(nullable(array(getIncrementResponseSchema))),
+      ],
+      boletoDueDays: ['boleto_due_days', optional(nullable(number()))],
+      split: ['split', optional(nullable(getSubscriptionSplitResponseSchema))],
+      boleto: [
+        'boleto',
+        optional(nullable(getSubscriptionBoletoResponseSchema)),
+      ],
+      manualBilling: ['manual_billing', optional(nullable(boolean()))],
+      indirectAcceptor: ['indirect_acceptor', optional(nullable(string()))],
+    })
 );
