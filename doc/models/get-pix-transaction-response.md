@@ -23,29 +23,26 @@ Response object when getting a pix transaction
 | `payer` | [`GetPixPayerResponse \| null \| undefined`](../../doc/models/get-pix-payer-response.md) | Optional | - |
 | `pixProviderTid` | `string \| null \| undefined` | Optional | Pix provider TID |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "gateway_id": "gateway_id8",
-  "amount": 40,
-  "status": "status6",
-  "success": false,
-  "created_at": "2016-03-13T12:52:32.123Z",
-  "qr_code": "qr_code0",
-  "qr_code_url": "qr_code_url6",
-  "expires_at": "2016-03-13T12:52:32.123Z",
-  "additional_information": [
+```ts
+import { GetPixTransactionResponse } from 'pagarmeapisdklib';
+
+const getPixTransactionResponse: GetPixTransactionResponse = {
+  qrCode: 'qr_code6',
+  qrCodeUrl: 'qr_code_url2',
+  expiresAt: '2016-03-13T12:52:32.123Z',
+  additionalInformation: [
+    {},
     {
-      "Name": "Name0",
-      "Value": "Value2"
-    },
-    {
-      "Name": "Name0",
-      "Value": "Value2"
     }
   ],
-  "end_to_end_id": "end_to_end_id6"
-}
+  endToEndId: 'end_to_end_id0',
+  gatewayId: 'gateway_id8',
+  amount: 40,
+  status: 'status6',
+  success: false,
+  createdAt: '2016-03-13T12:52:32.123Z',
+};
 ```
 

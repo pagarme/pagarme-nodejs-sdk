@@ -13,14 +13,17 @@ Request for updating an metadata
 |  --- | --- | --- | --- |
 | `metadata` | `Record<string, string>` | Required | Metadata |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "metadata": {
-    "key0": "metadata7",
-    "key1": "metadata6"
-  }
-}
+```ts
+import { UpdateMetadataRequest } from 'pagarmeapisdklib';
+
+const updateMetadataRequest: UpdateMetadataRequest = {
+  metadata: {
+    'key0': 'metadata5',
+    'key1': 'metadata6',
+    'key2': 'metadata7'
+  },
+};
 ```
 

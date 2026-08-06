@@ -14,39 +14,39 @@ import {
   optional,
   Schema,
   string,
-} from '../schema';
+} from '../schema.js';
 import {
   GetAddressResponse,
   getAddressResponseSchema,
-} from './getAddressResponse';
+} from './getAddressResponse.js';
 import {
   GetCheckoutBankTransferPaymentResponse,
   getCheckoutBankTransferPaymentResponseSchema,
-} from './getCheckoutBankTransferPaymentResponse';
+} from './getCheckoutBankTransferPaymentResponse.js';
 import {
   GetCheckoutBoletoPaymentResponse,
   getCheckoutBoletoPaymentResponseSchema,
-} from './getCheckoutBoletoPaymentResponse';
+} from './getCheckoutBoletoPaymentResponse.js';
 import {
   GetCheckoutCreditCardPaymentResponse,
   getCheckoutCreditCardPaymentResponseSchema,
-} from './getCheckoutCreditCardPaymentResponse';
+} from './getCheckoutCreditCardPaymentResponse.js';
 import {
   GetCheckoutDebitCardPaymentResponse,
   getCheckoutDebitCardPaymentResponseSchema,
-} from './getCheckoutDebitCardPaymentResponse';
+} from './getCheckoutDebitCardPaymentResponse.js';
 import {
   GetCheckoutPixPaymentResponse,
   getCheckoutPixPaymentResponseSchema,
-} from './getCheckoutPixPaymentResponse';
+} from './getCheckoutPixPaymentResponse.js';
 import {
   GetCustomerResponse,
   getCustomerResponseSchema,
-} from './getCustomerResponse';
+} from './getCustomerResponse.js';
 import {
   GetShippingResponse,
   getShippingResponseSchema,
-} from './getShippingResponse';
+} from './getShippingResponse.js';
 
 /** Resposta das configurações de pagamento do checkout */
 export interface GetCheckoutPaymentResponse {
@@ -105,77 +105,65 @@ export interface GetCheckoutPaymentResponse {
   pix?: GetCheckoutPixPaymentResponse | null;
 }
 
-export const getCheckoutPaymentResponseSchema: Schema<GetCheckoutPaymentResponse> = object(
-  {
-    id: ['id', optional(nullable(string()))],
-    amount: ['amount', optional(nullable(number()))],
-    defaultPaymentMethod: [
-      'default_payment_method',
-      optional(nullable(string())),
-    ],
-    successUrl: ['success_url', optional(nullable(string()))],
-    paymentUrl: ['payment_url', optional(nullable(string()))],
-    gatewayAffiliationId: [
-      'gateway_affiliation_id',
-      optional(nullable(string())),
-    ],
-    acceptedPaymentMethods: [
-      'accepted_payment_methods',
-      optional(nullable(array(string()))),
-    ],
-    status: ['status', optional(nullable(string()))],
-    skipCheckoutSuccessPage: [
-      'skip_checkout_success_page',
-      optional(nullable(boolean())),
-    ],
-    createdAt: ['created_at', optional(nullable(string()))],
-    updatedAt: ['updated_at', optional(nullable(string()))],
-    canceledAt: ['canceled_at', optional(nullable(string()))],
-    customerEditable: ['customer_editable', optional(nullable(boolean()))],
-    customer: [
-      'customer',
-      optional(nullable(lazy(() => getCustomerResponseSchema))),
-    ],
-    billingaddress: [
-      'billingaddress',
-      optional(nullable(lazy(() => getAddressResponseSchema))),
-    ],
-    creditCard: [
-      'credit_card',
-      optional(
-        nullable(lazy(() => getCheckoutCreditCardPaymentResponseSchema))
-      ),
-    ],
-    boleto: [
-      'boleto',
-      optional(nullable(lazy(() => getCheckoutBoletoPaymentResponseSchema))),
-    ],
-    billingAddressEditable: [
-      'billing_address_editable',
-      optional(nullable(boolean())),
-    ],
-    shipping: [
-      'shipping',
-      optional(nullable(lazy(() => getShippingResponseSchema))),
-    ],
-    shippable: ['shippable', optional(nullable(boolean()))],
-    closedAt: ['closed_at', optional(nullable(string()))],
-    expiresAt: ['expires_at', optional(nullable(string()))],
-    currency: ['currency', optional(nullable(string()))],
-    debitCard: [
-      'debit_card',
-      optional(nullable(lazy(() => getCheckoutDebitCardPaymentResponseSchema))),
-    ],
-    bankTransfer: [
-      'bank_transfer',
-      optional(
-        nullable(lazy(() => getCheckoutBankTransferPaymentResponseSchema))
-      ),
-    ],
-    acceptedBrands: ['accepted_brands', optional(nullable(array(string())))],
-    pix: [
-      'pix',
-      optional(nullable(lazy(() => getCheckoutPixPaymentResponseSchema))),
-    ],
-  }
+export const getCheckoutPaymentResponseSchema: Schema<GetCheckoutPaymentResponse> = lazy(
+  () =>
+    object({
+      id: ['id', optional(nullable(string()))],
+      amount: ['amount', optional(nullable(number()))],
+      defaultPaymentMethod: [
+        'default_payment_method',
+        optional(nullable(string())),
+      ],
+      successUrl: ['success_url', optional(nullable(string()))],
+      paymentUrl: ['payment_url', optional(nullable(string()))],
+      gatewayAffiliationId: [
+        'gateway_affiliation_id',
+        optional(nullable(string())),
+      ],
+      acceptedPaymentMethods: [
+        'accepted_payment_methods',
+        optional(nullable(array(string()))),
+      ],
+      status: ['status', optional(nullable(string()))],
+      skipCheckoutSuccessPage: [
+        'skip_checkout_success_page',
+        optional(nullable(boolean())),
+      ],
+      createdAt: ['created_at', optional(nullable(string()))],
+      updatedAt: ['updated_at', optional(nullable(string()))],
+      canceledAt: ['canceled_at', optional(nullable(string()))],
+      customerEditable: ['customer_editable', optional(nullable(boolean()))],
+      customer: ['customer', optional(nullable(getCustomerResponseSchema))],
+      billingaddress: [
+        'billingaddress',
+        optional(nullable(getAddressResponseSchema)),
+      ],
+      creditCard: [
+        'credit_card',
+        optional(nullable(getCheckoutCreditCardPaymentResponseSchema)),
+      ],
+      boleto: [
+        'boleto',
+        optional(nullable(getCheckoutBoletoPaymentResponseSchema)),
+      ],
+      billingAddressEditable: [
+        'billing_address_editable',
+        optional(nullable(boolean())),
+      ],
+      shipping: ['shipping', optional(nullable(getShippingResponseSchema))],
+      shippable: ['shippable', optional(nullable(boolean()))],
+      closedAt: ['closed_at', optional(nullable(string()))],
+      expiresAt: ['expires_at', optional(nullable(string()))],
+      currency: ['currency', optional(nullable(string()))],
+      debitCard: [
+        'debit_card',
+        optional(nullable(getCheckoutDebitCardPaymentResponseSchema)),
+      ],
+      bankTransfer: [
+        'bank_transfer',
+        optional(nullable(getCheckoutBankTransferPaymentResponseSchema)),
+      ],
+      acceptedBrands: ['accepted_brands', optional(nullable(array(string())))],
+      pix: ['pix', optional(nullable(getCheckoutPixPaymentResponseSchema))],
+    })
 );

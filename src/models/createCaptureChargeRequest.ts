@@ -12,11 +12,11 @@ import {
   optional,
   Schema,
   string,
-} from '../schema';
+} from '../schema.js';
 import {
   CreateSplitRequest,
   createSplitRequestSchema,
-} from './createSplitRequest';
+} from './createSplitRequest.js';
 
 /** Request for capturing a charge */
 export interface CreateCaptureChargeRequest {
@@ -29,11 +29,12 @@ export interface CreateCaptureChargeRequest {
   operationReference: string;
 }
 
-export const createCaptureChargeRequestSchema: Schema<CreateCaptureChargeRequest> = object(
-  {
-    code: ['code', string()],
-    amount: ['amount', optional(number())],
-    split: ['split', optional(array(lazy(() => createSplitRequestSchema)))],
-    operationReference: ['operation_reference', string()],
-  }
+export const createCaptureChargeRequestSchema: Schema<CreateCaptureChargeRequest> = lazy(
+  () =>
+    object({
+      code: ['code', string()],
+      amount: ['amount', optional(number())],
+      split: ['split', optional(array(createSplitRequestSchema))],
+      operationReference: ['operation_reference', string()],
+    })
 );

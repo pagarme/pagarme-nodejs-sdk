@@ -12,12 +12,14 @@
 | `sourceId` | `string \| null \| undefined` | Optional | - |
 | `type` | `string \| null \| undefined` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "source_id": "source_id2",
-  "type": "type8"
-}
+```ts
+import { GetWithdrawSourceResponse } from 'pagarmeapisdklib';
+
+const getWithdrawSourceResponse: GetWithdrawSourceResponse = {
+  sourceId: 'source_id6',
+  type: 'type8',
+};
 ```
 

@@ -16,17 +16,18 @@ Request for updating an address
 | `metadata` | `Record<string, string>` | Required | Metadata |
 | `line2` | `string` | Required | Line 2 for address |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "number": "number6",
-  "complement": "complement8",
-  "metadata": {
-    "key0": "metadata7",
-    "key1": "metadata8"
+```ts
+import { UpdateAddressRequest } from 'pagarmeapisdklib';
+
+const updateAddressRequest: UpdateAddressRequest = {
+  number: 'number8',
+  complement: 'complement0',
+  metadata: {
+    'key0': 'metadata9'
   },
-  "line_2": "line_24"
-}
+  line2: 'line_22',
+};
 ```
 

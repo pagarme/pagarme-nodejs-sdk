@@ -20,15 +20,17 @@ Card token data
 | `type` | `string \| null \| undefined` | Optional | - |
 | `label` | `string \| null \| undefined` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "last_four_digits": "last_four_digits8",
-  "holder_name": "holder_name8",
-  "holder_document": "holder_document6",
-  "exp_month": 168,
-  "exp_year": 128
-}
+```ts
+import { GetCardTokenResponse } from 'pagarmeapisdklib';
+
+const getCardTokenResponse: GetCardTokenResponse = {
+  lastFourDigits: 'last_four_digits8',
+  holderName: 'holder_name8',
+  holderDocument: 'holder_document6',
+  expMonth: 232,
+  expYear: 64,
+};
 ```
 

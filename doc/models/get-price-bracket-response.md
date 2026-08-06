@@ -16,14 +16,16 @@ Response object for getting a price bracket
 | `endQuantity` | `number \| null \| undefined` | Optional | - |
 | `overagePrice` | `number \| null \| undefined` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "start_quantity": 186,
-  "price": 124,
-  "end_quantity": 194,
-  "overage_price": 208
-}
+```ts
+import { GetPriceBracketResponse } from 'pagarmeapisdklib';
+
+const getPriceBracketResponse: GetPriceBracketResponse = {
+  startQuantity: 80,
+  price: 18,
+  endQuantity: 88,
+  overagePrice: 102,
+};
 ```
 

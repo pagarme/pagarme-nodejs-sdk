@@ -41,28 +41,30 @@
 | `manualBilling` | `boolean \| null \| undefined` | Optional | - |
 | `indirectAcceptor` | `string \| null \| undefined` | Optional | Business model identifier |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "boleto": {
-    "interest": {
-      "days": 2,
-      "type": "percentage",
-      "amount": 20
+```ts
+import { GetSubscriptionResponse } from 'pagarmeapisdklib';
+
+const getSubscriptionResponse: GetSubscriptionResponse = {
+  id: 'id0',
+  code: 'code8',
+  startAt: '2016-03-13T12:52:32.123Z',
+  interval: 'interval8',
+  intervalCount: 154,
+  boleto: {
+    interest: {
+      days: 2,
+      type: 'percentage',
+      amount: 20,
     },
-    "fine": {
-      "days": 2,
-      "type": "flat",
-      "amount": 10
+    fine: {
+      days: 2,
+      type: 'flat',
+      amount: 10,
     },
-    "max_days_to_pay_past_due": 2
+    maxDaysToPayPastDue: 2,
   },
-  "id": "id4",
-  "code": "code2",
-  "start_at": "2016-03-13T12:52:32.123Z",
-  "interval": "interval2",
-  "interval_count": 224
-}
+};
 ```
 

@@ -17,16 +17,18 @@ Response object for getting a cash transaction
 |  --- | --- | --- | --- |
 | `description` | `string \| null \| undefined` | Optional | Description |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "gateway_id": "gateway_id8",
-  "amount": 40,
-  "status": "status6",
-  "success": false,
-  "created_at": "2016-03-13T12:52:32.123Z",
-  "description": "description0"
-}
+```ts
+import { GetCashTransactionResponse } from 'pagarmeapisdklib';
+
+const getCashTransactionResponse: GetCashTransactionResponse = {
+  description: 'description6',
+  gatewayId: 'gateway_id8',
+  amount: 40,
+  status: 'status6',
+  success: false,
+  createdAt: '2016-03-13T12:52:32.123Z',
+};
 ```
 

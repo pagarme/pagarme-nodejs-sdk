@@ -22,21 +22,17 @@ Response object for getting a period
 | `updatedAt` | `string \| null \| undefined` | Optional | - |
 | `cycle` | `number \| null \| undefined` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "start_at": "2016-03-13T12:52:32.123Z",
-  "end_at": "2016-03-13T12:52:32.123Z",
-  "id": "id0",
-  "billing_at": "2016-03-13T12:52:32.123Z",
-  "subscription": {
-    "id": "id4",
-    "code": "code2",
-    "start_at": "2016-03-13T12:52:32.123Z",
-    "interval": "interval2",
-    "interval_count": 234
-  }
-}
+```ts
+import { GetPeriodResponse } from 'pagarmeapisdklib';
+
+const getPeriodResponse: GetPeriodResponse = {
+  startAt: '2016-03-13T12:52:32.123Z',
+  endAt: '2016-03-13T12:52:32.123Z',
+  id: 'id4',
+  billingAt: '2016-03-13T12:52:32.123Z',
+  subscription: null,
+};
 ```
 

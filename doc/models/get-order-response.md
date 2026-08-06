@@ -33,15 +33,17 @@ Response object for getting an Order
 | `device` | [`GetDeviceResponse \| null \| undefined`](../../doc/models/get-device-response.md) | Optional | Device's informations |
 | `integration` | [`GetIntegrationResponse \| null \| undefined`](../../doc/models/get-integration-response.md) | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id6",
-  "code": "code4",
-  "amount": 64,
-  "currency": "currency6",
-  "closed": false
-}
+```ts
+import { GetOrderResponse } from 'pagarmeapisdklib';
+
+const getOrderResponse: GetOrderResponse = {
+  id: 'id4',
+  code: 'code2',
+  amount: 212,
+  currency: 'currency4',
+  closed: false,
+};
 ```
 

@@ -15,13 +15,15 @@ Fine Request
 | `type` | `string` | Required | Type |
 | `amount` | `number` | Required | Amount |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "days": 218,
-  "type": "\"percentage\" or \"flat\"",
-  "amount": 220
-}
+```ts
+import { CreateFineRequest } from 'pagarmeapisdklib';
+
+const createFineRequest: CreateFineRequest = {
+  days: 0,
+  type: '"percentage" or "flat"',
+  amount: 0,
+};
 ```
 

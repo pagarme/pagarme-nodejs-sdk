@@ -13,11 +13,13 @@ Request for updating the start date from a subscription
 |  --- | --- | --- | --- |
 | `startAt` | `string` | Required | The date when the subscription periods will start |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "start_at": "2016-03-13T12:52:32.123Z"
-}
+```ts
+import { UpdateSubscriptionStartAtRequest } from 'pagarmeapisdklib';
+
+const updateSubscriptionStartAtRequest: UpdateSubscriptionStartAtRequest = {
+  startAt: '2016-03-13T12:52:32.123Z',
+};
 ```
 

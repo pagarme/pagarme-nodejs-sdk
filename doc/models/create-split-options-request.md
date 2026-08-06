@@ -15,13 +15,15 @@ The Split Options Request
 | `chargeProcessingFee` | `boolean \| undefined` | Optional | Charge processing fee |
 | `chargeRemainderFee` | `boolean \| undefined` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "liable": false,
-  "charge_processing_fee": false,
-  "charge_remainder_fee": false
-}
+```ts
+import { CreateSplitOptionsRequest } from 'pagarmeapisdklib';
+
+const createSplitOptionsRequest: CreateSplitOptionsRequest = {
+  liable: false,
+  chargeProcessingFee: false,
+  chargeRemainderFee: false,
+};
 ```
 

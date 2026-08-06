@@ -22,15 +22,17 @@ Response object for getting a billing address
 | `line1` | `string \| null \| undefined` | Optional | Line 1 for address |
 | `line2` | `string \| null \| undefined` | Optional | Line 2 for address |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "street": "street4",
-  "number": "number2",
-  "zip_code": "zip_code8",
-  "neighborhood": "neighborhood0",
-  "city": "city4"
-}
+```ts
+import { GetBillingAddressResponse } from 'pagarmeapisdklib';
+
+const getBillingAddressResponse: GetBillingAddressResponse = {
+  street: 'street8',
+  number: 'number4',
+  zipCode: 'zip_code2',
+  neighborhood: 'neighborhood4',
+  city: 'city8',
+};
 ```
 

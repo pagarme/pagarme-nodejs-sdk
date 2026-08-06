@@ -18,41 +18,18 @@ Request for creating a plan item
 | `cycles` | `number \| undefined` | Optional | Number of cycles where the item will be charged |
 | `quantity` | `number \| undefined` | Optional | Quantity |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "name": "name0",
-  "pricing_scheme": {
-    "scheme_type": "scheme_type8",
-    "price_brackets": [
-      {
-        "start_quantity": 144,
-        "price": 174,
-        "end_quantity": 152,
-        "overage_price": 166
-      },
-      {
-        "start_quantity": 144,
-        "price": 174,
-        "end_quantity": 152,
-        "overage_price": 166
-      },
-      {
-        "start_quantity": 144,
-        "price": 174,
-        "end_quantity": 152,
-        "overage_price": 166
-      }
-    ],
-    "price": 166,
-    "minimum_price": 6,
-    "percentage": 251.76
-  },
-  "id": "id0",
-  "description": "description0",
-  "cycles": 52,
-  "quantity": 184
-}
+```ts
+import { CreatePlanItemRequest } from 'pagarmeapisdklib';
+
+const createPlanItemRequest: CreatePlanItemRequest = {
+  name: 'name8',
+  pricingScheme: {},
+  id: 'id8',
+  description: 'description8',
+  cycles: 78,
+  quantity: 158,
+};
 ```
 

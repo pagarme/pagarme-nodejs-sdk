@@ -16,14 +16,16 @@ Response object for getting the setup from a subscription
 | `amount` | `number \| null \| undefined` | Optional | - |
 | `status` | `string \| null \| undefined` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id6",
-  "description": "description4",
-  "amount": 152,
-  "status": "status2"
-}
+```ts
+import { GetSetupResponse } from 'pagarmeapisdklib';
+
+const getSetupResponse: GetSetupResponse = {
+  id: 'id6',
+  description: 'description6',
+  amount: 108,
+  status: 'status8',
+};
 ```
 

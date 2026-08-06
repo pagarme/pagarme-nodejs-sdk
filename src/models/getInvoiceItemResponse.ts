@@ -12,15 +12,15 @@ import {
   optional,
   Schema,
   string,
-} from '../schema';
+} from '../schema.js';
 import {
   GetPriceBracketResponse,
   getPriceBracketResponseSchema,
-} from './getPriceBracketResponse';
+} from './getPriceBracketResponse.js';
 import {
   GetPricingSchemeResponse,
   getPricingSchemeResponseSchema,
-} from './getPricingSchemeResponse';
+} from './getPricingSchemeResponse.js';
 
 /** Response object for getting an invoice item */
 export interface GetInvoiceItemResponse {
@@ -34,20 +34,24 @@ export interface GetInvoiceItemResponse {
   subscriptionItemId?: string | null;
 }
 
-export const getInvoiceItemResponseSchema: Schema<GetInvoiceItemResponse> = object(
-  {
-    amount: ['amount', optional(nullable(number()))],
-    description: ['description', optional(nullable(string()))],
-    pricingScheme: [
-      'pricing_scheme',
-      optional(nullable(lazy(() => getPricingSchemeResponseSchema))),
-    ],
-    priceBracket: [
-      'price_bracket',
-      optional(nullable(lazy(() => getPriceBracketResponseSchema))),
-    ],
-    quantity: ['quantity', optional(nullable(number()))],
-    name: ['name', optional(nullable(string()))],
-    subscriptionItemId: ['subscription_item_id', optional(nullable(string()))],
-  }
+export const getInvoiceItemResponseSchema: Schema<GetInvoiceItemResponse> = lazy(
+  () =>
+    object({
+      amount: ['amount', optional(nullable(number()))],
+      description: ['description', optional(nullable(string()))],
+      pricingScheme: [
+        'pricing_scheme',
+        optional(nullable(getPricingSchemeResponseSchema)),
+      ],
+      priceBracket: [
+        'price_bracket',
+        optional(nullable(getPriceBracketResponseSchema)),
+      ],
+      quantity: ['quantity', optional(nullable(number()))],
+      name: ['name', optional(nullable(string()))],
+      subscriptionItemId: [
+        'subscription_item_id',
+        optional(nullable(string())),
+      ],
+    })
 );

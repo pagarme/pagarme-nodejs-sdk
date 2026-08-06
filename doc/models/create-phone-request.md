@@ -14,14 +14,16 @@
 | `areaCode` | `string \| undefined` | Optional | - |
 | `type` | `string \| null \| undefined` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "country_code": "country_code0",
-  "number": "number2",
-  "area_code": "area_code0",
-  "Type": "Type0"
-}
+```ts
+import { CreatePhoneRequest } from 'pagarmeapisdklib';
+
+const createPhoneRequest: CreatePhoneRequest = {
+  countryCode: 'country_code2',
+  number: 'number4',
+  areaCode: 'area_code8',
+  type: 'Type8',
+};
 ```
 

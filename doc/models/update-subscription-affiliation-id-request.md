@@ -13,11 +13,13 @@ Request for updating a Subscription Affiliation Id
 |  --- | --- | --- | --- |
 | `gatewayAffiliationId` | `string` | Required | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "gateway_affiliation_id": "gateway_affiliation_id8"
-}
+```ts
+import { UpdateSubscriptionAffiliationIdRequest } from 'pagarmeapisdklib';
+
+const updateSubscriptionAffiliationIdRequest: UpdateSubscriptionAffiliationIdRequest = {
+  gatewayAffiliationId: 'gateway_affiliation_id6',
+};
 ```
 

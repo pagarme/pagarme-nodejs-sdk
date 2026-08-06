@@ -12,11 +12,11 @@ import {
   optional,
   Schema,
   string,
-} from '../schema';
+} from '../schema.js';
 import {
   GetRecipientResponse,
   getRecipientResponseSchema,
-} from './getRecipientResponse';
+} from './getRecipientResponse.js';
 
 /** Anticipation */
 export interface GetAnticipationResponse {
@@ -42,20 +42,18 @@ export interface GetAnticipationResponse {
   timeframe?: string | null;
 }
 
-export const getAnticipationResponseSchema: Schema<GetAnticipationResponse> = object(
-  {
-    id: ['id', optional(nullable(string()))],
-    requestedAmount: ['requested_amount', optional(nullable(number()))],
-    approvedAmount: ['approved_amount', optional(nullable(number()))],
-    recipient: [
-      'recipient',
-      optional(nullable(lazy(() => getRecipientResponseSchema))),
-    ],
-    pgid: ['pgid', optional(nullable(string()))],
-    createdAt: ['created_at', optional(nullable(string()))],
-    updatedAt: ['updated_at', optional(nullable(string()))],
-    paymentDate: ['payment_date', optional(nullable(string()))],
-    status: ['status', optional(nullable(string()))],
-    timeframe: ['timeframe', optional(nullable(string()))],
-  }
+export const getAnticipationResponseSchema: Schema<GetAnticipationResponse> = lazy(
+  () =>
+    object({
+      id: ['id', optional(nullable(string()))],
+      requestedAmount: ['requested_amount', optional(nullable(number()))],
+      approvedAmount: ['approved_amount', optional(nullable(number()))],
+      recipient: ['recipient', optional(nullable(getRecipientResponseSchema))],
+      pgid: ['pgid', optional(nullable(string()))],
+      createdAt: ['created_at', optional(nullable(string()))],
+      updatedAt: ['updated_at', optional(nullable(string()))],
+      paymentDate: ['payment_date', optional(nullable(string()))],
+      status: ['status', optional(nullable(string()))],
+      timeframe: ['timeframe', optional(nullable(string()))],
+    })
 );

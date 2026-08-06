@@ -15,39 +15,39 @@ import {
   optional,
   Schema,
   string,
-} from '../schema';
+} from '../schema.js';
 import {
   GetChargeResponse,
   getChargeResponseSchema,
-} from './getChargeResponse';
+} from './getChargeResponse.js';
 import {
   GetCheckoutPaymentResponse,
   getCheckoutPaymentResponseSchema,
-} from './getCheckoutPaymentResponse';
+} from './getCheckoutPaymentResponse.js';
 import {
   GetCustomerResponse,
   getCustomerResponseSchema,
-} from './getCustomerResponse';
+} from './getCustomerResponse.js';
 import {
   GetDeviceResponse,
   getDeviceResponseSchema,
-} from './getDeviceResponse';
+} from './getDeviceResponse.js';
 import {
   GetIntegrationResponse,
   getIntegrationResponseSchema,
-} from './getIntegrationResponse';
+} from './getIntegrationResponse.js';
 import {
   GetLocationResponse,
   getLocationResponseSchema,
-} from './getLocationResponse';
+} from './getLocationResponse.js';
 import {
   GetOrderItemResponse,
   getOrderItemResponseSchema,
-} from './getOrderItemResponse';
+} from './getOrderItemResponse.js';
 import {
   GetShippingResponse,
   getShippingResponseSchema,
-} from './getShippingResponse';
+} from './getShippingResponse.js';
 
 /** Response object for getting an Order */
 export interface GetOrderResponse {
@@ -80,47 +80,34 @@ export interface GetOrderResponse {
   integration?: GetIntegrationResponse | null;
 }
 
-export const getOrderResponseSchema: Schema<GetOrderResponse> = object({
-  id: ['id', optional(nullable(string()))],
-  code: ['code', optional(nullable(string()))],
-  amount: ['amount', optional(nullable(number()))],
-  currency: ['currency', optional(nullable(string()))],
-  closed: ['closed', optional(nullable(boolean()))],
-  items: [
-    'items',
-    optional(nullable(array(lazy(() => getOrderItemResponseSchema)))),
-  ],
-  customer: [
-    'customer',
-    optional(nullable(lazy(() => getCustomerResponseSchema))),
-  ],
-  status: ['status', optional(nullable(string()))],
-  createdAt: ['created_at', optional(nullable(string()))],
-  updatedAt: ['updated_at', optional(nullable(string()))],
-  closedAt: ['closed_at', optional(nullable(string()))],
-  charges: [
-    'charges',
-    optional(nullable(array(lazy(() => getChargeResponseSchema)))),
-  ],
-  invoiceUrl: ['invoice_url', optional(nullable(string()))],
-  shipping: [
-    'shipping',
-    optional(nullable(lazy(() => getShippingResponseSchema))),
-  ],
-  metadata: ['metadata', optional(nullable(dict(string())))],
-  checkouts: [
-    'checkouts',
-    optional(nullable(array(lazy(() => getCheckoutPaymentResponseSchema)))),
-  ],
-  ip: ['ip', optional(nullable(string()))],
-  sessionId: ['session_id', optional(nullable(string()))],
-  location: [
-    'location',
-    optional(nullable(lazy(() => getLocationResponseSchema))),
-  ],
-  device: ['device', optional(nullable(lazy(() => getDeviceResponseSchema)))],
-  integration: [
-    'integration',
-    optional(nullable(lazy(() => getIntegrationResponseSchema))),
-  ],
-});
+export const getOrderResponseSchema: Schema<GetOrderResponse> = lazy(() =>
+  object({
+    id: ['id', optional(nullable(string()))],
+    code: ['code', optional(nullable(string()))],
+    amount: ['amount', optional(nullable(number()))],
+    currency: ['currency', optional(nullable(string()))],
+    closed: ['closed', optional(nullable(boolean()))],
+    items: ['items', optional(nullable(array(getOrderItemResponseSchema)))],
+    customer: ['customer', optional(nullable(getCustomerResponseSchema))],
+    status: ['status', optional(nullable(string()))],
+    createdAt: ['created_at', optional(nullable(string()))],
+    updatedAt: ['updated_at', optional(nullable(string()))],
+    closedAt: ['closed_at', optional(nullable(string()))],
+    charges: ['charges', optional(nullable(array(getChargeResponseSchema)))],
+    invoiceUrl: ['invoice_url', optional(nullable(string()))],
+    shipping: ['shipping', optional(nullable(getShippingResponseSchema))],
+    metadata: ['metadata', optional(nullable(dict(string())))],
+    checkouts: [
+      'checkouts',
+      optional(nullable(array(getCheckoutPaymentResponseSchema))),
+    ],
+    ip: ['ip', optional(nullable(string()))],
+    sessionId: ['session_id', optional(nullable(string()))],
+    location: ['location', optional(nullable(getLocationResponseSchema))],
+    device: ['device', optional(nullable(getDeviceResponseSchema))],
+    integration: [
+      'integration',
+      optional(nullable(getIntegrationResponseSchema)),
+    ],
+  })
+);

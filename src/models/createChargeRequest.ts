@@ -13,19 +13,19 @@ import {
   optional,
   Schema,
   string,
-} from '../schema';
+} from '../schema.js';
 import {
   CreateAntifraudRequest,
   createAntifraudRequestSchema,
-} from './createAntifraudRequest';
+} from './createAntifraudRequest.js';
 import {
   CreateCustomerRequest,
   createCustomerRequestSchema,
-} from './createCustomerRequest';
+} from './createCustomerRequest.js';
 import {
   CreatePaymentRequest,
   createPaymentRequestSchema,
-} from './createPaymentRequest';
+} from './createPaymentRequest.js';
 
 /** Request for creating a new charge */
 export interface CreateChargeRequest {
@@ -48,20 +48,16 @@ export interface CreateChargeRequest {
   orderId: string;
 }
 
-export const createChargeRequestSchema: Schema<CreateChargeRequest> = object({
-  code: ['code', optional(nullable(string()))],
-  amount: ['amount', number()],
-  customerId: ['customer_id', optional(nullable(string()))],
-  customer: [
-    'customer',
-    optional(nullable(lazy(() => createCustomerRequestSchema))),
-  ],
-  payment: ['payment', lazy(() => createPaymentRequestSchema)],
-  metadata: ['metadata', optional(nullable(dict(string())))],
-  dueAt: ['due_at', optional(nullable(string()))],
-  antifraud: [
-    'antifraud',
-    optional(nullable(lazy(() => createAntifraudRequestSchema))),
-  ],
-  orderId: ['order_id', string()],
-});
+export const createChargeRequestSchema: Schema<CreateChargeRequest> = lazy(() =>
+  object({
+    code: ['code', optional(nullable(string()))],
+    amount: ['amount', number()],
+    customerId: ['customer_id', optional(nullable(string()))],
+    customer: ['customer', optional(nullable(createCustomerRequestSchema))],
+    payment: ['payment', createPaymentRequestSchema],
+    metadata: ['metadata', optional(nullable(dict(string())))],
+    dueAt: ['due_at', optional(nullable(string()))],
+    antifraud: ['antifraud', optional(nullable(createAntifraudRequestSchema))],
+    orderId: ['order_id', string()],
+  })
+);

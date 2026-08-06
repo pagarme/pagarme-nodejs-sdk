@@ -15,18 +15,18 @@ import {
   optional,
   Schema,
   string,
-} from '../schema';
-import { getAntifraudResponseSchema } from './getAntifraudResponse';
-import { GetCardResponse, getCardResponseSchema } from './getCardResponse';
-import { getFineResponseSchema } from './getFineResponse';
-import { getGatewayResponseResponseSchema } from './getGatewayResponseResponse';
-import { getInterestResponseSchema } from './getInterestResponse';
+} from '../schema.js';
+import { getAntifraudResponseSchema } from './getAntifraudResponse.js';
+import { GetCardResponse, getCardResponseSchema } from './getCardResponse.js';
+import { getFineResponseSchema } from './getFineResponse.js';
+import { getGatewayResponseResponseSchema } from './getGatewayResponseResponse.js';
+import { getInterestResponseSchema } from './getInterestResponse.js';
 import {
   GetRetryTransactionInformationResponse,
   getRetryTransactionInformationResponseSchema,
-} from './getRetryTransactionInformationResponse';
-import { getSplitResponseSchema } from './getSplitResponse';
-import { GetTransactionResponse } from './getTransactionResponse';
+} from './getRetryTransactionInformationResponse.js';
+import { getSplitResponseSchema } from './getSplitResponse.js';
+import { GetTransactionResponse } from './getTransactionResponse.js';
 
 /** Response object for getting a credit card transaction */
 export interface GetCreditCardTransactionResponse extends GetTransactionResponse {
@@ -63,71 +63,67 @@ export interface GetCreditCardTransactionResponse extends GetTransactionResponse
   indirectAcceptor?: string | null;
 }
 
-export const getCreditCardTransactionResponseSchema: Schema<GetCreditCardTransactionResponse> = object(
-  {
-    statementDescriptor: ['statement_descriptor', optional(nullable(string()))],
-    acquirerName: ['acquirer_name', optional(string())],
-    acquirerAffiliationCode: [
-      'acquirer_affiliation_code',
-      optional(nullable(string())),
-    ],
-    acquirerTid: ['acquirer_tid', optional(string())],
-    acquirerNsu: ['acquirer_nsu', optional(string())],
-    acquirerAuthCode: ['acquirer_auth_code', optional(nullable(string()))],
-    operationType: ['operation_type', optional(nullable(string()))],
-    card: ['card', optional(nullable(lazy(() => getCardResponseSchema)))],
-    acquirerMessage: ['acquirer_message', optional(nullable(string()))],
-    acquirerReturnCode: ['acquirer_return_code', optional(nullable(string()))],
-    installments: ['installments', optional(nullable(number()))],
-    threedAuthenticationUrl: [
-      'threed_authentication_url',
-      optional(nullable(string())),
-    ],
-    fundingSource: ['funding_source', optional(nullable(string()))],
-    retryInfo: [
-      'retry_info',
-      optional(
-        nullable(lazy(() => getRetryTransactionInformationResponseSchema))
-      ),
-    ],
-    brandId: ['brand_id', optional(nullable(string()))],
-    indirectAcceptor: ['indirect_acceptor', optional(nullable(string()))],
-    gatewayId: ['gateway_id', optional(nullable(string()))],
-    amount: ['amount', optional(nullable(number()))],
-    status: ['status', optional(nullable(string()))],
-    success: ['success', optional(nullable(boolean()))],
-    createdAt: ['created_at', optional(nullable(string()))],
-    updatedAt: ['updated_at', optional(nullable(string()))],
-    attemptCount: ['attempt_count', optional(nullable(number()))],
-    maxAttempts: ['max_attempts', optional(nullable(number()))],
-    splits: [
-      'splits',
-      optional(nullable(array(lazy(() => getSplitResponseSchema)))),
-    ],
-    nextAttempt: ['next_attempt', optional(nullable(string()))],
-    id: ['id', optional(nullable(string()))],
-    gatewayResponse: [
-      'gateway_response',
-      optional(nullable(lazy(() => getGatewayResponseResponseSchema))),
-    ],
-    antifraudResponse: [
-      'antifraud_response',
-      optional(nullable(lazy(() => getAntifraudResponseSchema))),
-    ],
-    metadata: ['metadata', optional(nullable(dict(string())))],
-    split: [
-      'split',
-      optional(nullable(array(lazy(() => getSplitResponseSchema)))),
-    ],
-    interest: [
-      'interest',
-      optional(nullable(lazy(() => getInterestResponseSchema))),
-    ],
-    fine: ['fine', optional(nullable(lazy(() => getFineResponseSchema)))],
-    maxDaysToPayPastDue: [
-      'max_days_to_pay_past_due',
-      optional(nullable(number())),
-    ],
-    transactionType: ['transaction_type', optional(string())],
-  }
+export const getCreditCardTransactionResponseSchema: Schema<GetCreditCardTransactionResponse> = lazy(
+  () =>
+    object({
+      statementDescriptor: [
+        'statement_descriptor',
+        optional(nullable(string())),
+      ],
+      acquirerName: ['acquirer_name', optional(string())],
+      acquirerAffiliationCode: [
+        'acquirer_affiliation_code',
+        optional(nullable(string())),
+      ],
+      acquirerTid: ['acquirer_tid', optional(string())],
+      acquirerNsu: ['acquirer_nsu', optional(string())],
+      acquirerAuthCode: ['acquirer_auth_code', optional(nullable(string()))],
+      operationType: ['operation_type', optional(nullable(string()))],
+      card: ['card', optional(nullable(getCardResponseSchema))],
+      acquirerMessage: ['acquirer_message', optional(nullable(string()))],
+      acquirerReturnCode: [
+        'acquirer_return_code',
+        optional(nullable(string())),
+      ],
+      installments: ['installments', optional(nullable(number()))],
+      threedAuthenticationUrl: [
+        'threed_authentication_url',
+        optional(nullable(string())),
+      ],
+      fundingSource: ['funding_source', optional(nullable(string()))],
+      retryInfo: [
+        'retry_info',
+        optional(nullable(getRetryTransactionInformationResponseSchema)),
+      ],
+      brandId: ['brand_id', optional(nullable(string()))],
+      indirectAcceptor: ['indirect_acceptor', optional(nullable(string()))],
+      gatewayId: ['gateway_id', optional(nullable(string()))],
+      amount: ['amount', optional(nullable(number()))],
+      status: ['status', optional(nullable(string()))],
+      success: ['success', optional(nullable(boolean()))],
+      createdAt: ['created_at', optional(nullable(string()))],
+      updatedAt: ['updated_at', optional(nullable(string()))],
+      attemptCount: ['attempt_count', optional(nullable(number()))],
+      maxAttempts: ['max_attempts', optional(nullable(number()))],
+      splits: ['splits', optional(nullable(array(getSplitResponseSchema)))],
+      nextAttempt: ['next_attempt', optional(nullable(string()))],
+      id: ['id', optional(nullable(string()))],
+      gatewayResponse: [
+        'gateway_response',
+        optional(nullable(getGatewayResponseResponseSchema)),
+      ],
+      antifraudResponse: [
+        'antifraud_response',
+        optional(nullable(getAntifraudResponseSchema)),
+      ],
+      metadata: ['metadata', optional(nullable(dict(string())))],
+      split: ['split', optional(nullable(array(getSplitResponseSchema)))],
+      interest: ['interest', optional(nullable(getInterestResponseSchema))],
+      fine: ['fine', optional(nullable(getFineResponseSchema))],
+      maxDaysToPayPastDue: [
+        'max_days_to_pay_past_due',
+        optional(nullable(number())),
+      ],
+      transactionType: ['transaction_type', optional(string())],
+    })
 );

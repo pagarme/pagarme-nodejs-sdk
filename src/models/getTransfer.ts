@@ -12,15 +12,15 @@ import {
   optional,
   Schema,
   string,
-} from '../schema';
+} from '../schema.js';
 import {
   GetTransferSourceResponse,
   getTransferSourceResponseSchema,
-} from './getTransferSourceResponse';
+} from './getTransferSourceResponse.js';
 import {
   GetTransferTargetResponse,
   getTransferTargetResponseSchema,
-} from './getTransferTargetResponse';
+} from './getTransferTargetResponse.js';
 
 export interface GetTransfer {
   id: string;
@@ -38,18 +38,20 @@ export interface GetTransfer {
   target: GetTransferTargetResponse;
 }
 
-export const getTransferSchema: Schema<GetTransfer> = object({
-  id: ['id', string()],
-  gatewayId: ['gateway_id', string()],
-  amount: ['amount', number()],
-  status: ['status', string()],
-  createdAt: ['created_at', string()],
-  updatedAt: ['updated_at', string()],
-  metadata: ['metadata', optional(dict(string()))],
-  fee: ['fee', optional(number())],
-  fundingDate: ['funding_date', optional(string())],
-  fundingEstimatedDate: ['funding_estimated_date', optional(string())],
-  type: ['type', string()],
-  source: ['source', lazy(() => getTransferSourceResponseSchema)],
-  target: ['target', lazy(() => getTransferTargetResponseSchema)],
-});
+export const getTransferSchema: Schema<GetTransfer> = lazy(() =>
+  object({
+    id: ['id', string()],
+    gatewayId: ['gateway_id', string()],
+    amount: ['amount', number()],
+    status: ['status', string()],
+    createdAt: ['created_at', string()],
+    updatedAt: ['updated_at', string()],
+    metadata: ['metadata', optional(dict(string()))],
+    fee: ['fee', optional(number())],
+    fundingDate: ['funding_date', optional(string())],
+    fundingEstimatedDate: ['funding_estimated_date', optional(string())],
+    type: ['type', string()],
+    source: ['source', getTransferSourceResponseSchema],
+    target: ['target', getTransferTargetResponseSchema],
+  })
+);

@@ -13,11 +13,13 @@ Request for creating a device
 |  --- | --- | --- | --- |
 | `platform` | `string \| undefined` | Optional | Device's platform |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "platform": "platform8"
-}
+```ts
+import { CreateDeviceRequest } from 'pagarmeapisdklib';
+
+const createDeviceRequest: CreateDeviceRequest = {
+  platform: 'platform2',
+};
 ```
 

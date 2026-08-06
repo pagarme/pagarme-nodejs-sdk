@@ -39,15 +39,17 @@ Resposta das configurações de pagamento do checkout
 | `acceptedBrands` | `string[] \| null \| undefined` | Optional | Accepted Brands |
 | `pix` | [`GetCheckoutPixPaymentResponse \| null \| undefined`](../../doc/models/get-checkout-pix-payment-response.md) | Optional | Pix payment response |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id6",
-  "amount": 148,
-  "default_payment_method": "default_payment_method6",
-  "success_url": "success_url8",
-  "payment_url": "payment_url0"
-}
+```ts
+import { GetCheckoutPaymentResponse } from 'pagarmeapisdklib';
+
+const getCheckoutPaymentResponse: GetCheckoutPaymentResponse = {
+  id: 'id8',
+  amount: 8,
+  defaultPaymentMethod: 'default_payment_method8',
+  successUrl: 'success_url0',
+  paymentUrl: 'payment_url2',
+};
 ```
 

@@ -13,11 +13,13 @@ Atualização do valor mínimo da assinatura
 |  --- | --- | --- | --- |
 | `minimumPrice` | `number \| undefined` | Optional | Valor mínimo da assinatura |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "minimum_price": 212
-}
+```ts
+import { UpdateSubscriptionMinimumPriceRequest } from 'pagarmeapisdklib';
+
+const updateSubscriptionMinimumPriceRequest: UpdateSubscriptionMinimumPriceRequest = {
+  minimumPrice: 134,
+};
 ```
 

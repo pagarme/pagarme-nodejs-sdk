@@ -13,15 +13,15 @@ import {
   optional,
   Schema,
   string,
-} from '../schema';
+} from '../schema.js';
 import {
   GetPhoneNumberResponse,
   getPhoneNumberResponseSchema,
-} from './getPhoneNumberResponse';
+} from './getPhoneNumberResponse.js';
 import {
   GetRegisterInformationAddressResponse,
   getRegisterInformationAddressResponseSchema,
-} from './getRegisterInformationAddressResponse';
+} from './getRegisterInformationAddressResponse.js';
 
 /** Response object for getting an ManagingPartnerResponse */
 export interface GetManagingPartnerResponse {
@@ -38,32 +38,31 @@ export interface GetManagingPartnerResponse {
   phoneNumbers?: GetPhoneNumberResponse[] | null;
 }
 
-export const getManagingPartnerResponseSchema: Schema<GetManagingPartnerResponse> = object(
-  {
-    name: ['name', optional(nullable(string()))],
-    email: ['email', optional(nullable(string()))],
-    document: ['document', optional(nullable(string()))],
-    type: ['type', optional(nullable(string()))],
-    motherName: ['mother_name', optional(nullable(string()))],
-    birthdate: ['birthdate', optional(nullable(string()))],
-    monthlyIncome: ['monthly_income', optional(nullable(string()))],
-    professionalOccupation: [
-      'professional_occupation',
-      optional(nullable(string())),
-    ],
-    selfDeclaredRepresentative: [
-      'self_declared_representative',
-      optional(boolean()),
-    ],
-    address: [
-      'address',
-      optional(
-        nullable(lazy(() => getRegisterInformationAddressResponseSchema))
-      ),
-    ],
-    phoneNumbers: [
-      'phone_numbers',
-      optional(nullable(array(lazy(() => getPhoneNumberResponseSchema)))),
-    ],
-  }
+export const getManagingPartnerResponseSchema: Schema<GetManagingPartnerResponse> = lazy(
+  () =>
+    object({
+      name: ['name', optional(nullable(string()))],
+      email: ['email', optional(nullable(string()))],
+      document: ['document', optional(nullable(string()))],
+      type: ['type', optional(nullable(string()))],
+      motherName: ['mother_name', optional(nullable(string()))],
+      birthdate: ['birthdate', optional(nullable(string()))],
+      monthlyIncome: ['monthly_income', optional(nullable(string()))],
+      professionalOccupation: [
+        'professional_occupation',
+        optional(nullable(string())),
+      ],
+      selfDeclaredRepresentative: [
+        'self_declared_representative',
+        optional(boolean()),
+      ],
+      address: [
+        'address',
+        optional(nullable(getRegisterInformationAddressResponseSchema)),
+      ],
+      phoneNumbers: [
+        'phone_numbers',
+        optional(nullable(array(getPhoneNumberResponseSchema))),
+      ],
+    })
 );

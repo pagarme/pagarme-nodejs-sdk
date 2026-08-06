@@ -29,15 +29,17 @@ Response object for getting a credit card
 | `firstSixDigits` | `string \| null \| undefined` | Optional | First six digits |
 | `label` | `string \| null \| undefined` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id4",
-  "last_four_digits": "last_four_digits0",
-  "brand": "brand8",
-  "holder_name": "holder_name0",
-  "exp_month": 52
-}
+```ts
+import { GetCardResponse } from 'pagarmeapisdklib';
+
+const getCardResponse: GetCardResponse = {
+  id: 'id6',
+  lastFourDigits: 'last_four_digits2',
+  brand: 'brand0',
+  holderName: 'holder_name2',
+  expMonth: 2,
+};
 ```
 

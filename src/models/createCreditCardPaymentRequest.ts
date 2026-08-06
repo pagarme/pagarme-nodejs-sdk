@@ -13,27 +13,27 @@ import {
   optional,
   Schema,
   string,
-} from '../schema';
+} from '../schema.js';
 import {
   CreateCardPayloadRequest,
   createCardPayloadRequestSchema,
-} from './createCardPayloadRequest';
+} from './createCardPayloadRequest.js';
 import {
   CreateCardPaymentContactlessRequest,
   createCardPaymentContactlessRequestSchema,
-} from './createCardPaymentContactlessRequest';
+} from './createCardPaymentContactlessRequest.js';
 import {
   CreateCardRequest,
   createCardRequestSchema,
-} from './createCardRequest';
+} from './createCardRequest.js';
 import {
   CreatePaymentAuthenticationRequest,
   createPaymentAuthenticationRequestSchema,
-} from './createPaymentAuthenticationRequest';
+} from './createPaymentAuthenticationRequest.js';
 import {
   CreatePaymentOriginRequest,
   createPaymentOriginRequestSchema,
-} from './createPaymentOriginRequest';
+} from './createPaymentOriginRequest.js';
 
 /** The settings for creating a credit card payment */
 export interface CreateCreditCardPaymentRequest {
@@ -74,36 +74,37 @@ export interface CreateCreditCardPaymentRequest {
   indirectAcceptor?: string;
 }
 
-export const createCreditCardPaymentRequestSchema: Schema<CreateCreditCardPaymentRequest> = object(
-  {
-    installments: ['installments', optional(number())],
-    statementDescriptor: ['statement_descriptor', optional(string())],
-    card: ['card', optional(lazy(() => createCardRequestSchema))],
-    cardId: ['card_id', optional(string())],
-    cardToken: ['card_token', optional(string())],
-    recurrence: ['recurrence', optional(boolean())],
-    capture: ['capture', optional(boolean())],
-    extendedLimitEnabled: ['extended_limit_enabled', optional(boolean())],
-    extendedLimitCode: ['extended_limit_code', optional(string())],
-    merchantCategoryCode: ['merchant_category_code', optional(bigint())],
-    authentication: [
-      'authentication',
-      optional(lazy(() => createPaymentAuthenticationRequestSchema)),
-    ],
-    contactless: [
-      'contactless',
-      optional(lazy(() => createCardPaymentContactlessRequestSchema)),
-    ],
-    autoRecovery: ['auto_recovery', optional(boolean())],
-    operationType: ['operation_type', optional(string())],
-    recurrencyCycle: ['recurrency_cycle', optional(string())],
-    payload: ['payload', optional(lazy(() => createCardPayloadRequestSchema))],
-    initiatedType: ['initiated_type', optional(string())],
-    recurrenceModel: ['recurrence_model', optional(string())],
-    paymentOrigin: [
-      'payment_origin',
-      optional(lazy(() => createPaymentOriginRequestSchema)),
-    ],
-    indirectAcceptor: ['indirect_acceptor', optional(string())],
-  }
+export const createCreditCardPaymentRequestSchema: Schema<CreateCreditCardPaymentRequest> = lazy(
+  () =>
+    object({
+      installments: ['installments', optional(number())],
+      statementDescriptor: ['statement_descriptor', optional(string())],
+      card: ['card', optional(createCardRequestSchema)],
+      cardId: ['card_id', optional(string())],
+      cardToken: ['card_token', optional(string())],
+      recurrence: ['recurrence', optional(boolean())],
+      capture: ['capture', optional(boolean())],
+      extendedLimitEnabled: ['extended_limit_enabled', optional(boolean())],
+      extendedLimitCode: ['extended_limit_code', optional(string())],
+      merchantCategoryCode: ['merchant_category_code', optional(bigint())],
+      authentication: [
+        'authentication',
+        optional(createPaymentAuthenticationRequestSchema),
+      ],
+      contactless: [
+        'contactless',
+        optional(createCardPaymentContactlessRequestSchema),
+      ],
+      autoRecovery: ['auto_recovery', optional(boolean())],
+      operationType: ['operation_type', optional(string())],
+      recurrencyCycle: ['recurrency_cycle', optional(string())],
+      payload: ['payload', optional(createCardPayloadRequestSchema)],
+      initiatedType: ['initiated_type', optional(string())],
+      recurrenceModel: ['recurrence_model', optional(string())],
+      paymentOrigin: [
+        'payment_origin',
+        optional(createPaymentOriginRequestSchema),
+      ],
+      indirectAcceptor: ['indirect_acceptor', optional(string())],
+    })
 );

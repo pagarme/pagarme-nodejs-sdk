@@ -14,35 +14,35 @@ import {
   optional,
   Schema,
   string,
-} from '../schema';
+} from '../schema.js';
 import {
   GetBillingAddressResponse,
   getBillingAddressResponseSchema,
-} from './getBillingAddressResponse';
+} from './getBillingAddressResponse.js';
 import {
   GetChargeResponse,
   getChargeResponseSchema,
-} from './getChargeResponse';
+} from './getChargeResponse.js';
 import {
   GetCustomerResponse,
   getCustomerResponseSchema,
-} from './getCustomerResponse';
+} from './getCustomerResponse.js';
 import {
   GetInvoiceItemResponse,
   getInvoiceItemResponseSchema,
-} from './getInvoiceItemResponse';
+} from './getInvoiceItemResponse.js';
 import {
   GetPeriodResponse,
   getPeriodResponseSchema,
-} from './getPeriodResponse';
+} from './getPeriodResponse.js';
 import {
   GetShippingResponse,
   getShippingResponseSchema,
-} from './getShippingResponse';
+} from './getShippingResponse.js';
 import {
   GetSubscriptionResponse,
   getSubscriptionResponseSchema,
-} from './getSubscriptionResponse';
+} from './getSubscriptionResponse.js';
 
 /** Response object for getting an invoice */
 export interface GetInvoiceResponse {
@@ -74,43 +74,36 @@ export interface GetInvoiceResponse {
   subscriptionId?: string | null;
 }
 
-export const getInvoiceResponseSchema: Schema<GetInvoiceResponse> = object({
-  id: ['id', optional(nullable(string()))],
-  code: ['code', optional(nullable(string()))],
-  url: ['url', optional(nullable(string()))],
-  amount: ['amount', optional(nullable(number()))],
-  status: ['status', optional(nullable(string()))],
-  paymentMethod: ['payment_method', optional(nullable(string()))],
-  createdAt: ['created_at', optional(nullable(string()))],
-  items: [
-    'items',
-    optional(nullable(array(lazy(() => getInvoiceItemResponseSchema)))),
-  ],
-  customer: [
-    'customer',
-    optional(nullable(lazy(() => getCustomerResponseSchema))),
-  ],
-  charge: ['charge', optional(nullable(lazy(() => getChargeResponseSchema)))],
-  installments: ['installments', optional(nullable(number()))],
-  billingAddress: [
-    'billing_address',
-    optional(nullable(lazy(() => getBillingAddressResponseSchema))),
-  ],
-  subscription: [
-    'subscription',
-    optional(nullable(lazy(() => getSubscriptionResponseSchema))),
-  ],
-  cycle: ['cycle', optional(nullable(lazy(() => getPeriodResponseSchema)))],
-  shipping: [
-    'shipping',
-    optional(nullable(lazy(() => getShippingResponseSchema))),
-  ],
-  metadata: ['metadata', optional(nullable(dict(string())))],
-  dueAt: ['due_at', optional(nullable(string()))],
-  canceledAt: ['canceled_at', optional(nullable(string()))],
-  billingAt: ['billing_at', optional(nullable(string()))],
-  seenAt: ['seen_at', optional(nullable(string()))],
-  totalDiscount: ['total_discount', optional(nullable(number()))],
-  totalIncrement: ['total_increment', optional(nullable(number()))],
-  subscriptionId: ['subscription_id', optional(nullable(string()))],
-});
+export const getInvoiceResponseSchema: Schema<GetInvoiceResponse> = lazy(() =>
+  object({
+    id: ['id', optional(nullable(string()))],
+    code: ['code', optional(nullable(string()))],
+    url: ['url', optional(nullable(string()))],
+    amount: ['amount', optional(nullable(number()))],
+    status: ['status', optional(nullable(string()))],
+    paymentMethod: ['payment_method', optional(nullable(string()))],
+    createdAt: ['created_at', optional(nullable(string()))],
+    items: ['items', optional(nullable(array(getInvoiceItemResponseSchema)))],
+    customer: ['customer', optional(nullable(getCustomerResponseSchema))],
+    charge: ['charge', optional(nullable(getChargeResponseSchema))],
+    installments: ['installments', optional(nullable(number()))],
+    billingAddress: [
+      'billing_address',
+      optional(nullable(getBillingAddressResponseSchema)),
+    ],
+    subscription: [
+      'subscription',
+      optional(nullable(getSubscriptionResponseSchema)),
+    ],
+    cycle: ['cycle', optional(nullable(getPeriodResponseSchema))],
+    shipping: ['shipping', optional(nullable(getShippingResponseSchema))],
+    metadata: ['metadata', optional(nullable(dict(string())))],
+    dueAt: ['due_at', optional(nullable(string()))],
+    canceledAt: ['canceled_at', optional(nullable(string()))],
+    billingAt: ['billing_at', optional(nullable(string()))],
+    seenAt: ['seen_at', optional(nullable(string()))],
+    totalDiscount: ['total_discount', optional(nullable(number()))],
+    totalIncrement: ['total_increment', optional(nullable(number()))],
+    subscriptionId: ['subscription_id', optional(nullable(string()))],
+  })
+);

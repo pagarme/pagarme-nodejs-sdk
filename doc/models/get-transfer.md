@@ -23,31 +23,29 @@
 | `source` | [`GetTransferSourceResponse`](../../doc/models/get-transfer-source-response.md) | Required | - |
 | `target` | [`GetTransferTargetResponse`](../../doc/models/get-transfer-target-response.md) | Required | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id8",
-  "gateway_id": "gateway_id8",
-  "amount": 122,
-  "status": "status0",
-  "created_at": "2016-03-13T12:52:32.123Z",
-  "updated_at": "2016-03-13T12:52:32.123Z",
-  "metadata": {
-    "key0": "metadata5"
+```ts
+import { GetTransfer } from 'pagarmeapisdklib';
+
+const getTransfer: GetTransfer = {
+  id: 'id6',
+  gatewayId: 'gateway_id4',
+  amount: 0,
+  status: 'status2',
+  createdAt: '2016-03-13T12:52:32.123Z',
+  updatedAt: '2016-03-13T12:52:32.123Z',
+  type: 'type4',
+  source: {},
+  target: {},
+  metadata: {
+    'key0': 'metadata7',
+    'key1': 'metadata8',
+    'key2': 'metadata9'
   },
-  "fee": 80,
-  "funding_date": "2016-03-13T12:52:32.123Z",
-  "funding_estimated_date": "2016-03-13T12:52:32.123Z",
-  "type": "type8",
-  "source": {
-    "source_id": "source_id8",
-    "type": "type6"
-  },
-  "target": {
-    "target_id": "target_id2",
-    "type": "type8"
-  }
-}
+  fee: 214,
+  fundingDate: '2016-03-13T12:52:32.123Z',
+  fundingEstimatedDate: '2016-03-13T12:52:32.123Z',
+};
 ```
 

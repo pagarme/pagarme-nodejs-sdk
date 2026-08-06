@@ -12,19 +12,19 @@ import {
   optional,
   Schema,
   string,
-} from '../schema';
+} from '../schema.js';
 import {
   CreateAddressRequest,
   createAddressRequestSchema,
-} from './createAddressRequest';
+} from './createAddressRequest.js';
 import {
   CreateFineRequest,
   createFineRequestSchema,
-} from './createFineRequest';
+} from './createFineRequest.js';
 import {
   CreateInterestRequest,
   createInterestRequestSchema,
-} from './createInterestRequest';
+} from './createInterestRequest.js';
 
 /** Contains the settings for creating a boleto payment */
 export interface CreateBoletoPaymentRequest {
@@ -51,25 +51,23 @@ export interface CreateBoletoPaymentRequest {
   maxDaysToPayPastDue?: number | null;
 }
 
-export const createBoletoPaymentRequestSchema: Schema<CreateBoletoPaymentRequest> = object(
-  {
-    retries: ['retries', number()],
-    bank: ['bank', optional(nullable(string()))],
-    instructions: ['instructions', string()],
-    dueAt: ['due_at', optional(nullable(string()))],
-    billingAddress: ['billing_address', lazy(() => createAddressRequestSchema)],
-    billingAddressId: ['billing_address_id', optional(nullable(string()))],
-    nossoNumero: ['nosso_numero', optional(nullable(string()))],
-    documentNumber: ['document_number', string()],
-    statementDescriptor: ['statement_descriptor', string()],
-    interest: [
-      'interest',
-      optional(nullable(lazy(() => createInterestRequestSchema))),
-    ],
-    fine: ['fine', optional(nullable(lazy(() => createFineRequestSchema)))],
-    maxDaysToPayPastDue: [
-      'max_days_to_pay_past_due',
-      optional(nullable(number())),
-    ],
-  }
+export const createBoletoPaymentRequestSchema: Schema<CreateBoletoPaymentRequest> = lazy(
+  () =>
+    object({
+      retries: ['retries', number()],
+      bank: ['bank', optional(nullable(string()))],
+      instructions: ['instructions', string()],
+      dueAt: ['due_at', optional(nullable(string()))],
+      billingAddress: ['billing_address', createAddressRequestSchema],
+      billingAddressId: ['billing_address_id', optional(nullable(string()))],
+      nossoNumero: ['nosso_numero', optional(nullable(string()))],
+      documentNumber: ['document_number', string()],
+      statementDescriptor: ['statement_descriptor', string()],
+      interest: ['interest', optional(nullable(createInterestRequestSchema))],
+      fine: ['fine', optional(nullable(createFineRequestSchema))],
+      maxDaysToPayPastDue: [
+        'max_days_to_pay_past_due',
+        optional(nullable(number())),
+      ],
+    })
 );

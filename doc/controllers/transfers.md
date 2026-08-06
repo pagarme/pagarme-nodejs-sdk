@@ -10,9 +10,72 @@ const transfersController = new TransfersController(client);
 
 ## Methods
 
+* [Create Transfer](../../doc/controllers/transfers.md#create-transfer)
 * [Get Transfer by Id](../../doc/controllers/transfers.md#get-transfer-by-id)
 * [Get Transfers](../../doc/controllers/transfers.md#get-transfers)
-* [Create Transfer](../../doc/controllers/transfers.md#create-transfer)
+
+
+# Create Transfer
+
+```ts
+async createTransfer(
+  request: CreateTransfer,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetTransfer>>
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `request` | [`CreateTransfer`](../../doc/models/create-transfer.md) | Body, Required | - |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+**200**
+
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [`GetTransfer`](../../doc/models/get-transfer.md).
+
+## Example Usage
+
+```ts
+const request: CreateTransfer = {
+  amount: 242,
+  sourceId: 'source_id0',
+  targetId: 'target_id6',
+};
+
+try {
+  const response = await transfersController.createTransfer(request);
+
+  // Extracting fully parsed response body.
+  console.log(response.result);
+
+  // Extracting response status code.
+  console.log(response.statusCode);
+  // Extracting response headers.
+  console.log(response.headers);
+  // Extracting response body of type `string | Stream`
+  console.log(response.body);
+} catch (error) {
+  if (error instanceof ApiError) {
+    // Extracting response error status code.
+    console.log(error.statusCode);
+    // Extracting response error headers.
+    console.log(error.headers);
+    // Extracting response error body of type `string | Stream`.
+    console.log(error.body);
+    if (error instanceof CustomError) {
+      console.log(error.result);
+    }
+  }
+}
+```
 
 
 # Get Transfer by Id
@@ -24,6 +87,10 @@ async getTransferById(
 ): Promise<ApiResponse<GetTransfer>>
 ```
 
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -33,7 +100,9 @@ async getTransferById(
 
 ## Response Type
 
-This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [GetTransfer](../../doc/models/get-transfer.md).
+**200**
+
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [`GetTransfer`](../../doc/models/get-transfer.md).
 
 ## Example Usage
 
@@ -41,13 +110,28 @@ This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The 
 const transferId = 'transfer_id6';
 
 try {
-  const { result, ...httpResponse } = await transfersController.getTransferById(transferId);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
+  const response = await transfersController.getTransferById(transferId);
+
+  // Extracting fully parsed response body.
+  console.log(response.result);
+
+  // Extracting response status code.
+  console.log(response.statusCode);
+  // Extracting response headers.
+  console.log(response.headers);
+  // Extracting response body of type `string | Stream`
+  console.log(response.body);
 } catch (error) {
   if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
+    // Extracting response error status code.
+    console.log(error.statusCode);
+    // Extracting response error headers.
+    console.log(error.headers);
+    // Extracting response error body of type `string | Stream`.
+    console.log(error.body);
+    if (error instanceof CustomError) {
+      console.log(error.result);
+    }
   }
 }
 ```
@@ -63,6 +147,10 @@ async getTransfers(
 ): Promise<ApiResponse<ListTransfers>>
 ```
 
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -71,61 +159,36 @@ async getTransfers(
 
 ## Response Type
 
-This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [ListTransfers](../../doc/models/list-transfers.md).
+**200**
+
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [`ListTransfers`](../../doc/models/list-transfers.md).
 
 ## Example Usage
 
 ```ts
 try {
-  const { result, ...httpResponse } = await transfersController.getTransfers();
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
+  const response = await transfersController.getTransfers();
+
+  // Extracting fully parsed response body.
+  console.log(response.result);
+
+  // Extracting response status code.
+  console.log(response.statusCode);
+  // Extracting response headers.
+  console.log(response.headers);
+  // Extracting response body of type `string | Stream`
+  console.log(response.body);
 } catch (error) {
   if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Create Transfer
-
-```ts
-async createTransfer(
-  request: CreateTransfer,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetTransfer>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `request` | [`CreateTransfer`](../../doc/models/create-transfer.md) | Body, Required | - |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [GetTransfer](../../doc/models/get-transfer.md).
-
-## Example Usage
-
-```ts
-const request: CreateTransfer = {
-  amount: 242,
-  sourceId: 'source_id0',
-  targetId: 'target_id6',
-};
-
-try {
-  const { result, ...httpResponse } = await transfersController.createTransfer(request);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
+    // Extracting response error status code.
+    console.log(error.statusCode);
+    // Extracting response error headers.
+    console.log(error.headers);
+    // Extracting response error body of type `string | Stream`.
+    console.log(error.body);
+    if (error instanceof CustomError) {
+      console.log(error.result);
+    }
   }
 }
 ```

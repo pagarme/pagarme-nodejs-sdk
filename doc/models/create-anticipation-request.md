@@ -15,13 +15,15 @@ Request for creating an anticipation
 | `timeframe` | `string` | Required | Timeframe |
 | `paymentDate` | `string` | Required | Payment date |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "amount": 68,
-  "timeframe": "timeframe2",
-  "payment_date": "2016-03-13T12:52:32.123Z"
-}
+```ts
+import { CreateAnticipationRequest } from 'pagarmeapisdklib';
+
+const createAnticipationRequest: CreateAnticipationRequest = {
+  amount: 84,
+  timeframe: 'timeframe2',
+  paymentDate: '2016-03-13T12:52:32.123Z',
+};
 ```
 

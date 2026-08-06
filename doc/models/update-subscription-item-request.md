@@ -19,30 +19,27 @@ Request for updating a subscription item
 | `quantity` | `number \| undefined` | Optional | Quantity |
 | `minimumPrice` | `number \| undefined` | Optional | Minimum price |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "description": "description2",
-  "status": "status4",
-  "pricing_scheme": {
-    "scheme_type": "scheme_type8",
-    "price_brackets": [
-      {
-        "start_quantity": 144,
-        "price": 174,
-        "end_quantity": 152,
-        "overage_price": 166
-      }
+```ts
+import { UpdateSubscriptionItemRequest } from 'pagarmeapisdklib';
+
+const updateSubscriptionItemRequest: UpdateSubscriptionItemRequest = {
+  description: '',
+  status: '',
+  pricingScheme: {
+    schemeType: '',
+    priceBrackets: [
+      {}
     ],
-    "price": 166,
-    "minimum_price": 6,
-    "percentage": 251.76
+    price: 166,
+    minimumPrice: 6,
+    percentage: 251.76,
   },
-  "name": "name2",
-  "cycles": 108,
-  "quantity": 128,
-  "minimum_price": 140
-}
+  name: '',
+  cycles: 64,
+  quantity: 44,
+  minimumPrice: 56,
+};
 ```
 

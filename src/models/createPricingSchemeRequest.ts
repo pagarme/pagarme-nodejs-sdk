@@ -12,11 +12,11 @@ import {
   optional,
   Schema,
   string,
-} from '../schema';
+} from '../schema.js';
 import {
   CreatePriceBracketRequest,
   createPriceBracketRequestSchema,
-} from './createPriceBracketRequest';
+} from './createPriceBracketRequest.js';
 
 /** Request for creating a pricing scheme */
 export interface CreatePricingSchemeRequest {
@@ -32,15 +32,16 @@ export interface CreatePricingSchemeRequest {
   percentage?: number;
 }
 
-export const createPricingSchemeRequestSchema: Schema<CreatePricingSchemeRequest> = object(
-  {
-    schemeType: ['scheme_type', string()],
-    priceBrackets: [
-      'price_brackets',
-      optional(array(lazy(() => createPriceBracketRequestSchema))),
-    ],
-    price: ['price', optional(number())],
-    minimumPrice: ['minimum_price', optional(number())],
-    percentage: ['percentage', optional(number())],
-  }
+export const createPricingSchemeRequestSchema: Schema<CreatePricingSchemeRequest> = lazy(
+  () =>
+    object({
+      schemeType: ['scheme_type', string()],
+      priceBrackets: [
+        'price_brackets',
+        optional(array(createPriceBracketRequestSchema)),
+      ],
+      price: ['price', optional(number())],
+      minimumPrice: ['minimum_price', optional(number())],
+      percentage: ['percentage', optional(number())],
+    })
 );

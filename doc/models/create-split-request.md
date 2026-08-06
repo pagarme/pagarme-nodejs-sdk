@@ -17,19 +17,17 @@ Split
 | `options` | [`CreateSplitOptionsRequest \| undefined`](../../doc/models/create-split-options-request.md) | Optional | The split options request |
 | `splitRuleId` | `string \| undefined` | Optional | Rule code used in cancellation. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "type": "type6",
-  "amount": 100,
-  "recipient_id": "recipient_id6",
-  "options": {
-    "liable": false,
-    "charge_processing_fee": false,
-    "charge_remainder_fee": false
-  },
-  "split_rule_id": "split_rule_id8"
-}
+```ts
+import { CreateSplitRequest } from 'pagarmeapisdklib';
+
+const createSplitRequest: CreateSplitRequest = {
+  type: 'type8',
+  amount: 166,
+  recipientId: 'recipient_id8',
+  options: {},
+  splitRuleId: 'split_rule_id4',
+};
 ```
 

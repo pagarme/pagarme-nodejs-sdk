@@ -12,12 +12,14 @@
 | `name` | `string \| null \| undefined` | Optional | - |
 | `date` | `string \| null \| undefined` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "name": "name8",
-  "date": "2016-03-13T12:52:32.123Z"
-}
+```ts
+import { GetTransactionReportFileResponse } from 'pagarmeapisdklib';
+
+const getTransactionReportFileResponse: GetTransactionReportFileResponse = {
+  name: 'name0',
+  date: '2016-03-13T12:52:32.123Z',
+};
 ```
 

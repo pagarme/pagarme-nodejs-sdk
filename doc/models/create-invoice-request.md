@@ -13,13 +13,17 @@ Request for creating a new Invoice
 |  --- | --- | --- | --- |
 | `metadata` | `Record<string, string>` | Required | Metadata |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "metadata": {
-    "key0": "metadata9"
-  }
-}
+```ts
+import { CreateInvoiceRequest } from 'pagarmeapisdklib';
+
+const createInvoiceRequest: CreateInvoiceRequest = {
+  metadata: {
+    'key0': 'metadata9',
+    'key1': 'metadata8',
+    'key2': 'metadata7'
+  },
+};
 ```
 

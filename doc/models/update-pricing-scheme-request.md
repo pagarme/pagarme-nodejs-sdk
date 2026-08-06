@@ -17,22 +17,19 @@ Request for updating a pricing scheme
 | `minimumPrice` | `number \| undefined` | Optional | Minimum price |
 | `percentage` | `number \| undefined` | Optional | percentual value used in pricing_scheme Percent |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "scheme_type": "scheme_type0",
-  "price_brackets": [
-    {
-      "start_quantity": 144,
-      "price": 174,
-      "end_quantity": 152,
-      "overage_price": 166
-    }
+```ts
+import { UpdatePricingSchemeRequest } from 'pagarmeapisdklib';
+
+const updatePricingSchemeRequest: UpdatePricingSchemeRequest = {
+  schemeType: '',
+  priceBrackets: [
+    {}
   ],
-  "price": 162,
-  "minimum_price": 2,
-  "percentage": 62.28
-}
+  price: 180,
+  minimumPrice: 84,
+  percentage: 238.06,
+};
 ```
 

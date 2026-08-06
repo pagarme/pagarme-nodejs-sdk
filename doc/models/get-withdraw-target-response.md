@@ -12,12 +12,14 @@
 | `targetId` | `string \| null \| undefined` | Optional | - |
 | `type` | `string \| null \| undefined` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "target_id": "target_id4",
-  "type": "type6"
-}
+```ts
+import { GetWithdrawTargetResponse } from 'pagarmeapisdklib';
+
+const getWithdrawTargetResponse: GetWithdrawTargetResponse = {
+  targetId: 'target_id8',
+  type: 'type8',
+};
 ```
 

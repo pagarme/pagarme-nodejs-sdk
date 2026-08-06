@@ -13,11 +13,13 @@ Request for updating the due date from a subscription
 |  --- | --- | --- | --- |
 | `nextBillingAt` | `string` | Required | The date when the next subscription billing must occur |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "next_billing_at": "2016-03-13T12:52:32.123Z"
-}
+```ts
+import { UpdateSubscriptionBillingDateRequest } from 'pagarmeapisdklib';
+
+const updateSubscriptionBillingDateRequest: UpdateSubscriptionBillingDateRequest = {
+  nextBillingAt: '2016-03-13T12:52:32.123Z',
+};
 ```
 

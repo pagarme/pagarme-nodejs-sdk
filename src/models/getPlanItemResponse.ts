@@ -12,12 +12,12 @@ import {
   optional,
   Schema,
   string,
-} from '../schema';
-import { GetPlanResponse, getPlanResponseSchema } from './getPlanResponse';
+} from '../schema.js';
+import { GetPlanResponse, getPlanResponseSchema } from './getPlanResponse.js';
 import {
   GetPricingSchemeResponse,
   getPricingSchemeResponseSchema,
-} from './getPricingSchemeResponse';
+} from './getPricingSchemeResponse.js';
 
 /** Response object for getting a plan item */
 export interface GetPlanItemResponse {
@@ -34,19 +34,21 @@ export interface GetPlanItemResponse {
   deletedAt?: string | null;
 }
 
-export const getPlanItemResponseSchema: Schema<GetPlanItemResponse> = object({
-  id: ['id', optional(nullable(string()))],
-  name: ['name', optional(nullable(string()))],
-  status: ['status', optional(nullable(string()))],
-  createdAt: ['created_at', optional(nullable(string()))],
-  updatedAt: ['updated_at', optional(nullable(string()))],
-  pricingScheme: [
-    'pricing_scheme',
-    optional(nullable(lazy(() => getPricingSchemeResponseSchema))),
-  ],
-  description: ['description', optional(nullable(string()))],
-  plan: ['plan', optional(nullable(lazy(() => getPlanResponseSchema)))],
-  quantity: ['quantity', optional(nullable(number()))],
-  cycles: ['cycles', optional(nullable(number()))],
-  deletedAt: ['deleted_at', optional(nullable(string()))],
-});
+export const getPlanItemResponseSchema: Schema<GetPlanItemResponse> = lazy(() =>
+  object({
+    id: ['id', optional(nullable(string()))],
+    name: ['name', optional(nullable(string()))],
+    status: ['status', optional(nullable(string()))],
+    createdAt: ['created_at', optional(nullable(string()))],
+    updatedAt: ['updated_at', optional(nullable(string()))],
+    pricingScheme: [
+      'pricing_scheme',
+      optional(nullable(getPricingSchemeResponseSchema)),
+    ],
+    description: ['description', optional(nullable(string()))],
+    plan: ['plan', optional(nullable(getPlanResponseSchema))],
+    quantity: ['quantity', optional(nullable(number()))],
+    cycles: ['cycles', optional(nullable(number()))],
+    deletedAt: ['deleted_at', optional(nullable(string()))],
+  })
+);

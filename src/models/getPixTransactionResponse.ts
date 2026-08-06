@@ -15,21 +15,21 @@ import {
   optional,
   Schema,
   string,
-} from '../schema';
-import { getAntifraudResponseSchema } from './getAntifraudResponse';
-import { getFineResponseSchema } from './getFineResponse';
-import { getGatewayResponseResponseSchema } from './getGatewayResponseResponse';
-import { getInterestResponseSchema } from './getInterestResponse';
+} from '../schema.js';
+import { getAntifraudResponseSchema } from './getAntifraudResponse.js';
+import { getFineResponseSchema } from './getFineResponse.js';
+import { getGatewayResponseResponseSchema } from './getGatewayResponseResponse.js';
+import { getInterestResponseSchema } from './getInterestResponse.js';
 import {
   GetPixPayerResponse,
   getPixPayerResponseSchema,
-} from './getPixPayerResponse';
-import { getSplitResponseSchema } from './getSplitResponse';
-import { GetTransactionResponse } from './getTransactionResponse';
+} from './getPixPayerResponse.js';
+import { getSplitResponseSchema } from './getSplitResponse.js';
+import { GetTransactionResponse } from './getTransactionResponse.js';
 import {
   PixAdditionalInformation,
   pixAdditionalInformationSchema,
-} from './pixAdditionalInformation';
+} from './pixAdditionalInformation.js';
 
 /** Response object when getting a pix transaction */
 export interface GetPixTransactionResponse extends GetTransactionResponse {
@@ -43,54 +43,46 @@ export interface GetPixTransactionResponse extends GetTransactionResponse {
   pixProviderTid?: string | null;
 }
 
-export const getPixTransactionResponseSchema: Schema<GetPixTransactionResponse> = object(
-  {
-    qrCode: ['qr_code', optional(nullable(string()))],
-    qrCodeUrl: ['qr_code_url', optional(nullable(string()))],
-    expiresAt: ['expires_at', optional(nullable(string()))],
-    additionalInformation: [
-      'additional_information',
-      optional(nullable(array(lazy(() => pixAdditionalInformationSchema)))),
-    ],
-    endToEndId: ['end_to_end_id', optional(nullable(string()))],
-    payer: ['payer', optional(nullable(lazy(() => getPixPayerResponseSchema)))],
-    pixProviderTid: ['pix_provider_tid', optional(nullable(string()))],
-    gatewayId: ['gateway_id', optional(nullable(string()))],
-    amount: ['amount', optional(nullable(number()))],
-    status: ['status', optional(nullable(string()))],
-    success: ['success', optional(nullable(boolean()))],
-    createdAt: ['created_at', optional(nullable(string()))],
-    updatedAt: ['updated_at', optional(nullable(string()))],
-    attemptCount: ['attempt_count', optional(nullable(number()))],
-    maxAttempts: ['max_attempts', optional(nullable(number()))],
-    splits: [
-      'splits',
-      optional(nullable(array(lazy(() => getSplitResponseSchema)))),
-    ],
-    nextAttempt: ['next_attempt', optional(nullable(string()))],
-    id: ['id', optional(nullable(string()))],
-    gatewayResponse: [
-      'gateway_response',
-      optional(nullable(lazy(() => getGatewayResponseResponseSchema))),
-    ],
-    antifraudResponse: [
-      'antifraud_response',
-      optional(nullable(lazy(() => getAntifraudResponseSchema))),
-    ],
-    metadata: ['metadata', optional(nullable(dict(string())))],
-    split: [
-      'split',
-      optional(nullable(array(lazy(() => getSplitResponseSchema)))),
-    ],
-    interest: [
-      'interest',
-      optional(nullable(lazy(() => getInterestResponseSchema))),
-    ],
-    fine: ['fine', optional(nullable(lazy(() => getFineResponseSchema)))],
-    maxDaysToPayPastDue: [
-      'max_days_to_pay_past_due',
-      optional(nullable(number())),
-    ],
-    transactionType: ['transaction_type', optional(string())],
-  }
+export const getPixTransactionResponseSchema: Schema<GetPixTransactionResponse> = lazy(
+  () =>
+    object({
+      qrCode: ['qr_code', optional(nullable(string()))],
+      qrCodeUrl: ['qr_code_url', optional(nullable(string()))],
+      expiresAt: ['expires_at', optional(nullable(string()))],
+      additionalInformation: [
+        'additional_information',
+        optional(nullable(array(pixAdditionalInformationSchema))),
+      ],
+      endToEndId: ['end_to_end_id', optional(nullable(string()))],
+      payer: ['payer', optional(nullable(getPixPayerResponseSchema))],
+      pixProviderTid: ['pix_provider_tid', optional(nullable(string()))],
+      gatewayId: ['gateway_id', optional(nullable(string()))],
+      amount: ['amount', optional(nullable(number()))],
+      status: ['status', optional(nullable(string()))],
+      success: ['success', optional(nullable(boolean()))],
+      createdAt: ['created_at', optional(nullable(string()))],
+      updatedAt: ['updated_at', optional(nullable(string()))],
+      attemptCount: ['attempt_count', optional(nullable(number()))],
+      maxAttempts: ['max_attempts', optional(nullable(number()))],
+      splits: ['splits', optional(nullable(array(getSplitResponseSchema)))],
+      nextAttempt: ['next_attempt', optional(nullable(string()))],
+      id: ['id', optional(nullable(string()))],
+      gatewayResponse: [
+        'gateway_response',
+        optional(nullable(getGatewayResponseResponseSchema)),
+      ],
+      antifraudResponse: [
+        'antifraud_response',
+        optional(nullable(getAntifraudResponseSchema)),
+      ],
+      metadata: ['metadata', optional(nullable(dict(string())))],
+      split: ['split', optional(nullable(array(getSplitResponseSchema)))],
+      interest: ['interest', optional(nullable(getInterestResponseSchema))],
+      fine: ['fine', optional(nullable(getFineResponseSchema))],
+      maxDaysToPayPastDue: [
+        'max_days_to_pay_past_due',
+        optional(nullable(number())),
+      ],
+      transactionType: ['transaction_type', optional(string())],
+    })
 );

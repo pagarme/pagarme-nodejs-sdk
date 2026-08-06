@@ -13,7 +13,7 @@ import {
   optional,
   Schema,
   string,
-} from '../schema';
+} from '../schema.js';
 
 export interface GetAutomaticAnticipationResponse {
   enabled?: boolean | null;

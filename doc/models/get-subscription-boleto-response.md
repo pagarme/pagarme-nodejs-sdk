@@ -15,21 +15,23 @@ Response object for getting a boleto
 | `fine` | [`GetFineResponse \| null \| undefined`](../../doc/models/get-fine-response.md) | Optional | Fine |
 | `maxDaysToPayPastDue` | `number \| null \| undefined` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "interest": {
-    "days": 2,
-    "type": "percentage",
-    "amount": 20
+```ts
+import { GetSubscriptionBoletoResponse } from 'pagarmeapisdklib';
+
+const getSubscriptionBoletoResponse: GetSubscriptionBoletoResponse = {
+  interest: {
+    days: 2,
+    type: 'percentage',
+    amount: 20,
   },
-  "fine": {
-    "days": 2,
-    "type": "flat",
-    "amount": 10
+  fine: {
+    days: 2,
+    type: 'flat',
+    amount: 10,
   },
-  "max_days_to_pay_past_due": 2
-}
+  maxDaysToPayPastDue: 2,
+};
 ```
 

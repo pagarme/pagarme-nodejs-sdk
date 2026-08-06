@@ -17,21 +17,19 @@ Request object for RegisterInformation.
 | `siteUrl` | `string \| null \| undefined` | Optional | - |
 | `phoneNumbers` | [`CreateRegisterInformationPhoneRequest[]`](../../doc/models/create-register-information-phone-request.md) | Required | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "email": "email4",
-  "document": "document6",
-  "type": "type8",
-  "phone_numbers": [
-    {
-      "ddd": "ddd4",
-      "number": "number2",
-      "type": "type0"
-    }
+```ts
+import { CreateRegisterInformationBaseRequest } from 'pagarmeapisdklib';
+
+const createRegisterInformationBaseRequest: CreateRegisterInformationBaseRequest = {
+  email: '',
+  document: '',
+  type: '',
+  phoneNumbers: [
+    {}
   ],
-  "site_url": "site_url4"
-}
+  siteUrl: 'site_url6',
+};
 ```
 

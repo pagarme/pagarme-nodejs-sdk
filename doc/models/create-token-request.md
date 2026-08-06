@@ -14,20 +14,14 @@ Token data
 | `type` | `string` | Required | Token type<br><br>**Default**: `'card'` |
 | `card` | [`CreateCardTokenRequest`](../../doc/models/create-card-token-request.md) | Required | Card data |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "type": "card",
-  "card": {
-    "number": "number6",
-    "holder_name": "holder_name2",
-    "exp_month": 228,
-    "exp_year": 68,
-    "cvv": "cvv4",
-    "brand": "brand0",
-    "label": "label6"
-  }
-}
+```ts
+import { CreateTokenRequest } from 'pagarmeapisdklib';
+
+const createTokenRequest: CreateTokenRequest = {
+  type: 'card',
+  card: {},
+};
 ```
 

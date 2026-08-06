@@ -33,15 +33,17 @@ Response object for getting a plan
 | `minimumPrice` | `number \| null \| undefined` | Optional | - |
 | `deletedAt` | `string \| null \| undefined` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id0",
-  "name": "name0",
-  "description": "description0",
-  "url": "url4",
-  "statement_descriptor": "statement_descriptor0"
-}
+```ts
+import { GetPlanResponse } from 'pagarmeapisdklib';
+
+const getPlanResponse: GetPlanResponse = {
+  id: 'id0',
+  name: 'name0',
+  description: 'description0',
+  url: 'url4',
+  statementDescriptor: 'statement_descriptor0',
+};
 ```
 

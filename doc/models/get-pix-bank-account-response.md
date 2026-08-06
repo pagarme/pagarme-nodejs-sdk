@@ -16,14 +16,16 @@ Payer's bank details.
 | `branchCode` | `string \| null \| undefined` | Optional | - |
 | `accountNumber` | `string \| null \| undefined` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "bank_name": "bank_name0",
-  "ispb": "ispb8",
-  "branch_code": "branch_code2",
-  "account_number": "account_number4"
-}
+```ts
+import { GetPixBankAccountResponse } from 'pagarmeapisdklib';
+
+const getPixBankAccountResponse: GetPixBankAccountResponse = {
+  bankName: 'bank_name4',
+  ispb: 'ispb4',
+  branchCode: 'branch_code8',
+  accountNumber: 'account_number0',
+};
 ```
 

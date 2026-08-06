@@ -13,13 +13,13 @@ import {
   optional,
   Schema,
   string,
-} from '../schema';
+} from '../schema.js';
 import {
   CreateRegisterInformationAddressRequest,
   createRegisterInformationAddressRequestSchema,
-} from './createRegisterInformationAddressRequest';
-import { CreateRegisterInformationBaseRequest } from './createRegisterInformationBaseRequest';
-import { createRegisterInformationPhoneRequestSchema } from './createRegisterInformationPhoneRequest';
+} from './createRegisterInformationAddressRequest.js';
+import { CreateRegisterInformationBaseRequest } from './createRegisterInformationBaseRequest.js';
+import { createRegisterInformationPhoneRequestSchema } from './createRegisterInformationPhoneRequest.js';
 
 export interface CreateRegisterInformationIndividualRequest extends CreateRegisterInformationBaseRequest {
   name: string;
@@ -30,24 +30,22 @@ export interface CreateRegisterInformationIndividualRequest extends CreateRegist
   address: CreateRegisterInformationAddressRequest;
 }
 
-export const createRegisterInformationIndividualRequestSchema: Schema<CreateRegisterInformationIndividualRequest> = object(
-  {
-    name: ['name', string()],
-    motherName: ['mother_name', optional(nullable(string()))],
-    birthdate: ['birthdate', string()],
-    monthlyIncome: ['monthly_income', bigint()],
-    professionalOccupation: ['professional_occupation', string()],
-    address: [
-      'address',
-      lazy(() => createRegisterInformationAddressRequestSchema),
-    ],
-    email: ['email', string()],
-    document: ['document', string()],
-    type: ['type', string()],
-    siteUrl: ['site_url', optional(nullable(string()))],
-    phoneNumbers: [
-      'phone_numbers',
-      array(lazy(() => createRegisterInformationPhoneRequestSchema)),
-    ],
-  }
+export const createRegisterInformationIndividualRequestSchema: Schema<CreateRegisterInformationIndividualRequest> = lazy(
+  () =>
+    object({
+      name: ['name', string()],
+      motherName: ['mother_name', optional(nullable(string()))],
+      birthdate: ['birthdate', string()],
+      monthlyIncome: ['monthly_income', bigint()],
+      professionalOccupation: ['professional_occupation', string()],
+      address: ['address', createRegisterInformationAddressRequestSchema],
+      email: ['email', string()],
+      document: ['document', string()],
+      type: ['type', string()],
+      siteUrl: ['site_url', optional(nullable(string()))],
+      phoneNumbers: [
+        'phone_numbers',
+        array(createRegisterInformationPhoneRequestSchema),
+      ],
+    })
 );

@@ -31,26 +31,21 @@ Response object for getting an RegisterInformationResponse
 | `mainAddress` | [`GetRegisterInformationAddressResponse \| null \| undefined`](../../doc/models/get-register-information-address-response.md) | Optional | - |
 | `managingPartners` | [`GetManagingPartnerResponse[] \| null \| undefined`](../../doc/models/get-managing-partner-response.md) | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "email": "email2",
-  "document": "document2",
-  "type": "type6",
-  "site_url": "site_url6",
-  "phone_numbers": [
+```ts
+import { GetRegisterInformationResponse } from 'pagarmeapisdklib';
+
+const getRegisterInformationResponse: GetRegisterInformationResponse = {
+  email: 'email4',
+  document: 'document6',
+  type: 'type2',
+  siteUrl: 'site_url4',
+  phoneNumbers: [
+    null,
     {
-      "ddd": "ddd4",
-      "number": "number2",
-      "type": "type0"
-    },
-    {
-      "ddd": "ddd4",
-      "number": "number2",
-      "type": "type0"
     }
-  ]
-}
+  ],
+};
 ```
 

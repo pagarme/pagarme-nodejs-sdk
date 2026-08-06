@@ -13,15 +13,15 @@ import {
   optional,
   Schema,
   string,
-} from '../schema';
+} from '../schema.js';
 import {
   GetBillingAddressResponse,
   getBillingAddressResponseSchema,
-} from './getBillingAddressResponse';
+} from './getBillingAddressResponse.js';
 import {
   GetCustomerResponse,
   getCustomerResponseSchema,
-} from './getCustomerResponse';
+} from './getCustomerResponse.js';
 
 /** Response object for getting a credit card */
 export interface GetCardResponse {
@@ -47,28 +47,27 @@ export interface GetCardResponse {
   label?: string | null;
 }
 
-export const getCardResponseSchema: Schema<GetCardResponse> = object({
-  id: ['id', optional(nullable(string()))],
-  lastFourDigits: ['last_four_digits', optional(nullable(string()))],
-  brand: ['brand', optional(nullable(string()))],
-  holderName: ['holder_name', optional(nullable(string()))],
-  expMonth: ['exp_month', optional(nullable(number()))],
-  expYear: ['exp_year', optional(nullable(number()))],
-  status: ['status', optional(nullable(string()))],
-  createdAt: ['created_at', optional(nullable(string()))],
-  updatedAt: ['updated_at', optional(nullable(string()))],
-  billingAddress: [
-    'billing_address',
-    optional(nullable(lazy(() => getBillingAddressResponseSchema))),
-  ],
-  customer: [
-    'customer',
-    optional(nullable(lazy(() => getCustomerResponseSchema))),
-  ],
-  metadata: ['metadata', optional(nullable(dict(string())))],
-  type: ['type', optional(nullable(string()))],
-  holderDocument: ['holder_document', optional(nullable(string()))],
-  deletedAt: ['deleted_at', optional(nullable(string()))],
-  firstSixDigits: ['first_six_digits', optional(nullable(string()))],
-  label: ['label', optional(nullable(string()))],
-});
+export const getCardResponseSchema: Schema<GetCardResponse> = lazy(() =>
+  object({
+    id: ['id', optional(nullable(string()))],
+    lastFourDigits: ['last_four_digits', optional(nullable(string()))],
+    brand: ['brand', optional(nullable(string()))],
+    holderName: ['holder_name', optional(nullable(string()))],
+    expMonth: ['exp_month', optional(nullable(number()))],
+    expYear: ['exp_year', optional(nullable(number()))],
+    status: ['status', optional(nullable(string()))],
+    createdAt: ['created_at', optional(nullable(string()))],
+    updatedAt: ['updated_at', optional(nullable(string()))],
+    billingAddress: [
+      'billing_address',
+      optional(nullable(getBillingAddressResponseSchema)),
+    ],
+    customer: ['customer', optional(nullable(getCustomerResponseSchema))],
+    metadata: ['metadata', optional(nullable(dict(string())))],
+    type: ['type', optional(nullable(string()))],
+    holderDocument: ['holder_document', optional(nullable(string()))],
+    deletedAt: ['deleted_at', optional(nullable(string()))],
+    firstSixDigits: ['first_six_digits', optional(nullable(string()))],
+    label: ['label', optional(nullable(string()))],
+  })
+);

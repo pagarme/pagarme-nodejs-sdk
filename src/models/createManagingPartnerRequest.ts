@@ -14,15 +14,15 @@ import {
   optional,
   Schema,
   string,
-} from '../schema';
+} from '../schema.js';
 import {
   CreateRegisterInformationAddressRequest,
   createRegisterInformationAddressRequestSchema,
-} from './createRegisterInformationAddressRequest';
+} from './createRegisterInformationAddressRequest.js';
 import {
   CreateRegisterInformationPhoneRequest,
   createRegisterInformationPhoneRequestSchema,
-} from './createRegisterInformationPhoneRequest';
+} from './createRegisterInformationPhoneRequest.js';
 
 /** Managing Partner Request */
 export interface CreateManagingPartnerRequest {
@@ -38,26 +38,24 @@ export interface CreateManagingPartnerRequest {
   phoneNumbers: CreateRegisterInformationPhoneRequest[];
 }
 
-export const createManagingPartnerRequestSchema: Schema<CreateManagingPartnerRequest> = object(
-  {
-    name: ['name', string()],
-    email: ['email', string()],
-    document: ['document', string()],
-    motherName: ['mother_name', optional(nullable(string()))],
-    birthdate: ['birthdate', string()],
-    monthlyIncome: ['monthly_income', bigint()],
-    professionalOccupation: ['professional_occupation', string()],
-    selfDeclaredLegalRepresentative: [
-      'self_declared_legal_representative',
-      boolean(),
-    ],
-    address: [
-      'address',
-      lazy(() => createRegisterInformationAddressRequestSchema),
-    ],
-    phoneNumbers: [
-      'phone_numbers',
-      array(lazy(() => createRegisterInformationPhoneRequestSchema)),
-    ],
-  }
+export const createManagingPartnerRequestSchema: Schema<CreateManagingPartnerRequest> = lazy(
+  () =>
+    object({
+      name: ['name', string()],
+      email: ['email', string()],
+      document: ['document', string()],
+      motherName: ['mother_name', optional(nullable(string()))],
+      birthdate: ['birthdate', string()],
+      monthlyIncome: ['monthly_income', bigint()],
+      professionalOccupation: ['professional_occupation', string()],
+      selfDeclaredLegalRepresentative: [
+        'self_declared_legal_representative',
+        boolean(),
+      ],
+      address: ['address', createRegisterInformationAddressRequestSchema],
+      phoneNumbers: [
+        'phone_numbers',
+        array(createRegisterInformationPhoneRequestSchema),
+      ],
+    })
 );

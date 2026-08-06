@@ -12,19 +12,19 @@ import {
   optional,
   Schema,
   string,
-} from '../schema';
+} from '../schema.js';
 import {
   CreateBankAccountRefundingDTO,
   createBankAccountRefundingDTOSchema,
-} from './createBankAccountRefundingDTO';
+} from './createBankAccountRefundingDTO.js';
 import {
   CreateCancelChargeSplitRulesRequest,
   createCancelChargeSplitRulesRequestSchema,
-} from './createCancelChargeSplitRulesRequest';
+} from './createCancelChargeSplitRulesRequest.js';
 import {
   CreateSplitRequest,
   createSplitRequestSchema,
-} from './createSplitRequest';
+} from './createSplitRequest.js';
 
 /** Request for canceling a charge. */
 export interface CreateCancelChargeRequest {
@@ -38,18 +38,19 @@ export interface CreateCancelChargeRequest {
   bankAccount?: CreateBankAccountRefundingDTO;
 }
 
-export const createCancelChargeRequestSchema: Schema<CreateCancelChargeRequest> = object(
-  {
-    amount: ['amount', optional(number())],
-    splitRules: [
-      'split_rules',
-      optional(array(lazy(() => createCancelChargeSplitRulesRequestSchema))),
-    ],
-    split: ['split', optional(array(lazy(() => createSplitRequestSchema)))],
-    operationReference: ['operation_reference', string()],
-    bankAccount: [
-      'bank_account',
-      optional(lazy(() => createBankAccountRefundingDTOSchema)),
-    ],
-  }
+export const createCancelChargeRequestSchema: Schema<CreateCancelChargeRequest> = lazy(
+  () =>
+    object({
+      amount: ['amount', optional(number())],
+      splitRules: [
+        'split_rules',
+        optional(array(createCancelChargeSplitRulesRequestSchema)),
+      ],
+      split: ['split', optional(array(createSplitRequestSchema))],
+      operationReference: ['operation_reference', string()],
+      bankAccount: [
+        'bank_account',
+        optional(createBankAccountRefundingDTOSchema),
+      ],
+    })
 );

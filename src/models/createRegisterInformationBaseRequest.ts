@@ -6,17 +6,26 @@
 
 import {
   array,
+  isMappedValueValidForSchema,
   lazy,
   nullable,
   object,
   optional,
   Schema,
   string,
-} from '../schema';
+} from '../schema.js';
+import {
+  CreateRegisterInformationCorporationRequest,
+  createRegisterInformationCorporationRequestSchema,
+} from './createRegisterInformationCorporationRequest.js';
+import {
+  CreateRegisterInformationIndividualRequest,
+  createRegisterInformationIndividualRequestSchema,
+} from './createRegisterInformationIndividualRequest.js';
 import {
   CreateRegisterInformationPhoneRequest,
   createRegisterInformationPhoneRequestSchema,
-} from './createRegisterInformationPhoneRequest';
+} from './createRegisterInformationPhoneRequest.js';
 
 /** Request object for RegisterInformation. */
 export interface CreateRegisterInformationBaseRequest {
@@ -28,15 +37,46 @@ export interface CreateRegisterInformationBaseRequest {
   phoneNumbers: CreateRegisterInformationPhoneRequest[];
 }
 
-export const createRegisterInformationBaseRequestSchema: Schema<CreateRegisterInformationBaseRequest> = object(
-  {
-    email: ['email', string()],
-    document: ['document', string()],
-    type: ['type', string()],
-    siteUrl: ['site_url', optional(nullable(string()))],
-    phoneNumbers: [
-      'phone_numbers',
-      array(lazy(() => createRegisterInformationPhoneRequestSchema)),
-    ],
+export namespace CreateRegisterInformationBaseRequest {
+  /**
+   * Validation method to check if the given
+   * CreateRegisterInformationBaseRequest instance is also a
+   * CreateRegisterInformationCorporationRequest.
+   */
+  export function isCreateRegisterInformationCorporationRequest(
+    value: CreateRegisterInformationBaseRequest
+  ): value is CreateRegisterInformationCorporationRequest {
+    return isMappedValueValidForSchema(
+      value,
+      createRegisterInformationCorporationRequestSchema
+    );
   }
+
+  /**
+   * Validation method to check if the given
+   * CreateRegisterInformationBaseRequest instance is also a
+   * CreateRegisterInformationIndividualRequest.
+   */
+  export function isCreateRegisterInformationIndividualRequest(
+    value: CreateRegisterInformationBaseRequest
+  ): value is CreateRegisterInformationIndividualRequest {
+    return isMappedValueValidForSchema(
+      value,
+      createRegisterInformationIndividualRequestSchema
+    );
+  }
+}
+
+export const createRegisterInformationBaseRequestSchema: Schema<CreateRegisterInformationBaseRequest> = lazy(
+  () =>
+    object({
+      email: ['email', string()],
+      document: ['document', string()],
+      type: ['type', string()],
+      siteUrl: ['site_url', optional(nullable(string()))],
+      phoneNumbers: [
+        'phone_numbers',
+        array(createRegisterInformationPhoneRequestSchema),
+      ],
+    })
 );

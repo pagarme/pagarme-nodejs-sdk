@@ -18,29 +18,26 @@ Request for updating a plan item
 | `quantity` | `number \| undefined` | Optional | Quantity |
 | `cycles` | `number \| undefined` | Optional | Number of cycles that the item will be charged |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "name": "name6",
-  "description": "description6",
-  "status": "status8",
-  "pricing_scheme": {
-    "scheme_type": "scheme_type8",
-    "price_brackets": [
-      {
-        "start_quantity": 144,
-        "price": 174,
-        "end_quantity": 152,
-        "overage_price": 166
-      }
+```ts
+import { UpdatePlanItemRequest } from 'pagarmeapisdklib';
+
+const updatePlanItemRequest: UpdatePlanItemRequest = {
+  name: '',
+  description: '',
+  status: '',
+  pricingScheme: {
+    schemeType: '',
+    priceBrackets: [
+      {}
     ],
-    "price": 166,
-    "minimum_price": 6,
-    "percentage": 251.76
+    price: 166,
+    minimumPrice: 6,
+    percentage: 251.76,
   },
-  "quantity": 200,
-  "cycles": 36
-}
+  quantity: 174,
+  cycles: 194,
+};
 ```
 

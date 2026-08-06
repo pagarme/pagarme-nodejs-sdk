@@ -9,7 +9,7 @@ Pagarme API
 
 ### Requirements
 
-The SDK relies on **Node.js** and **npm** (to resolve dependencies). It also requires **Typescript version 3.9+**. You can download and install Node.js and [npm](https://www.npmjs.com/) from [the official Node.js website](https://nodejs.org/en/download/).
+The SDK relies on **Node.js** and **npm** (to resolve dependencies). It also requires **Typescript version >=4.1**. You can download and install Node.js and [npm](https://www.npmjs.com/) from [the official Node.js website](https://nodejs.org/en/download/).
 
 > **NOTE:** npm is installed by default when Node.js is installed.
 
@@ -71,7 +71,7 @@ npm install
 
 ## Initialize the API Client
 
-**_Note:_** Documentation for the client can be found [here.](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.17/doc/client.md)
+**_Note:_** Documentation for the client can be found [here.](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/7.0.1/doc/client.md)
 
 The following parameters are configurable for the API Client:
 
@@ -79,13 +79,17 @@ The following parameters are configurable for the API Client:
 |  --- | --- | --- |
 | serviceRefererName | `string` |  |
 | timeout | `number` | Timeout for API calls.<br>*Default*: `0` |
-| httpClientOptions | [`Partial<HttpClientOptions>`](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.17/doc/http-client-options.md) | Stable configurable http client options. |
+| httpClientOptions | [`Partial<HttpClientOptions>`](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/7.0.1/doc/http-client-options.md) | Stable configurable http client options. |
 | unstableHttpClientOptions | `any` | Unstable configurable http client options. |
-| basicAuthCredentials | [`BasicAuthCredentials`](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.17/doc/auth/basic-authentication.md) | The credential object for basicAuth |
+| basicAuthCredentials | [`BasicAuthCredentials`](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/7.0.1/doc/auth/basic-authentication.md) | The credential object for basicAuth |
 
 The API client can be initialized as follows:
 
+### Code-Based Client Initialization
+
 ```ts
+import { Client } from 'pagarmeapisdklib';
+
 const client = new Client({
   basicAuthCredentials: {
     username: 'BasicAuthUserName',
@@ -96,11 +100,52 @@ const client = new Client({
 });
 ```
 
+### Configuration-Based Client Initialization
+
+```ts
+import * as path from 'path';
+import * as fs from 'fs';
+import { Client } from 'pagarmeapisdklib';
+
+// Provide absolute path for the configuration file
+const absolutePath = path.resolve('./config.json');
+
+// Read the configuration file content
+const fileContent = fs.readFileSync(absolutePath, 'utf-8');
+
+// Initialize client from JSON configuration content
+const client = Client.fromJsonConfig(fileContent);
+```
+
+See the [Configuration-Based Client Initialization](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/7.0.1/doc/configuration-based-client-initialization.md) section for details.
+
+### Environment-Based Client Initialization
+
+```ts
+import * as dotenv from 'dotenv';
+import * as path from 'path';
+import * as fs from 'fs';
+import { Client } from 'pagarmeapisdklib';
+
+// Optional - Provide absolute path for the .env file
+const absolutePath = path.resolve('./.env');
+
+if (fs.existsSync(absolutePath)) {
+  // Load environment variables from .env file
+  dotenv.config({ path: absolutePath, override: true });
+}
+
+// Initialize client using environment variables
+const client = Client.fromEnvironment(process.env);
+```
+
+See the [Environment-Based Client Initialization](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/7.0.1/doc/environment-based-client-initialization.md) section for details.
+
 ## Authorization
 
 This API uses the following authentication schemes.
 
-* [`httpBasic (Basic Authentication)`](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.17/doc/auth/basic-authentication.md)
+* [`httpBasic (Basic Authentication)`](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/7.0.1/doc/auth/basic-authentication.md)
 
 ## API Errors
 
@@ -108,41 +153,43 @@ Here is the list of errors that the API might throw.
 
 | HTTP Status Code | Error Description | Exception Class |
 |  --- | --- | --- |
-| 400 | Invalid request | [`CustomError`](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.17/doc/models/custom-error.md) |
-| 401 | Invalid API key | [`CustomError`](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.17/doc/models/custom-error.md) |
-| 404 | An informed resource was not found | [`CustomError`](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.17/doc/models/custom-error.md) |
-| 412 | Business validation error | [`CustomError`](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.17/doc/models/custom-error.md) |
-| 422 | Contract validation error | [`CustomError`](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.17/doc/models/custom-error.md) |
-| 500 | Internal server error | [`CustomError`](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.17/doc/models/custom-error.md) |
+| 400 | Invalid request | [`CustomError`](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/7.0.1/doc/models/custom-error.md) |
+| 401 | Invalid API key | [`CustomError`](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/7.0.1/doc/models/custom-error.md) |
+| 404 | An informed resource was not found | [`CustomError`](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/7.0.1/doc/models/custom-error.md) |
+| 412 | Business validation error | [`CustomError`](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/7.0.1/doc/models/custom-error.md) |
+| 422 | Contract validation error | [`CustomError`](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/7.0.1/doc/models/custom-error.md) |
+| 500 | Internal server error | [`CustomError`](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/7.0.1/doc/models/custom-error.md) |
 
 ## List of APIs
 
-* [Subscriptions](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.17/doc/controllers/subscriptions.md)
-* [Orders](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.17/doc/controllers/orders.md)
-* [Plans](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.17/doc/controllers/plans.md)
-* [Invoices](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.17/doc/controllers/invoices.md)
-* [Customers](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.17/doc/controllers/customers.md)
-* [Charges](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.17/doc/controllers/charges.md)
-* [Recipients](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.17/doc/controllers/recipients.md)
-* [Tokens](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.17/doc/controllers/tokens.md)
-* [Transactions](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.17/doc/controllers/transactions.md)
-* [Transfers](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.17/doc/controllers/transfers.md)
-* [Payables](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.17/doc/controllers/payables.md)
-* [Balance Operations](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.17/doc/controllers/balance-operations.md)
+* [Charges](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/7.0.1/doc/controllers/charges.md)
+* [Customers](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/7.0.1/doc/controllers/customers.md)
+* [Invoices](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/7.0.1/doc/controllers/invoices.md)
+* [Orders](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/7.0.1/doc/controllers/orders.md)
+* [Payables](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/7.0.1/doc/controllers/payables.md)
+* [Plans](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/7.0.1/doc/controllers/plans.md)
+* [Recipients](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/7.0.1/doc/controllers/recipients.md)
+* [Subscriptions](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/7.0.1/doc/controllers/subscriptions.md)
+* [Tokens](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/7.0.1/doc/controllers/tokens.md)
+* [Transactions](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/7.0.1/doc/controllers/transactions.md)
+* [Transfers](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/7.0.1/doc/controllers/transfers.md)
 
 ## SDK Infrastructure
 
 ### Configuration
 
-* [HttpClientOptions](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.17/doc/http-client-options.md)
-* [RetryConfiguration](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.17/doc/retry-configuration.md)
+* [HttpClientOptions](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/7.0.1/doc/http-client-options.md)
+* [RetryConfiguration](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/7.0.1/doc/retry-configuration.md)
+* [ProxySettings](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/7.0.1/doc/proxy-settings.md)
+* [Configuration-Based Client Initialization](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/7.0.1/doc/configuration-based-client-initialization.md)
+* [Environment-Based Client Initialization](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/7.0.1/doc/environment-based-client-initialization.md)
 
 ### HTTP
 
-* [HttpRequest](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.17/doc/http-request.md)
+* [HttpRequest](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/7.0.1/doc/http-request.md)
 
 ### Utilities
 
-* [ApiResponse](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.17/doc/api-response.md)
-* [ApiError](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/6.8.17/doc/api-error.md)
+* [ApiResponse](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/7.0.1/doc/api-response.md)
+* [ApiError](https://www.github.com/pagarme/pagarme-nodejs-sdk/tree/7.0.1/doc/api-error.md)
 

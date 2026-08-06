@@ -13,11 +13,13 @@ Request for canceling a subscription
 |  --- | --- | --- | --- |
 | `cancelPendingInvoices` | `boolean` | Required | Indicates if the pending invoices must also be canceled.<br><br>**Default**: `true` |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "cancel_pending_invoices": true
-}
+```ts
+import { CreateCancelSubscriptionRequest } from 'pagarmeapisdklib';
+
+const createCancelSubscriptionRequest: CreateCancelSubscriptionRequest = {
+  cancelPendingInvoices: true,
+};
 ```
 

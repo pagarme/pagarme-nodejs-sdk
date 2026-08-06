@@ -19,17 +19,19 @@ Card token data
 | `brand` | `string` | Required | Card brand |
 | `label` | `string` | Required | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "number": "number8",
-  "holder_name": "holder_name6",
-  "exp_month": 168,
-  "exp_year": 208,
-  "cvv": "cvv8",
-  "brand": "brand4",
-  "label": "label0"
-}
+```ts
+import { CreateCardTokenRequest } from 'pagarmeapisdklib';
+
+const createCardTokenRequest: CreateCardTokenRequest = {
+  number: 'number8',
+  holderName: 'holder_name0',
+  expMonth: 182,
+  expYear: 114,
+  cvv: 'cvv2',
+  brand: 'brand8',
+  label: 'label4',
+};
 ```
 

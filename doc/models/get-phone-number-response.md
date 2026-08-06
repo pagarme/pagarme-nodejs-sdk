@@ -15,13 +15,15 @@ Response object for getting an PhoneNumberResponse
 | `number` | `string \| null \| undefined` | Optional | - |
 | `type` | `string \| null \| undefined` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "ddd": "ddd2",
-  "number": "number0",
-  "type": "type8"
-}
+```ts
+import { GetPhoneNumberResponse } from 'pagarmeapisdklib';
+
+const getPhoneNumberResponse: GetPhoneNumberResponse = {
+  ddd: 'ddd4',
+  number: 'number8',
+  type: 'type0',
+};
 ```
 

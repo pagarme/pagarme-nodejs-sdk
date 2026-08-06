@@ -20,18 +20,20 @@ Register Information Address
 | `zipCode` | `string` | Required | - |
 | `referencePoint` | `string` | Required | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "street": "street8",
-  "complementary": "complementary0",
-  "street_number": "street_number8",
-  "neighborhood": "neighborhood4",
-  "city": "city8",
-  "state": "state4",
-  "zip_code": "zip_code2",
-  "reference_point": "reference_point2"
-}
+```ts
+import { CreateRegisterInformationAddressRequest } from 'pagarmeapisdklib';
+
+const createRegisterInformationAddressRequest: CreateRegisterInformationAddressRequest = {
+  street: 'street8',
+  complementary: 'complementary0',
+  streetNumber: 'street_number8',
+  neighborhood: 'neighborhood4',
+  city: 'city8',
+  state: 'state4',
+  zipCode: 'zip_code2',
+  referencePoint: 'reference_point2',
+};
 ```
 

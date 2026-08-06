@@ -13,13 +13,15 @@
 | `startAt` | `string \| undefined` | Optional | - |
 | `endAt` | `string \| undefined` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "name": "name6",
-  "start_at": "2016-03-13T12:52:32.123Z",
-  "end_at": "end_at6"
-}
+```ts
+import { CreateTransactionReportFileRequest } from 'pagarmeapisdklib';
+
+const createTransactionReportFileRequest: CreateTransactionReportFileRequest = {
+  name: 'name2',
+  startAt: '2016-03-13T12:52:32.123Z',
+  endAt: 'end_at8',
+};
 ```
 

@@ -14,25 +14,16 @@ Checkout pix payment response
 | `expiresAt` | `string \| null \| undefined` | Optional | Expires at |
 | `additionalInformation` | [`PixAdditionalInformation[] \| null \| undefined`](../../doc/models/pix-additional-information.md) | Optional | Additional information |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "expires_at": "2016-03-13T12:52:32.123Z",
-  "additional_information": [
-    {
-      "Name": "Name0",
-      "Value": "Value2"
-    },
-    {
-      "Name": "Name0",
-      "Value": "Value2"
-    },
-    {
-      "Name": "Name0",
-      "Value": "Value2"
-    }
-  ]
-}
+```ts
+import { GetCheckoutPixPaymentResponse } from 'pagarmeapisdklib';
+
+const getCheckoutPixPaymentResponse: GetCheckoutPixPaymentResponse = {
+  expiresAt: '2016-03-13T12:52:32.123Z',
+  additionalInformation: [
+    {}
+  ],
+};
 ```
 

@@ -12,31 +12,18 @@
 | `data` | [`GetDiscountResponse[] \| null \| undefined`](../../doc/models/get-discount-response.md) | Optional | The Discounts response |
 | `paging` | [`PagingResponse \| null \| undefined`](../../doc/models/paging-response.md) | Optional | Paging object |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "data": [
+```ts
+import { ListDiscountsResponse } from 'pagarmeapisdklib';
+
+const listDiscountsResponse: ListDiscountsResponse = {
+  data: [
+    null,
     {
-      "id": "id0",
-      "value": 95.62,
-      "discount_type": "discount_type8",
-      "status": "status2",
-      "created_at": "2016-03-13T12:52:32.123Z"
-    },
-    {
-      "id": "id0",
-      "value": 95.62,
-      "discount_type": "discount_type8",
-      "status": "status2",
-      "created_at": "2016-03-13T12:52:32.123Z"
     }
   ],
-  "paging": {
-    "total": 6,
-    "previous": "previous2",
-    "next": "next8"
-  }
-}
+  paging: null,
+};
 ```
 

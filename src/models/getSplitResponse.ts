@@ -12,15 +12,15 @@ import {
   optional,
   Schema,
   string,
-} from '../schema';
+} from '../schema.js';
 import {
   GetRecipientResponse,
   getRecipientResponseSchema,
-} from './getRecipientResponse';
+} from './getRecipientResponse.js';
 import {
   GetSplitOptionsResponse,
   getSplitOptionsResponseSchema,
-} from './getSplitOptionsResponse';
+} from './getSplitOptionsResponse.js';
 
 /** Split response */
 export interface GetSplitResponse {
@@ -36,17 +36,13 @@ export interface GetSplitResponse {
   id?: string | null;
 }
 
-export const getSplitResponseSchema: Schema<GetSplitResponse> = object({
-  type: ['type', optional(nullable(string()))],
-  amount: ['amount', optional(nullable(number()))],
-  recipient: [
-    'recipient',
-    optional(nullable(lazy(() => getRecipientResponseSchema))),
-  ],
-  gatewayId: ['gateway_id', optional(nullable(string()))],
-  options: [
-    'options',
-    optional(nullable(lazy(() => getSplitOptionsResponseSchema))),
-  ],
-  id: ['id', optional(nullable(string()))],
-});
+export const getSplitResponseSchema: Schema<GetSplitResponse> = lazy(() =>
+  object({
+    type: ['type', optional(nullable(string()))],
+    amount: ['amount', optional(nullable(number()))],
+    recipient: ['recipient', optional(nullable(getRecipientResponseSchema))],
+    gatewayId: ['gateway_id', optional(nullable(string()))],
+    options: ['options', optional(nullable(getSplitOptionsResponseSchema))],
+    id: ['id', optional(nullable(string()))],
+  })
+);
