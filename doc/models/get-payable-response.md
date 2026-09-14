@@ -61,7 +61,6 @@ const getPayableResponse: GetPayableResponse = {
   anticipationFee: 0,
   fraudCoverageFee: 0,
   installment: 44,
-  anticipationId: 'anticipation_id6',
   paymentDate: '2025-08-18T03:00:00Z',
   type: 'credit',
   accrualAt: '2023-08-21T12:51:28Z',

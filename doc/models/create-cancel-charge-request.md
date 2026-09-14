@@ -16,6 +16,7 @@ Request for canceling a charge.
 | `split` | [`CreateSplitRequest[] \| undefined`](../../doc/models/create-split-request.md) | Optional | Splits |
 | `operationReference` | `string` | Required | - |
 | `bankAccount` | [`CreateBankAccountRefundingDTO \| undefined`](../../doc/models/create-bank-account-refunding-dto.md) | Optional | - |
+| `reason` | `string \| undefined` | Optional | Cancellation reason |
 
 ## Example
 
@@ -52,6 +53,7 @@ const createCancelChargeRequest: CreateCancelChargeRequest = {
     }
   ],
   bankAccount: {},
+  reason: 'reason4',
 };
 ```
 
