@@ -8,6 +8,7 @@ import {
   bigint,
   boolean,
   lazy,
+  nullable,
   number,
   object,
   optional,
@@ -55,7 +56,7 @@ export interface CreateCreditCardPaymentRequest {
   /** Extended Limit Code */
   extendedLimitCode?: string;
   /** Customer business segment code */
-  merchantCategoryCode?: bigint;
+  merchantCategoryCode?: bigint | null;
   /** The payment authentication request */
   authentication?: CreatePaymentAuthenticationRequest;
   /** The Credit card payment contactless request */
@@ -86,7 +87,10 @@ export const createCreditCardPaymentRequestSchema: Schema<CreateCreditCardPaymen
       capture: ['capture', optional(boolean())],
       extendedLimitEnabled: ['extended_limit_enabled', optional(boolean())],
       extendedLimitCode: ['extended_limit_code', optional(string())],
-      merchantCategoryCode: ['merchant_category_code', optional(bigint())],
+      merchantCategoryCode: [
+        'merchant_category_code',
+        optional(nullable(bigint())),
+      ],
       authentication: [
         'authentication',
         optional(createPaymentAuthenticationRequestSchema),

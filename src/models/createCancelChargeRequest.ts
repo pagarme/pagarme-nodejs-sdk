@@ -36,6 +36,8 @@ export interface CreateCancelChargeRequest {
   split?: CreateSplitRequest[];
   operationReference: string;
   bankAccount?: CreateBankAccountRefundingDTO;
+  /** Cancellation reason */
+  reason?: string;
 }
 
 export const createCancelChargeRequestSchema: Schema<CreateCancelChargeRequest> = lazy(
@@ -52,5 +54,6 @@ export const createCancelChargeRequestSchema: Schema<CreateCancelChargeRequest> 
         'bank_account',
         optional(createBankAccountRefundingDTOSchema),
       ],
+      reason: ['reason', optional(string())],
     })
 );

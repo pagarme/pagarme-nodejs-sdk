@@ -20,7 +20,7 @@ The settings for creating a credit card payment
 | `capture` | `boolean \| undefined` | Optional | Indicates if the operation should be only authorization or auth and capture.<br><br>**Default**: `true` |
 | `extendedLimitEnabled` | `boolean \| undefined` | Optional | Indicates whether the extended label (private label) is enabled |
 | `extendedLimitCode` | `string \| undefined` | Optional | Extended Limit Code |
-| `merchantCategoryCode` | `bigint \| undefined` | Optional | Customer business segment code |
+| `merchantCategoryCode` | `bigint \| null \| undefined` | Optional | Customer business segment code |
 | `authentication` | [`CreatePaymentAuthenticationRequest \| undefined`](../../doc/models/create-payment-authentication-request.md) | Optional | The payment authentication request |
 | `contactless` | [`CreateCardPaymentContactlessRequest \| undefined`](../../doc/models/create-card-payment-contactless-request.md) | Optional | The Credit card payment contactless request |
 | `autoRecovery` | `boolean \| undefined` | Optional | Indicates whether a particular payment will enter the offline retry flow |

@@ -58,7 +58,7 @@ export class Client implements ClientInterface {
       },
     };
 
-    this._userAgent = updateUserAgent('PagarmeApiSDK - TypeScript 7.0.1');
+    this._userAgent = updateUserAgent('PagarmeApiSDK - TypeScript 7.0.2');
     this._requestBuilderFactory = createRequestHandlerFactory(
       (server) => getBaseUri(server, this._config),
       createAuthProviderFromConfig(clonedConfig),
